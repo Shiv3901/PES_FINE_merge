@@ -179,8 +179,8 @@ def update_trainloader(model, train_data, clean_targets, noisy_targets):
 
     confident_indexs, unconfident_indexs = splite_confident(soft_outs, clean_targets, noisy_targets)
 
-    print(confident_indexs.size(), unconfident_indexs.size())
-    print(clean_targets.size(), noisy_targets.size())
+    print(len(confident_indexs), len(unconfident_indexs))
+    print(len(clean_targets), len(noisy_targets))
 
     confident_dataset = Semi_Labeled_Dataset(train_data[confident_indexs], noisy_targets[confident_indexs], transform_train)
     unconfident_dataset = Semi_Unlabeled_Dataset(train_data[unconfident_indexs], transform_train)
