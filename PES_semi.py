@@ -178,6 +178,10 @@ def update_trainloader(model, train_data, clean_targets, noisy_targets):
     soft_outs = predict_softmax(predict_loader, model)
 
     confident_indexs, unconfident_indexs = splite_confident(soft_outs, clean_targets, noisy_targets)
+
+    print(confident_indexs, unconfident_indexs)
+    print(clean_targets, noisy_targets)
+
     confident_dataset = Semi_Labeled_Dataset(train_data[confident_indexs], noisy_targets[confident_indexs], transform_train)
     unconfident_dataset = Semi_Unlabeled_Dataset(train_data[unconfident_indexs], transform_train)
 
@@ -272,6 +276,12 @@ else:
     scheduler = MultiStepLR(optimizer, milestones=[150, 250], gamma=0.1)
 
 best_test_acc = 0
+
+# TODO: remove this after testing 
+
+args.T1 = 1
+args.T2 = 2
+args.num_epochs = 5
 
 print("Some of the parameters: ", args.T1, args.T2, args.num_epochs)
 
