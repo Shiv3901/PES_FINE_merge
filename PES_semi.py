@@ -65,6 +65,8 @@ def linear_rampup(current, warm_up=20, rampup_length=16):
     current = np.clip((current - warm_up) / rampup_length, 0.0, 1.0)
     return args.lambda_u * float(current)
 
+# Description of this algorithm:
+# -> It takes labeled and unlabeled loader and other things that are being passed before 
 
 # MixMatch Training
 def MixMatch_train(epoch, net, optimizer, labeled_trainloader, unlabeled_trainloader, class_weights):
@@ -141,9 +143,11 @@ def MixMatch_train(epoch, net, optimizer, labeled_trainloader, unlabeled_trainlo
 
     print(losses, losses_lx, losses_lu)
 
+# try to locate where this function is being called and it is possible to see where we can fit FINE in 
 
+# gets two arrays of clean and noisy targets 
 def splite_confident(outs, clean_targets, noisy_targets):
-    probs, preds = torch.max(outs.data, 1)
+    probs, preds = torch.max(outs.data, 1) 
 
     confident_correct_num = 0
     unconfident_correct_num = 0
@@ -163,6 +167,7 @@ def splite_confident(outs, clean_targets, noisy_targets):
     # print(getTime(), "confident and unconfident num:", len(confident_indexs), round(confident_correct_num / len(confident_indexs) * 100, 2), len(unconfident_indexs), round(unconfident_correct_num / len(unconfident_indexs) * 100, 2))
     return confident_indexs, unconfident_indexs
 
+# takes the model, train data, clean targets, and noisy targets to return labeled, unlabeles loaders with class weights 
 
 def update_trainloader(model, train_data, clean_targets, noisy_targets):
     predict_dataset = Semi_Unlabeled_Dataset(train_data, transform_train)
@@ -184,6 +189,8 @@ def update_trainloader(model, train_data, clean_targets, noisy_targets):
     for item in noisy_targets[confident_indexs]:
         train_nums[item] += 1
 
+    # TODO: might have to do this for FINE model as well (the class weights thing)
+
     # zeros are not calculated by mean
     # avoid too large numbers that may result in out of range of loss.
     with np.errstate(divide='ignore'):
@@ -191,7 +198,7 @@ def update_trainloader(model, train_data, clean_targets, noisy_targets):
         cw[cw == np.inf] = 0
         cw[cw > 3] = 3
     class_weights = torch.FloatTensor(cw).cuda()
-    # print("Category", train_nums, "precent", class_weights)
+    print("Category", train_nums, "precent", class_weights)
     return labeled_trainloader, unlabeled_trainloader, class_weights
 
 
@@ -263,15 +270,21 @@ else:
 
 best_test_acc = 0
 for epoch in range(args.num_epochs):
+
+    # training per say
     if epoch < args.T1:
         train(model, train_loader, optimizer, ceriation, epoch)
     else:
         if epoch == args.T1:
             model = noisy_refine(model, train_loader, 0, args.T2)
 
+        # arguments required for mix match that update trainloader returns
         labeled_trainloader, unlabeled_trainloader, class_weights = update_trainloader(model, data, clean_labels, noisy_labels)
+
+        # mixmatch to learn from the clean models and make the noisy models correct 
         MixMatch_train(epoch, model, optimizer, labeled_trainloader, unlabeled_trainloader, class_weights)
 
+    # validation 
     _, test_acc = evaluate(model, test_loader, ceriation, "Epoch " + str(epoch) + " Test Acc:")
     best_test_acc = test_acc if best_test_acc < test_acc else best_test_acc
     scheduler.step()
