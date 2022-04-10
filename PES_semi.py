@@ -170,6 +170,9 @@ def splite_confident(outs, clean_targets, noisy_targets):
 # takes the model, train data, clean targets, and noisy targets to return labeled, unlabeles loaders with class weights 
 
 def update_trainloader(model, train_data, clean_targets, noisy_targets):
+
+    print("Update Trainloader was called here")
+
     predict_dataset = Semi_Unlabeled_Dataset(train_data, transform_train)
     predict_loader = DataLoader(dataset=predict_dataset, batch_size=args.batch_size * 2, shuffle=False, num_workers=8, pin_memory=True, drop_last=False)
     soft_outs = predict_softmax(predict_loader, model)
@@ -269,8 +272,12 @@ else:
     scheduler = MultiStepLR(optimizer, milestones=[150, 250], gamma=0.1)
 
 best_test_acc = 0
+
+print("Some of the parameters: ", args.T1, args.T2, args.num_epochs)
+
 for epoch in range(args.num_epochs):
 
+    print("Epoch: ", epoch)
     # training per say
     if epoch < args.T1:
         train(model, train_loader, optimizer, ceriation, epoch)
