@@ -5,7 +5,7 @@ from torch.utils.data import Dataset, DataLoader
 from torchvision.datasets import CIFAR10, CIFAR100
 
 import numpy as np
-from math import inf
+# from math import inf
 from scipy import stats
 import PIL.Image as Image
 from numpy.testing import assert_array_almost_equal
@@ -87,7 +87,7 @@ def get_instance_noisy_label(n, newdataset, labels, num_classes, feature_size, n
             x = x.reshape(feature_size)
 
         A = x.view(1, -1).mm(W[y]).squeeze(0)
-        A[y] = -inf
+        A[y] = -float('inf')
         A = flip_rate[i] * F.softmax(A, dim=0)
         A[y] += 1 - flip_rate[i]
         P.append(A)

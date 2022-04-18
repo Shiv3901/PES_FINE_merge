@@ -1,3 +1,4 @@
+# first time reviewing the thing right now 
 import os
 import os.path
 import argparse
@@ -297,6 +298,8 @@ for epoch in range(args.num_epochs):
 
         # arguments required for mix match that update trainloader returns
         labeled_trainloader, unlabeled_trainloader, class_weights = update_trainloader(model, data, clean_labels, noisy_labels)
+
+		# TODO: This is where things get interesting and we need to figure out a way to implement the code here 
 
         # mixmatch to learn from the clean models and make the noisy models correct 
         MixMatch_train(epoch, model, optimizer, labeled_trainloader, unlabeled_trainloader, class_weights)
