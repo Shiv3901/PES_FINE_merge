@@ -18,7 +18,7 @@ from torchvision.datasets import CIFAR10, CIFAR100
 from networks.ResNet import PreActResNet18
 from common.tools import AverageMeter, getTime, evaluate, predict_softmax, train
 from common.NoisyUtil import Train_Dataset, Semi_Labeled_Dataset, Semi_Unlabeled_Dataset, dataset_split
-
+from selection import *
 
 parser = argparse.ArgumentParser(description='PyTorch CIFAR Training')
 parser.add_argument('--seed', default=1, type=int)
@@ -48,6 +48,8 @@ args.model_dir = 'model/'
 if not os.path.exists(args.model_dir):
     os.system('mkdir -p %s' % (args.model_dir))
 
+gpu_id = 1
+
 if args.seed is not None:
     random.seed(args.seed)
     np.random.seed(args.seed)
@@ -58,7 +60,7 @@ if args.seed is not None:
 
 def create_model(num_classes=10):
     model = PreActResNet18(num_classes)
-    model.cuda()
+    model.cuda(device=gpu_id)
     return model
 
 
@@ -97,8 +99,8 @@ def MixMatch_train(epoch, net, optimizer, labeled_trainloader, unlabeled_trainlo
 
         batch_size = inputs_x.size(0)
         targets_x = torch.zeros(batch_size, args.num_class).scatter_(1, targets_x.view(-1, 1), 1)
-        inputs_x, inputs_x2, targets_x = inputs_x.cuda(), inputs_x2.cuda(), targets_x.cuda()
-        inputs_u, inputs_u2 = inputs_u.cuda(), inputs_u2.cuda()
+        inputs_x, inputs_x2, targets_x = inputs_x.cuda(device=gpu_id), inputs_x2.cuda(device=gpu_id), targets_x.cuda(device=gpu_id)
+        inputs_u, inputs_u2 = inputs_u.cuda(device=gpu_id), inputs_u2.cuda(device=gpu_id)
 
         with torch.no_grad():
             outputs_u11 = net(inputs_u)
@@ -168,46 +170,88 @@ def splite_confident(outs, clean_targets, noisy_targets):
     # print(getTime(), "confident and unconfident num:", len(confident_indexs), round(confident_correct_num / len(confident_indexs) * 100, 2), len(unconfident_indexs), round(unconfident_correct_num / len(unconfident_indexs) * 100, 2))
     return confident_indexs, unconfident_indexs
 
+
+def helperFunctionForFINE(train_data, noisy_targets, k=20):
+
+	clean_idxs = [] 
+	
+	lot_size = len(noisy_targets) / k
+
+	# FIXME: might not be taking the last index, so just have a look 
+	for i in range(1):
+		tempArr = (fine(train_data[lot_size*i:lot_size*(i+1)], noisy_targets[lot_size*i:lot_size*(i+1)], "gmm"))
+		clean_idxs.extend(tempArr.tolist())
+
+	# clean_idxs = fine(train_data[:2], noisy_targets[:2], "gmm")
+
+	clean_set = set(clean_idxs)
+	print(clean_idxs)
+
+	noisy_idxs = []
+
+	for idx in range(0, len(noisy_targets)):
+		if idx not in clean_set:
+			noisy_idxs.append(idx)
+
+
+	# print(clean_idxs, noisy_idxs)
+
+	return clean_idxs, noisy_idxs
+
 # takes the model, train data, clean targets, and noisy targets to return labeled, unlabeles loaders with class weights 
 
+# TODO: change true to false and try to get this variable from the user for user functionality
 def update_trainloader(model, train_data, clean_targets, noisy_targets):
 
-    print("Update Trainloader was called here")
+	useFINE = True
+	
+	print("Update Train Loader is called")
+	
+	# FIXME: maybe remove this in future if not required
+	
+	confident_indexs, unconfident_indexs = None, None
+	
+	if useFINE:
+		
+		confident_indexs, unconfident_indexs = helperFunctionForFINE(train_data, noisy_targets)
+	
+	else:
 
-    predict_dataset = Semi_Unlabeled_Dataset(train_data, transform_train)
-    predict_loader = DataLoader(dataset=predict_dataset, batch_size=args.batch_size * 2, shuffle=False, num_workers=8, pin_memory=True, drop_last=False)
-    soft_outs = predict_softmax(predict_loader, model)
+		predict_dataset = Semi_Unlabeled_Dataset(train_data, transform_train)
+	
+		predict_loader = DataLoader(dataset=predict_dataset, batch_size=args.batch_size * 2, shuffle=False, num_workers=8, pin_memory=True, drop_last=False)
+		soft_outs = predict_softmax(predict_loader, model)
+	
+		confident_indexs, unconfident_indexs = splite_confident(soft_outs, clean_targets, noisy_targets)
+	
+	# print(len(confident_indexs), len(unconfident_indexs))
+	# print(len(clean_targets), len(noisy_targets))
 
-    confident_indexs, unconfident_indexs = splite_confident(soft_outs, clean_targets, noisy_targets)
+	confident_dataset = Semi_Labeled_Dataset(train_data[confident_indexs], noisy_targets[confident_indexs], transform_train)
+	unconfident_dataset = Semi_Unlabeled_Dataset(train_data[unconfident_indexs], transform_train)
 
-    print(len(confident_indexs), len(unconfident_indexs))
-    print(len(clean_targets), len(noisy_targets))
+	uncon_batch = int(args.batch_size / 2) if len(unconfident_indexs) > len(confident_indexs) else int(len(unconfident_indexs) / (len(confident_indexs) + len(unconfident_indexs)) * args.batch_size)
+	con_batch = args.batch_size - uncon_batch
 
-    confident_dataset = Semi_Labeled_Dataset(train_data[confident_indexs], noisy_targets[confident_indexs], transform_train)
-    unconfident_dataset = Semi_Unlabeled_Dataset(train_data[unconfident_indexs], transform_train)
-
-    uncon_batch = int(args.batch_size / 2) if len(unconfident_indexs) > len(confident_indexs) else int(len(unconfident_indexs) / (len(confident_indexs) + len(unconfident_indexs)) * args.batch_size)
-    con_batch = args.batch_size - uncon_batch
-
-    labeled_trainloader = DataLoader(dataset=confident_dataset, batch_size=con_batch, shuffle=True, num_workers=8, pin_memory=True, drop_last=True)
-    unlabeled_trainloader = DataLoader(dataset=unconfident_dataset, batch_size=uncon_batch, shuffle=True, num_workers=8, pin_memory=True, drop_last=True)
+	labeled_trainloader = DataLoader(dataset=confident_dataset, batch_size=con_batch, shuffle=True, num_workers=8, pin_memory=True, drop_last=True)
+	unlabeled_trainloader = DataLoader(dataset=unconfident_dataset, batch_size=uncon_batch, shuffle=True, num_workers=8, pin_memory=True, drop_last=True)
 
     # Loss function
-    train_nums = np.zeros(args.num_class, dtype=int)
-    for item in noisy_targets[confident_indexs]:
-        train_nums[item] += 1
+	train_nums = np.zeros(args.num_class, dtype=int)
+	for item in noisy_targets[confident_indexs]:	
+		train_nums[item] += 1
 
     # TODO: might have to do this for FINE model as well (the class weights thing)
 
     # zeros are not calculated by mean
     # avoid too large numbers that may result in out of range of loss.
-    with np.errstate(divide='ignore'):
-        cw = np.mean(train_nums[train_nums != 0]) / train_nums
-        cw[cw == np.inf] = 0
-        cw[cw > 3] = 3
-    class_weights = torch.FloatTensor(cw).cuda()
-    print("Category", train_nums, "precent", class_weights)
-    return labeled_trainloader, unlabeled_trainloader, class_weights
+	with np.errstate(divide='ignore'):
+		cw = np.mean(train_nums[train_nums != 0]) / train_nums
+		cw[cw == np.inf] = 0
+		cw[cw > 3] = 3
+	class_weights = torch.FloatTensor(cw).cuda(device=gpu_id)
+	print("Category", train_nums, "precent", class_weights)
+	return labeled_trainloader, unlabeled_trainloader, class_weights
 
 
 def noisy_refine(model, train_loader, num_layer, refine_times):
@@ -218,7 +262,7 @@ def noisy_refine(model, train_loader, num_layer, refine_times):
         param.requires_grad = False
 
     model.renew_layers(num_layer)
-    model.cuda()
+    model.cuda(device=gpu_id)
 
     optimizer_adam = torch.optim.Adam(model.parameters(), lr=args.PES_lr)
     for epoch in range(refine_times):
@@ -263,7 +307,7 @@ if args.noise_type == "symmetric":
 else:
     noise_include = False
 
-ceriation = nn.CrossEntropyLoss().cuda()
+ceriation = nn.CrossEntropyLoss().cuda(device=gpu_id)
 data, _, noisy_labels, _, clean_labels, _ = dataset_split(train_set.data, np.array(train_set.targets), args.noise_rate, args.noise_type, args.data_percent, args.seed, args.num_class, noise_include)
 train_dataset = Train_Dataset(data, noisy_labels, transform_train)
 train_loader = DataLoader(dataset=train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=8, pin_memory=True, drop_last=True)

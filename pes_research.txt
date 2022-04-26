@@ -1,0 +1,39 @@
+--> Research about integrating FINE function into PES
+
+- update_train function in PES_semi.py file 
+
+	+ takes in model, data, clean_labels, noisy_labels
+	+ returns labeled_trainloader, unlabeled_trainloader, class_weights
+
+
+	(&) some extraneous points
+
+	: they are doing a softmax prediction to get the values and then using that 
+		output they are splitting the data into clean and noisy label idxs
+
+
+- cleansing function in FINE implementation 
+
+	+ it's calling some kmeans function from sklearn kit which is a bit confusing to look at, at first 
+	+ 
+
+
+==> Major Plan
+
+- the plan now is to get the clean label indexes using FINE and pass it through PES's current framework to see if we get some more test accuracy 
+
+- let's see how it goes (20th April)
+
+
+
+
+
+
+
+
+
+
+
+
+
+

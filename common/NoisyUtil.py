@@ -39,9 +39,11 @@ def dataset_split(train_images, train_labels, noise_rate=0.5, noise_type='symmet
         data = data.type(torch.FloatTensor)
         targets = torch.from_numpy(train_labels)
         dataset = zip(data, targets)
-        noisy_labels = get_instance_noisy_label(noise_rate, dataset, targets, num_classes, feature_size, norm_std, random_seed)
+        noisy_labels = get_instance_noisy_label(
+            noise_rate, dataset, targets, num_classes, feature_size, norm_std, random_seed)
     elif(noise_type == 'oneflip'):
-        noisy_labels, real_noise_rate, transition_matrix = noisify_oneflip(clean_train_labels, noise=noise_rate, random_state=random_seed, nb_classes=num_classes)
+        noisy_labels, real_noise_rate, transition_matrix = noisify_oneflip(
+            clean_train_labels, noise=noise_rate, random_state=random_seed, nb_classes=num_classes)
     else:
         noisy_labels, real_noise_rate, transition_matrix = noisify_multiclass_symmetric(clean_train_labels, noise=noise_rate,
                                                                                         random_state=random_seed, nb_classes=num_classes)
@@ -50,58 +52,69 @@ def dataset_split(train_images, train_labels, noise_rate=0.5, noise_type='symmet
     noisy_labels = noisy_labels.squeeze()
     num_samples = int(noisy_labels.shape[0])
     np.random.seed(random_seed)
-    train_set_index = np.random.choice(num_samples, int(num_samples * split_per), replace=False)
+    train_set_index = np.random.choice(
+        num_samples, int(num_samples * split_per), replace=False)
     index = np.arange(train_images.shape[0])
     val_set_index = np.delete(index, train_set_index)
 
-    train_set, val_set = train_images[train_set_index, :], train_images[val_set_index, :]
+    train_set, val_set = train_images[train_set_index,
+                                      :], train_images[val_set_index, :]
     train_labels, val_labels = noisy_labels[train_set_index], noisy_labels[val_set_index]
-    train_clean_labels, val_clean_labels = clean_train_labels[train_set_index], clean_train_labels[val_set_index]
+    train_clean_labels, val_clean_labels = clean_train_labels[
+        train_set_index], clean_train_labels[val_set_index]
 
     return train_set, val_set, train_labels, val_labels, train_clean_labels, val_clean_labels
 
 
 def get_instance_noisy_label(n, newdataset, labels, num_classes, feature_size, norm_std, seed):
-    label_num = num_classes
-    np.random.seed(int(seed))
-    torch.manual_seed(int(seed))
-    torch.cuda.manual_seed(int(seed))
-
-    P = []
-    flip_distribution = stats.truncnorm((0 - n) / norm_std, (1 - n) / norm_std, loc=n, scale=norm_std)
-    flip_rate = flip_distribution.rvs(labels.shape[0])
-
-    if isinstance(labels, list):
-        labels = torch.FloatTensor(labels)
-    if torch.cuda.is_available():
-        labels = labels.cuda()
-
-    W = np.random.randn(label_num, feature_size, label_num)
-    if torch.cuda.is_available():
-        W = torch.FloatTensor(W).cuda()
-    else:
-        W = torch.FloatTensor(W)
-    for i, (x, y) in enumerate(newdataset):
-        if torch.cuda.is_available():
-            x = x.cuda()
-            x = x.reshape(feature_size)
-
-        A = x.view(1, -1).mm(W[y]).squeeze(0)
-        A[y] = -float('inf')
-        A = flip_rate[i] * F.softmax(A, dim=0)
-        A[y] += 1 - flip_rate[i]
-        P.append(A)
-    P = torch.stack(P, 0).cpu().numpy()
-    l1 = [i for i in range(label_num)]
-    new_label = [np.random.choice(l1, p=P[i]) for i in range(labels.shape[0])]
-
-    record = [[0 for _ in range(label_num)] for i in range(label_num)]
-
-    for a, b in zip(labels, new_label):
-        a, b = int(a), int(b)
-        record[a][b] += 1
-
-    return np.array(new_label)
+	label_num = num_classes
+	np.random.seed(int(seed))
+	torch.manual_seed(int(seed))
+	torch.cuda.manual_seed(int(seed))
+	
+	P = []
+	
+	flip_distribution = stats.truncnorm(
+        (0 - n) / norm_std, (1 - n) / norm_std, loc=n, scale=norm_std)
+		
+	flip_rate = flip_distribution.rvs(labels.shape[0])
+	
+	if isinstance(labels, list):
+		labels = torch.FloatTensor(labels)
+		
+	if torch.cuda.is_available():
+		gpu_id = 1
+		labels = labels.cuda(device=gpu_id)
+		
+	W = np.random.randn(label_num, feature_size, label_num)
+	
+	if torch.cuda.is_available():
+		W = torch.FloatTensor(W).cuda(device=gpu_id)
+	else:
+		W = torch.FloatTensor(W)
+    
+	for i, (x, y) in enumerate(newdataset):
+		if torch.cuda.is_available():
+			x = x.cuda(device=gpu_id)
+			x = x.reshape(feature_size)
+			
+		A = x.view(1, -1).mm(W[y]).squeeze(0)
+		A[y] = -float('inf')
+		A = flip_rate[i] * F.softmax(A, dim=0)
+		A[y] += 1 - flip_rate[i]
+		P.append(A)
+		
+	P = torch.stack(P, 0).cpu().numpy()
+	l1 = [i for i in range(label_num)]
+	new_label = [np.random.choice(l1, p=P[i]) for i in range(labels.shape[0])]
+	
+	record = [[0 for _ in range(label_num)] for i in range(label_num)]
+	
+	for a, b in zip(labels, new_label):
+		a, b = int(a), int(b)
+		record[a][b] += 1
+		
+	return np.array(new_label)
 
 
 def noisify_oneflip(y_train, noise, random_state=1, nb_classes=10):
@@ -189,9 +202,11 @@ def multiclass_noisify(y, P, random_state=1):
 
 def noisify(dataset='mnist', nb_classes=10, train_labels=None, noise_type=None, noise_rate=0, random_state=1):
     if noise_type == 'pairflip':
-        train_noisy_labels, actual_noise_rate = noisify_pairflip(train_labels, noise_rate, random_state=1, nb_classes=nb_classes)
+        train_noisy_labels, actual_noise_rate = noisify_pairflip(
+            train_labels, noise_rate, random_state=1, nb_classes=nb_classes)
     if noise_type == 'symmetric':
-        train_noisy_labels, actual_noise_rate = noisify_multiclass_symmetric(train_labels, noise_rate, random_state=1, nb_classes=nb_classes)
+        train_noisy_labels, actual_noise_rate = noisify_multiclass_symmetric(
+            train_labels, noise_rate, random_state=1, nb_classes=nb_classes)
     return train_noisy_labels, actual_noise_rate
 
 
@@ -309,33 +324,44 @@ def getDataLoaders(seed, dataset, data_root, data_percent, noise_type, noise_rat
     if dataset == "CIFAR10" or dataset == "cifar10":
         transform_train = transforms.Compose([transforms.RandomCrop(32, padding=4), transforms.RandomHorizontalFlip(), transforms.ToTensor(),
                                               transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010))])
-        transform_test = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010))])
+        transform_test = transforms.Compose([transforms.ToTensor(), transforms.Normalize(
+            (0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010))])
         num_classes = 10
         train_set = CIFAR10(root=data_root, train=True, download=False)
-        test_set = CIFAR10(root=data_root, train=False, transform=transform_test, download=True)
+        test_set = CIFAR10(root=data_root, train=False,
+                           transform=transform_test, download=True)
     elif dataset == "CIFAR100" or dataset == "cifar100":
-        transform_train = transforms.Compose([transforms.RandomCrop(32, padding=4), transforms.RandomHorizontalFlip(), transforms.ToTensor(), transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010))])
-        transform_test = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010))])
+        transform_train = transforms.Compose([transforms.RandomCrop(32, padding=4), transforms.RandomHorizontalFlip(
+        ), transforms.ToTensor(), transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010))])
+        transform_test = transforms.Compose([transforms.ToTensor(), transforms.Normalize(
+            (0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010))])
         num_classes = 100
         train_set = CIFAR100(root=data_root, train=True, download=False)
-        test_set = CIFAR100(root=data_root, train=False, transform=transform_test, download=True)
+        test_set = CIFAR100(root=data_root, train=False,
+                            transform=transform_test, download=True)
 
-    train_data, val_data, train_noisy_labels, val_noisy_labels, train_clean_labels, val_clean_labels = dataset_split(train_set.data, np.array(train_set.targets), noise_rate, noise_type, data_percent, seed, num_classes)
+    train_data, val_data, train_noisy_labels, val_noisy_labels, train_clean_labels, val_clean_labels = dataset_split(
+        train_set.data, np.array(train_set.targets), noise_rate, noise_type, data_percent, seed, num_classes)
 
     if no_aug:
         transform_train = transform_test
 
     if is_clean:
         print("train with clean labels")
-        train_dataset = Train_Dataset(train_data, train_clean_labels, transform_train)
+        train_dataset = Train_Dataset(
+            train_data, train_clean_labels, transform_train)
         val_dataset = Train_Dataset(val_data, val_clean_labels, transform_test)
     else:
-        train_dataset = Train_Dataset(train_data, train_noisy_labels, transform_train)
+        train_dataset = Train_Dataset(
+            train_data, train_noisy_labels, transform_train)
         val_dataset = Train_Dataset(val_data, val_noisy_labels, transform_test)
 
-    train_loader = DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=True, num_workers=8, pin_memory=True, drop_last=True)
-    val_loader = DataLoader(dataset=val_dataset, batch_size=batch_size * 2, shuffle=False, num_workers=8, pin_memory=True)
-    test_loader = DataLoader(dataset=test_set, batch_size=batch_size * 2, shuffle=False, num_workers=8, pin_memory=True)
+    train_loader = DataLoader(dataset=train_dataset, batch_size=batch_size,
+                              shuffle=True, num_workers=8, pin_memory=True, drop_last=True)
+    val_loader = DataLoader(dataset=val_dataset, batch_size=batch_size *
+                            2, shuffle=False, num_workers=8, pin_memory=True)
+    test_loader = DataLoader(dataset=test_set, batch_size=batch_size * 2,
+                             shuffle=False, num_workers=8, pin_memory=True)
 
     return train_loader, val_loader, test_loader
 
@@ -353,14 +379,18 @@ def get_transition_matrix(dataset, noise_type, noise_rate):
             transition_matrix[0, 0] = 1. - noise_rate
             for i in range(1, nb_classes - 1):
                 transition_matrix[i, i] = 1. - noise_rate
-                transition_matrix[nb_classes - 1, nb_classes - 1] = 1. - noise_rate
+                transition_matrix[nb_classes - 1,
+                                  nb_classes - 1] = 1. - noise_rate
 
     elif noise_type == "pairflip":
         transition_matrix = np.eye(nb_classes)
         if noise_rate > 0.0:
-            transition_matrix[0, 0], transition_matrix[0, 1] = 1. - noise_rate, noise_rate
+            transition_matrix[0, 0], transition_matrix[0,
+                                                       1] = 1. - noise_rate, noise_rate
             for i in range(1, nb_classes - 1):
-                transition_matrix[i, i], transition_matrix[i, i + 1] = 1. - noise_rate, noise_rate
-            transition_matrix[nb_classes - 1, nb_classes - 1], transition_matrix[nb_classes - 1, 0] = 1. - noise_rate, noise_rate
+                transition_matrix[i, i], transition_matrix[i,
+                                                           i + 1] = 1. - noise_rate, noise_rate
+            transition_matrix[nb_classes - 1, nb_classes -
+                              1], transition_matrix[nb_classes - 1, 0] = 1. - noise_rate, noise_rate
 
     return transition_matrix

@@ -9,7 +9,7 @@ import torch
 from sklearn.mixture import GaussianMixture as GMM
 # from .util import estimate_purity
 
-__all__=['fix_mixture', 'fit_mixture_bmm']
+__all__=['fit_mixture', 'fit_mixture_bmm']
 
 # TODO: figure out where you are getting the scores from 
 def fit_mixture(scores, labels, p_threshold=0.5):

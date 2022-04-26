@@ -8,6 +8,8 @@ import torch
 import torch.nn.functional as F
 from torch.autograd import Variable
 
+gpu_id = 1
+
 
 def getTime():
     time_stamp = datetime.datetime.now()
@@ -89,8 +91,8 @@ def train(model, train_loader, optimizer, ceriation, epoch):
         # measure data loading time
         data_time.update(time.time() - end)
 
-        images = Variable(images).cuda()
-        labels = Variable(labels).cuda()
+        images = Variable(images).cuda(device=gpu_id)
+        labels = Variable(labels).cuda(device=gpu_id)
 
         logist = model(images)
         loss = ceriation(logist, labels)
@@ -117,8 +119,8 @@ def evaluate(model, eva_loader, ceriation, prefix, ignore=-1):
 
     with torch.no_grad():
         for i, (images, labels) in enumerate(eva_loader):
-            images = Variable(images).cuda()
-            labels = Variable(labels).cuda()
+            images = Variable(images).cuda(device=gpu_id)
+            labels = Variable(labels).cuda(device=gpu_id)
 
             logist = model(images)
 
@@ -141,8 +143,8 @@ def evaluateWithBoth(model1, model2, eva_loader, prefix):
 
     with torch.no_grad():
         for i, (images, labels) in enumerate(eva_loader):
-            images = Variable(images).cuda()
-            labels = Variable(labels).cuda()
+            images = Variable(images).cuda(device=gpu_id)
+            labels = Variable(labels).cuda(device=gpu_id)
 
             logist1 = model1(images)
             logist2 = model2(images)
@@ -164,7 +166,7 @@ def predict(predict_loader, model):
     with torch.no_grad():
         for images, _ in predict_loader:
             if torch.cuda.is_available():
-                images = Variable(images).cuda()
+                images = Variable(images).cuda(device=gpu_id)
                 logits = model(images)
                 outputs = F.softmax(logits, dim=1)
                 prob, pred = torch.max(outputs.data, 1)
@@ -181,8 +183,8 @@ def predict_softmax(predict_loader, model):
     with torch.no_grad():
         for images1, images2 in predict_loader:
             if torch.cuda.is_available():
-                images1 = Variable(images1).cuda()
-                images2 = Variable(images2).cuda()
+                images1 = Variable(images1).cuda(device=gpu_id)
+                images2 = Variable(images2).cuda(device=gpu_id)
                 logits1 = model(images1)
                 logits2 = model(images2)
                 outputs = (F.softmax(logits1, dim=1) + F.softmax(logits2, dim=1)) / 2

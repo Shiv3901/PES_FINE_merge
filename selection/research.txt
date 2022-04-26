@@ -1,0 +1,80 @@
+All the things found about FINE model is written here for tracking
+
+** I've tried to review all the helper functions first to have a better idea when we look at 
+the main function 
+
+- fit_mixture function in gmm.py file
+
+	+ takes in scores, labels and p_threshold
+	+ scores is presumbaly an array that has predicted scores for the corresponding labels
+	+ somethings happen here, and then using the p_threshold as a bare minimum
+	+ clean labels are returned to wherever the function was called
+
+	# TODO: 
+
+		! try printing everything in this function to have a better understanding of what is happening 
+
+- get_mean_vector function in svd_classifier.py
+
+	+ takes in features and labels 
+	+ literally returned a mean_vector_dict
+
+	# TODO: 
+		
+		! try printing one or two confusing things to get a better understanding
+
+- get_singular_vector function in svd_classifier.py
+
+	+ gets a top1 singular vector in class-wise manner by using SVD ok hidden feature vectors
+	+ features: hidden feature vectors of data (numpy)
+	+ labels: corresponding label list
+
+- get_score function in svd_classifier.py
+
+	+ takes in singular_vector_dict, featues, labels and normalization bool
+	+ calculates the score providing the degree of showing whether the data is clean or not 
+
+- extract_topk function in svd_classifier.py
+
+	+ k: ration to extract topk scores in class-wise manner
+	+ to obtain the most promising clean data in each classes
+	+ return selected labels
+
+- cleanising function in svd_classifier.py
+
+	+ it assumes the distribution of scores is bimodal spherical distribution
+	+ returns clean labels that belongs to the clean cluster made by the kMeans algorithm
+	+ takes in scores and labels and returns an array of clean labels
+
+- fine function (MAIN ONE)
+
+	+ takes in current features, current_labels, fit
+	+ an could pass additional args such as: prev_features, prev_labels, p_threshold, norm, eigen
+
+	+ legit returns clean labels
+	+ if you don't pass the previous rounds, then the data is split just based on what we have
+	+ it's not too hard to understand this one 
+
+
+- extract_cleanidx (MAIN ONE used by FINE model)
+
+	+ takes in teacher, data_loader, parse
+	+ calls the fine function and then returns the clean labels
+	+ fill like this one is just to print out the things returned by the fine function 
+
+	# TODO:
+		
+		! would be good to have this one working to get more statistics on how the values are printed and stuff
+
+--> SOUNDS GOOD SO FAR, NO NEXT GOAL IS TO FIGURE OUT HOW TO USE THIS TO GET CLEAN LABELS FOR PES
+
+
+
+
+
+
+
+
+
+
+
