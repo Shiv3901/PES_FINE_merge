@@ -170,7 +170,6 @@ def splite_confident(outs, clean_targets, noisy_targets):
     # print(getTime(), "confident and unconfident num:", len(confident_indexs), round(confident_correct_num / len(confident_indexs) * 100, 2), len(unconfident_indexs), round(unconfident_correct_num / len(unconfident_indexs) * 100, 2))
     return confident_indexs, unconfident_indexs
 
-
 def helperFunctionForFINE(train_data, noisy_targets, k=20):
 
 	clean_idxs = [] 
@@ -178,14 +177,16 @@ def helperFunctionForFINE(train_data, noisy_targets, k=20):
 	lot_size = len(noisy_targets) / k
 
 	# FIXME: might not be taking the last index, so just have a look 
-	for i in range(1):
-		tempArr = (fine(train_data[lot_size*i:lot_size*(i+1)], noisy_targets[lot_size*i:lot_size*(i+1)], "gmm"))
+	for i in range(k):
+		print("Batch No. "+  str(i+1) + " Starting")
+		tempArr = fine(train_data[lot_size*i:lot_size*(i+1)], noisy_targets[lot_size*i:lot_size*(i+1)], "gmm", 
+					train_data[:lot_size], noisy_targets[:lot_size])
 		clean_idxs.extend(tempArr.tolist())
 
 	# clean_idxs = fine(train_data[:2], noisy_targets[:2], "gmm")
 
 	clean_set = set(clean_idxs)
-	print(clean_idxs)
+	# print(clean_idxs)
 
 	noisy_idxs = []
 
@@ -193,6 +194,7 @@ def helperFunctionForFINE(train_data, noisy_targets, k=20):
 		if idx not in clean_set:
 			noisy_idxs.append(idx)
 
+	print("Total Clean Labels: " + str(len(clean_idxs)))
 
 	# print(clean_idxs, noisy_idxs)
 
@@ -223,6 +225,7 @@ def update_trainloader(model, train_data, clean_targets, noisy_targets):
 		soft_outs = predict_softmax(predict_loader, model)
 	
 		confident_indexs, unconfident_indexs = splite_confident(soft_outs, clean_targets, noisy_targets)
+		print(len(confident_indexs))
 	
 	# print(len(confident_indexs), len(unconfident_indexs))
 	# print(len(clean_targets), len(noisy_targets))
@@ -231,7 +234,10 @@ def update_trainloader(model, train_data, clean_targets, noisy_targets):
 	unconfident_dataset = Semi_Unlabeled_Dataset(train_data[unconfident_indexs], transform_train)
 
 	uncon_batch = int(args.batch_size / 2) if len(unconfident_indexs) > len(confident_indexs) else int(len(unconfident_indexs) / (len(confident_indexs) + len(unconfident_indexs)) * args.batch_size)
+	if uncon_batch == 0: uncon_batch = 5
 	con_batch = args.batch_size - uncon_batch
+
+	print(con_batch, uncon_batch)
 
 	labeled_trainloader = DataLoader(dataset=confident_dataset, batch_size=con_batch, shuffle=True, num_workers=8, pin_memory=True, drop_last=True)
 	unlabeled_trainloader = DataLoader(dataset=unconfident_dataset, batch_size=uncon_batch, shuffle=True, num_workers=8, pin_memory=True, drop_last=True)
@@ -324,9 +330,9 @@ best_test_acc = 0
 
 # TODO: remove this after testing 
 
-args.T1 = 1
-args.T2 = 1
-args.num_epochs = 3
+args.T1 = 10
+args.T2 = 5
+args.num_epochs = 15
 
 print("Some of the parameters: ", args.T1, args.T2, args.num_epochs)
 

@@ -1,0 +1,614 @@
+Mon May  2 00:41:53 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.103.01   Driver Version: 470.103.01   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  Off  | 00000000:01:00.0 Off |                  N/A |
+| 47%   84C    P2   252W / 250W |   7377MiB / 11019MiB |     99%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA GeForce ...  Off  | 00000000:02:00.0 Off |                  N/A |
+| 27%   32C    P8     3W / 250W |      8MiB / 11019MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      1200      G   /usr/lib/xorg/Xorg                  9MiB |
+|    0   N/A  N/A      1675      G   /usr/bin/gnome-shell                6MiB |
+|    0   N/A  N/A     16730      C   python3                          3363MiB |
+|    0   N/A  N/A     32742      C   python                           3993MiB |
+|    1   N/A  N/A      1200      G   /usr/lib/xorg/Xorg                  4MiB |
++-----------------------------------------------------------------------------+
+Namespace(PES_lr=0.0001, T=0.5, T1=0, T2=5, alpha=4, batch_size=128, data_path='./data', data_percent=1, dataset='cifar10', lambda_u=15.0, lr=0.02, noise_rate=0.4, noise_type='instance', num_epochs=300, optim='cos', seed=1, weight_decay=0.0005)
+Files already downloaded and verified
+Files already downloaded and verified
+('Some of the parameters: ', 10, 5, 15)
+('Epoch: ', 0)
+Train Epoch: [0][  0/390]	Time   0.05	Data   0.01	Loss   1.89	Acc@1  28.75
+('00:42:24', 'Epoch 0 Test Acc:', 44.43)
+('Epoch: ', 1)
+Train Epoch: [1][  0/390]	Time   0.04	Data   0.00	Loss   1.67	Acc@1  36.44
+('00:42:41', 'Epoch 1 Test Acc:', 54.45)
+('Epoch: ', 2)
+Train Epoch: [2][  0/390]	Time   0.04	Data   0.00	Loss   1.54	Acc@1  40.82
+('00:42:57', 'Epoch 2 Test Acc:', 61.68)
+('Epoch: ', 3)
+Train Epoch: [3][  0/390]	Time   0.04	Data   0.00	Loss   1.45	Acc@1  43.73
+('00:43:14', 'Epoch 3 Test Acc:', 52.82)
+('Epoch: ', 4)
+Train Epoch: [4][  0/390]	Time   0.04	Data   0.00	Loss   1.40	Acc@1  45.50
+('00:43:30', 'Epoch 4 Test Acc:', 52.91)
+('Epoch: ', 5)
+Train Epoch: [5][  0/390]	Time   0.04	Data   0.00	Loss   1.35	Acc@1  46.92
+('00:43:47', 'Epoch 5 Test Acc:', 65.87)
+('Epoch: ', 6)
+Train Epoch: [6][  0/390]	Time   0.04	Data   0.00	Loss   1.31	Acc@1  47.92
+('00:44:04', 'Epoch 6 Test Acc:', 72.55)
+('Epoch: ', 7)
+Train Epoch: [7][  0/390]	Time   0.04	Data   0.00	Loss   1.28	Acc@1  49.02
+('00:44:20', 'Epoch 7 Test Acc:', 65.43)
+('Epoch: ', 8)
+Train Epoch: [8][  0/390]	Time   0.04	Data   0.00	Loss   1.26	Acc@1  49.64
+('00:44:37', 'Epoch 8 Test Acc:', 60.23)
+('Epoch: ', 9)
+Train Epoch: [9][  0/390]	Time   0.04	Data   0.00	Loss   1.24	Acc@1  50.36
+('00:44:54', 'Epoch 9 Test Acc:', 70.23)
+('Epoch: ', 10)
+re-initalize the final layer
+Train Epoch: [0][  0/390]	Time   0.02	Data   0.00	Loss   1.60	Acc@1  49.85
+('00:45:02', 'Epoch 0 Test Acc:', 79.12)
+Train Epoch: [1][  0/390]	Time   0.02	Data   0.00	Loss   1.26	Acc@1  53.10
+('00:45:10', 'Epoch 1 Test Acc:', 77.48)
+Train Epoch: [2][  0/390]	Time   0.02	Data   0.00	Loss   1.20	Acc@1  53.19
+('00:45:18', 'Epoch 2 Test Acc:', 77.64)
+Train Epoch: [3][  0/390]	Time   0.02	Data   0.00	Loss   1.18	Acc@1  53.15
+('00:45:26', 'Epoch 3 Test Acc:', 77.46)
+Train Epoch: [4][  0/390]	Time   0.02	Data   0.00	Loss   1.17	Acc@1  53.27
+('00:45:34', 'Epoch 4 Test Acc:', 78.49)
+Update Train Loader is called
+Batch No. 1 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 0:45:38
+2366
+0:52:34
+Batch No. 2 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 0:52:38
+2332
+0:59:28
+Batch No. 3 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 0:59:32
+2189
+1:6:17
+Batch No. 4 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 1:6:21
+2411
+1:13:3
+Batch No. 5 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 1:13:8
+2289
+1:19:53
+Batch No. 6 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 1:19:58
+2271
+1:26:45
+Batch No. 7 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 1:26:49
+2119
+1:33:34
+Batch No. 8 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 1:33:38
+2458
+1:40:20
+Batch No. 9 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 1:40:25
+2415
+1:47:15
+Batch No. 10 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 1:47:19
+2416
+1:54:4
+Batch No. 11 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 1:54:8
+2365
+2:0:59
+Batch No. 12 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 2:1:3
+2261
+2:7:48
+Batch No. 13 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 2:7:53
+2297
+2:14:38
+Batch No. 14 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 2:14:42
+2396
+2:21:30
+Batch No. 15 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 2:21:35
+2178
+2:28:16
+Batch No. 16 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 2:28:20
+2458
+2:35:8
+Batch No. 17 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 2:35:12
+2376
+2:41:56
+Batch No. 18 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 2:42:0
+2280
+2:48:54
+Batch No. 19 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 2:48:58
+2302
+2:55:34
+Batch No. 20 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 2:55:38
+2199
+3:2:21
+Total Clean Labels: 46378
+(64, 64)
+('Category', array([5378, 2995, 3638, 5426, 3521, 2707, 4280, 7741, 3429, 7263]), 'precent', tensor([0.8624, 1.5485, 1.2748, 0.8547, 1.3172, 1.7133, 1.0836, 0.5991, 1.3525,
+        0.6386], device='cuda:1'))
+(<common.tools.AverageMeter object at 0x7fd2fe519e10>, <common.tools.AverageMeter object at 0x7fd2fe519c10>, <common.tools.AverageMeter object at 0x7fd2fe519f50>)
+('03:02:58', 'Epoch 10 Test Acc:', 67.95)
+('Epoch: ', 11)
+Update Train Loader is called
+Batch No. 1 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 3:3:2
+2366
+3:9:54
+Batch No. 2 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 3:9:58
+2332
+3:16:43
+Batch No. 3 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 3:16:47
+2189
+3:23:34
+Batch No. 4 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 3:23:38
+2411
+3:30:21
+Batch No. 5 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 3:30:25
+2289
+3:37:11
+Batch No. 6 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 3:37:16
+2271
+3:44:2
+Batch No. 7 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 3:44:6
+2119
+3:50:55
+Batch No. 8 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 3:50:59
+2458
+3:57:41
+Batch No. 9 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 3:57:46
+2415
+4:4:35
+Batch No. 10 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 4:4:39
+2416
+4:11:26
+Batch No. 11 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 4:11:30
+2365
+4:18:21
+Batch No. 12 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 4:18:26
+2261
+4:25:12
+Batch No. 13 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 4:25:16
+2297
+4:32:3
+Batch No. 14 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 4:32:7
+2396
+4:38:53
+Batch No. 15 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 4:38:58
+2178
+4:45:41
+Batch No. 16 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 4:45:46
+2458
+4:52:34
+Batch No. 17 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 4:52:38
+2376
+4:59:23
+Batch No. 18 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 4:59:28
+2280
+5:6:21
+Batch No. 19 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 5:6:25
+2302
+5:13:4
+Batch No. 20 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 5:13:8
+2199
+5:20:3
+Total Clean Labels: 46378
+(64, 64)
+('Category', array([5378, 2995, 3638, 5426, 3521, 2707, 4280, 7741, 3429, 7263]), 'precent', tensor([0.8624, 1.5485, 1.2748, 0.8547, 1.3172, 1.7133, 1.0836, 0.5991, 1.3525,
+        0.6386], device='cuda:1'))
+(<common.tools.AverageMeter object at 0x7fd37aadfdd0>, <common.tools.AverageMeter object at 0x7fd2ffcea5d0>, <common.tools.AverageMeter object at 0x7fd2ffcea510>)
+('05:20:39', 'Epoch 11 Test Acc:', 60.05)
+('Epoch: ', 12)
+Update Train Loader is called
+Batch No. 1 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 5:20:44
+2366
+5:27:51
+Batch No. 2 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 5:27:55
+2332
+5:34:48
+Batch No. 3 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 5:34:53
+2189
+5:41:51
+Batch No. 4 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 5:41:56
+2411
+5:48:48
+Batch No. 5 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 5:48:53
+2289
+5:55:54
+Batch No. 6 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 5:55:58
+2271
+6:2:58
+Batch No. 7 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 6:3:2
+2119
+6:10:3
+Batch No. 8 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 6:10:8
+2458
+6:17:1
+Batch No. 9 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 6:17:6
+2415
+6:24:7
+Batch No. 10 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 6:24:12
+2416
+6:31:13
+Batch No. 11 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 6:31:17
+2365
+6:38:20
+Batch No. 12 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 6:38:25
+2261
+6:45:23
+Batch No. 13 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 6:45:27
+2297
+6:52:26
+Batch No. 14 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 6:52:30
+2396
+6:59:26
+Batch No. 15 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 6:59:31
+2178
+7:6:21
+Batch No. 16 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 7:6:26
+2458
+7:13:25
+Batch No. 17 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 7:13:30
+2376
+7:20:30
+Batch No. 18 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 7:20:34
+2280
+7:27:23
+Batch No. 19 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 7:27:28
+2302
+7:33:59
+Batch No. 20 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 7:34:3
+2199
+7:40:38
+Total Clean Labels: 46378
+(64, 64)
+('Category', array([5378, 2995, 3638, 5426, 3521, 2707, 4280, 7741, 3429, 7263]), 'precent', tensor([0.8624, 1.5485, 1.2748, 0.8547, 1.3172, 1.7133, 1.0836, 0.5991, 1.3525,
+        0.6386], device='cuda:1'))
+(<common.tools.AverageMeter object at 0x7fd2c81b9f90>, <common.tools.AverageMeter object at 0x7fd2c81b9e50>, <common.tools.AverageMeter object at 0x7fd2fe546d50>)
+('07:41:14', 'Epoch 12 Test Acc:', 60.94)
+('Epoch: ', 13)
+Update Train Loader is called
+Batch No. 1 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 7:41:19
+2366
+7:48:6
+Batch No. 2 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 7:48:11
+2332
+7:54:51
+Batch No. 3 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 7:54:55
+2189
+8:1:37
+Batch No. 4 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 8:1:41
+2411
+8:8:15
+Batch No. 5 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 8:8:20
+2289
+8:15:1
+Batch No. 6 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 8:15:5
+2271
+8:21:47
+Batch No. 7 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 8:21:51
+2119
+8:28:35
+Batch No. 8 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 8:28:39
+2458
+8:35:16
+Batch No. 9 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 8:35:20
+2415
+8:42:6
+Batch No. 10 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 8:42:10
+2416
+8:48:52
+Batch No. 11 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 8:48:56
+2365
+8:55:43
+Batch No. 12 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 8:55:47
+2261
+9:2:28
+Batch No. 13 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 9:2:32
+2297
+9:9:11
+Batch No. 14 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 9:9:15
+2396
+9:15:58
+Batch No. 15 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 9:16:2
+2178
+9:22:38
+Batch No. 16 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 9:22:43
+2458
+9:29:28
+Batch No. 17 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 9:29:33
+2376
+9:36:13
+Batch No. 18 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 9:36:17
+2280
+9:43:2
+Batch No. 19 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 9:43:6
+2302
+9:49:38
+Batch No. 20 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 9:49:42
+2199
+9:56:18
+Total Clean Labels: 46378
+(64, 64)
+('Category', array([5378, 2995, 3638, 5426, 3521, 2707, 4280, 7741, 3429, 7263]), 'precent', tensor([0.8624, 1.5485, 1.2748, 0.8547, 1.3172, 1.7133, 1.0836, 0.5991, 1.3525,
+        0.6386], device='cuda:1'))
+(<common.tools.AverageMeter object at 0x7fd37aadfdd0>, <common.tools.AverageMeter object at 0x7fd2fe519ad0>, <common.tools.AverageMeter object at 0x7fd2fe519f10>)
+('09:56:54', 'Epoch 13 Test Acc:', 53.41)
+('Epoch: ', 14)
+Update Train Loader is called
+Batch No. 1 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 9:56:59
+2366
+10:3:44
+Batch No. 2 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 10:3:48
+2332
+10:10:26
+Batch No. 3 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 10:10:30
+2189
+10:17:16
+Batch No. 4 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 10:17:20
+2411
+10:23:58
+Batch No. 5 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 10:24:2
+2289
+10:30:42
+Batch No. 6 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 10:30:46
+2271
+10:37:27
+Batch No. 7 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 10:37:31
+2119
+10:44:14
+Batch No. 8 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 10:44:18
+2458
+10:50:56
+Batch No. 9 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 10:51:0
+2415
+10:57:50
+Batch No. 10 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 10:57:54
+2416
+11:4:29
+Batch No. 11 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 11:4:33
+2365
+11:11:21
+Batch No. 12 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 11:11:26
+2261
+11:18:4
+Batch No. 13 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 11:18:9
+2297
+11:24:48
+Batch No. 14 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 11:24:52
+2396
+11:31:35
+Batch No. 15 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 11:31:39
+2178
+11:38:10
+Batch No. 16 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 11:38:14
+2458
+11:44:56
+Batch No. 17 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 11:45:0
+2376
+11:51:37
+Batch No. 18 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 11:51:41
+2280
+11:58:29
+Batch No. 19 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 11:58:34
+2302
+12:5:3
+Batch No. 20 Starting
+('FINE was called with size of ', 2500, 2500)
+first: 12:5:7
+2199
+12:11:47
+Total Clean Labels: 46378
+(64, 64)
+('Category', array([5378, 2995, 3638, 5426, 3521, 2707, 4280, 7741, 3429, 7263]), 'precent', tensor([0.8624, 1.5485, 1.2748, 0.8547, 1.3172, 1.7133, 1.0836, 0.5991, 1.3525,
+        0.6386], device='cuda:1'))
+(<common.tools.AverageMeter object at 0x7fd2c81b9e50>, <common.tools.AverageMeter object at 0x7fd2c81b9e10>, <common.tools.AverageMeter object at 0x7fd2c81b9f90>)
+('12:12:23', 'Epoch 14 Test Acc:', 55.65)
+('12:12:23', 'Best Test Acc:', 72.548828125)

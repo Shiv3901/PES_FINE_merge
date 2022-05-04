@@ -7,7 +7,7 @@ from tqdm import tqdm
 from .gmm import fit_mixture, fit_mixture_bmm
 
 __all__ = ['get_mean_vector', 'get_singular_vector',
-           'cleansing', 'fine', 'extract_cleanidx']
+           'cleansing', 'fine', 'extract_cleanidx', 'return_time']
 
 
 def get_mean_vector(features, labels):
@@ -73,30 +73,52 @@ def extract_topk(scores, labels, k):
     return torch.tensor(selected_labels, dtype=torch.int64)
 
 
-def cleansing(scores, labels):
+def cleansing(scores, labels_incoming):
 
 	indexes = np.array(range(len(scores)))
 	clean_labels = []
 
-	print(scores.shape)
+	for cls in np.unique(labels_incoming):
 
-	for cls in np.unique(labels):
-		cls_index = indexes[labels == cls]
-		kmeans = cluster.KMeans(n_clusters=2, random_state=0).fit(scores[cls_index].reshape(-1, 1))
-		
-		# let's see what happens here print(len(kmeans))
+		cls_index = indexes[labels_incoming == cls]
+		kmeans = cluster.KMeans(n_clusters=2, random_state=0)
+	
+		# print(scores.shape)
 
-		print(kmeans)
-		print(kmeans.labels_.shape)
-		
-		if np.mean(scores[cls_index][kmeans.labels_ == 0]) < np.mean(scores[cls_index][kmeans.labels_ == 1]):
-			kmeans.labels_ = 1 - kmeans.labels_
-		
-		clean_labels += cls_index[kmeans.labels_ == 0].tolist()
+		feats = scores[cls_index]
+		feats_ = feats.reshape(feats.shape[0], 32*32*32*3)
+		# feats_ = np.ravel(feats).astype(np.float).reshape(-1, 1)
+		labels = kmeans.fit(feats_).labels_
 
-		print(clean_labels)
+		# print(scores.shape)
+		
+		#print(feats_.shape)
+		#print("array: ", cls_index.shape)
+
+		#print(scores.shape)
+
+		#print("shape: ", scores[cls_index].shape)
+
+		#print("something: ", scores[cls_index])
+
+		if np.mean(feats_[labels == 0]) < np.mean(feats_[labels == 1]):
+			labels = 1 - labels
+		
+		#print(labels)
+		#print(labels.shape)
+
+		clean_labels += cls_index[labels == 0].tolist()
+
+	print("Clean Labels: " + str(len(clean_labels)))
 		
 	return np.array(clean_labels, dtype=np.int64)
+
+import datetime
+
+def return_time():
+
+	e = datetime.datetime.now()
+	return str(e.hour) + ":" + str(e.minute) + ":" + str(e.second)
 
 
 def fine(current_features, current_labels, fit='kmeans', prev_features=None, prev_labels=None, p_threshold=0.5, norm=True, eigen=True):
@@ -122,7 +144,7 @@ def fine(current_features, current_labels, fit='kmeans', prev_features=None, pre
 
 	# print(scores)
 
-	# print(len(scores))
+	print("first: " + return_time())
 
 	if 'kmeans' in fit:
 		clean_labels = cleansing(scores, current_labels)
@@ -135,6 +157,8 @@ def fine(current_features, current_labels, fit='kmeans', prev_features=None, pre
 	else:
 		raise NotImplemented
 		
+	print(return_time())
+
 	return clean_labels
 
 # FIXME: probably do not need this function for our implementation
