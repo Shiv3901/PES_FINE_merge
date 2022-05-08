@@ -86,6 +86,9 @@ def cleansing(scores, labels_incoming):
 		# print(scores.shape)
 
 		feats = scores[cls_index]
+
+		if feats.shape[0]: continue
+
 		feats_ = feats.reshape(feats.shape[0], 32*32*32*3)
 		# feats_ = np.ravel(feats).astype(np.float).reshape(-1, 1)
 		labels = kmeans.fit(feats_).labels_

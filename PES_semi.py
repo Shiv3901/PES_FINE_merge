@@ -150,30 +150,34 @@ def MixMatch_train(epoch, net, optimizer, labeled_trainloader, unlabeled_trainlo
 
 # gets two arrays of clean and noisy targets 
 def splite_confident(outs, clean_targets, noisy_targets):
-    probs, preds = torch.max(outs.data, 1) 
+	probs, preds = torch.max(outs.data, 1) 
 
-    confident_correct_num = 0
-    unconfident_correct_num = 0
-    confident_indexs = []
-    unconfident_indexs = []
-
-    for i in range(0, len(noisy_targets)):
-        if preds[i] == noisy_targets[i]:
-            confident_indexs.append(i)
-            if clean_targets[i] == preds[i]:
-                confident_correct_num += 1
-        else:
-            unconfident_indexs.append(i)
-            if clean_targets[i] == preds[i]:
-                unconfident_correct_num += 1
-
-    # print(getTime(), "confident and unconfident num:", len(confident_indexs), round(confident_correct_num / len(confident_indexs) * 100, 2), len(unconfident_indexs), round(unconfident_correct_num / len(unconfident_indexs) * 100, 2))
-    return confident_indexs, unconfident_indexs
-
-def helperFunctionForFINE(train_data, noisy_targets, k=20):
-
-	clean_idxs = [] 
+	confident_correct_num = 0
+	unconfident_correct_num = 0
+	confident_indexs = []
+	unconfident_indexs = []
 	
+	print("sonmethign is fos", len(clean_targets), len(noisy_targets))
+	
+	for i in range(0, len(noisy_targets)):
+		if preds[i] == noisy_targets[i]:
+			confident_indexs.append(i)
+			if clean_targets[i] == preds[i]:
+				confident_correct_num += 1
+				
+		else:
+			unconfident_indexs.append(i)
+			if clean_targets[i] == preds[i]:
+				unconfident_correct_num += 1
+
+	# print(getTime(), "confident and unconfident num:", len(confident_indexs), round(confident_correct_num / len(confident_indexs) * 100, 2), len(unconfident_indexs), round(unconfident_correct_num / len(unconfident_indexs) * 100, 2)) 
+	
+	return confident_indexs, unconfident_indexs
+
+def helperFunctionForFINE(train_data, noisy_targets, k=100):
+	
+	# FIXME: consider making a set for this one as it could be possible that you are counting it more than once
+	clean_set = set()
 	lot_size = len(noisy_targets) / k
 
 	# FIXME: might not be taking the last index, so just have a look 
@@ -181,11 +185,12 @@ def helperFunctionForFINE(train_data, noisy_targets, k=20):
 		print("Batch No. "+  str(i+1) + " Starting")
 		tempArr = fine(train_data[lot_size*i:lot_size*(i+1)], noisy_targets[lot_size*i:lot_size*(i+1)], "gmm", 
 					train_data[:lot_size], noisy_targets[:lot_size])
-		clean_idxs.extend(tempArr.tolist())
+		clean_set |= set(tempArr.tolist())
 
-	# clean_idxs = fine(train_data[:2], noisy_targets[:2], "gmm")
+	# clean_idxs = fine(train_data[:k], noisy_targets[:k], "kmeans")
 
-	clean_set = set(clean_idxs)
+	clean_idxs = list(clean_set)
+	
 	# print(clean_idxs)
 
 	noisy_idxs = []
@@ -194,41 +199,46 @@ def helperFunctionForFINE(train_data, noisy_targets, k=20):
 		if idx not in clean_set:
 			noisy_idxs.append(idx)
 
-	print("Total Clean Labels: " + str(len(clean_idxs)))
+	# print("Total Clean Labels: " + str(len(clean_idxs)))
 
 	# print(clean_idxs, noisy_idxs)
 
 	return clean_idxs, noisy_idxs
 
-# takes the model, train data, clean targets, and noisy targets to return labeled, unlabeles loaders with class weights 
+# FIXME: Pass enum type in future 
+# FIXME: Try to come up with something similar afterwards
+def return_confident_indexes(model, train_data, clean_targets, noisy_targets, isFine=False, k=100):
 
-# TODO: change true to false and try to get this variable from the user for user functionality
-def update_trainloader(model, train_data, clean_targets, noisy_targets):
+	if isFine:
 
-	useFINE = True
-	
-	print("Update Train Loader is called")
-	
-	# FIXME: maybe remove this in future if not required
-	
-	confident_indexs, unconfident_indexs = None, None
-	
-	if useFINE:
-		
-		confident_indexs, unconfident_indexs = helperFunctionForFINE(train_data, noisy_targets)
-	
+		# FIXME: have the data split together not afterwards
+		return helperFunctionForFINE(train_data, noisy_targets, k)
+
 	else:
+
+		print(len(train_data))
 
 		predict_dataset = Semi_Unlabeled_Dataset(train_data, transform_train)
 	
 		predict_loader = DataLoader(dataset=predict_dataset, batch_size=args.batch_size * 2, shuffle=False, num_workers=8, pin_memory=True, drop_last=False)
+
 		soft_outs = predict_softmax(predict_loader, model)
 	
-		confident_indexs, unconfident_indexs = splite_confident(soft_outs, clean_targets, noisy_targets)
-		print(len(confident_indexs))
+		print("Soft outs: ", len(soft_outs))
+
+		return splite_confident(soft_outs, clean_targets, noisy_targets)
+
+	return None, None
+		
+
+
+# takes the model, train data, clean targets, and noisy targets to return labeled, unlabeles loaders with class weights 
+
+def update_trainloader(model, train_data, clean_targets, noisy_targets, isFine=False):
+
+	print("Update Train Loader is called")
 	
-	# print(len(confident_indexs), len(unconfident_indexs))
-	# print(len(clean_targets), len(noisy_targets))
+	confident_indexs, unconfident_indexs = return_confident_indexes(model, train_data, clean_targets, noisy_targets, isFine)
 
 	confident_dataset = Semi_Labeled_Dataset(train_data[confident_indexs], noisy_targets[confident_indexs], transform_train)
 	unconfident_dataset = Semi_Unlabeled_Dataset(train_data[unconfident_indexs], transform_train)
@@ -237,7 +247,7 @@ def update_trainloader(model, train_data, clean_targets, noisy_targets):
 	if uncon_batch == 0: uncon_batch = 5
 	con_batch = args.batch_size - uncon_batch
 
-	print(con_batch, uncon_batch)
+	# print(con_batch, uncon_batch)
 
 	labeled_trainloader = DataLoader(dataset=confident_dataset, batch_size=con_batch, shuffle=True, num_workers=8, pin_memory=True, drop_last=True)
 	unlabeled_trainloader = DataLoader(dataset=unconfident_dataset, batch_size=uncon_batch, shuffle=True, num_workers=8, pin_memory=True, drop_last=True)
@@ -336,27 +346,50 @@ args.num_epochs = 15
 
 print("Some of the parameters: ", args.T1, args.T2, args.num_epochs)
 
+
+def evaluate_accuracy(model, train_data, clean_targets, noisy_targets, k=100):
+	print("Evaluate Accuracy function is called")
+
+	confident_idxs_FINE, unconfident_idxs_FINE = return_confident_indexes(model, train_data, clean_targets, noisy_targets, True, k)
+	confident_idxs_PES, unconfident_idxs_PES = return_confident_indexes(model, train_data, clean_targets, noisy_targets)
+
+	print("PES with FINE: ", len(confident_idxs_FINE), len(unconfident_idxs_FINE))
+
+	print("PES: ", len(confident_idxs_PES), len(unconfident_idxs_PES))
+
+	print(confident_idxs_FINE)
+
+	print(confident_idxs_PES)
+
+	return 
+
+K = 2 # batch size
+evaluate_accuracy(model, data[:100], clean_labels[:100], noisy_labels[:100], K)
+
+quit()
+
 for epoch in range(args.num_epochs):
 
-    print("Epoch: ", epoch)
+	print("Epoch: ", epoch)
     # training per say
-    if epoch < args.T1:
-        train(model, train_loader, optimizer, ceriation, epoch)
-    else:
-        if epoch == args.T1:
-            model = noisy_refine(model, train_loader, 0, args.T2)
+	if epoch < args.T1:
+		train(model, train_loader, optimizer, ceriation, epoch)
+	else:
+		if epoch == args.T1:
+			model = noisy_refine(model, train_loader, 0, args.T2)
+			while (K <= 5000):
+				evaluate_accuracy(model, data, clean_labels, noisy_labels, K)
+				K *= 10
 
         # arguments required for mix match that update trainloader returns
-        labeled_trainloader, unlabeled_trainloader, class_weights = update_trainloader(model, data, clean_labels, noisy_labels)
-
-		# TODO: This is where things get interesting and we need to figure out a way to implement the code here 
+		labeled_trainloader, unlabeled_trainloader, class_weights = update_trainloader(model, data, clean_labels, noisy_labels, True)
 
         # mixmatch to learn from the clean models and make the noisy models correct 
-        MixMatch_train(epoch, model, optimizer, labeled_trainloader, unlabeled_trainloader, class_weights)
+		MixMatch_train(epoch, model, optimizer, labeled_trainloader, unlabeled_trainloader, class_weights)
 
     # validation 
-    _, test_acc = evaluate(model, test_loader, ceriation, "Epoch " + str(epoch) + " Test Acc:")
-    best_test_acc = test_acc if best_test_acc < test_acc else best_test_acc
-    scheduler.step()
+	_, test_acc = evaluate(model, test_loader, ceriation, "Epoch " + str(epoch) + " Test Acc:")
+	best_test_acc = test_acc if best_test_acc < test_acc else best_test_acc
+	scheduler.step()
 
 print(getTime(), "Best Test Acc:", best_test_acc)

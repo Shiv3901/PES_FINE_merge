@@ -1,0 +1,134 @@
+Fri May  6 14:45:26 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.103.01   Driver Version: 470.103.01   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  Off  | 00000000:01:00.0 Off |                  N/A |
+| 27%   29C    P8     1W / 250W |     18MiB / 11019MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA GeForce ...  Off  | 00000000:02:00.0 Off |                  N/A |
+| 27%   28C    P8     1W / 250W |      5MiB / 11019MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      1200      G   /usr/lib/xorg/Xorg                  9MiB |
+|    0   N/A  N/A      1675      G   /usr/bin/gnome-shell                6MiB |
+|    1   N/A  N/A      1200      G   /usr/lib/xorg/Xorg                  4MiB |
++-----------------------------------------------------------------------------+
+Namespace(PES_lr=0.0001, T=0.5, T1=0, T2=5, alpha=4, batch_size=128, data_path='./data', data_percent=1, dataset='cifar10', lambda_u=15.0, lr=0.02, noise_rate=0.4, noise_type='instance', num_epochs=300, optim='cos', seed=1, weight_decay=0.0005)
+Files already downloaded and verified
+Files already downloaded and verified
+('Some of the parameters: ', 10, 5, 15)
+Evaluate Accuracy function is called
+('FINE was called with size of ', 10, 10)
+first: 14:45:37
+Clean Labels: 0
+14:45:37
+(0, 10)
+(1, 9)
+[]
+[4]
+('Epoch: ', 0)
+Train Epoch: [0][  0/390]	Time   0.04	Data   0.00	Loss   1.89	Acc@1  28.53
+('14:45:55', 'Epoch 0 Test Acc:', 42.31)
+('Epoch: ', 1)
+Train Epoch: [1][  0/390]	Time   0.04	Data   0.00	Loss   1.67	Acc@1  36.83
+('14:46:12', 'Epoch 1 Test Acc:', 52.61)
+('Epoch: ', 2)
+Train Epoch: [2][  0/390]	Time   0.04	Data   0.00	Loss   1.55	Acc@1  40.78
+('14:46:28', 'Epoch 2 Test Acc:', 61.02)
+('Epoch: ', 3)
+Train Epoch: [3][  0/390]	Time   0.04	Data   0.00	Loss   1.46	Acc@1  43.56
+('14:46:44', 'Epoch 3 Test Acc:', 63.14)
+('Epoch: ', 4)
+Train Epoch: [4][  0/390]	Time   0.04	Data   0.00	Loss   1.40	Acc@1  44.99
+('14:47:01', 'Epoch 4 Test Acc:', 57.18)
+('Epoch: ', 5)
+Train Epoch: [5][  0/390]	Time   0.04	Data   0.00	Loss   1.36	Acc@1  46.33
+('14:47:17', 'Epoch 5 Test Acc:', 66.82)
+('Epoch: ', 6)
+Train Epoch: [6][  0/390]	Time   0.04	Data   0.00	Loss   1.32	Acc@1  47.91
+('14:47:34', 'Epoch 6 Test Acc:', 73.68)
+('Epoch: ', 7)
+Train Epoch: [7][  0/390]	Time   0.04	Data   0.00	Loss   1.28	Acc@1  48.93
+('14:47:50', 'Epoch 7 Test Acc:', 62.17)
+('Epoch: ', 8)
+Train Epoch: [8][  0/390]	Time   0.04	Data   0.00	Loss   1.26	Acc@1  49.59
+('14:48:07', 'Epoch 8 Test Acc:', 71.21)
+('Epoch: ', 9)
+Train Epoch: [9][  0/390]	Time   0.04	Data   0.00	Loss   1.23	Acc@1  50.65
+('14:48:24', 'Epoch 9 Test Acc:', 64.41)
+('Epoch: ', 10)
+re-initalize the final layer
+Train Epoch: [0][  0/390]	Time   0.02	Data   0.00	Loss   1.64	Acc@1  48.17
+('14:48:31', 'Epoch 0 Test Acc:', 78.96)
+Train Epoch: [1][  0/390]	Time   0.02	Data   0.00	Loss   1.26	Acc@1  53.15
+('14:48:39', 'Epoch 1 Test Acc:', 78.52)
+Train Epoch: [2][  0/390]	Time   0.02	Data   0.00	Loss   1.20	Acc@1  53.43
+('14:48:47', 'Epoch 2 Test Acc:', 77.84)
+Train Epoch: [3][  0/390]	Time   0.02	Data   0.00	Loss   1.18	Acc@1  53.35
+('14:48:54', 'Epoch 3 Test Acc:', 77.7)
+Train Epoch: [4][  0/390]	Time   0.02	Data   0.00	Loss   1.17	Acc@1  53.38
+('14:49:02', 'Epoch 4 Test Acc:', 77.8)
+Evaluate Accuracy function is called
+('FINE was called with size of ', 10, 10)
+first: 14:49:2
+Clean Labels: 0
+14:49:2
+(0, 10)
+(4, 6)
+[]
+[0, 5, 6, 7]
+Evaluate Accuracy function is called
+('FINE was called with size of ', 100, 100)
+first: 14:49:2
+Clean Labels: 0
+14:49:2
+(0, 100)
+(62, 38)
+[]
+[0, 5, 6, 11, 13, 14, 15, 17, 18, 19, 20, 21, 23, 24, 27, 28, 29, 31, 32, 34, 35, 37, 38, 39, 40, 41, 45, 47, 48, 49, 50, 51, 52, 54, 57, 58, 59, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 78, 80, 81, 82, 83, 84, 85, 86, 88, 89, 92, 95, 96, 98, 99]
+Update Train Loader is called
+(123, 5)
+('Category', array([2776, 2876, 2508, 2725, 2591, 2230, 2572, 3253, 2655, 3053]), 'precent', tensor([0.9812, 0.9471, 1.0861, 0.9996, 1.0513, 1.2215, 1.0591, 0.8374, 1.0260,
+        0.8922], device='cuda:1'))
+(<common.tools.AverageMeter object at 0x7eff6abea890>, <common.tools.AverageMeter object at 0x7eff6abeae90>, <common.tools.AverageMeter object at 0x7eff6abea150>)
+('14:49:47', 'Epoch 10 Test Acc:', 84.45)
+('Epoch: ', 11)
+Update Train Loader is called
+(123, 5)
+('Category', array([2930, 2898, 2434, 2746, 2554, 2294, 2808, 2926, 2884, 2786]), 'precent', tensor([0.9304, 0.9406, 1.1200, 0.9927, 1.0673, 1.1883, 0.9708, 0.9316, 0.9452,
+        0.9785], device='cuda:1'))
+(<common.tools.AverageMeter object at 0x7eff3192fed0>, <common.tools.AverageMeter object at 0x7eff6cef4b50>, <common.tools.AverageMeter object at 0x7eff6cef4c90>)
+('14:50:31', 'Epoch 11 Test Acc:', 85.05)
+('Epoch: ', 12)
+Update Train Loader is called
+(123, 5)
+('Category', array([2989, 2942, 2658, 2603, 2475, 2381, 2842, 2901, 2797, 2853]), 'precent', tensor([0.9181, 0.9327, 1.0324, 1.0542, 1.1087, 1.1525, 0.9656, 0.9459, 0.9811,
+        0.9618], device='cuda:1'))
+(<common.tools.AverageMeter object at 0x7eff6abea5d0>, <common.tools.AverageMeter object at 0x7eff6abea910>, <common.tools.AverageMeter object at 0x7eff6abea590>)
+('14:51:15', 'Epoch 12 Test Acc:', 84.87)
+('Epoch: ', 13)
+Update Train Loader is called
+(123, 5)
+('Category', array([2586, 2895, 2695, 2469, 2651, 2477, 2908, 2752, 2943, 3015]), 'precent', tensor([1.0592, 0.9461, 1.0164, 1.1094, 1.0332, 1.1058, 0.9419, 0.9953, 0.9307,
+        0.9085], device='cuda:1'))
+(<common.tools.AverageMeter object at 0x7eff3192fed0>, <common.tools.AverageMeter object at 0x7eff6abc6790>, <common.tools.AverageMeter object at 0x7eff6abc6650>)
+('14:51:59', 'Epoch 13 Test Acc:', 85.37)
+('Epoch: ', 14)
+Update Train Loader is called
+(123, 5)
+('Category', array([2843, 2941, 2749, 2536, 2709, 2509, 2566, 2820, 2936, 2851]), 'precent', tensor([0.9659, 0.9337, 0.9989, 1.0828, 1.0137, 1.0945, 1.0701, 0.9738, 0.9353,
+        0.9632], device='cuda:1'))
+(<common.tools.AverageMeter object at 0x7eff6944f1d0>, <common.tools.AverageMeter object at 0x7eff6944ff90>, <common.tools.AverageMeter object at 0x7eff6944f650>)
+('14:52:43', 'Epoch 14 Test Acc:', 85.15)
+('14:52:43', 'Best Test Acc:', 85.37110137939453)
