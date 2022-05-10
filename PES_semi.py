@@ -192,18 +192,11 @@ def helperFunctionForFINE(train_data, noisy_targets, k=100):
 	# clean_idxs = fine(train_data[:k], noisy_targets[:k], "kmeans")
 
 	clean_idxs = list(clean_set)
-	
-	# print(clean_idxs)
-
 	noisy_idxs = []
 
 	for idx in range(0, len(noisy_targets)):
 		if idx not in clean_set:
 			noisy_idxs.append(idx)
-
-	# print("Total Clean Labels: " + str(len(clean_idxs)))
-
-	# print(clean_idxs, noisy_idxs)
 
 	return clean_idxs, noisy_idxs
 
@@ -212,8 +205,7 @@ def helperFunctionForFINE(train_data, noisy_targets, k=100):
 def return_confident_indexes(model, train_loader, train_data, clean_targets, noisy_targets, isFine=False, k=100):
 
     if isFine:
-        features, labels = get_features(model, train_loader)
-        return helperFunctionForFINE(features, labels, k)
+        return helperFunctionForFINE(train_data, noisy_targets, k)
 
     else:
 
@@ -341,36 +333,11 @@ args.num_epochs = 15
 # TODO: you can print this afterwards
 # print("Some of the parameters: ", args.T1, args.T2, args.num_epochs)
 
-# TRIALING SOMETHING OUT HERE
-
-def get_features(model, dataloader):
-    '''
-    Concatenate the hidden features and corresponding labels 
-    '''
-    labels = np.empty((0,))
-
-    model.eval()
-    model.cuda(device=gpu_id)
-    with tqdm(dataloader) as progress:
-        for batch_idx, (data, label, _, _) in enumerate(progress):
-            data, label = data.cuda(device=gpu_id), label.long()
-            feature, _ = model(data)
-
-            labels = np.concatenate((labels, label.cpu()))
-            if batch_idx == 0:
-                features = feature.detach().cpu()
-            else:
-                features = np.concatenate((features, feature.detach().cpu()), axis=0)
-    
-    return features, labels
-
-# FINISHING IT UP HERE
-
 def evaluate_accuracy(model, train_data, clean_targets, noisy_targets, k=100):
 	print("Evaluate Accuracy function is called")
 
-	confident_idxs_FINE, unconfident_idxs_FINE = return_confident_indexes(model, train_loader, train_data, clean_targets, noisy_targets, True, k)
-	confident_idxs_PES, unconfident_idxs_PES = return_confident_indexes(model, train_loader, train_data, clean_targets, noisy_targets)
+	confident_idxs_FINE, unconfident_idxs_FINE = return_confident_indexes(model, train_data, clean_targets, noisy_targets, True, k)
+	confident_idxs_PES, unconfident_idxs_PES = return_confident_indexes(model, train_data, clean_targets, noisy_targets)
 
 	print("PES with FINE: ", len(confident_idxs_FINE), len(unconfident_idxs_FINE))
 
