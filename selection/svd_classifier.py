@@ -79,6 +79,8 @@ def fine(current_features, current_labels, fit='kmeans', previous_features=None,
 
     scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
 
+    print("Scores received from get_score function")
+
     if 'kmeans' in fit:
         clean_labels = cleansing(scores, current_labels)
         probs = None
@@ -102,5 +104,5 @@ def cleansing(scores, labels):
 
         clean_labels += cls_index[kmeans.labels_ == 0].tolist()
 
-    return np.array(clean_labels, dtype=np.int64)
+    return np.array(clean_labels, dtype=np.int64) 
 

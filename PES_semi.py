@@ -337,18 +337,19 @@ def evaluate_accuracy(model, train_data, clean_targets, noisy_targets, k=100):
 	print("Evaluate Accuracy function is called")
 
 	confident_idxs_FINE, unconfident_idxs_FINE = return_confident_indexes(model, train_data, clean_targets, noisy_targets, True, k)
-	confident_idxs_PES, unconfident_idxs_PES = return_confident_indexes(model, train_data, clean_targets, noisy_targets)
+	# confident_idxs_PES, unconfident_idxs_PES = return_confident_indexes(model, train_data, clean_targets, noisy_targets)
 
 	print("PES with FINE: ", len(confident_idxs_FINE), len(unconfident_idxs_FINE))
 
-	print("PES: ", len(confident_idxs_PES), len(unconfident_idxs_PES))
+	# print("PES: ", len(confident_idxs_PES), len(unconfident_idxs_PES))
 
 	print(confident_idxs_FINE)
 
-	print(confident_idxs_PES)
+	# print(confident_idxs_PES)
 
 	return 
 
+# FIXME: for testing only passing on 10 labels 
 K = 2 # batch size
 evaluate_accuracy(model, data[:100], clean_labels[:100], noisy_labels[:100], K)
 
