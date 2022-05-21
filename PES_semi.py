@@ -357,7 +357,7 @@ def trial_shiv(train_data, noisy_labels, clean_labels):
 
     return
 
-trial_shiv(data, noisy_labels, clean_labels)
+# trial_shiv(data, noisy_labels, clean_labels)
 
 # TODO: you can print this afterwards
 # print("Some of the parameters: ", args.T1, args.T2, args.num_epochs)
