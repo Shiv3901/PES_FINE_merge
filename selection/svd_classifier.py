@@ -93,9 +93,9 @@ def fine(current_features, current_labels, fit='kmeans', previous_features=None,
 
 from datetime import datetime
 
-def print_current_time(): 
+def print_current_time(place_holder=""): 
     now = datetime.now()
-    print(now.strftime("%H:%M:%S"))
+    print(now.strftime("%H:%M:%S") + place_holder)
     return
 
 def cleansing(scores, labels):
@@ -104,21 +104,25 @@ def cleansing(scores, labels):
     clean_labels = []
 
     for cls in np.unique(labels):
-        cls_index = indexes[labels==cls]
-        # kmeans = cluster.KMeans(n_clusters=2, random_state=0)
-
-        # feats = scores.
-
-        print_current_time()
-
-        kmeans = cluster.KMeans(n_clusters=2, random_state=0).fit(scores[cls_index].reshape(-1, 1))
+        cls_index = indexes[labels == cls]
+        kmeans = cluster.KMeans(n_clusters=2, random_state=0)
         
+        feats = scores[cls_index]
+        
+        if feats.shape[0]: continue
+
+        feats_ = feats.reshape(feats.shape[0], 32*32*32*3)
+
+        print_current_time("first")
+
+        labels = kmeans.fit(feats_).labels_
+
         print_current_time()
 
-        # if np.mean(scores[cls_index][kmeans.labels_==0]) < np.mean(scores[cls_index][kmeans.labels_==1]): 
-            # kmeans.labels_ = 1 - kmeans.labels_
+        if np.mean(feats_[labels == 0]) < np.mean(feats_[labels == 1]):
+            labels = 1 - labels
 
-        clean_labels += cls_index[kmeans.labels_ == 0].tolist()
-
+        clean_labels += cls_index[labels == 0].tolist()
+        
     return np.array(clean_labels, dtype=np.int64) 
 
