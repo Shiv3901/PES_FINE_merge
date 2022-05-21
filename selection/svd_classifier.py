@@ -63,7 +63,7 @@ def fit_mixture(scores, labels, p_threshold=0.5):
 
         print(print_current_time("start: "))
 
-        gmm = GaussianMixture(n_components=100, covariance_type='diag', tol=1e-6, max_iter=10)
+        gmm = GaussianMixture(n_components=2, covariance_type='diag', tol=1e-6, max_iter=2)
 
         gmm.fit(feats_)
         prob = gmm.predict_proba(feats_)
@@ -75,7 +75,7 @@ def fit_mixture(scores, labels, p_threshold=0.5):
         for i in range(len(cls_index)):
             probs[cls_index[i]] = prob[i]
 
-        clean_labels += [cls_index[clean_idx] for clean_idx in range(len(cls_index))]
+        clean_labels += [cls_index[clean_idx] for clean_idx in range(len(cls_index)) if prob[clean_idx] > p_threshold]
 
     return np.array(clean_labels, dtype=np.int64), probs
 
