@@ -376,9 +376,9 @@ def evaluate_accuracy(model, train_data, clean_targets, noisy_targets, k=100):
 
 # FIXME: for testing only passing on 10 labels 
 K = 2 # batch size
-# evaluate_accuracy(model, data[:10000], clean_labels[:10000], noisy_labels[:10000], K)
+evaluate_accuracy(model, data[:10000], clean_labels[:10000], noisy_labels[:10000], K)
 
-
+quit()
 
 for epoch in range(args.num_epochs):
 
