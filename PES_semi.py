@@ -348,7 +348,7 @@ def trial_shiv(train_data, noisy_labels, clean_labels):
     n_categories= len(np.unique(clean_labels))
     pca = PCA(n_components=10)
     # kmeans = KMeans(n_clusters=n_categories,max_iter=200)
-    gmm = GaussianMixture(n_components=2, covariance_type='diag', tol=1e-6, max_iter=10)
+    gmm = GaussianMixture(n_components=n_categories, covariance_type='diag', tol=1e-6, max_iter=10)
 
     predictor = Pipeline([('pca', pca), ('gmm', gmm)])
     predict = predictor.fit(reshaped_train).predict(reshaped_train)

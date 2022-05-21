@@ -54,6 +54,8 @@ def fit_mixture(scores, labels, p_threshold=0.5):
     indexes = np.array(range(len(scores)))
     probs = {}
 
+    print(scores.shape, "Just looking")
+
     for cls in np.unique(labels):
         cls_index = indexes[labels==cls]
         feats = scores[labels==cls]
