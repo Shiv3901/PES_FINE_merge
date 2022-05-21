@@ -105,6 +105,9 @@ def cleansing(scores, labels):
 
     for cls in np.unique(labels):
         cls_index = indexes[labels==cls]
+        # kmeans = cluster.KMeans(n_clusters=2, random_state=0)
+
+        # feats = scores.
 
         print_current_time()
 
@@ -112,8 +115,8 @@ def cleansing(scores, labels):
         
         print_current_time()
 
-        if np.mean(scores[cls_index][kmeans.labels_==0]) < np.mean(scores[cls_index][kmeans.labels_==1]): 
-            kmeans.labels_ = 1 - kmeans.labels_
+        # if np.mean(scores[cls_index][kmeans.labels_==0]) < np.mean(scores[cls_index][kmeans.labels_==1]): 
+            # kmeans.labels_ = 1 - kmeans.labels_
 
         clean_labels += cls_index[kmeans.labels_ == 0].tolist()
 
