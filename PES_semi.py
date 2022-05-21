@@ -1,4 +1,5 @@
 # first time reviewing the thing right now 
+from distutils.command import clean
 import os
 import os.path
 import argparse
@@ -330,16 +331,30 @@ args.T1 = 10
 args.T2 = 5
 args.num_epochs = 15
 
+from sklearn.decomposition import PCA
+from sklearn.cluster import KMeans 
+from sklearn.pipeline import Pipeline
+from sklearn.metrics import f1_score
 
-def trial_shiv():
+def trial_shiv(train_data, noisy_labels, clean_labels):
 
-    print(data.shape)
-    print(len(noisy_labels))
-    print(len(clean_labels))
+    print("Before: ", train_data.shape)
+
+    reshaped_train=train_data.reshape(50000,3072)
+
+    print("After: ", reshaped_train.shape)
+
+    n_categories= len(np.unique(clean_labels))
+    pca = PCA(n_components=10)
+    kmeans = KMeans(n_clusters=n_categories,max_iter=200)
+    predictor = Pipeline([('pca', pca), ('kmeans', kmeans)])
+    predict = predictor.fit(reshaped_train).predict(reshaped_train)
+
+    print(f1_score(clean_labels, predict))
 
     return
 
-trial_shiv()
+trial_shiv(data, noisy_labels, clean_labels)
 
 quit()
 
