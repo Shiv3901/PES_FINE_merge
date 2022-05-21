@@ -80,7 +80,9 @@ from sklearn.decomposition import PCA
 
 def get_score_shiv(current_features):
 
+    print(print_current_time("Start of PCA: "))
     pca = PCA(n_components=2)
+    print(print_current_time("End of PCA: "))
 
     return pca.fit_transform(current_features)
 
@@ -93,7 +95,7 @@ def fine(current_features, current_labels, fit='kmeans', previous_features=None,
 
     # scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
 
-    scores = get_score_shiv(current_features, current_labels)
+    scores = get_score_shiv(current_features)
 
     if 'kmeans' in fit:
         clean_labels = cleansing(scores, current_labels)
