@@ -58,11 +58,18 @@ def fit_mixture(scores, labels, p_threshold=0.5):
         cls_index = indexes[labels==cls]
         feats = scores[labels==cls]
         feats_ = np.ravel(feats).astype(np.float).reshape(-1, 1)
-        gmm = GaussianMixture(n_components=2, covariance_type='full', tol=1e-6, max_iter=10)
+
+        print(print_current_time("start: "))
+
+        gmm = GaussianMixture(n_components=2, covariance_type='diagonal', tol=1e-6, max_iter=10)
 
         gmm.fit(feats_)
         prob = gmm.predict_proba(feats_)
         prob = prob[:, gmm.means_.argmax()]
+
+        print(print_current_time("end: "))
+
+
         for i in range(len(cls_index)):
             probs[cls_index[i]] = prob[i]
 
@@ -108,8 +115,11 @@ def cleansing(scores, labels):
         cls_index = indexes[labels == cls]
         kmeans = cluster.KMeans(n_clusters=2, random_state=0)
         
+        print("Doing it for: " + str(cls))
+
         feats = scores[cls_index]
         
+        # FIXME: remove this once not needed 
         if feats.shape[0] < 50: continue
 
         feats_ = feats.reshape(feats.shape[0], 32*32*32*3)
