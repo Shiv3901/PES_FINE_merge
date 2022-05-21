@@ -330,11 +330,24 @@ args.T1 = 10
 args.T2 = 5
 args.num_epochs = 15
 
+
+def trial_shiv():
+
+    print(data.shape)
+    print(len(noisy_labels))
+    print(len(clean_labels))
+
+    return
+
+trial_shiv()
+
+quit()
+
 # TODO: you can print this afterwards
 # print("Some of the parameters: ", args.T1, args.T2, args.num_epochs)
 
 def evaluate_accuracy(model, train_data, clean_targets, noisy_targets, k=100):
-    
+
 	print("Evaluate Accuracy function is called")
 
 	confident_idxs_FINE, unconfident_idxs_FINE = return_confident_indexes(model, train_data, clean_targets, noisy_targets, True, k)
@@ -349,7 +362,7 @@ def evaluate_accuracy(model, train_data, clean_targets, noisy_targets, k=100):
 K = 2 # batch size
 evaluate_accuracy(model, data[:100], clean_labels[:100], noisy_labels[:100], K)
 
-quit()
+
 
 for epoch in range(args.num_epochs):
 
