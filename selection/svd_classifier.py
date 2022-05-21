@@ -84,7 +84,7 @@ def get_score_shiv(current_features):
     pca = PCA(n_components=2)
     print(print_current_time("End of PCA: "))
 
-    return pca.fit_transform(current_features)
+    return pca.fit_transform(current_features.reshape(-1, 3072))
 
 def fine(current_features, current_labels, fit='kmeans', previous_features=None, previous_labels=None, p_threshold=0.7):
 
