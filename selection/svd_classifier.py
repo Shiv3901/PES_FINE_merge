@@ -102,6 +102,8 @@ def cleansing(scores, labels):
 
     print("Kmeans function called here")
 
+    print("labels: ", np.unique(labels))
+
     for cls in np.unique(labels):
         cls_index = indexes[labels == cls]
         kmeans = cluster.KMeans(n_clusters=2, random_state=0)
@@ -112,11 +114,11 @@ def cleansing(scores, labels):
 
         feats_ = feats.reshape(feats.shape[0], 32*32*32*3)
 
-        print(print_current_time("first"))
+        print(print_current_time("start: "))
 
         labels = kmeans.fit(feats_).labels_
 
-        print(print_current_time())
+        print(print_current_time("end: "))
 
         if np.mean(feats_[labels == 0]) < np.mean(feats_[labels == 1]):
             labels = 1 - labels
