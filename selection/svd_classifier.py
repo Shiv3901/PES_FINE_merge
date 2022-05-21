@@ -91,6 +91,13 @@ def fine(current_features, current_labels, fit='kmeans', previous_features=None,
     
     return clean_labels, probs
 
+from datetime import datetime
+
+def print_current_time(): 
+    now = datetime.now()
+    print(now.strftime("%H:%M:%S"))
+    return
+
 def cleansing(scores, labels):
 
     indexes = np.array(range(len(scores)))
@@ -98,7 +105,13 @@ def cleansing(scores, labels):
 
     for cls in np.unique(labels):
         cls_index = indexes[labels==cls]
+
+        print_current_time()
+
         kmeans = cluster.KMeans(n_clusters=2, random_state=0).fit(scores[cls_index].reshape(-1, 1))
+        
+        print_current_time()
+
         if np.mean(scores[cls_index][kmeans.labels_==0]) < np.mean(scores[cls_index][kmeans.labels_==1]): 
             kmeans.labels_ = 1 - kmeans.labels_
 

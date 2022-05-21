@@ -186,8 +186,7 @@ def helperFunctionForFINE(train_data, noisy_targets, k=100):
 	# FIXME: might not be taking the last index, so just have a look 
 	for i in range(k):
 		print("Batch No. "+  str(i+1) + " Starting")
-		tempArr = fine(train_data[lot_size*i:lot_size*(i+1)], noisy_targets[lot_size*i:lot_size*(i+1)], "gmm", 
-					train_data[:lot_size], noisy_targets[:lot_size])
+		tempArr = fine(current_features=train_data[lot_size*i:lot_size*(i+1)], current_labels=noisy_targets[lot_size*i:lot_size*(i+1)], "kmeans")
 		clean_set |= set(tempArr.tolist())
 
 	# clean_idxs = fine(train_data[:k], noisy_targets[:k], "kmeans")
@@ -354,9 +353,7 @@ def trial_shiv(train_data, noisy_labels, clean_labels):
 
     return
 
-trial_shiv(data, noisy_labels, clean_labels)
-
-quit()
+# trial_shiv(data, noisy_labels, clean_labels)
 
 # TODO: you can print this afterwards
 # print("Some of the parameters: ", args.T1, args.T2, args.num_epochs)
