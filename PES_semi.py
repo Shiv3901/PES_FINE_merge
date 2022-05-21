@@ -184,13 +184,13 @@ def helperFunctionForFINE(train_data, noisy_targets, k=100):
     lot_size = len(noisy_targets) / k
 
     # FIXME: might not be taking the last index, so just have a look 
-    for i in range(k):
-        print("Batch No. "+  str(i+1) + " Starting")
-        tempArr, _ = fine(current_features=train_data[lot_size*i:lot_size*(i+1)], current_labels=noisy_targets[lot_size*i:lot_size*(i+1)], fit="gmm")
-        tempArr = [(val + lot_size*i) for val in tempArr]
-        clean_set |= set(tempArr)
+    # for i in range(k):
+    #     print("Batch No. "+  str(i+1) + " Starting")
+    #     tempArr, _ = fine(current_features=train_data[lot_size*i:lot_size*(i+1)], current_labels=noisy_targets[lot_size*i:lot_size*(i+1)], fit="gmm")
+    #     tempArr = [(val + lot_size*i) for val in tempArr]
+    #     clean_set |= set(tempArr)
 
-	# clean_idxs = fine(train_data[:k], noisy_targets[:k], "kmeans")
+    clean_idxs = fine(train_data, noisy_targets, "gmm")
 
     clean_idxs = list(clean_set)
     noisy_idxs = []
