@@ -93,8 +93,7 @@ from datetime import datetime
 
 def print_current_time(place_holder=""): 
     now = datetime.now()
-    print(now.strftime("%H:%M:%S") + place_holder)
-    return
+    return place_holder + now.strftime("%H:%M:%S")
 
 def cleansing(scores, labels):
 
@@ -109,15 +108,15 @@ def cleansing(scores, labels):
         
         feats = scores[cls_index]
         
-        if feats.shape[0]: continue
+        if feats.shape[0] < 50: continue
 
         feats_ = feats.reshape(feats.shape[0], 32*32*32*3)
 
-        print_current_time("first")
+        print(print_current_time("first"))
 
         labels = kmeans.fit(feats_).labels_
 
-        print_current_time()
+        print(print_current_time())
 
         if np.mean(feats_[labels == 0]) < np.mean(feats_[labels == 1]):
             labels = 1 - labels
