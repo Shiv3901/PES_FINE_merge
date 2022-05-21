@@ -72,10 +72,10 @@ def fit_mixture(scores, labels, p_threshold=0.5):
 
 def fine(current_features, current_labels, fit='kmeans', previous_features=None, previous_labels=None, p_threshold=0.7):
 
-    if not previous_features and not previous_labels:
-        singular_vector_dict = get_singular_vector(previous_features, previous_labels)
-    else:
-        singular_vector_dict = get_singular_vector(current_features, current_labels)
+    # if not previous_features and not previous_labels:
+    #     singular_vector_dict = get_singular_vector(previous_features, previous_labels)
+    # else:
+    singular_vector_dict = get_singular_vector(current_features, current_labels)
 
     scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
 
