@@ -95,7 +95,7 @@ def fine(current_features, current_labels, fit='kmeans', previous_features=None,
 
     # scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
 
-    scores = get_score(get_score_shiv(current_features), current_features)
+    scores = get_score(get_score_shiv(current_features), current_features, current_labels)
 
     if 'kmeans' in fit:
         clean_labels = cleansing(scores, current_labels)
