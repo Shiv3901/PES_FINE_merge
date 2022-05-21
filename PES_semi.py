@@ -202,7 +202,7 @@ def helperFunctionForFINE(train_data, noisy_targets, k=100):
 
 # FIXME: Pass enum type in future 
 # FIXME: Try to come up with something similar afterwards
-def return_confident_indexes(model, train_loader, train_data, clean_targets, noisy_targets, isFine=False, k=100):
+def return_confident_indexes(model, train_data, clean_targets, noisy_targets, isFine=False, k=100):
 
     if isFine:
         return helperFunctionForFINE(train_data, noisy_targets, k)
@@ -334,18 +334,14 @@ args.num_epochs = 15
 # print("Some of the parameters: ", args.T1, args.T2, args.num_epochs)
 
 def evaluate_accuracy(model, train_data, clean_targets, noisy_targets, k=100):
+    
 	print("Evaluate Accuracy function is called")
 
 	confident_idxs_FINE, unconfident_idxs_FINE = return_confident_indexes(model, train_data, clean_targets, noisy_targets, True, k)
-	# confident_idxs_PES, unconfident_idxs_PES = return_confident_indexes(model, train_data, clean_targets, noisy_targets)
-
+	
 	print("PES with FINE: ", len(confident_idxs_FINE), len(unconfident_idxs_FINE))
 
-	# print("PES: ", len(confident_idxs_PES), len(unconfident_idxs_PES))
-
 	print(confident_idxs_FINE)
-
-	# print(confident_idxs_PES)
 
 	return 
 
