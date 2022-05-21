@@ -350,7 +350,7 @@ def trial_shiv(train_data, noisy_labels, clean_labels):
     predictor = Pipeline([('pca', pca), ('kmeans', kmeans)])
     predict = predictor.fit(reshaped_train).predict(reshaped_train)
 
-    print(f1_score(clean_labels, predict))
+    print(f1_score(clean_labels, predict, average="macro"))
 
     return
 
