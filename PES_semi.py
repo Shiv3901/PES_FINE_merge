@@ -334,6 +334,7 @@ args.num_epochs = 15
 from sklearn.decomposition import PCA
 from sklearn.cluster import KMeans 
 from sklearn.pipeline import Pipeline
+from sklearn.mixture import GaussianMixture
 from sklearn.metrics import f1_score
 
 def trial_shiv(train_data, noisy_labels, clean_labels):
@@ -346,15 +347,17 @@ def trial_shiv(train_data, noisy_labels, clean_labels):
 
     n_categories= len(np.unique(clean_labels))
     pca = PCA(n_components=10)
-    kmeans = KMeans(n_clusters=n_categories,max_iter=200)
-    predictor = Pipeline([('pca', pca), ('kmeans', kmeans)])
+    # kmeans = KMeans(n_clusters=n_categories,max_iter=200)
+    gmm = GaussianMixture(n_components=2, covariance_type='diag', tol=1e-6, max_iter=10)
+
+    predictor = Pipeline([('pca', pca), ('gmm', gmm)])
     predict = predictor.fit(reshaped_train).predict(reshaped_train)
 
     print(f1_score(clean_labels, predict, average="macro"))
 
     return
 
-# trial_shiv(data, noisy_labels, clean_labels)
+trial_shiv(data, noisy_labels, clean_labels)
 
 # TODO: you can print this afterwards
 # print("Some of the parameters: ", args.T1, args.T2, args.num_epochs)
