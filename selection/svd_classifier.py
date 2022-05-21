@@ -56,21 +56,18 @@ def fit_mixture(scores, labels, p_threshold=0.5):
 
     print(scores.shape, "Just looking")
 
-    for cls in np.unique(labels):
+    for idx, cls in enumerate(np.unique(labels)):
         cls_index = indexes[labels==cls]
         feats = scores[labels==cls]
         feats_ = np.ravel(feats).astype(np.float).reshape(-1, 1)
 
-        print(print_current_time("start: "))
+        print(print_current_time("Label " + str(idx) + ": "))
 
         gmm = GaussianMixture(n_components=2, covariance_type='diag', tol=1e-6, max_iter=2)
 
         gmm.fit(feats_)
         prob = gmm.predict_proba(feats_)
         prob = prob[:, gmm.means_.argmax()]
-
-        print(print_current_time("end: "))
-
 
         for i in range(len(cls_index)):
             probs[cls_index[i]] = prob[i]

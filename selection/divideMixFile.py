@@ -302,7 +302,7 @@ def get_score(singular_vector_dict, features, labels, normalization=True):
     
     return np.array(scores)
     
-def fit_mixture(scores, labels, p_threshold=0.5):
+def fit_mixture(scores, labels, p_threshold=0.80):
     '''
     Assume the distribution of scores: bimodal gaussian mixture model
     

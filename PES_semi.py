@@ -187,7 +187,7 @@ def helperFunctionForFINE(train_data, noisy_targets, k=100):
     for i in range(k):
         print("Batch No. "+  str(i+1) + " Starting")
         tempArr, _ = fine(current_features=train_data[lot_size*i:lot_size*(i+1)], current_labels=noisy_targets[lot_size*i:lot_size*(i+1)], fit="gmm")
-        print(tempArr)
+        tempArr = [(val + lot_size*i) for val in tempArr]
         clean_set |= set(tempArr.tolist())
 
 	# clean_idxs = fine(train_data[:k], noisy_targets[:k], "kmeans")
