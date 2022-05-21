@@ -61,7 +61,7 @@ def fit_mixture(scores, labels, p_threshold=0.50):
         feats = scores[labels==cls]
         feats_ = np.ravel(feats).astype(np.float).reshape(-1, 1)
 
-        # print(print_current_time("Label " + str(idx) + ": "))
+        print(print_current_time("Label " + str(idx) + ": "))
 
         gmm = GaussianMixture(n_components=2, covariance_type='diag', tol=1e-6, max_iter=2)
 
@@ -81,7 +81,7 @@ from sklearn.decomposition import PCA
 def get_score_shiv(current_features):
 
     print(print_current_time("Start of PCA: "))
-    pca = PCA(n_components=10)
+    pca = PCA(n_components=32)
     print(print_current_time("End of PCA: "))
 
     return pca.fit_transform(current_features.reshape(-1, 3072))
