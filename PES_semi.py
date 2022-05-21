@@ -188,7 +188,7 @@ def helperFunctionForFINE(train_data, noisy_targets, k=100):
         print("Batch No. "+  str(i+1) + " Starting")
         tempArr, _ = fine(current_features=train_data[lot_size*i:lot_size*(i+1)], current_labels=noisy_targets[lot_size*i:lot_size*(i+1)], fit="gmm")
         tempArr = [(val + lot_size*i) for val in tempArr]
-        clean_set |= set(tempArr.tolist())
+        clean_set |= set(tempArr)
 
 	# clean_idxs = fine(train_data[:k], noisy_targets[:k], "kmeans")
 
@@ -376,7 +376,7 @@ def evaluate_accuracy(model, train_data, clean_targets, noisy_targets, k=100):
 
 # FIXME: for testing only passing on 10 labels 
 K = 2 # batch size
-evaluate_accuracy(model, data[:2000], clean_labels[:2000], noisy_labels[:2000], K)
+evaluate_accuracy(model, data[:10000], clean_labels[:10000], noisy_labels[:10000], K)
 
 
 
