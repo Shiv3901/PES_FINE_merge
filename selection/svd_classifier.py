@@ -84,7 +84,7 @@ def get_score_shiv(current_features):
     pca = PCA(n_components=32)
     print(print_current_time("End of PCA: "))
 
-    pca.fit_transform(current_features.reshape(-1, 3072))
+    return pca.fit_transform(current_features.reshape(-1, 3072))
 
     return pca.get_covariance()
 
@@ -93,11 +93,22 @@ def fine(current_features, current_labels, fit='kmeans', previous_features=None,
     # if not previous_features and not previous_labels:
     #     singular_vector_dict = get_singular_vector(previous_features, previous_labels)
     # else:
-    # singular_vector_dict = get_singular_vector(current_features, current_labels)
+    singular_vector_dict = get_singular_vector(current_features, current_labels)
 
-    # scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
+    scores_1 = get_score(singular_vector_dict, features=current_features, labels=current_labels)
 
-    scores = get_score_shiv(current_features)
+    scores_2 = get_score_shiv(current_features)
+
+    print(scores_1.shape)
+    print(scores_2.shape)
+
+    print(singular_vector_dict)
+
+    print(scores_1)
+
+    print(scores_2)
+
+    return None, None
 
     if 'kmeans' in fit:
         clean_labels = cleansing(scores, current_labels)
