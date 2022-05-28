@@ -190,7 +190,9 @@ def helperFunctionForFINE(train_data, noisy_targets, k=100):
     #     tempArr = [(val + lot_size*i) for val in tempArr]
     #     clean_set |= set(tempArr)
 
-    clean_idxs = fine(train_data, noisy_targets, "gmm")
+    clean_idxs = fine(train_data, noisy_targets, "kmeans")
+
+    print("Length of the clean indexes here: " + str(len(clean_idxs)))
 
     clean_idxs = list(clean_set)
     noisy_idxs = []
