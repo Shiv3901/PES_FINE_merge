@@ -179,11 +179,9 @@ def splite_confident(outs, clean_targets, noisy_targets):
 
 def helperFunctionForFINE(train_data, noisy_targets, k=100):
 	
-    # FIXME: consider making a set for this one as it could be possible that you are counting it more than once
-    clean_set = set()
     lot_size = len(noisy_targets) / k
 
-    print("Shape of the train data is: ", train_data.shape)
+    # print("Shape of the train data is: ", train_data.shape)
 
     # FIXME: might not be taking the last index, so just have a look 
     # for i in range(k):
@@ -194,9 +192,9 @@ def helperFunctionForFINE(train_data, noisy_targets, k=100):
 
     clean_idxs, _ = fine(train_data, noisy_targets, "kmeans")
 
-    print("Length of the clean indexes here: " + str(len(clean_idxs)))
+    # print("Length of the clean indexes here: " + str(len(clean_idxs)))
 
-    clean_idxs = list(clean_set)
+    clean_set = set(clean_idxs)
     noisy_idxs = []
 
     for idx in range(0, len(noisy_targets)):
