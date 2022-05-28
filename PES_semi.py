@@ -364,15 +364,17 @@ def trial_shiv(train_data, noisy_labels, clean_labels):
 
 def evaluate_accuracy(model, train_data, clean_targets, noisy_targets, k=100):
 
-	print("Evaluate Accuracy function is called")
+    print("Evaluate Accuracy function is called")
 
-	confident_idxs_FINE, unconfident_idxs_FINE = return_confident_indexes(model, train_data, clean_targets, noisy_targets, True, k)
-	
-	print("PES with FINE: ", len(confident_idxs_FINE), len(unconfident_idxs_FINE))
+    print(train_data.shape)
 
-	print(confident_idxs_FINE)
+    confident_idxs_FINE, unconfident_idxs_FINE = return_confident_indexes(model, train_data, clean_targets, noisy_targets, True, k)
 
-	return 
+    print("PES with FINE: ", len(confident_idxs_FINE), len(unconfident_idxs_FINE))
+
+    print(confident_idxs_FINE)
+
+    return 
 
 # FIXME: for testing only passing on 10 labels 
 K = 2 # batch size

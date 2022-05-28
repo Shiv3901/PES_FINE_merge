@@ -54,7 +54,7 @@ def fit_mixture(scores, labels, p_threshold=0.50):
     indexes = np.array(range(len(scores)))
     probs = {}
 
-    print(scores.shape, "Just looking")
+    # print(scores.shape, "Just looking")
 
     for idx, cls in enumerate(np.unique(labels)):
         cls_index = indexes[labels==cls]
@@ -81,7 +81,7 @@ from sklearn.decomposition import PCA
 def get_score_shiv(current_features):
 
     print(print_current_time("Start of PCA: "))
-    pca = PCA(n_components=2)
+    pca = PCA(n_components=2, svd_solver='arpack')
     print(print_current_time("End of PCA: "))
 
     return pca.fit_transform(current_features.reshape(-1, 3072))
@@ -95,20 +95,20 @@ def fine(current_features, current_labels, fit='kmeans', previous_features=None,
     # else:
     singular_vector_dict = get_singular_vector(current_features, current_labels)
 
-    scores_1 = get_score(singular_vector_dict, features=current_features, labels=current_labels)
+    scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
 
-    scores_2 = get_score_shiv(current_features)
+    # scores_2 = get_score_shiv(current_features)
 
-    print(scores_1.shape)
-    print(scores_2.shape)
+    # print("Score 1", scores_1.shape)
+    # print("Score 2", scores_2.shape)
 
-    print(singular_vector_dict)
+    # print(singular_vector_dict)
 
-    print(scores_1)
+    # print("Score 1: ", scores_1)
 
-    print(scores_2)
+    # print("Score 2: ", scores_2)
 
-    return None, None
+    # return None, None
 
     if 'kmeans' in fit:
         clean_labels = cleansing(scores, current_labels)
