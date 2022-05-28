@@ -135,6 +135,8 @@ def cleansing(scores, labels):
 
     print("labels: ", np.unique(labels))
 
+    print(scores)
+
     for cls in np.unique(labels):
         cls_index = indexes[labels == cls]
         kmeans = cluster.KMeans(n_clusters=2, random_state=0)
