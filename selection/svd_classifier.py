@@ -54,14 +54,14 @@ def fit_mixture(scores, labels, p_threshold=0.50):
     indexes = np.array(range(len(scores)))
     probs = {}
 
-    # print(scores.shape, "Just looking")
+    # # print(scores.shape, "Just looking")
 
     for idx, cls in enumerate(np.unique(labels)):
         cls_index = indexes[labels==cls]
         feats = scores[labels==cls]
         feats_ = np.ravel(feats).astype(np.float).reshape(-1, 1)
 
-        print(print_current_time("Label " + str(idx) + ": "))
+        # print(# print_current_time("Label " + str(idx) + ": "))
 
         gmm = GaussianMixture(n_components=2, covariance_type='diag', tol=1e-6, max_iter=2)
 
@@ -80,9 +80,9 @@ from sklearn.decomposition import PCA
 
 def get_score_shiv(current_features):
 
-    print(print_current_time("Start of PCA: "))
-    pca = PCA(n_components=1, svd_solver='arpack')
-    print(print_current_time("End of PCA: "))
+    # print(# print_current_time("Start of PCA: "))
+    pca = PCA(n_components=5, svd_solver='arpack')
+    # print(# print_current_time("End of PCA: "))
 
     return pca.fit_transform(current_features.reshape(-1, 3072))
 
@@ -99,14 +99,14 @@ def fine(current_features, current_labels, fit='kmeans', previous_features=None,
 
     scores_1 = get_score_shiv(current_features)
 
-    print("Score 1", scores_1.shape)
-    # print("Score 2", scores_2.shape)
+    # print("Score 1", scores_1.shape)
+    # # print("Score 2", scores_2.shape)
 
-    # print(singular_vector_dict)
+    # # print(singular_vector_dict)
 
-    # print("Score 1: ", scores_1)
+    # # print("Score 1: ", scores_1)
 
-    # print("Score 2: ", scores_2)
+    # # print("Score 2: ", scores_2)
 
     # return None, None
 
@@ -131,34 +131,34 @@ def cleansing(scores, labels):
     indexes = np.array(range(len(scores)))
     clean_labels = []
 
-    # print("Kmeans function called here")
+    # # print("Kmeans function called here")
 
-    # print("labels: ", np.unique(labels))
+    # # print("labels: ", np.unique(labels))
 
-    # print(scores)
+    # # print(scores)
 
-    print("Kmeans: ", print_current_time("start: "))
+    # print("Kmeans: ", # print_current_time("start: "))
 
     for cls in np.unique(labels):
         cls_index = indexes[labels == cls]
         kmeans = cluster.KMeans(n_clusters=2, random_state=0)
         
-        # print("Doing it for: " + str(cls))
+        # # print("Doing it for: " + str(cls))
 
         feats = scores[cls_index]
 
-        # print(feats.shape)
+        # # print(feats.shape)
         
         # FIXME: remove this once not needed 
         # if feats.shape[0] < 50: continue
 
         # feats_ = feats.reshape(feats.shape[0], 32*32*32*3)
 
-        # print(print_current_time("start: "))
+        # # print(# print_current_time("start: "))
 
         labels_ = kmeans.fit(feats).labels_
 
-        # print(print_current_time("end: "))
+        # # print(# print_current_time("end: "))
 
         if np.mean(feats[labels_ == 0]) < np.mean(feats[labels_ == 1]):
             labels_ = 1 - labels_
@@ -169,8 +169,8 @@ def cleansing(scores, labels):
         #     if i == 0:
         #         counter += 1
 
-        # print(counter, labels_.shape[0] - counter)
-        # print(np.mean(feats[labels_ == 0]))
+        # # print(counter, labels_.shape[0] - counter)
+        # # print(np.mean(feats[labels_ == 0]))
 
         for idx, label in enumerate(labels_):
             if label == 0:
@@ -178,9 +178,9 @@ def cleansing(scores, labels):
 
         # clean_labels += cls_index[labels_ == 0].tolist()
 
-    print("Kmeans: ", print_current_time("end: "))
+    # print("Kmeans: ", # print_current_time("end: "))
 
-    # print("Inside the fine function: ", len(clean_labels))
+    # # print("Inside the fine function: ", len(clean_labels))
         
     return np.array(clean_labels, dtype=np.int64) 
 

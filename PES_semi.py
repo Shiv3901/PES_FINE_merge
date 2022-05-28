@@ -255,7 +255,7 @@ def update_trainloader(model, train_data, clean_targets, noisy_targets, isFine=F
 		cw[cw == np.inf] = 0
 		cw[cw > 3] = 3
 	class_weights = torch.FloatTensor(cw).cuda(device=gpu_id)
-	print("Category", train_nums, "precent", class_weights)
+	# print("Category", train_nums, "precent", class_weights)
 	return labeled_trainloader, unlabeled_trainloader, class_weights
 
 
@@ -329,7 +329,7 @@ best_test_acc = 0
 
 # TODO: remove this after testing 
 
-args.T1 = 10
+args.T1 = 5
 args.T2 = 5
 args.num_epochs = 15
 
