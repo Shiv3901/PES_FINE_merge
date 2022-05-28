@@ -81,7 +81,7 @@ from sklearn.decomposition import PCA
 def get_score_shiv(current_features):
 
     print(print_current_time("Start of PCA: "))
-    pca = PCA(n_components=2, svd_solver='arpack')
+    pca = PCA(n_components=1, svd_solver='arpack')
     print(print_current_time("End of PCA: "))
 
     return pca.fit_transform(current_features.reshape(-1, 3072))
@@ -93,11 +93,11 @@ def fine(current_features, current_labels, fit='kmeans', previous_features=None,
     # if not previous_features and not previous_labels:
     #     singular_vector_dict = get_singular_vector(previous_features, previous_labels)
     # else:
-    singular_vector_dict = get_singular_vector(current_features, current_labels)
+    # singular_vector_dict = get_singular_vector(current_features, current_labels)
 
-    scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
+    # scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
 
-    # scores_2 = get_score_shiv(current_features)
+    scores_1 = get_score_shiv(current_features)
 
     # print("Score 1", scores_1.shape)
     # print("Score 2", scores_2.shape)
@@ -111,7 +111,7 @@ def fine(current_features, current_labels, fit='kmeans', previous_features=None,
     # return None, None
 
     if 'kmeans' in fit:
-        clean_labels = cleansing(scores, current_labels)
+        clean_labels = cleansing(scores_1, current_labels)
         probs = None
     elif 'gmm' in fit:
         clean_labels, probs = fit_mixture(scores, current_labels, p_threshold)
