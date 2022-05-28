@@ -144,17 +144,17 @@ def cleansing(scores, labels):
         feats = scores[cls_index]
         
         # FIXME: remove this once not needed 
-        if feats.shape[0] < 50: continue
+        # if feats.shape[0] < 50: continue
 
-        feats_ = feats.reshape(feats.shape[0], 32*32*32*3)
+        # feats_ = feats.reshape(feats.shape[0], 32*32*32*3)
 
         print(print_current_time("start: "))
 
-        labels = kmeans.fit(feats_).labels_
+        labels = kmeans.fit(feats).labels_
 
         print(print_current_time("end: "))
 
-        if np.mean(feats_[labels == 0]) < np.mean(feats_[labels == 1]):
+        if np.mean(feats[labels == 0]) < np.mean(feats[labels == 1]):
             labels = 1 - labels
 
         clean_labels += cls_index[labels == 0].tolist()
