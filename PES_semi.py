@@ -329,60 +329,13 @@ best_test_acc = 0
 
 # TODO: remove this after testing 
 
-# args.T1 = 5
-# args.T2 = 5
-# args.num_epochs = 10
+args.T1 = 5
+args.T2 = 5
+args.num_epochs = 10
 
-from sklearn.decomposition import PCA
-from sklearn.cluster import KMeans 
-from sklearn.pipeline import Pipeline
-from sklearn.mixture import GaussianMixture
-from sklearn.metrics import f1_score
-
-def trial_shiv(train_data, noisy_labels, clean_labels):
-
-    print("Before: ", train_data.shape)
-
-    reshaped_train=train_data.reshape(50000,3072)
-
-    print("After: ", reshaped_train.shape)
-
-    n_categories= len(np.unique(clean_labels))
-    pca = PCA(n_components=10)
-    # kmeans = KMeans(n_clusters=n_categories,max_iter=200)
-    gmm = GaussianMixture(n_components=n_categories, covariance_type='diag', tol=1e-6, max_iter=10)
-
-    predictor = Pipeline([('pca', pca), ('gmm', gmm)])
-    predict = predictor.fit(reshaped_train).predict(reshaped_train)
-
-    print(f1_score(clean_labels, predict, average="macro"))
-
-    return
-
-# trial_shiv(data, noisy_labels, clean_labels)
-
-# TODO: you can print this afterwards
-# print("Some of the parameters: ", args.T1, args.T2, args.num_epochs)
-
-def evaluate_accuracy(model, train_data, clean_targets, noisy_targets, k=100):
-
-    print("Evaluate Accuracy function is called")
-
-    print(train_data.shape)
-
-    confident_idxs_FINE, unconfident_idxs_FINE = return_confident_indexes(model, train_data, clean_targets, noisy_targets, True, k)
-
-    print("PES with FINE: ", len(confident_idxs_FINE), len(unconfident_idxs_FINE))
-
-    print(confident_idxs_FINE)
-
-    return 
-
-# FIXME: for testing only passing on 10 labels 
-K = 2 # batch size
-# evaluate_accuracy(model, data, clean_labels, noisy_labels, K)
-
-# quit()
+print("Epochs before Stopping: " + str(args.T1))
+print("Epochs for reintialising: " + str(args.T2))
+print("Epochs after Stopping: " + str(args.num_epochs - args.T1))
 
 for epoch in range(args.num_epochs):
 

@@ -81,7 +81,7 @@ from sklearn.decomposition import PCA
 def get_score_shiv(current_features):
 
     # print(# print_current_time("Start of PCA: "))
-    pca = PCA(n_components=10, svd_solver='arpack')
+    pca = PCA(n_components=2, svd_solver='arpack')
     # print(# print_current_time("End of PCA: "))
 
     return pca.fit_transform(current_features.reshape(-1, 3072))
@@ -98,17 +98,6 @@ def fine(current_features, current_labels, fit='kmeans', previous_features=None,
     # scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
 
     scores_1 = get_score_shiv(current_features)
-
-    # print("Score 1", scores_1.shape)
-    # # print("Score 2", scores_2.shape)
-
-    # # print(singular_vector_dict)
-
-    # # print("Score 1: ", scores_1)
-
-    # # print("Score 2: ", scores_2)
-
-    # return None, None
 
     if 'kmeans' in fit:
         clean_labels = cleansing(scores_1, current_labels)
@@ -130,14 +119,6 @@ def cleansing(scores, labels):
 
     indexes = np.array(range(len(scores)))
     clean_labels = []
-
-    # # print("Kmeans function called here")
-
-    # # print("labels: ", np.unique(labels))
-
-    # # print(scores)
-
-    # print("Kmeans: ", # print_current_time("start: "))
 
     for cls in np.unique(labels):
         cls_index = indexes[labels == cls]
