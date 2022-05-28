@@ -154,14 +154,14 @@ def cleansing(scores, labels):
 
         print(print_current_time("start: "))
 
-        labels = kmeans.fit(feats).labels_
+        labels_ = kmeans.fit(feats).labels_
 
         print(print_current_time("end: "))
 
-        if np.mean(feats[labels == 0]) < np.mean(feats[labels == 1]):
-            labels = 1 - labels
+        if np.mean(feats[labels_ == 0]) < np.mean(feats[labels_ == 1]):
+            labels_ = 1 - labels_
 
-        clean_labels += cls_index[labels == 0].tolist()
+        clean_labels += cls_index[labels_ == 0].tolist()
         
     return np.array(clean_labels, dtype=np.int64) 
 
