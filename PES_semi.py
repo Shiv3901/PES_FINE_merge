@@ -366,9 +366,9 @@ def evaluate_accuracy(model, train_data, clean_targets, noisy_targets, k=100):
 
     print("Evaluate Accuracy function is called")
 
-    print(train_data.shape)
+    print(train_data.reshape(1, -1).shape)
 
-    confident_idxs_FINE, unconfident_idxs_FINE = return_confident_indexes(model, train_data, clean_targets, noisy_targets, True, k)
+    confident_idxs_FINE, unconfident_idxs_FINE = return_confident_indexes(model, train_data.reshape(1, -1), clean_targets, noisy_targets, True, k)
 
     print("PES with FINE: ", len(confident_idxs_FINE), len(unconfident_idxs_FINE))
 
