@@ -150,7 +150,7 @@ def cleansing(scores, labels):
         # FIXME: remove this once not needed 
         # if feats.shape[0] < 50: continue
 
-        # feats_ = feats.reshape(feats.shape[0], 32*32*32*3)
+        feats_ = feats.reshape(feats.shape[0], 32*32*32*3)
 
         print(print_current_time("start: "))
 

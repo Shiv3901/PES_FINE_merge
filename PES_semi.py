@@ -183,6 +183,8 @@ def helperFunctionForFINE(train_data, noisy_targets, k=100):
     clean_set = set()
     lot_size = len(noisy_targets) / k
 
+    print("Shape of the train data is: ", train_data.shape)
+
     # FIXME: might not be taking the last index, so just have a look 
     # for i in range(k):
     #     print("Batch No. "+  str(i+1) + " Starting")
@@ -370,7 +372,7 @@ def evaluate_accuracy(model, train_data, clean_targets, noisy_targets, k=100):
 
     print(train_data.reshape(train_data.shape[0], -1).shape)
 
-    confident_idxs_FINE, unconfident_idxs_FINE = return_confident_indexes(model, train_data.reshape(train_data.shape[0], -1), clean_targets, noisy_targets, True, k)
+    confident_idxs_FINE, unconfident_idxs_FINE = return_confident_indexes(model, train_data, clean_targets, noisy_targets, True, k)
 
     print("PES with FINE: ", len(confident_idxs_FINE), len(unconfident_idxs_FINE))
 
