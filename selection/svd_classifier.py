@@ -157,7 +157,12 @@ def cleansing(scores, labels):
         # print(print_current_time("start: "))
 
         labels_ = kmeans.fit(feats).labels_
-        
+
+        # print(print_current_time("end: "))
+
+        if np.mean(feats[labels_ == 0]) < np.mean(feats[labels_ == 1]):
+            labels_ = 1 - labels_
+
         counter = 0
 
         for i in labels_:
@@ -166,11 +171,6 @@ def cleansing(scores, labels):
 
         print(counter, labels_.shape[0] - counter)
         print(np.mean(feats[labels_ == 0]))
-
-        # print(print_current_time("end: "))
-
-        if np.mean(feats[labels_ == 0]) < np.mean(feats[labels_ == 1]):
-            labels_ = 1 - labels_
 
         clean_labels += cls_index[labels_ == 0].tolist()
 
