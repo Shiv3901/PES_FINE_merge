@@ -1,0 +1,73 @@
+Sat May 28 23:31:13 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.129.06   Driver Version: 470.129.06   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  Off  | 00000000:01:00.0 Off |                  N/A |
+| 27%   30C    P8     1W / 250W |     21MiB / 11019MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA GeForce ...  Off  | 00000000:02:00.0 Off |                  N/A |
+| 27%   28C    P8     1W / 250W |      8MiB / 11019MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      1202      G   /usr/lib/xorg/Xorg                  9MiB |
+|    0   N/A  N/A      1668      G   /usr/bin/gnome-shell                6MiB |
+|    1   N/A  N/A      1202      G   /usr/lib/xorg/Xorg                  4MiB |
++-----------------------------------------------------------------------------+
+Namespace(PES_lr=0.0001, T=0.5, T1=0, T2=5, alpha=4, batch_size=128, data_path='./data', data_percent=1, dataset='cifar10', lambda_u=15.0, lr=0.02, noise_rate=0.4, noise_type='instance', num_epochs=300, optim='cos', seed=1, weight_decay=0.0005)
+Files already downloaded and verified
+Files already downloaded and verified
+('Epoch: ', 0)
+Train Epoch: [0][  0/390]	Time   0.04	Data   0.00	Loss   1.89	Acc@1  28.45
+('23:31:40', 'Epoch 0 Test Acc:', 44.53)
+('Epoch: ', 1)
+Train Epoch: [1][  0/390]	Time   0.04	Data   0.00	Loss   1.68	Acc@1  36.35
+('23:31:56', 'Epoch 1 Test Acc:', 54.93)
+('Epoch: ', 2)
+Train Epoch: [2][  0/390]	Time   0.04	Data   0.00	Loss   1.55	Acc@1  40.98
+('23:32:13', 'Epoch 2 Test Acc:', 63.23)
+('Epoch: ', 3)
+Train Epoch: [3][  0/390]	Time   0.04	Data   0.00	Loss   1.46	Acc@1  43.77
+('23:32:29', 'Epoch 3 Test Acc:', 55.07)
+('Epoch: ', 4)
+Train Epoch: [4][  0/390]	Time   0.04	Data   0.00	Loss   1.40	Acc@1  45.43
+('23:32:45', 'Epoch 4 Test Acc:', 54.17)
+('Epoch: ', 5)
+Train Epoch: [5][  0/390]	Time   0.04	Data   0.00	Loss   1.35	Acc@1  46.75
+('23:33:02', 'Epoch 5 Test Acc:', 68.19)
+('Epoch: ', 6)
+Train Epoch: [6][  0/390]	Time   0.04	Data   0.00	Loss   1.32	Acc@1  47.68
+('23:33:18', 'Epoch 6 Test Acc:', 74.48)
+('Epoch: ', 7)
+Train Epoch: [7][  0/390]	Time   0.04	Data   0.00	Loss   1.28	Acc@1  48.99
+('23:33:35', 'Epoch 7 Test Acc:', 64.18)
+('Epoch: ', 8)
+Train Epoch: [8][  0/390]	Time   0.04	Data   0.00	Loss   1.27	Acc@1  49.37
+('23:33:52', 'Epoch 8 Test Acc:', 60.25)
+('Epoch: ', 9)
+Train Epoch: [9][  0/390]	Time   0.04	Data   0.00	Loss   1.24	Acc@1  50.26
+('23:34:08', 'Epoch 9 Test Acc:', 67.78)
+('Epoch: ', 10)
+re-initalize the final layer
+Train Epoch: [0][  0/390]	Time   0.02	Data   0.00	Loss   1.62	Acc@1  49.23
+('23:34:16', 'Epoch 0 Test Acc:', 79.19)
+Train Epoch: [1][  0/390]	Time   0.02	Data   0.00	Loss   1.26	Acc@1  53.14
+('23:34:24', 'Epoch 1 Test Acc:', 77.58)
+Train Epoch: [2][  0/390]	Time   0.02	Data   0.00	Loss   1.20	Acc@1  53.30
+('23:34:31', 'Epoch 2 Test Acc:', 77.63)
+Train Epoch: [3][  0/390]	Time   0.02	Data   0.00	Loss   1.18	Acc@1  53.26
+('23:34:39', 'Epoch 3 Test Acc:', 77.41)
+Train Epoch: [4][  0/390]	Time   0.02	Data   0.00	Loss   1.18	Acc@1  53.22
+('23:34:46', 'Epoch 4 Test Acc:', 77.98)
+Evaluate Accuracy function is called
+(50000, 32, 32, 3)
