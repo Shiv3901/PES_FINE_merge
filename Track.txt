@@ -1,0 +1,6 @@
+
+
+Run 1       Instance        40%
+Run 2       Symmetric       20%     Kmeans
+Run 3       Symmetric       20%     Gmm (p_threshold=0.5)
+Run 4       Symmetric       20%     Gmm (p_threshold=0.3)
