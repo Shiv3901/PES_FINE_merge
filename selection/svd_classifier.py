@@ -99,7 +99,7 @@ def fine(current_features, current_labels, fit='kmeans', previous_features=None,
 
     scores_1 = get_score_shiv(current_features)
 
-    # print("Score 1", scores_1.shape)
+    print("Score 1", scores_1.shape)
     # print("Score 2", scores_2.shape)
 
     # print(singular_vector_dict)
@@ -135,7 +135,7 @@ def cleansing(scores, labels):
 
     print("labels: ", np.unique(labels))
 
-    print(scores)
+    # print(scores)
 
     for cls in np.unique(labels):
         cls_index = indexes[labels == cls]
@@ -143,14 +143,14 @@ def cleansing(scores, labels):
         
         print("Doing it for: " + str(cls))
 
-        feats = scores[cls_index].reshape(-1, 1)
+        feats = scores[cls_index]
 
         print(feats.shape)
         
         # FIXME: remove this once not needed 
         # if feats.shape[0] < 50: continue
 
-        feats_ = feats.reshape(feats.shape[0], 32*32*32*3)
+        # feats_ = feats.reshape(feats.shape[0], 32*32*32*3)
 
         print(print_current_time("start: "))
 
