@@ -81,7 +81,7 @@ from sklearn.decomposition import PCA
 def get_score_shiv(current_features):
 
     # print(# print_current_time("Start of PCA: "))
-    pca = PCA(n_components=5, svd_solver='arpack')
+    pca = PCA(n_components=10, svd_solver='arpack')
     # print(# print_current_time("End of PCA: "))
 
     return pca.fit_transform(current_features.reshape(-1, 3072))
