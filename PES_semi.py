@@ -177,9 +177,9 @@ def splite_confident(outs, clean_targets, noisy_targets):
 	
 	return confident_indexs, unconfident_indexs
 
-def helperFunctionForFINE(train_data, noisy_targets, k=100):
+def helperFunctionForFINE(train_data, noisy_targets):
 	
-    lot_size = len(noisy_targets) / k
+    # lot_size = len(noisy_targets) / k
 
     # print("Shape of the train data is: ", train_data.shape)
 
@@ -205,10 +205,10 @@ def helperFunctionForFINE(train_data, noisy_targets, k=100):
 
 # FIXME: Pass enum type in future 
 # FIXME: Try to come up with something similar afterwards
-def return_confident_indexes(model, train_data, clean_targets, noisy_targets, isFine=False, k=100):
+def return_confident_indexes(model, train_data, clean_targets, noisy_targets, isFine=False):
 
     if isFine:
-        return helperFunctionForFINE(train_data, noisy_targets, k)
+        return helperFunctionForFINE(train_data, noisy_targets)
 
     else:
 
@@ -380,9 +380,9 @@ def evaluate_accuracy(model, train_data, clean_targets, noisy_targets, k=100):
 
 # FIXME: for testing only passing on 10 labels 
 K = 2 # batch size
-evaluate_accuracy(model, data, clean_labels, noisy_labels, K)
+# evaluate_accuracy(model, data, clean_labels, noisy_labels, K)
 
-quit()
+# quit()
 
 for epoch in range(args.num_epochs):
 
