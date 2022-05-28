@@ -329,9 +329,9 @@ best_test_acc = 0
 
 # TODO: remove this after testing 
 
-args.T1 = 5
+args.T1 = 200
 args.T2 = 5
-args.num_epochs = 10
+args.num_epochs = 300
 
 print("Epochs before Stopping: " + str(args.T1))
 print("Epochs for reintialising: " + str(args.T2))
