@@ -329,9 +329,9 @@ best_test_acc = 0
 
 # TODO: remove this after testing 
 
-args.T1 = 5
-args.T2 = 5
-args.num_epochs = 10
+# args.T1 = 5
+# args.T2 = 5
+# args.num_epochs = 10
 
 from sklearn.decomposition import PCA
 from sklearn.cluster import KMeans 
