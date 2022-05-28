@@ -137,31 +137,35 @@ def cleansing(scores, labels):
 
     # print(scores)
 
+    print(print_current_time("start: "))
+
     for cls in np.unique(labels):
         cls_index = indexes[labels == cls]
         kmeans = cluster.KMeans(n_clusters=2, random_state=0)
         
-        print("Doing it for: " + str(cls))
+        # print("Doing it for: " + str(cls))
 
         feats = scores[cls_index]
 
-        print(feats.shape)
+        # print(feats.shape)
         
         # FIXME: remove this once not needed 
         # if feats.shape[0] < 50: continue
 
         # feats_ = feats.reshape(feats.shape[0], 32*32*32*3)
 
-        print(print_current_time("start: "))
+        # print(print_current_time("start: "))
 
         labels_ = kmeans.fit(feats).labels_
 
-        print(print_current_time("end: "))
+        # print(print_current_time("end: "))
 
         if np.mean(feats[labels_ == 0]) < np.mean(feats[labels_ == 1]):
             labels_ = 1 - labels_
 
         clean_labels += cls_index[labels_ == 0].tolist()
+
+    print(print_current_time("end: "))
         
     return np.array(clean_labels, dtype=np.int64) 
 
