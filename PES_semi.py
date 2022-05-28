@@ -348,7 +348,7 @@ for epoch in range(args.num_epochs):
 			model = noisy_refine(model, train_loader, 0, args.T2)
 
         # arguments required for mix match that update trainloader returns
-		labeled_trainloader, unlabeled_trainloader, class_weights = update_trainloader(model, data, clean_labels, noisy_labels, True)
+		labeled_trainloader, unlabeled_trainloader, class_weights = update_trainloader(model, data, clean_labels, noisy_labels, False)
 
         # mixmatch to learn from the clean models and make the noisy models correct 
 		MixMatch_train(epoch, model, optimizer, labeled_trainloader, unlabeled_trainloader, class_weights)
