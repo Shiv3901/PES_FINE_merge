@@ -141,7 +141,7 @@ def cleansing(scores, labels):
         
         print("Doing it for: " + str(cls))
 
-        feats = scores[cls_index]
+        feats = scores[cls_index].reshape(-1, 1)
         
         # FIXME: remove this once not needed 
         # if feats.shape[0] < 50: continue
