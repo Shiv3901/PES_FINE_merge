@@ -141,12 +141,14 @@ def cleansing(scores, labels):
         
         print("Doing it for: " + str(cls))
 
-        feats = scores[cls_index].reshape(-1, 1)
+        feats = scores[cls_index]
+
+        print(feats.shape)
         
         # FIXME: remove this once not needed 
         # if feats.shape[0] < 50: continue
 
-        # feats_ = feats.reshape(feats.shape[0], 32*32*32*3)
+        feats_ = feats.reshape(feats.shape[0], 32*32*32*3)
 
         print(print_current_time("start: "))
 
