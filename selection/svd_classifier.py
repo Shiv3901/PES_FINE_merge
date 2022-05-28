@@ -63,7 +63,7 @@ def fit_mixture(scores, labels, p_threshold=0.30):
 
         # print(# print_current_time("Label " + str(idx) + ": "))
 
-        gmm = GaussianMixture(n_components=2, covariance_type='diag', tol=1e-6, max_iter=20)
+        gmm = GaussianMixture(n_components=2, covariance_type='diag', tol=1e-6, max_iter=100)
 
         gmm.fit(feats)
         prob = gmm.predict_proba(feats)
