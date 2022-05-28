@@ -165,6 +165,7 @@ def cleansing(scores, labels):
                 counter += 1
 
         print(counter, labels_.shape[0] - counter)
+        print(np.mean(feats[labels_ == 0]))
 
         # print(print_current_time("end: "))
 
