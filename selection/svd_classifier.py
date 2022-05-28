@@ -157,7 +157,14 @@ def cleansing(scores, labels):
         # print(print_current_time("start: "))
 
         labels_ = kmeans.fit(feats).labels_
-        print(labels_.shape)
+        
+        counter = 0
+
+        for i in labels_:
+            if i == 0:
+                counter += 1
+
+        print(counter, labels_.shape - counter)
 
         # print(print_current_time("end: "))
 
