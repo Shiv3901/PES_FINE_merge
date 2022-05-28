@@ -179,6 +179,8 @@ def cleansing(scores, labels):
         # clean_labels += cls_index[labels_ == 0].tolist()
 
     print(print_current_time("end: "))
+
+    print("Inside the fine function: ", len(clean_labels))
         
     return np.array(clean_labels, dtype=np.int64) 
 
