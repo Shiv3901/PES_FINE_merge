@@ -163,16 +163,20 @@ def cleansing(scores, labels):
         if np.mean(feats[labels_ == 0]) < np.mean(feats[labels_ == 1]):
             labels_ = 1 - labels_
 
-        counter = 0
+        # counter = 0
 
-        for i in labels_:
-            if i == 0:
-                counter += 1
+        # for i in labels_:
+        #     if i == 0:
+        #         counter += 1
 
-        print(counter, labels_.shape[0] - counter)
-        print(np.mean(feats[labels_ == 0]))
+        # print(counter, labels_.shape[0] - counter)
+        # print(np.mean(feats[labels_ == 0]))
 
-        clean_labels += cls_index[labels_ == 0].tolist()
+        for idx, label in enumerate(labels_):
+            if label == 0:
+                clean_labels.append(cls_index[idx])
+
+        # clean_labels += cls_index[labels_ == 0].tolist()
 
     print(print_current_time("end: "))
         
