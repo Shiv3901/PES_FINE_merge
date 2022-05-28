@@ -131,13 +131,13 @@ def cleansing(scores, labels):
     indexes = np.array(range(len(scores)))
     clean_labels = []
 
-    print("Kmeans function called here")
+    # print("Kmeans function called here")
 
-    print("labels: ", np.unique(labels))
+    # print("labels: ", np.unique(labels))
 
     # print(scores)
 
-    print(print_current_time("start: "))
+    print("Kmeans: ", print_current_time("start: "))
 
     for cls in np.unique(labels):
         cls_index = indexes[labels == cls]
@@ -178,9 +178,9 @@ def cleansing(scores, labels):
 
         # clean_labels += cls_index[labels_ == 0].tolist()
 
-    print(print_current_time("end: "))
+    print("Kmeans: ", print_current_time("end: "))
 
-    print("Inside the fine function: ", len(clean_labels))
+    # print("Inside the fine function: ", len(clean_labels))
         
     return np.array(clean_labels, dtype=np.int64) 
 

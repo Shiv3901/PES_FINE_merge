@@ -160,7 +160,7 @@ def splite_confident(outs, clean_targets, noisy_targets):
 	confident_indexs = []
 	unconfident_indexs = []
 	
-	print("sonmethign is fos", len(clean_targets), len(noisy_targets))
+	# print("sonmethign is fos", len(clean_targets), len(noisy_targets))
 	
 	for i in range(0, len(noisy_targets)):
 		if preds[i] == noisy_targets[i]:
@@ -225,7 +225,7 @@ def return_confident_indexes(model, train_data, clean_targets, noisy_targets, is
 
 def update_trainloader(model, train_data, clean_targets, noisy_targets, isFine=False):
 
-	print("Update Train Loader is called")
+	# print("Update Train Loader is called")
 	
 	confident_indexs, unconfident_indexs = return_confident_indexes(model, train_data, clean_targets, noisy_targets, isFine)
 
@@ -393,9 +393,6 @@ for epoch in range(args.num_epochs):
 	else:
 		if epoch == args.T1:
 			model = noisy_refine(model, train_loader, 0, args.T2)
-			while (K <= 5000):
-				evaluate_accuracy(model, data, clean_labels, noisy_labels, K)
-				K *= 10
 
         # arguments required for mix match that update trainloader returns
 		labeled_trainloader, unlabeled_trainloader, class_weights = update_trainloader(model, data, clean_labels, noisy_labels, True)
