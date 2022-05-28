@@ -59,14 +59,14 @@ def fit_mixture(scores, labels, p_threshold=0.50):
     for idx, cls in enumerate(np.unique(labels)):
         cls_index = indexes[labels==cls]
         feats = scores[labels==cls]
-        feats_ = np.ravel(feats).astype(np.float).reshape(-1, 1)
+        # feats_ = np.ravel(feats).astype(np.float).reshape(-1, 1)
 
         # print(# print_current_time("Label " + str(idx) + ": "))
 
-        gmm = GaussianMixture(n_components=2, covariance_type='diag', tol=1e-6, max_iter=2)
+        gmm = GaussianMixture(n_components=2, covariance_type='diag', tol=1e-6, max_iter=20)
 
-        gmm.fit(feats_)
-        prob = gmm.predict_proba(feats_)
+        gmm.fit(feats)
+        prob = gmm.predict_proba(feats)
         prob = prob[:, gmm.means_.argmax()]
 
         for i in range(len(cls_index)):
@@ -103,7 +103,7 @@ def fine(current_features, current_labels, fit='kmeans', previous_features=None,
         clean_labels = cleansing(scores_1, current_labels)
         probs = None
     elif 'gmm' in fit:
-        clean_labels, probs = fit_mixture(scores, current_labels, p_threshold)
+        clean_labels, probs = fit_mixture(scores_1, current_labels, p_threshold)
     else:
         raise NotImplemented
     
