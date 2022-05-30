@@ -1,4 +1,4 @@
-
+Idx         Noise type      %       Type of Classifier 
 
 Run 1       Instance        40%
 Run 2       Symmetric       20%     Kmeans

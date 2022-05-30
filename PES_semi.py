@@ -327,6 +327,10 @@ else:
 
 best_test_acc = 0
 
+# TODO: update the code to take arguments from the command line
+# TODO: move all the code related to FINE to the selection folder 
+# TODO: tidy up the code with comments and appropriate locations
+
 # TODO: remove this after testing 
 
 args.T1 = 200
