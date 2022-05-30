@@ -1,4 +1,4 @@
-Sat May 28 23:31:13 2022       
+Sun May 29 00:55:05 2022       
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 470.129.06   Driver Version: 470.129.06   CUDA Version: 11.4     |
 |-------------------------------+----------------------+----------------------+
@@ -27,47 +27,48 @@ Sat May 28 23:31:13 2022
 Namespace(PES_lr=0.0001, T=0.5, T1=0, T2=5, alpha=4, batch_size=128, data_path='./data', data_percent=1, dataset='cifar10', lambda_u=15.0, lr=0.02, noise_rate=0.4, noise_type='instance', num_epochs=300, optim='cos', seed=1, weight_decay=0.0005)
 Files already downloaded and verified
 Files already downloaded and verified
+Epochs before Stopping: 5
+Epochs for reintialising: 5
+Epochs after Stopping: 5
 ('Epoch: ', 0)
-Train Epoch: [0][  0/390]	Time   0.04	Data   0.00	Loss   1.89	Acc@1  28.45
-('23:31:40', 'Epoch 0 Test Acc:', 44.53)
+Train Epoch: [0][  0/390]	Time   0.04	Data   0.00	Loss   1.89	Acc@1  28.75
+('00:55:33', 'Epoch 0 Test Acc:', 44.79)
 ('Epoch: ', 1)
-Train Epoch: [1][  0/390]	Time   0.04	Data   0.00	Loss   1.68	Acc@1  36.35
-('23:31:56', 'Epoch 1 Test Acc:', 54.93)
+Train Epoch: [1][  0/390]	Time   0.04	Data   0.00	Loss   1.67	Acc@1  36.44
+('00:55:49', 'Epoch 1 Test Acc:', 53.36)
 ('Epoch: ', 2)
-Train Epoch: [2][  0/390]	Time   0.04	Data   0.00	Loss   1.55	Acc@1  40.98
-('23:32:13', 'Epoch 2 Test Acc:', 63.23)
+Train Epoch: [2][  0/390]	Time   0.04	Data   0.00	Loss   1.55	Acc@1  40.87
+('00:56:05', 'Epoch 2 Test Acc:', 61.53)
 ('Epoch: ', 3)
-Train Epoch: [3][  0/390]	Time   0.04	Data   0.00	Loss   1.46	Acc@1  43.77
-('23:32:29', 'Epoch 3 Test Acc:', 55.07)
+Train Epoch: [3][  0/390]	Time   0.04	Data   0.00	Loss   1.46	Acc@1  43.63
+('00:56:21', 'Epoch 3 Test Acc:', 53.84)
 ('Epoch: ', 4)
-Train Epoch: [4][  0/390]	Time   0.04	Data   0.00	Loss   1.40	Acc@1  45.43
-('23:32:45', 'Epoch 4 Test Acc:', 54.17)
+Train Epoch: [4][  0/390]	Time   0.04	Data   0.00	Loss   1.40	Acc@1  45.45
+('00:56:38', 'Epoch 4 Test Acc:', 56.59)
 ('Epoch: ', 5)
-Train Epoch: [5][  0/390]	Time   0.04	Data   0.00	Loss   1.35	Acc@1  46.75
-('23:33:02', 'Epoch 5 Test Acc:', 68.19)
-('Epoch: ', 6)
-Train Epoch: [6][  0/390]	Time   0.04	Data   0.00	Loss   1.32	Acc@1  47.68
-('23:33:18', 'Epoch 6 Test Acc:', 74.48)
-('Epoch: ', 7)
-Train Epoch: [7][  0/390]	Time   0.04	Data   0.00	Loss   1.28	Acc@1  48.99
-('23:33:35', 'Epoch 7 Test Acc:', 64.18)
-('Epoch: ', 8)
-Train Epoch: [8][  0/390]	Time   0.04	Data   0.00	Loss   1.27	Acc@1  49.37
-('23:33:52', 'Epoch 8 Test Acc:', 60.25)
-('Epoch: ', 9)
-Train Epoch: [9][  0/390]	Time   0.04	Data   0.00	Loss   1.24	Acc@1  50.26
-('23:34:08', 'Epoch 9 Test Acc:', 67.78)
-('Epoch: ', 10)
 re-initalize the final layer
-Train Epoch: [0][  0/390]	Time   0.02	Data   0.00	Loss   1.62	Acc@1  49.23
-('23:34:16', 'Epoch 0 Test Acc:', 79.19)
-Train Epoch: [1][  0/390]	Time   0.02	Data   0.00	Loss   1.26	Acc@1  53.14
-('23:34:24', 'Epoch 1 Test Acc:', 77.58)
-Train Epoch: [2][  0/390]	Time   0.02	Data   0.00	Loss   1.20	Acc@1  53.30
-('23:34:31', 'Epoch 2 Test Acc:', 77.63)
-Train Epoch: [3][  0/390]	Time   0.02	Data   0.00	Loss   1.18	Acc@1  53.26
-('23:34:39', 'Epoch 3 Test Acc:', 77.41)
-Train Epoch: [4][  0/390]	Time   0.02	Data   0.00	Loss   1.18	Acc@1  53.22
-('23:34:46', 'Epoch 4 Test Acc:', 77.98)
-Evaluate Accuracy function is called
-(50000, 32, 32, 3)
+Train Epoch: [0][  0/390]	Time   0.02	Data   0.00	Loss   1.65	Acc@1  45.16
+('00:56:45', 'Epoch 0 Test Acc:', 73.36)
+Train Epoch: [1][  0/390]	Time   0.02	Data   0.00	Loss   1.37	Acc@1  48.88
+('00:56:53', 'Epoch 1 Test Acc:', 72.17)
+Train Epoch: [2][  0/390]	Time   0.02	Data   0.00	Loss   1.33	Acc@1  48.73
+('00:57:00', 'Epoch 2 Test Acc:', 72.63)
+Train Epoch: [3][  0/390]	Time   0.02	Data   0.00	Loss   1.32	Acc@1  49.04
+('00:57:08', 'Epoch 3 Test Acc:', 72.75)
+Train Epoch: [4][  0/390]	Time   0.02	Data   0.00	Loss   1.31	Acc@1  48.92
+('00:57:15', 'Epoch 4 Test Acc:', 71.88)
+(<common.tools.AverageMeter object at 0x7efd401711d0>, <common.tools.AverageMeter object at 0x7efd40171790>, <common.tools.AverageMeter object at 0x7efd401712d0>)
+('00:57:57', 'Epoch 5 Test Acc:', 67.72)
+('Epoch: ', 6)
+(<common.tools.AverageMeter object at 0x7efdb975b590>, <common.tools.AverageMeter object at 0x7efd401a9c10>, <common.tools.AverageMeter object at 0x7efd401a9510>)
+('00:58:38', 'Epoch 6 Test Acc:', 69.52)
+('Epoch: ', 7)
+(<common.tools.AverageMeter object at 0x7efd40178490>, <common.tools.AverageMeter object at 0x7efd40178550>, <common.tools.AverageMeter object at 0x7efd401785d0>)
+('00:59:19', 'Epoch 7 Test Acc:', 67.68)
+('Epoch: ', 8)
+(<common.tools.AverageMeter object at 0x7efdb975b590>, <common.tools.AverageMeter object at 0x7efd40178190>, <common.tools.AverageMeter object at 0x7efd40178290>)
+('01:00:00', 'Epoch 8 Test Acc:', 70.02)
+('Epoch: ', 9)
+(<common.tools.AverageMeter object at 0x7efd401a1710>, <common.tools.AverageMeter object at 0x7efd401a10d0>, <common.tools.AverageMeter object at 0x7efd401a1d50>)
+('01:00:41', 'Epoch 9 Test Acc:', 68.98)
+('01:00:41', 'Best Test Acc:', 70.01953125)

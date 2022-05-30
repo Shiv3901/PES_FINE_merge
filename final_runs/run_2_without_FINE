@@ -1,0 +1,75 @@
+Sun May 29 01:09:39 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.129.06   Driver Version: 470.129.06   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  Off  | 00000000:01:00.0 Off |                  N/A |
+| 29%   38C    P8     2W / 250W |     21MiB / 11019MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA GeForce ...  Off  | 00000000:02:00.0 Off |                  N/A |
+| 31%   38C    P8     1W / 250W |      8MiB / 11019MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      1202      G   /usr/lib/xorg/Xorg                  9MiB |
+|    0   N/A  N/A      1668      G   /usr/bin/gnome-shell                6MiB |
+|    1   N/A  N/A      1202      G   /usr/lib/xorg/Xorg                  4MiB |
++-----------------------------------------------------------------------------+
+Namespace(PES_lr=0.0001, T=0.5, T1=0, T2=5, alpha=4, batch_size=128, data_path='./data', data_percent=1, dataset='cifar10', lambda_u=15.0, lr=0.02, noise_rate=0.2, noise_type='symmetric', num_epochs=300, optim='cos', seed=1, weight_decay=0.0005)
+Files already downloaded and verified
+Files already downloaded and verified
+('include_noise True, new real nosie rate:', 0.2)
+Epochs before Stopping: 5
+Epochs for reintialising: 5
+Epochs after Stopping: 5
+('Epoch: ', 0)
+Train Epoch: [0][  0/390]	Time   0.04	Data   0.00	Loss   1.88	Acc@1  35.65
+('01:09:58', 'Epoch 0 Test Acc:', 53.5)
+('Epoch: ', 1)
+Train Epoch: [1][  0/390]	Time   0.04	Data   0.00	Loss   1.63	Acc@1  48.95
+('01:10:14', 'Epoch 1 Test Acc:', 58.6)
+('Epoch: ', 2)
+Train Epoch: [2][  0/390]	Time   0.04	Data   0.00	Loss   1.50	Acc@1  55.63
+('01:10:31', 'Epoch 2 Test Acc:', 68.02)
+('Epoch: ', 3)
+Train Epoch: [3][  0/390]	Time   0.04	Data   0.00	Loss   1.41	Acc@1  59.78
+('01:10:47', 'Epoch 3 Test Acc:', 68.81)
+('Epoch: ', 4)
+Train Epoch: [4][  0/390]	Time   0.04	Data   0.00	Loss   1.35	Acc@1  62.43
+('01:11:04', 'Epoch 4 Test Acc:', 74.96)
+('Epoch: ', 5)
+re-initalize the final layer
+Train Epoch: [0][  0/390]	Time   0.02	Data   0.00	Loss   1.58	Acc@1  59.21
+('01:11:11', 'Epoch 0 Test Acc:', 80.66)
+Train Epoch: [1][  0/390]	Time   0.02	Data   0.00	Loss   1.27	Acc@1  65.57
+('01:11:19', 'Epoch 1 Test Acc:', 81.04)
+Train Epoch: [2][  0/390]	Time   0.02	Data   0.00	Loss   1.26	Acc@1  65.68
+('01:11:27', 'Epoch 2 Test Acc:', 81.43)
+Train Epoch: [3][  0/390]	Time   0.02	Data   0.00	Loss   1.26	Acc@1  65.88
+('01:11:34', 'Epoch 3 Test Acc:', 81.4)
+Train Epoch: [4][  0/390]	Time   0.02	Data   0.00	Loss   1.26	Acc@1  65.80
+('01:11:42', 'Epoch 4 Test Acc:', 81.17)
+(<common.tools.AverageMeter object at 0x7faa826a8890>, <common.tools.AverageMeter object at 0x7faa826a89d0>, <common.tools.AverageMeter object at 0x7faa826a8b50>)
+('01:12:26', 'Epoch 5 Test Acc:', 81.72)
+('Epoch: ', 6)
+(<common.tools.AverageMeter object at 0x7faa8d90e410>, <common.tools.AverageMeter object at 0x7faa861bdc50>, <common.tools.AverageMeter object at 0x7faa861bd8d0>)
+('01:13:10', 'Epoch 6 Test Acc:', 82.17)
+('Epoch: ', 7)
+(<common.tools.AverageMeter object at 0x7faa8d902590>, <common.tools.AverageMeter object at 0x7faa8619b290>, <common.tools.AverageMeter object at 0x7faa8619b390>)
+('01:13:54', 'Epoch 7 Test Acc:', 83.79)
+('Epoch: ', 8)
+(<common.tools.AverageMeter object at 0x7faa8d90e410>, <common.tools.AverageMeter object at 0x7faa86164b50>, <common.tools.AverageMeter object at 0x7faa86164150>)
+('01:14:39', 'Epoch 8 Test Acc:', 82.4)
+('Epoch: ', 9)
+(<common.tools.AverageMeter object at 0x7faa8d902590>, <common.tools.AverageMeter object at 0x7faa861c4150>, <common.tools.AverageMeter object at 0x7faa861c4790>)
+('01:15:23', 'Epoch 9 Test Acc:', 82.96)
+('01:15:23', 'Best Test Acc:', 83.78907012939453)
