@@ -6,3 +6,7 @@ Run 3       Symmetric       20%     Gmm (p_threshold=0.5)
 Run 4       Symmetric       20%     Gmm (p_threshold=0.3)
 Run 5       Symmetric       20%     Gmm (p_threshold=0.3, max-iter=100)
 Run 6       Symmetric       20%     Gmm (p_threshold=0.3, max-iter=100) [300 epochs]
+
+# Latest Runs
+
+Run 01    
