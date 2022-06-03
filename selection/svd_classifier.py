@@ -32,13 +32,16 @@ def get_singular_vector(features, labels):
     singular_vector_dict = {}
     with tqdm(total=len(np.unique(labels))) as pbar:
         for index in np.unique(labels):
-            _, s, v = np.linalg.svd(features[labels==index])
+            # _, s, v = np.linalg.svd(features[labels==index])
+            
+            # Shiv's code here
+            u, s, v = np.linalg.svd(features[labels==index], full_matrices=False)
 
             print(s.shape)
-
             print("s", features[labels==index].shape)
             print("Shivam", v.shape)
-            singular_vector_dict[index] = v[0]
+
+            singular_vector_dict[index] = u[0]
             pbar.update(1)
 
     return singular_vector_dict
@@ -62,10 +65,10 @@ def get_score(singular_vector_dict, features, labels, normalization=True):
             if counter == 1000:
                 print("Count")
                 counter = 0
-            a = singular_vector_dict[labels[idx]].reshape(-1, 32*32*8)
+            a = singular_vector_dict[labels[idx]].reshape(-1, 32*32*3)
             b = feat / np.linalg.norm(feat)
             tempAns = np.abs(np.inner(a, b.reshape(-1, 32*32*3)))
-            scores.append(tempAns)
+            scores.append(tempAns[0])
 
 
     else:
