@@ -45,7 +45,7 @@ def get_score(singular_vector_dict, features, labels, normalization=True):
 
         scores = []
         for idx, feat in enumerate(tqdm(features)):
-            tempAns = np.abs(np.inner(singular_vector_dict[labels[idx], feat / np.linalg.norm(feat)]))
+            tempAns = np.abs(np.inner(singular_vector_dict[labels[idx]], feat / np.linalg.norm(feat)))
             scores.append(tempAns)
 
 
