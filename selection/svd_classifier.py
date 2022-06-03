@@ -34,7 +34,7 @@ def get_singular_vector(features, labels):
         for index in np.unique(labels):
             _, s, v = np.linalg.svd(features[labels==index])
 
-            print(s[:10])
+            print(s.shape)
 
             print("s", features[labels==index].shape)
             print("Shivam", v.shape)
