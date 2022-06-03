@@ -37,10 +37,6 @@ def get_singular_vector(features, labels):
             # Shiv's code here
             u, s, v = np.linalg.svd(features[labels==index], full_matrices=False)
 
-            print(s.shape)
-            print("s", features[labels==index].shape)
-            print("Shivam", v.shape)
-
             singular_vector_dict[index] = u[0]
             pbar.update(1)
 
@@ -55,16 +51,8 @@ def get_score(singular_vector_dict, features, labels, normalization=True):
     if normalization:
         # scores = [np.abs(np.inner(singular_vector_dict[labels[indx]], feat/np.linalg.norm(feat))) for indx, feat in enumerate(tqdm(features))]
 
-        print(singular_vector_dict[labels[0]].shape)
-        print(features[0].shape)
-
         scores = []
-        counter = 0
-        for idx, feat in enumerate(features):
-            counter += 1
-            if counter == 1000:
-                print("Count")
-                counter = 0
+        for idx, feat in enumerate(tqdm(features)):
             a = singular_vector_dict[labels[idx]].reshape(-1, 32*32*3)
             b = feat / np.linalg.norm(feat)
             tempAns = np.abs(np.inner(a, b.reshape(-1, 32*32*3)))
@@ -120,7 +108,7 @@ def fine(current_features, current_labels, fit='kmeans', previous_features=None,
     singular_vector_dict = get_singular_vector(current_features, current_labels)
 
     scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
-
+    print("Scores dimension: ", scores.shape)
     # scores_1 = get_score_shiv(current_features)
 
     if 'kmeans' in fit:
