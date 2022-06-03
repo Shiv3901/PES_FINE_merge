@@ -333,9 +333,9 @@ best_test_acc = 0
 
 # TODO: remove this after testing 
 
-args.T1 = 5
+args.T1 = 25
 args.T2 = 5
-args.num_epochs = 10
+args.num_epochs = 50
 
 # _, _, _ = update_trainloader(model, data[:4000], clean_labels[:4000], noisy_labels[:4000], True)
 
