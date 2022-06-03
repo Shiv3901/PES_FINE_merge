@@ -25,25 +25,29 @@ torch.cuda.manual_seed_all(SEED)
 
 def get_singular_vector(features, labels):
 
+    print("Start point")
     singular_vector_dict = {}
     with tqdm(total=len(np.unique(labels))) as pbar:
         for index in np.unique(labels):
             _, _, v = np.linalg.svd(features[labels==index])
             singular_vector_dict[index] = v[0]
             pbar.update(1)
+    print("End point")
 
     return singular_vector_dict
 
-# TODO: pretty sure that we do not need this function for now
+# TODO: pretty sure that we do not need this function for now (was taken from the FINE paper)
 def get_features(model, dataloader):
     return 
 
 def get_score(singular_vector_dict, features, labels, normalization=True):
     
+    print("Start point 1")
     if normalization:
         scores = [np.abs(np.inner(singular_vector_dict[labels[indx]], feat/np.linalg.norm(feat))) for indx, feat in enumerate(tqdm(features))]
     else:
         scores = [np.abs(np.inner(singular_vector_dict[labels[indx]], feat)) for indx, feat in enumerate(tqdm(features))]    
+    print("End point 1")
 
     return np.array(scores)
 
@@ -54,15 +58,11 @@ def fit_mixture(scores, labels, p_threshold=0.30):
     indexes = np.array(range(len(scores)))
     probs = {}
 
-    # # print(scores.shape, "Just looking")
-
     for idx, cls in enumerate(np.unique(labels)):
+        
         cls_index = indexes[labels==cls]
         feats = scores[labels==cls]
-        # feats_ = np.ravel(feats).astype(np.float).reshape(-1, 1)
-
-        # print(# print_current_time("Label " + str(idx) + ": "))
-
+        
         gmm = GaussianMixture(n_components=2, covariance_type='diag', tol=1e-6, max_iter=100)
 
         gmm.fit(feats)
@@ -80,30 +80,28 @@ from sklearn.decomposition import PCA
 
 def get_score_shiv(current_features):
 
-    # print(# print_current_time("Start of PCA: "))
     pca = PCA(n_components=2, svd_solver='arpack')
-    # print(# print_current_time("End of PCA: "))
-
+    
     return pca.fit_transform(current_features.reshape(-1, 3072))
 
-    return pca.get_covariance()
 
 def fine(current_features, current_labels, fit='kmeans', previous_features=None, previous_labels=None, p_threshold=0.7):
 
     # if not previous_features and not previous_labels:
     #     singular_vector_dict = get_singular_vector(previous_features, previous_labels)
     # else:
-    # singular_vector_dict = get_singular_vector(current_features, current_labels)
 
-    # scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
+    singular_vector_dict = get_singular_vector(current_features, current_labels)
 
-    scores_1 = get_score_shiv(current_features)
+    scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
+
+    # scores_1 = get_score_shiv(current_features)
 
     if 'kmeans' in fit:
-        clean_labels = cleansing(scores_1, current_labels)
+        clean_labels = cleansing(scores, current_labels)
         probs = None
     elif 'gmm' in fit:
-        clean_labels, probs = fit_mixture(scores_1, current_labels, p_threshold)
+        clean_labels, probs = fit_mixture(scores, current_labels, p_threshold)
     else:
         raise NotImplemented
     
