@@ -333,13 +333,13 @@ best_test_acc = 0
 
 # TODO: remove this after testing 
 
-args.T1 = 1
-args.T2 = 1
-args.num_epochs = 2
+args.T1 = 5
+args.T2 = 5
+args.num_epochs = 5
 
-_, _, _ = update_trainloader(model, data[:4000], clean_labels[:4000], noisy_labels[:4000], True)
+# _, _, _ = update_trainloader(model, data[:4000], clean_labels[:4000], noisy_labels[:4000], True)
 
-quit()
+# quit()
 
 print("Epochs before Stopping: " + str(args.T1))
 print("Epochs for reintialising: " + str(args.T2))
