@@ -51,6 +51,7 @@ def get_score(singular_vector_dict, features, labels, normalization=True):
                 print("Count")
                 counter = 0
             tempAns = np.abs(np.inner(singular_vector_dict[labels[idx]], feat / np.linalg.norm(feat)))
+            print(tempAns)
             scores.append(tempAns)
 
 
