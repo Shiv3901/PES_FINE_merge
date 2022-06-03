@@ -337,7 +337,7 @@ args.T1 = 1
 args.T2 = 1
 args.num_epochs = 2
 
-_, _, _ = update_trainloader(model, data[4000:], clean_labels[:4000], noisy_labels[:4000], True)
+_, _, _ = update_trainloader(model, data[:4000], clean_labels[:4000], noisy_labels[:4000], True)
 
 quit()
 
