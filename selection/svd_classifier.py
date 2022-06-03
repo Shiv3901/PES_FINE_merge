@@ -101,17 +101,18 @@ def fine(current_features, current_labels, fit='kmeans', previous_features=None,
     #     singular_vector_dict = get_singular_vector(previous_features, previous_labels)
     # else:
 
-    singular_vector_dict = get_singular_vector(current_features, current_labels)
+    # singular_vector_dict = get_singular_vector(current_features, current_labels)
 
-    scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
+    # scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
 
-    # scores_1 = get_score_shiv(current_features)
+    scores_1 = get_score_shiv(current_features)
+    print(scores_1.shape)
 
     if 'kmeans' in fit:
-        clean_labels = cleansing(scores, current_labels)
+        clean_labels = cleansing(scores_1, current_labels)
         probs = None
     elif 'gmm' in fit:
-        clean_labels, probs = fit_mixture(scores, current_labels, p_threshold)
+        clean_labels, probs = fit_mixture(scores_1, current_labels, p_threshold)
     else:
         raise NotImplemented
     
