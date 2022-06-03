@@ -25,14 +25,12 @@ torch.cuda.manual_seed_all(SEED)
 
 def get_singular_vector(features, labels):
 
-    print("Start point")
     singular_vector_dict = {}
     with tqdm(total=len(np.unique(labels))) as pbar:
         for index in np.unique(labels):
             _, _, v = np.linalg.svd(features[labels==index])
             singular_vector_dict[index] = v[0]
             pbar.update(1)
-    print("End point")
 
     return singular_vector_dict
 
@@ -42,12 +40,18 @@ def get_features(model, dataloader):
 
 def get_score(singular_vector_dict, features, labels, normalization=True):
     
-    print("Start point 1")
     if normalization:
-        scores = [np.abs(np.inner(singular_vector_dict[labels[indx]], feat/np.linalg.norm(feat))) for indx, feat in enumerate(tqdm(features))]
+        # scores = [np.abs(np.inner(singular_vector_dict[labels[indx]], feat/np.linalg.norm(feat))) for indx, feat in enumerate(tqdm(features))]
+
+        scores = []
+        for idx, feat in enumerate(tqdm(features)):
+            tempAns = np.abs(np.inner(singular_vector_dict[labels[idx], feat / np.linalg.norm(feat)]))
+            scores.append(tempAns)
+
+
     else:
         scores = [np.abs(np.inner(singular_vector_dict[labels[indx]], feat)) for indx, feat in enumerate(tqdm(features))]    
-    print("End point 1")
+    
 
     return np.array(scores)
 
