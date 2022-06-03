@@ -53,7 +53,9 @@ def get_score(singular_vector_dict, features, labels, normalization=True):
             if counter == 1000:
                 print("Count")
                 counter = 0
-            tempAns = np.abs(np.inner(singular_vector_dict[labels[idx]], feat / np.linalg.norm(feat)))
+            a = singular_vector_dict[labels[idx]].reshape(-1, 32*32*8)
+            b = feat / np.linalg.norm(feat)
+            tempAns = np.abs(np.inner(a, b.reshape(-1, 32*32*3)))
             scores.append(tempAns)
 
 
@@ -102,8 +104,6 @@ def fine(current_features, current_labels, fit='kmeans', previous_features=None,
     # if not previous_features and not previous_labels:
     #     singular_vector_dict = get_singular_vector(previous_features, previous_labels)
     # else:
-
-    current_features = current_features.reshape(-1, 3072)
 
     singular_vector_dict = get_singular_vector(current_features, current_labels)
 
