@@ -27,12 +27,15 @@ def get_singular_vector(features, labels):
 
     print(features.shape)
 
-    features = features.reshape(-1, 32*32*3)
+    # features = features.reshape(-1, 32*32*3)
 
     singular_vector_dict = {}
     with tqdm(total=len(np.unique(labels))) as pbar:
         for index in np.unique(labels):
-            _, _, v = np.linalg.svd(features[labels==index])
+            _, s, v = np.linalg.svd(features[labels==index])
+
+            print(s[:10])
+
             print("s", features[labels==index].shape)
             print("Shivam", v.shape)
             singular_vector_dict[index] = v[0]
