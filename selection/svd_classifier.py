@@ -138,7 +138,7 @@ def fine(current_features, current_labels, fit='kmeans', previous_features=None,
     scores = get_score_individual(current_features, current_labels)
     print(scores.shape)
 
-    return 
+    # return 
 
     if 'kmeans' in fit:
         clean_labels = cleansing(scores, current_labels)
