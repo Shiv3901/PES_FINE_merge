@@ -1,0 +1,196 @@
+Sat Jun  4 02:33:19 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.129.06   Driver Version: 470.129.06   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  Off  | 00000000:01:00.0 Off |                  N/A |
+| 42%   75C    P2   130W / 250W |   2964MiB / 11019MiB |     37%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA GeForce ...  Off  | 00000000:02:00.0 Off |                  N/A |
+| 29%   34C    P8     2W / 250W |      8MiB / 11019MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      1202      G   /usr/lib/xorg/Xorg                  9MiB |
+|    0   N/A  N/A      1668      G   /usr/bin/gnome-shell                6MiB |
+|    0   N/A  N/A     10025      C   BS - New Pipeline                2943MiB |
+|    1   N/A  N/A      1202      G   /usr/lib/xorg/Xorg                  4MiB |
++-----------------------------------------------------------------------------+
+Namespace(PES_lr=0.0001, T=0.5, T1=0, T2=5, alpha=4, batch_size=128, data_path='./data', data_percent=1, dataset='cifar10', lambda_u=15.0, lr=0.02, noise_rate=0.2, noise_type='symmetric', num_epochs=300, optim='cos', seed=1, weight_decay=0.0005)
+Files already downloaded and verified
+Files already downloaded and verified
+('include_noise True, new real nosie rate:', 0.2)
+Epochs before Stopping: 25
+Epochs for reintialising: 5
+Epochs after Stopping: 25
+('Epoch: ', 0)
+Train Epoch: [0][  0/390]	Time   0.04	Data   0.00	Loss   1.88	Acc@1  35.43
+('02:33:38', 'Epoch 0 Test Acc:', 53.41)
+('Epoch: ', 1)
+Train Epoch: [1][  0/390]	Time   0.04	Data   0.00	Loss   1.64	Acc@1  48.48
+('02:33:55', 'Epoch 1 Test Acc:', 60.52)
+('Epoch: ', 2)
+Train Epoch: [2][  0/390]	Time   0.04	Data   0.00	Loss   1.50	Acc@1  55.05
+('02:34:11', 'Epoch 2 Test Acc:', 68.97)
+('Epoch: ', 3)
+Train Epoch: [3][  0/390]	Time   0.04	Data   0.00	Loss   1.41	Acc@1  59.54
+('02:34:28', 'Epoch 3 Test Acc:', 68.26)
+('Epoch: ', 4)
+Train Epoch: [4][  0/390]	Time   0.04	Data   0.00	Loss   1.35	Acc@1  62.15
+('02:34:44', 'Epoch 4 Test Acc:', 74.42)
+('Epoch: ', 5)
+Train Epoch: [5][  0/390]	Time   0.04	Data   0.00	Loss   1.31	Acc@1  64.28
+('02:35:01', 'Epoch 5 Test Acc:', 79.34)
+('Epoch: ', 6)
+Train Epoch: [6][  0/390]	Time   0.04	Data   0.00	Loss   1.27	Acc@1  65.78
+('02:35:18', 'Epoch 6 Test Acc:', 79.16)
+('Epoch: ', 7)
+Train Epoch: [7][  0/390]	Time   0.04	Data   0.00	Loss   1.25	Acc@1  66.65
+('02:35:35', 'Epoch 7 Test Acc:', 80.76)
+('Epoch: ', 8)
+Train Epoch: [8][  0/390]	Time   0.04	Data   0.00	Loss   1.22	Acc@1  67.67
+('02:35:51', 'Epoch 8 Test Acc:', 81.97)
+('Epoch: ', 9)
+Train Epoch: [9][  0/390]	Time   0.04	Data   0.00	Loss   1.20	Acc@1  68.59
+('02:36:08', 'Epoch 9 Test Acc:', 83.28)
+('Epoch: ', 10)
+Train Epoch: [10][  0/390]	Time   0.04	Data   0.00	Loss   1.18	Acc@1  69.44
+('02:36:25', 'Epoch 10 Test Acc:', 82.81)
+('Epoch: ', 11)
+Train Epoch: [11][  0/390]	Time   0.04	Data   0.00	Loss   1.17	Acc@1  69.89
+('02:36:42', 'Epoch 11 Test Acc:', 80.89)
+('Epoch: ', 12)
+Train Epoch: [12][  0/390]	Time   0.04	Data   0.00	Loss   1.15	Acc@1  70.49
+('02:36:59', 'Epoch 12 Test Acc:', 84.53)
+('Epoch: ', 13)
+Train Epoch: [13][  0/390]	Time   0.04	Data   0.00	Loss   1.14	Acc@1  70.91
+('02:37:16', 'Epoch 13 Test Acc:', 82.17)
+('Epoch: ', 14)
+Train Epoch: [14][  0/390]	Time   0.04	Data   0.00	Loss   1.12	Acc@1  71.44
+('02:37:33', 'Epoch 14 Test Acc:', 85.15)
+('Epoch: ', 15)
+Train Epoch: [15][  0/390]	Time   0.04	Data   0.00	Loss   1.11	Acc@1  71.72
+('02:37:50', 'Epoch 15 Test Acc:', 86.16)
+('Epoch: ', 16)
+Train Epoch: [16][  0/390]	Time   0.04	Data   0.00	Loss   1.10	Acc@1  72.00
+('02:38:07', 'Epoch 16 Test Acc:', 83.34)
+('Epoch: ', 17)
+Train Epoch: [17][  0/390]	Time   0.04	Data   0.00	Loss   1.09	Acc@1  72.47
+('02:38:24', 'Epoch 17 Test Acc:', 83.52)
+('Epoch: ', 18)
+Train Epoch: [18][  0/390]	Time   0.04	Data   0.00	Loss   1.08	Acc@1  72.88
+('02:38:41', 'Epoch 18 Test Acc:', 81.21)
+('Epoch: ', 19)
+Train Epoch: [19][  0/390]	Time   0.04	Data   0.00	Loss   1.07	Acc@1  73.20
+('02:38:58', 'Epoch 19 Test Acc:', 83.92)
+('Epoch: ', 20)
+Train Epoch: [20][  0/390]	Time   0.04	Data   0.00	Loss   1.06	Acc@1  73.33
+('02:39:15', 'Epoch 20 Test Acc:', 84.18)
+('Epoch: ', 21)
+Train Epoch: [21][  0/390]	Time   0.04	Data   0.00	Loss   1.05	Acc@1  73.64
+('02:39:32', 'Epoch 21 Test Acc:', 86.11)
+('Epoch: ', 22)
+Train Epoch: [22][  0/390]	Time   0.04	Data   0.00	Loss   1.04	Acc@1  73.89
+('02:39:49', 'Epoch 22 Test Acc:', 84.17)
+('Epoch: ', 23)
+Train Epoch: [23][  0/390]	Time   0.04	Data   0.00	Loss   1.03	Acc@1  74.32
+('02:40:06', 'Epoch 23 Test Acc:', 86.39)
+('Epoch: ', 24)
+Train Epoch: [24][  0/390]	Time   0.04	Data   0.00	Loss   1.02	Acc@1  74.41
+('02:40:23', 'Epoch 24 Test Acc:', 86.01)
+('Epoch: ', 25)
+re-initalize the final layer
+Train Epoch: [0][  0/390]	Time   0.02	Data   0.00	Loss   1.59	Acc@1  71.03
+('02:40:31', 'Epoch 0 Test Acc:', 87.42)
+Train Epoch: [1][  0/390]	Time   0.02	Data   0.00	Loss   1.04	Acc@1  76.06
+('02:40:39', 'Epoch 1 Test Acc:', 87.39)
+Train Epoch: [2][  0/390]	Time   0.02	Data   0.00	Loss   0.98	Acc@1  75.99
+('02:40:46', 'Epoch 2 Test Acc:', 87.48)
+Train Epoch: [3][  0/390]	Time   0.02	Data   0.00	Loss   0.97	Acc@1  76.02
+('02:40:54', 'Epoch 3 Test Acc:', 87.56)
+Train Epoch: [4][  0/390]	Time   0.02	Data   0.00	Loss   0.96	Acc@1  76.14
+('02:41:02', 'Epoch 4 Test Acc:', 87.53)
+(<common.tools.AverageMeter object at 0x7f7dc65c8d90>, <common.tools.AverageMeter object at 0x7f7dc65c84d0>, <common.tools.AverageMeter object at 0x7f7dc65c8910>)
+('02:41:47', 'Epoch 25 Test Acc:', 89.05)
+('Epoch: ', 26)
+(<common.tools.AverageMeter object at 0x7f7dcdd3a550>, <common.tools.AverageMeter object at 0x7f7dcdd3a5d0>, <common.tools.AverageMeter object at 0x7f7dcdd46710>)
+('02:42:31', 'Epoch 26 Test Acc:', 89.69)
+('Epoch: ', 27)
+(<common.tools.AverageMeter object at 0x7f7dc65d3110>, <common.tools.AverageMeter object at 0x7f7dc65d3f50>, <common.tools.AverageMeter object at 0x7f7dc65d3f90>)
+('02:43:15', 'Epoch 27 Test Acc:', 90.33)
+('Epoch: ', 28)
+(<common.tools.AverageMeter object at 0x7f7dcdd3a550>, <common.tools.AverageMeter object at 0x7f7dcdd3a5d0>, <common.tools.AverageMeter object at 0x7f7dcdd46710>)
+('02:43:59', 'Epoch 28 Test Acc:', 90.47)
+('Epoch: ', 29)
+(<common.tools.AverageMeter object at 0x7f7dc65feb50>, <common.tools.AverageMeter object at 0x7f7dc65fe690>, <common.tools.AverageMeter object at 0x7f7dc65fe310>)
+('02:44:44', 'Epoch 29 Test Acc:', 89.41)
+('Epoch: ', 30)
+(<common.tools.AverageMeter object at 0x7f7dcdd3a550>, <common.tools.AverageMeter object at 0x7f7dcdd3a5d0>, <common.tools.AverageMeter object at 0x7f7dcdd46710>)
+('02:45:28', 'Epoch 30 Test Acc:', 89.94)
+('Epoch: ', 31)
+(<common.tools.AverageMeter object at 0x7f7dc65c8050>, <common.tools.AverageMeter object at 0x7f7dc65c8550>, <common.tools.AverageMeter object at 0x7f7dc65c8490>)
+('02:46:12', 'Epoch 31 Test Acc:', 89.83)
+('Epoch: ', 32)
+(<common.tools.AverageMeter object at 0x7f7dcdd3a550>, <common.tools.AverageMeter object at 0x7f7dcdd3a5d0>, <common.tools.AverageMeter object at 0x7f7dcdd46710>)
+('02:46:56', 'Epoch 32 Test Acc:', 91.09)
+('Epoch: ', 33)
+(<common.tools.AverageMeter object at 0x7f7dc2ae0dd0>, <common.tools.AverageMeter object at 0x7f7dc2ae0810>, <common.tools.AverageMeter object at 0x7f7dc2ae08d0>)
+('02:47:40', 'Epoch 33 Test Acc:', 89.18)
+('Epoch: ', 34)
+(<common.tools.AverageMeter object at 0x7f7dcdd3a550>, <common.tools.AverageMeter object at 0x7f7dcdd3a5d0>, <common.tools.AverageMeter object at 0x7f7dcdd46710>)
+('02:48:25', 'Epoch 34 Test Acc:', 90.29)
+('Epoch: ', 35)
+(<common.tools.AverageMeter object at 0x7f7dc65d3590>, <common.tools.AverageMeter object at 0x7f7dc65d3450>, <common.tools.AverageMeter object at 0x7f7dc65d3210>)
+('02:49:09', 'Epoch 35 Test Acc:', 90.71)
+('Epoch: ', 36)
+(<common.tools.AverageMeter object at 0x7f7dcdd3a550>, <common.tools.AverageMeter object at 0x7f7dcdd3a5d0>, <common.tools.AverageMeter object at 0x7f7dcdd46710>)
+('02:49:53', 'Epoch 36 Test Acc:', 89.81)
+('Epoch: ', 37)
+(<common.tools.AverageMeter object at 0x7f7dc65e0b10>, <common.tools.AverageMeter object at 0x7f7dc65e0fd0>, <common.tools.AverageMeter object at 0x7f7dc65e0890>)
+('02:50:37', 'Epoch 37 Test Acc:', 90.13)
+('Epoch: ', 38)
+(<common.tools.AverageMeter object at 0x7f7dcdd3a550>, <common.tools.AverageMeter object at 0x7f7dcdd3a5d0>, <common.tools.AverageMeter object at 0x7f7dcdd46710>)
+('02:51:22', 'Epoch 38 Test Acc:', 90.43)
+('Epoch: ', 39)
+(<common.tools.AverageMeter object at 0x7f7dc65d3e50>, <common.tools.AverageMeter object at 0x7f7dc65d3450>, <common.tools.AverageMeter object at 0x7f7dc65d3110>)
+('02:52:06', 'Epoch 39 Test Acc:', 90.36)
+('Epoch: ', 40)
+(<common.tools.AverageMeter object at 0x7f7dcdd3a550>, <common.tools.AverageMeter object at 0x7f7dcdd3a5d0>, <common.tools.AverageMeter object at 0x7f7dcdd46710>)
+('02:52:50', 'Epoch 40 Test Acc:', 90.58)
+('Epoch: ', 41)
+(<common.tools.AverageMeter object at 0x7f7dc6595a10>, <common.tools.AverageMeter object at 0x7f7dc65959d0>, <common.tools.AverageMeter object at 0x7f7dc6595750>)
+('02:53:34', 'Epoch 41 Test Acc:', 72.7)
+('Epoch: ', 42)
+(<common.tools.AverageMeter object at 0x7f7dcdd3a550>, <common.tools.AverageMeter object at 0x7f7dcdd3a5d0>, <common.tools.AverageMeter object at 0x7f7dcdd46710>)
+('02:54:19', 'Epoch 42 Test Acc:', 69.76)
+('Epoch: ', 43)
+(<common.tools.AverageMeter object at 0x7f7dc65d3110>, <common.tools.AverageMeter object at 0x7f7dc65d3410>, <common.tools.AverageMeter object at 0x7f7dc65d3190>)
+('02:55:03', 'Epoch 43 Test Acc:', 68.72)
+('Epoch: ', 44)
+(<common.tools.AverageMeter object at 0x7f7dcdd3a550>, <common.tools.AverageMeter object at 0x7f7dcdd3a5d0>, <common.tools.AverageMeter object at 0x7f7dcdd46710>)
+('02:55:48', 'Epoch 44 Test Acc:', 71.0)
+('Epoch: ', 45)
+(<common.tools.AverageMeter object at 0x7f7dc65d3fd0>, <common.tools.AverageMeter object at 0x7f7dc65d3490>, <common.tools.AverageMeter object at 0x7f7dc65d3150>)
+('02:56:32', 'Epoch 45 Test Acc:', 73.0)
+('Epoch: ', 46)
+(<common.tools.AverageMeter object at 0x7f7dcdd3a550>, <common.tools.AverageMeter object at 0x7f7dcdd3a5d0>, <common.tools.AverageMeter object at 0x7f7dcdd46710>)
+('02:57:16', 'Epoch 46 Test Acc:', 73.08)
+('Epoch: ', 47)
+(<common.tools.AverageMeter object at 0x7f7dc65f7d10>, <common.tools.AverageMeter object at 0x7f7dc65f7c10>, <common.tools.AverageMeter object at 0x7f7dc65f7e10>)
+('02:58:01', 'Epoch 47 Test Acc:', 75.12)
+('Epoch: ', 48)
+(<common.tools.AverageMeter object at 0x7f7dcdd3a550>, <common.tools.AverageMeter object at 0x7f7dcdd3a5d0>, <common.tools.AverageMeter object at 0x7f7dcdd46710>)
+('02:58:45', 'Epoch 48 Test Acc:', 75.08)
+('Epoch: ', 49)
+(<common.tools.AverageMeter object at 0x7f7dc65fe090>, <common.tools.AverageMeter object at 0x7f7dc65fe850>, <common.tools.AverageMeter object at 0x7f7dc65fe310>)
+('02:59:29', 'Epoch 49 Test Acc:', 73.15)
+('02:59:29', 'Best Test Acc:', 91.09375762939453)
