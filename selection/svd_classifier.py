@@ -111,9 +111,13 @@ def get_score_individual(features, labels):
             cls_index = indexes[labels==index]
             feats = features[labels==index]
             
-            pca = PCA(n_components=64, svd_solver='full', random_state=68)
-            
+            pca = PCA(n_components=2, svd_solver='full', random_state=68)
+
             score_vals = pca.fit_transform(feats.reshape(-1, 3072))
+
+            compo = pca.components_
+
+            print(compo.shape)
 
             for i in range(len(cls_index)):
                 scores_dict[cls_index[i]] = score_vals[i]

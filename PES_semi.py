@@ -346,9 +346,9 @@ clean_labels = clean_labels[indexes] if isFine else clean_labels
 noisy_labels = noisy_labels[indexes] if isFine else noisy_labels
 
 
-# _, _, _ = update_trainloader(model, data[indexes], clean_labels[indexes], noisy_labels[indexes], True)
+_, _, _ = update_trainloader(model, data[indexes], clean_labels[indexes], noisy_labels[indexes], True)
 
-# quit()
+quit()
 
 print("Running with" + ("" if isFine else "out") + " FINE")
 print("Epochs before Stopping: " + str(args.T1))
