@@ -195,7 +195,7 @@ def helperFunctionForFINE(train_data, noisy_targets):
     # print("Length of the clean indexes here: " + str(len(clean_idxs)))
     print(clean_idxs.shape)
     clean_idxs = clean_idxs.sort()
-    clean_set = set(clean_idxs)
+    clean_set = set(clean_idxs.tolist())
     noisy_idxs = []
 
     for idx in range(0, len(noisy_targets)):
