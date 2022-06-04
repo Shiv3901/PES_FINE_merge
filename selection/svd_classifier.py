@@ -54,7 +54,7 @@ def get_score(singular_vector_dict, features, labels, normalization=True):
         scores = []
         for idx, feat in enumerate(tqdm(features)):
 
-            a = singular_vector_dict[labels[idx]].reshape(-1, 32*32*3)
+            a = singular_vector_dict[labels[idx]]
             b = feat / np.linalg.norm(feat)
             
             tempAns = np.abs(np.inner(a, b.reshape(-1, 32*32*3)))
@@ -100,6 +100,24 @@ def get_score_shiv(current_features):
     
     return pca.fit_transform(current_features.reshape(-1, 3072))
 
+def get_singular_vector_shiv(features, labels):
+
+    singular_vector_dict = {}
+    with tqdm(total=len(np.unique(labels))) as pbar:
+        for index in np.unique(labels):
+
+            feats = features[labels==index]
+            
+            pca = PCA(n_components=2, svd_solver='full', random_state=68)
+
+            _ = pca.fit_transform(feats.reshape(-1, 3072))
+
+            singular_vector_dict[index] = pca.components_[0][0]
+
+            pbar.update(1)
+
+    return singular_vector_dict
+
 
 def get_score_individual(features, labels):
 
@@ -141,7 +159,8 @@ def fine(current_features, current_labels, fit='kmeans', previous_features=None,
     # print("Scores dimension: ", scores.shape)
     # scores_1 = get_score_shiv(current_features)
 
-    scores = get_score_individual(current_features, current_labels)
+    singular_vector_dict = get_singular_vector_shiv(current_features, current_labels)
+    scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
     print(scores.shape)
 
     # return 

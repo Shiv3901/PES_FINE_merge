@@ -4,7 +4,11 @@ import random
 # a = np.random.randn(1, 3, 3)
 # b = np.random.randn(1, 32, 3)
 
-a = np.random.randn(32, 3, 3)
+a = np.random.randn(1, 3072)
+
+print(a.shape)
+
+print(a[0])
 
 
 # print(a)
@@ -15,6 +19,8 @@ a = np.random.randn(32, 3, 3)
 
 # print(c)
 # print(c.shape)
+
+quit()
 
 feat = np.random.randn(32, 32)
 b = feat / np.linalg.norm(feat)
