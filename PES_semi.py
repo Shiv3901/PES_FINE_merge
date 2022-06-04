@@ -340,9 +340,15 @@ args.num_epochs = 10
 
 isFine = True
 indexes = np.random.randint(1, 50000, 1000)
-_, _, _ = update_trainloader(model, data[indexes], clean_labels[indexes], noisy_labels[indexes], True)
 
-quit()
+data = data[indexes] if isFine else data
+clean_labels = clean_labels[indexes] if isFine else clean_labels
+noisy_labels = noisy_labels[indexes] if isFine else noisy_labels
+
+
+# _, _, _ = update_trainloader(model, data[indexes], clean_labels[indexes], noisy_labels[indexes], True)
+
+# quit()
 
 print("Running with" + ("" if isFine else "out") + " FINE")
 print("Epochs before Stopping: " + str(args.T1))
