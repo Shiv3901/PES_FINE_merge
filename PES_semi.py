@@ -334,9 +334,9 @@ best_test_acc = 0
 
 # TODO: remove this after testing 
 
-args.T1 = 5
-args.T2 = 5
-args.num_epochs = 10
+args.T1 = 1
+args.T2 = 1
+args.num_epochs = 3
 
 isFine = True
 indexes = np.random.randint(1, 50000, 1000)
