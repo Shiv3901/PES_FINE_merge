@@ -193,7 +193,7 @@ def helperFunctionForFINE(train_data, noisy_targets):
     clean_idxs, _ = fine(train_data, noisy_targets, "kmeans")
 
     # print("Length of the clean indexes here: " + str(len(clean_idxs)))
-
+    print(clean_idxs.shape)
     clean_idxs = clean_idxs.sort()
     clean_set = set(clean_idxs)
     noisy_idxs = []
@@ -340,9 +340,9 @@ args.num_epochs = 10
 
 isFine = True
 
-# _, _, _ = update_trainloader(model, data, clean_labels, noisy_labels, True)
+_, _, _ = update_trainloader(model, data, clean_labels, noisy_labels, True)
 
-# quit()
+quit()
 
 print("Running with" + ("" if isFine else "out") + " FINE")
 print("Epochs before Stopping: " + str(args.T1))
