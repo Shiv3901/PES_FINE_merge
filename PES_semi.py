@@ -337,9 +337,9 @@ args.T1 = 25
 args.T2 = 5
 args.num_epochs = 50
 
-# _, _, _ = update_trainloader(model, data[:4000], clean_labels[:4000], noisy_labels[:4000], True)
+_, _, _ = update_trainloader(model, data[:4000], clean_labels[:4000], noisy_labels[:4000], True)
 
-# quit()
+quit()
 
 print("Epochs before Stopping: " + str(args.T1))
 print("Epochs for reintialising: " + str(args.T2))

@@ -53,8 +53,10 @@ def get_score(singular_vector_dict, features, labels, normalization=True):
 
         scores = []
         for idx, feat in enumerate(tqdm(features)):
+
             a = singular_vector_dict[labels[idx]].reshape(-1, 32*32*3)
             b = feat / np.linalg.norm(feat)
+            
             tempAns = np.abs(np.inner(a, b.reshape(-1, 32*32*3)))
             scores.append(tempAns[0])
 
@@ -99,17 +101,44 @@ def get_score_shiv(current_features):
     return pca.fit_transform(current_features.reshape(-1, 3072))
 
 
+def get_score_individual(features, labels):
+
+    scores_dict = {}
+    indexes = np.array(range(len(labels)))
+
+    with tqdm(total=len(np.unique(labels))) as pbar:
+        for index in np.unique(labels):
+            cls_index = indexes[labels==index]
+            feats = features[labels==index]
+            
+            pca = PCA(n_components=2, svd_solver='arpack')
+            score_vals = pca.fit_transform(feats.reshape(-1, 3072))
+
+            for i in range(len(cls_index)):
+                scores_dict[cls_index[i]] = score_vals[i]
+
+    scores = []
+    for i in range(len(labels)):
+        scores.append(scores_dict[i])
+            
+    return np.array(scores, dtype=np.double)
+
 def fine(current_features, current_labels, fit='kmeans', previous_features=None, previous_labels=None, p_threshold=0.7):
 
     # if not previous_features and not previous_labels:
     #     singular_vector_dict = get_singular_vector(previous_features, previous_labels)
     # else:
 
-    singular_vector_dict = get_singular_vector(current_features, current_labels)
+    # singular_vector_dict = get_singular_vector(current_features, current_labels)
 
-    scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
-    print("Scores dimension: ", scores.shape)
+    # scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
+    # print("Scores dimension: ", scores.shape)
     # scores_1 = get_score_shiv(current_features)
+
+    scores = get_score_individual(current_features, current_labels)
+    print(scores.shape)
+
+    return 
 
     if 'kmeans' in fit:
         clean_labels = cleansing(scores, current_labels)

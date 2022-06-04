@@ -11,3 +11,4 @@ Run 6       Symmetric       20%     Gmm (p_threshold=0.3, max-iter=100) [300 epo
 
 run_01_with_FINE
 run_02_with_FINE
+run_01_without_FINE
