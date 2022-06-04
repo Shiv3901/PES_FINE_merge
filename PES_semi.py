@@ -357,23 +357,24 @@ print("Epochs after Stopping: " + str(args.num_epochs - args.T1))
 
 for epoch in range(args.num_epochs):
 
-	print("Epoch: ", epoch)
+    print("Epoch: ", epoch)
     # training per say
-	if epoch < args.T1:
-		train(model, train_loader, optimizer, ceriation, epoch)
-	else:
-		if epoch == args.T1:
-			model = noisy_refine(model, train_loader, 0, args.T2)
+    if epoch < args.T1:
+        train(model, train_loader, optimizer, ceriation, epoch)
+    else:
+        if epoch == args.T1:
+            model = noisy_refine(model, train_loader, 0, args.T2)
 
         # arguments required for mix match that update trainloader returns
-		labeled_trainloader, unlabeled_trainloader, class_weights = update_trainloader(model, data, clean_labels, noisy_labels, isFine)
+        features, labels = get_features(model, train_loader)
+        labeled_trainloader, unlabeled_trainloader, class_weights = update_trainloader(model, features, clean_labels, noisy_labels, isFine)
 
         # mixmatch to learn from the clean models and make the noisy models correct 
-		MixMatch_train(epoch, model, optimizer, labeled_trainloader, unlabeled_trainloader, class_weights)
+        MixMatch_train(epoch, model, optimizer, labeled_trainloader, unlabeled_trainloader, class_weights)
 
     # validation 
-	_, test_acc = evaluate(model, test_loader, ceriation, "Epoch " + str(epoch) + " Test Acc:")
-	best_test_acc = test_acc if best_test_acc < test_acc else best_test_acc
-	scheduler.step()
+    _, test_acc = evaluate(model, test_loader, ceriation, "Epoch " + str(epoch) + " Test Acc:")
+    best_test_acc = test_acc if best_test_acc < test_acc else best_test_acc
+    scheduler.step()
 
 print(getTime(), "Best Test Acc:", best_test_acc)
