@@ -59,7 +59,7 @@ def get_score(singular_vector_dict, features, labels, normalization=True):
             
             tempAns = np.abs(np.inner(a, b.reshape(-1, 32*32*3)))
             # print("TempANs Shape: ", tempAns.shape)
-            scores.append(tempAns[0])
+            scores.append(tempAns)
 
 
     else:
