@@ -194,6 +194,7 @@ def helperFunctionForFINE(train_data, noisy_targets):
 
     # print("Length of the clean indexes here: " + str(len(clean_idxs)))
 
+    clean_idxs = clean_idxs.sort()
     clean_set = set(clean_idxs)
     noisy_idxs = []
 
@@ -333,9 +334,9 @@ best_test_acc = 0
 
 # TODO: remove this after testing 
 
-args.T1 = 25
+args.T1 = 5
 args.T2 = 5
-args.num_epochs = 50
+args.num_epochs = 10
 
 isFine = True
 
