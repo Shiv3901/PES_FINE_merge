@@ -111,7 +111,7 @@ def get_singular_vector_shiv(features, labels):
             
             pca = PCA(n_components=2, svd_solver='full', random_state=68)
 
-            _ = pca.fit_transform(feats.reshape(-1, 3072))
+            _ = pca.fit(feats.reshape(-1, 3072))
 
             # print("Eigen Vector: ", pca.components_[0].shape)
             singular_vector_dict[index] = pca.components_[0]
