@@ -333,14 +333,17 @@ best_test_acc = 0
 
 # TODO: remove this after testing 
 
-args.T1 = 5
+args.T1 = 25
 args.T2 = 5
-args.num_epochs = 10
+args.num_epochs = 50
+
+isFine = True
 
 # _, _, _ = update_trainloader(model, data, clean_labels, noisy_labels, True)
 
 # quit()
 
+print("Running with" + ("" if isFine else "out") + " FINE")
 print("Epochs before Stopping: " + str(args.T1))
 print("Epochs for reintialising: " + str(args.T2))
 print("Epochs after Stopping: " + str(args.num_epochs - args.T1))
@@ -356,7 +359,7 @@ for epoch in range(args.num_epochs):
 			model = noisy_refine(model, train_loader, 0, args.T2)
 
         # arguments required for mix match that update trainloader returns
-		labeled_trainloader, unlabeled_trainloader, class_weights = update_trainloader(model, data, clean_labels, noisy_labels, False)
+		labeled_trainloader, unlabeled_trainloader, class_weights = update_trainloader(model, data, clean_labels, noisy_labels, isFine)
 
         # mixmatch to learn from the clean models and make the noisy models correct 
 		MixMatch_train(epoch, model, optimizer, labeled_trainloader, unlabeled_trainloader, class_weights)
