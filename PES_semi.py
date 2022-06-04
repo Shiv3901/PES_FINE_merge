@@ -193,9 +193,9 @@ def helperFunctionForFINE(train_data, noisy_targets):
     clean_idxs, _ = fine(train_data, noisy_targets, "kmeans")
 
     # print("Length of the clean indexes here: " + str(len(clean_idxs)))
-    print(clean_idxs.shape)
-    clean_idxs = clean_idxs.sort()
-    clean_set = set(clean_idxs.tolist())
+    # print(clean_idxs.shape)
+    clean_idxs = clean_idxs
+    clean_set = set(clean_idxs)
     noisy_idxs = []
 
     for idx in range(0, len(noisy_targets)):
@@ -339,8 +339,8 @@ args.T2 = 5
 args.num_epochs = 10
 
 isFine = True
-
-_, _, _ = update_trainloader(model, data, clean_labels, noisy_labels, True)
+indexes = np.random.randint(1, 50000, 1000)
+_, _, _ = update_trainloader(model, data[indexes], clean_labels[indexes], noisy_labels[indexes], True)
 
 quit()
 
