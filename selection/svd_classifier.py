@@ -59,7 +59,7 @@ def get_score(singular_vector_dict, features, labels, normalization=True):
             
             tempAns = np.abs(np.inner(a, b.reshape(-1, 32*32*3)))
             # print("TempANs Shape: ", tempAns.shape)
-            scores.append(tempAns)
+            scores.append(tempAns.reshape(-1))
 
 
     else:
@@ -109,12 +109,11 @@ def get_singular_vector_shiv(features, labels):
 
             feats = features[labels==index]
             
-            pca = PCA(n_components=2, svd_solver='full', random_state=68)
+            pca = PCA(n_components=64, svd_solver='full', random_state=68)
 
             _ = pca.fit(feats.reshape(-1, 3072))
 
-            # print("Eigen Vector: ", pca.components_[0].shape)
-            singular_vector_dict[index] = pca.components_[0]
+            singular_vector_dict[index] = pca.components_
 
             pbar.update(1)
 

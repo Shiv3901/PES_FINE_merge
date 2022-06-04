@@ -1,14 +1,20 @@
 import numpy as np
 import random 
 
-# a = np.random.randn(1, 3, 3)
-# b = np.random.randn(1, 32, 3)
+a = np.random.randn(2, 3072)
+b = np.random.randn(1, 3072)
 
-a = np.random.randn(1, 3072)
+inner = np.inner(a, b).reshape(-1)
 
-print(a.shape)
+print(inner.shape)
 
-print(a[0])
+
+
+# a = np.random.randn(1, 3072)
+
+# print(a.shape)
+
+# print(a[0])
 
 
 # print(a)
