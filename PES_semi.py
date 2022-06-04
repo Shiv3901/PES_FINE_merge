@@ -346,7 +346,7 @@ clean_labels = clean_labels[indexes] if isFine else clean_labels
 noisy_labels = noisy_labels[indexes] if isFine else noisy_labels
 
 
-_, _, _ = update_trainloader(model, data[indexes], clean_labels[indexes], noisy_labels[indexes], True)
+_, _, _ = update_trainloader(model, data, clean_labels, noisy_labels, True)
 
 quit()
 
