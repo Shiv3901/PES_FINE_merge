@@ -35,9 +35,9 @@ def get_singular_vector(features, labels):
             # _, s, v = np.linalg.svd(features[labels==index])
             
             # Shiv's code here
-            u, s, v = np.linalg.svd(features[labels==index], full_matrices=False)
+            _, _, v = np.linalg.svd(features[labels==index], full_matrices=False)
 
-            singular_vector_dict[index] = u[0]
+            singular_vector_dict[index] = v[0]
             pbar.update(1)
 
     return singular_vector_dict
@@ -56,10 +56,13 @@ def get_score(singular_vector_dict, features, labels, normalization=True):
 
             a = singular_vector_dict[labels[idx]]
             b = feat / np.linalg.norm(feat)
+
+            print(a.shape)
+            print(b.shape)
             
-            tempAns = np.abs(np.inner(a, b.reshape(-1, 32*32*3)))
+            tempAns = np.abs(np.inner(a, b))
             # print("TempANs Shape: ", tempAns.shape)
-            scores.append(tempAns.reshape(-1))
+            scores.append(tempAns)
 
 
     else:
@@ -154,14 +157,14 @@ def fine(current_features, current_labels, fit='kmeans', previous_features=None,
     #     singular_vector_dict = get_singular_vector(previous_features, previous_labels)
     # else:
 
-    # singular_vector_dict = get_singular_vector(current_features, current_labels)
+    singular_vector_dict = get_singular_vector(current_features, current_labels)
 
-    # scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
+    scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
     # print("Scores dimension: ", scores.shape)
     # scores_1 = get_score_shiv(current_features)
 
-    singular_vector_dict = get_singular_vector_shiv(current_features, current_labels)
-    scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
+    # singular_vector_dict = get_singular_vector_shiv(current_features, current_labels)
+    # scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
     print(scores.shape)
 
     # return 
