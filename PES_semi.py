@@ -219,45 +219,44 @@ def return_confident_indexes(model, train_data, clean_targets, noisy_targets, is
         return splite_confident(softouts, clean_targets, noisy_targets)
 
     return None, None
-		
 
 
 # takes the model, train data, clean targets, and noisy targets to return labeled, unlabeles loaders with class weights 
 
 def update_trainloader(model, train_data, clean_targets, noisy_targets, isFine=False):
 
-	# print("Update Train Loader is called")
-	
-	confident_indexs, unconfident_indexs = return_confident_indexes(model, train_data, clean_targets, noisy_targets, isFine)
+    # print("Update Train Loader is called")
 
-	confident_dataset = Semi_Labeled_Dataset(train_data[confident_indexs], noisy_targets[confident_indexs], transform_train)
-	unconfident_dataset = Semi_Unlabeled_Dataset(train_data[unconfident_indexs], transform_train)
+    confident_indexs, unconfident_indexs = return_confident_indexes(model, train_data, clean_targets, noisy_targets, isFine)
 
-	uncon_batch = int(args.batch_size / 2) if len(unconfident_indexs) > len(confident_indexs) else int(len(unconfident_indexs) / (len(confident_indexs) + len(unconfident_indexs)) * args.batch_size)
-	if uncon_batch == 0: uncon_batch = 5
-	con_batch = args.batch_size - uncon_batch
+    confident_dataset = Semi_Labeled_Dataset(train_data[confident_indexs], noisy_targets[confident_indexs], transform_train)
+    unconfident_dataset = Semi_Unlabeled_Dataset(train_data[unconfident_indexs], transform_train)
 
-	# print(con_batch, uncon_batch)
+    uncon_batch = int(args.batch_size / 2) if len(unconfident_indexs) > len(confident_indexs) else int(len(unconfident_indexs) / (len(confident_indexs) + len(unconfident_indexs)) * args.batch_size)
+    if uncon_batch == 0: uncon_batch = 5
+    con_batch = args.batch_size - uncon_batch
 
-	labeled_trainloader = DataLoader(dataset=confident_dataset, batch_size=con_batch, shuffle=True, num_workers=8, pin_memory=True, drop_last=True)
-	unlabeled_trainloader = DataLoader(dataset=unconfident_dataset, batch_size=uncon_batch, shuffle=True, num_workers=8, pin_memory=True, drop_last=True)
+    # print(con_batch, uncon_batch)
+
+    labeled_trainloader = DataLoader(dataset=confident_dataset, batch_size=con_batch, shuffle=True, num_workers=8, pin_memory=True, drop_last=True)
+    unlabeled_trainloader = DataLoader(dataset=unconfident_dataset, batch_size=uncon_batch, shuffle=True, num_workers=8, pin_memory=True, drop_last=True)
 
     # Loss function
-	train_nums = np.zeros(args.num_class, dtype=int)
-	for item in noisy_targets[confident_indexs]:	
-		train_nums[item] += 1
+    train_nums = np.zeros(args.num_class, dtype=int)
+    for item in noisy_targets[confident_indexs]:	
+        train_nums[item] += 1
 
     # TODO: might have to do this for FINE model as well (the class weights thing)
 
     # zeros are not calculated by mean
     # avoid too large numbers that may result in out of range of loss.
-	with np.errstate(divide='ignore'):
-		cw = np.mean(train_nums[train_nums != 0]) / train_nums
-		cw[cw == np.inf] = 0
-		cw[cw > 3] = 3
-	class_weights = torch.FloatTensor(cw).cuda(device=gpu_id)
-	# print("Category", train_nums, "precent", class_weights)
-	return labeled_trainloader, unlabeled_trainloader, class_weights
+    with np.errstate(divide='ignore'):
+        cw = np.mean(train_nums[train_nums != 0]) / train_nums
+        cw[cw == np.inf] = 0
+        cw[cw > 3] = 3
+    class_weights = torch.FloatTensor(cw).cuda(device=gpu_id)
+    # print("Category", train_nums, "precent", class_weights)
+    return labeled_trainloader, unlabeled_trainloader, class_weights
 
 
 def noisy_refine(model, train_loader, num_layer, refine_times):
