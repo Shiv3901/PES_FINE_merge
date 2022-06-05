@@ -179,7 +179,7 @@ def splite_confident(outs, clean_targets, noisy_targets):
 
 def helperFunctionForFINE(train_data, noisy_targets):
 	
-    clean_idxs, _ = fine(train_data, noisy_targets, "kmeans")
+    clean_idxs, _ = fine(train_data, noisy_targets, "gmm")
 
     # print("Length of the clean indexes here: " + str(len(clean_idxs)))
     
