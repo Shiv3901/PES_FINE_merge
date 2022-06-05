@@ -202,7 +202,7 @@ def fine(current_features, current_labels, fit='kmeans', previous_features=None,
         clean_labels = cleansing(scores, current_labels)
         probs = None
     elif 'gmm' in fit:
-        clean_labels, probs = fit_mixture(scores, current_labels, p_threshold)
+        clean_labels, probs = fit_mixture(scores, current_labels, 0.5)
     else:
         raise NotImplemented
     
@@ -221,7 +221,7 @@ def cleansing(scores, labels):
 
     for cls in np.unique(labels):
         cls_index = indexes[labels == cls]
-        kmeans = cluster.KMeans(n_clusters=2, random_state=0)
+        kmeans = cluster.KMeans(n_clusters=2)
         
         # # print("Doing it for: " + str(cls))
 

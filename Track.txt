@@ -12,3 +12,9 @@ Run 6       Symmetric       20%     Gmm (p_threshold=0.3, max-iter=100) [300 epo
 run_01_with_FINE
 run_02_with_FINE
 run_01_without_FINE
+
+# FINAL ONES 
+
+trial_first_ever_run    Kmeans
+trial_first_ever_run_1  Gmm    0.7 p_threshold
+trial_first_ever_run_2  Gmm    0.5 p_threshold
