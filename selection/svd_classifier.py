@@ -54,9 +54,13 @@ def get_features(model, dataloader):
 
     model.eval()
     model.cuda()
+
+    iter = iter(dataloader)
+
     with tqdm(dataloader) as progress:
-        pprint(vars(dataloader))
-        for batch_idx, (data, label, index) in enumerate(dataloader):
+        # pprint(vars(dataloader))
+
+        for batch_idx, (data, label, _, _) in enumerate(progress):
             data, label = data.cuda(), label.long()
             feature = model.forward(data, lout=4)
             feature = F.avg_pool2d(feature, 4)
