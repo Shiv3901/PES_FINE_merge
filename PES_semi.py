@@ -228,7 +228,9 @@ def update_train_loader_shiv(train_data, noisy_targets, confident_indexs, unconf
 
     # Loss function
     train_nums = np.zeros(args.num_class, dtype=int)
-    for item in noisy_targets[confident_indexs]:	
+    for item in noisy_targets[confident_indexs]:
+        print(item)	
+        print(item.shape)
         train_nums[item] += 1
 
     # TODO: might have to do this for FINE model as well (the class weights thing)
