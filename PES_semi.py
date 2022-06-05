@@ -182,8 +182,7 @@ def helperFunctionForFINE(train_data, noisy_targets):
     clean_idxs, _ = fine(train_data, noisy_targets, "kmeans")
 
     # print("Length of the clean indexes here: " + str(len(clean_idxs)))
-    print("Clean ids: ", clean_idxs.shape)
-    clean_idxs = clean_idxs
+    
     clean_set = set(clean_idxs)
     noisy_idxs = []
 
@@ -229,9 +228,7 @@ def update_train_loader_shiv(train_data, noisy_targets, confident_indexs, unconf
     # Loss function
     train_nums = np.zeros(args.num_class, dtype=int)
     for item in noisy_targets[confident_indexs]:
-        print(item)	
-        print(item.shape)
-        train_nums[item] += 1
+        train_nums[int(item)] += 1
 
     # TODO: might have to do this for FINE model as well (the class weights thing)
 
