@@ -352,9 +352,9 @@ best_test_acc = 0
 
 # TODO: remove this after testing 
 
-args.T1 = 1
-args.T2 = 1
-args.num_epochs = 3
+args.T1 = 5
+args.T2 = 5
+args.num_epochs = 10
 
 isFine = True
 # indexes = np.random.randint(1, 50000, 1000)
@@ -388,9 +388,9 @@ for epoch in range(args.num_epochs):
 
         # arguments required for mix match that update trainloader returns
         features, labels = get_features(model, train_loader)
-        print("Labels shape: ", labels.shape)
+        # print("Labels shape: ", labels.shape)
         confident_indexs, unconfident_indexs = helperFunctionForFINE(features, labels)
-        print("Confident indexes shape: ", confident_indexs.shape)
+        # print("Confident indexes shape: ", confident_indexs.shape)
         labeled_trainloader, unlabeled_trainloader, class_weights = update_train_loader_shiv(data, noisy_labels, confident_indexs, unconfident_indexs)
 
         # labeled_trainloader, unlabeled_trainloader, class_weights = update_trainloader(model, data, clean_labels, noisy_labels, isFine)

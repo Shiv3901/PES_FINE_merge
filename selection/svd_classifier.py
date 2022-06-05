@@ -55,23 +55,23 @@ def get_features(model, dataloader):
     model.eval()
     model.cuda()
 
-    with tqdm(dataloader) as progress:
+    # with tqdm(dataloader) as progress:
         # pprint(vars(dataloader))
 
-        for i, data in enumerate(dataloader, 0):
-            # get the inputs; data is a list of [inputs, labels]
-            input, label = data
-            input, label = input.cuda(), label.long()
+    for i, data in enumerate(dataloader, 0):
+        # get the inputs; data is a list of [inputs, labels]
+        input, label = data
+        input, label = input.cuda(), label.long()
 
-            feature = model.forward(input, lout=4)
-            feature = F.avg_pool2d(feature, 4)
-            feature = feature.view(feature.size(0), -1)
+        feature = model.forward(input, lout=4)
+        feature = F.avg_pool2d(feature, 4)
+        feature = feature.view(feature.size(0), -1)
 
-            labels = np.concatenate((labels, label.cpu()))
-            if i == 0:
-                features = feature.detach().cpu()
-            else:
-                features = np.concatenate((features, feature.detach().cpu()), axis=0)
+        labels = np.concatenate((labels, label.cpu()))
+        if i == 0:
+            features = feature.detach().cpu()
+        else:
+            features = np.concatenate((features, feature.detach().cpu()), axis=0)
             
     return features, labels 
 
@@ -194,7 +194,7 @@ def fine(current_features, current_labels, fit='kmeans', previous_features=None,
 
     # singular_vector_dict = get_singular_vector_shiv(current_features, current_labels)
     # scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
-    print(scores.shape)
+    # print(scores.shape)
 
     # return 
 
