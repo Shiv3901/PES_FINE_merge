@@ -42,6 +42,8 @@ parser.add_argument('--lambda_u', default=150, type=float, help='weight for unsu
 parser.add_argument('--PES_lr', default=1e-4, type=float, help='initial learning rate')
 parser.add_argument('--T1', default=0, type=int, help='if 0, set in below')
 parser.add_argument('--T2', default=5, type=int, help='default 5')
+parser.add_argument('--modified', default=False, type=bool, help='default false')
+parser.add_argument('--classifier', default='kmeans', type=str, help='default is kmeans')
 args = parser.parse_args()
 print(args)
 os.system('nvidia-smi')
@@ -179,7 +181,7 @@ def splite_confident(outs, clean_targets, noisy_targets):
 
 def helperFunctionForFINE(train_data, noisy_targets):
 	
-    clean_idxs, _ = fine(train_data, noisy_targets, "kmeans")
+    clean_idxs, _ = fine(train_data, noisy_targets, args.classifier)
 
     # print("Length of the clean indexes here: " + str(len(clean_idxs)))
     
@@ -352,11 +354,13 @@ best_test_acc = 0
 
 # TODO: remove this after testing 
 
-args.T1 = 5
-args.T2 = 5
-args.num_epochs = 5
+'''
+    # Command to run the code with flags and stuff 
 
-isFine = False
+    python PES_semi.py --dataset cifar10 --noise_type symmetric --noise_rate 0.2  --lambda_u 15 --T1 5 --T2 5 --num_epochs 10 --modified True --classifier 
+'''
+
+isFine = args.modified 
 # indexes = np.random.randint(1, 50000, 1000)
 
 # data = data[indexes] if isFine else data
