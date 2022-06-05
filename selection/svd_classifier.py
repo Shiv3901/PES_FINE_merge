@@ -55,7 +55,7 @@ def get_features(model, dataloader):
     model.eval()
     model.cuda()
 
-    iter = iter(dataloader)
+    print(dataloader[0])
 
     with tqdm(dataloader) as progress:
         # pprint(vars(dataloader))
