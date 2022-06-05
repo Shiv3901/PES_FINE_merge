@@ -45,6 +45,8 @@ def get_singular_vector(features, labels):
 
     return singular_vector_dict
 
+from pprint import pprint
+
 # TODO: pretty sure that we do not need this function for now (was taken from the FINE paper)
 def get_features(model, dataloader):
 
@@ -53,6 +55,7 @@ def get_features(model, dataloader):
     model.eval()
     model.cuda()
     with tqdm(dataloader) as progress:
+        pprint(vars(progress))
         for batch_idx, (data, label, index) in enumerate(progress):
             data, label = data.cuda(), label.long()
             feature = model.forward(data, lout=4)
