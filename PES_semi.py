@@ -390,8 +390,8 @@ for epoch in range(args.num_epochs):
         # arguments required for mix match that update trainloader returns
         features, labels = get_features(model, train_loader)
         
-        
-        labeled_trainloader, unlabeled_trainloader, class_weights = update_train_loader_shiv(features, labels, helperFunctionForFINE(features, labels))
+        confident_indexs, unconfident_indexs = helperFunctionForFINE(features, labels)
+        labeled_trainloader, unlabeled_trainloader, class_weights = update_train_loader_shiv(features, labels, confident_indexs, unconfident_indexs)
 
         # labeled_trainloader, unlabeled_trainloader, class_weights = update_trainloader(model, data, clean_labels, noisy_labels, isFine)
 
