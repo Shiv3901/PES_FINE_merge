@@ -352,9 +352,9 @@ best_test_acc = 0
 
 # TODO: remove this after testing 
 
-args.T1 = 25
+args.T1 = 5
 args.T2 = 5
-args.num_epochs = 50
+args.num_epochs = 5
 
 isFine = False
 # indexes = np.random.randint(1, 50000, 1000)
@@ -400,9 +400,9 @@ for epoch in range(args.num_epochs):
         # mixmatch to learn from the clean models and make the noisy models correct 
         MixMatch_train(epoch, model, optimizer, labeled_trainloader, unlabeled_trainloader, class_weights)
 
-        # validation 
-        _, test_acc = evaluate(model, test_loader, ceriation, "Epoch " + str(epoch) + " Test Acc:")
-        best_test_acc = test_acc if best_test_acc < test_acc else best_test_acc
-        scheduler.step()
+    # validation 
+    _, test_acc = evaluate(model, test_loader, ceriation, "Epoch " + str(epoch) + " Test Acc:")
+    best_test_acc = test_acc if best_test_acc < test_acc else best_test_acc
+    scheduler.step()
 
 print(getTime(), "Best Test Acc:", best_test_acc)
