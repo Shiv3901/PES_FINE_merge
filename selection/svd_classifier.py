@@ -47,7 +47,25 @@ def get_singular_vector(features, labels):
 
 # TODO: pretty sure that we do not need this function for now (was taken from the FINE paper)
 def get_features(model, dataloader):
-    return 
+
+    labels = np.empty((0,))
+
+    model.eval()
+    model.cuda()
+    with tqdm(dataloader) as progress:
+        for batch_idx, (data, label, index) in enumerate(progress):
+            data, label = data.cuda(), label.long()
+            feature = model.forward(data, lout=4)
+            feature = F.avg_pool2d(feature, 4)
+            feature = feature.view(feature.size(0), -1)
+            
+            labels = np.concatenate((labels, label.cpu()))
+            if batch_idx == 0:
+                features = feature.detach().cpu()
+            else:
+                features = np.concatenate((features, feature.detach().cpu()), axis=0)
+    
+    return features, labels
 
 def get_score(singular_vector_dict, features, labels, normalization=True):
     

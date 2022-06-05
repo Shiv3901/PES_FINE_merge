@@ -179,17 +179,6 @@ def splite_confident(outs, clean_targets, noisy_targets):
 
 def helperFunctionForFINE(train_data, noisy_targets):
 	
-    # lot_size = len(noisy_targets) / k
-
-    # print("Shape of the train data is: ", train_data.shape)
-
-    # FIXME: might not be taking the last index, so just have a look 
-    # for i in range(k):
-    #     print("Batch No. "+  str(i+1) + " Starting")
-    #     tempArr, _ = fine(current_features=train_data[lot_size*i:lot_size*(i+1)], current_labels=noisy_targets[lot_size*i:lot_size*(i+1)], fit="gmm")
-    #     tempArr = [(val + lot_size*i) for val in tempArr]
-    #     clean_set |= set(tempArr)
-
     clean_idxs, _ = fine(train_data, noisy_targets, "kmeans")
 
     # print("Length of the clean indexes here: " + str(len(clean_idxs)))
@@ -356,23 +345,24 @@ print("Epochs after Stopping: " + str(args.num_epochs - args.T1))
 
 for epoch in range(args.num_epochs):
 
-	print("Epoch: ", epoch)
+    print("Epoch: ", epoch)
     # training per say
-	if epoch < args.T1:
-		train(model, train_loader, optimizer, ceriation, epoch)
-	else:
-		if epoch == args.T1:
-			model = noisy_refine(model, train_loader, 0, args.T2)
+    if epoch < args.T1:
+        train(model, train_loader, optimizer, ceriation, epoch)
+    else:
+        if epoch == args.T1:
+            model = noisy_refine(model, train_loader, 0, args.T2)
 
         # arguments required for mix match that update trainloader returns
-		labeled_trainloader, unlabeled_trainloader, class_weights = update_trainloader(model, data, clean_labels, noisy_labels, isFine)
+        features, labels = get_features(model, train_loader)
+        labeled_trainloader, unlabeled_trainloader, class_weights = update_trainloader(model, data, clean_labels, noisy_labels, isFine)
 
         # mixmatch to learn from the clean models and make the noisy models correct 
-		MixMatch_train(epoch, model, optimizer, labeled_trainloader, unlabeled_trainloader, class_weights)
+        MixMatch_train(epoch, model, optimizer, labeled_trainloader, unlabeled_trainloader, class_weights)
 
-    # validation 
-	_, test_acc = evaluate(model, test_loader, ceriation, "Epoch " + str(epoch) + " Test Acc:")
-	best_test_acc = test_acc if best_test_acc < test_acc else best_test_acc
-	scheduler.step()
+        # validation 
+        _, test_acc = evaluate(model, test_loader, ceriation, "Epoch " + str(epoch) + " Test Acc:")
+        best_test_acc = test_acc if best_test_acc < test_acc else best_test_acc
+        scheduler.step()
 
 print(getTime(), "Best Test Acc:", best_test_acc)
