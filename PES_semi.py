@@ -182,7 +182,7 @@ def helperFunctionForFINE(train_data, noisy_targets):
     clean_idxs, _ = fine(train_data, noisy_targets, "kmeans")
 
     # print("Length of the clean indexes here: " + str(len(clean_idxs)))
-    # print(clean_idxs.shape)
+    print("Clean ids: ", clean_idxs.shape)
     clean_idxs = clean_idxs
     clean_set = set(clean_idxs)
     noisy_idxs = []
@@ -389,8 +389,9 @@ for epoch in range(args.num_epochs):
 
         # arguments required for mix match that update trainloader returns
         features, labels = get_features(model, train_loader)
-        print(labels.shape)
+        print("Labels shape: ", labels.shape)
         confident_indexs, unconfident_indexs = helperFunctionForFINE(features, labels)
+        print("Confident indexes shape: ", confident_indexs.shape)
         labeled_trainloader, unlabeled_trainloader, class_weights = update_train_loader_shiv(features, labels, confident_indexs, unconfident_indexs)
 
         # labeled_trainloader, unlabeled_trainloader, class_weights = update_trainloader(model, data, clean_labels, noisy_labels, isFine)
