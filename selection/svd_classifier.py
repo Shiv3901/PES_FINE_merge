@@ -64,10 +64,10 @@ def get_features(model, dataloader):
         # pprint(vars(dataloader))
 
         for i, data in enumerate(dataloader, 0):
-        # get the inputs; data is a list of [inputs, labels]
-            data, label = data
+            # get the inputs; data is a list of [inputs, labels]
+            inputs, label = data
 
-            print(label.shape)
+            print(inputs.shape, label.shape)
             
         return [], []
 
