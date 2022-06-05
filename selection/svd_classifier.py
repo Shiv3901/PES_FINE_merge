@@ -55,10 +55,21 @@ def get_features(model, dataloader):
     model.eval()
     model.cuda()
 
-    print(dataloader[0])
+    # print(dataloader[0])
+
+    # dataiter = iter(dataloader)
+
 
     with tqdm(dataloader) as progress:
         # pprint(vars(dataloader))
+
+        for i, data in enumerate(dataloader, 0):
+        # get the inputs; data is a list of [inputs, labels]
+            data, label = data
+
+            print(label)
+            
+        return [], []
 
         for batch_idx, (data, label, _, _) in enumerate(progress):
             data, label = data.cuda(), label.long()
