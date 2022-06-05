@@ -55,11 +55,6 @@ def get_features(model, dataloader):
     model.eval()
     model.cuda()
 
-    # print(dataloader[0])
-
-    # dataiter = iter(dataloader)
-
-
     with tqdm(dataloader) as progress:
         # pprint(vars(dataloader))
 
@@ -68,7 +63,17 @@ def get_features(model, dataloader):
             input, label = data
             input, label = input.cuda(), label.long()
 
-            print(input.shape, label.shape)
+            feature = model.forward(input, lout=4)
+            feature = F.avg_pool2d(feature, 4)
+            feature = feature.view(feature.size(0), -1)
+
+            labels = np.concatenate((labels, label.cpu()))
+            if i == 0:
+                features = feature.detach().cpu()
+            else:
+                features = np.concatenate((features, feature.detach().cpu()), axis=0)
+
+        print(features.shape, labels.shape)
             
         return [], []
 
