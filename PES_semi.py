@@ -212,6 +212,37 @@ def return_confident_indexes(model, train_data, clean_targets, noisy_targets, is
 
 # takes the model, train data, clean targets, and noisy targets to return labeled, unlabeles loaders with class weights 
 
+# it's literally just copy pasted from below
+def update_train_loader_shiv(train_data, noisy_targets, confident_indexs, unconfident_indexs):
+    confident_dataset = Semi_Labeled_Dataset(train_data[confident_indexs], noisy_targets[confident_indexs], transform_train)
+    unconfident_dataset = Semi_Unlabeled_Dataset(train_data[unconfident_indexs], transform_train)
+
+    uncon_batch = int(args.batch_size / 2) if len(unconfident_indexs) > len(confident_indexs) else int(len(unconfident_indexs) / (len(confident_indexs) + len(unconfident_indexs)) * args.batch_size)
+    if uncon_batch == 0: uncon_batch = 5
+    con_batch = args.batch_size - uncon_batch
+
+    # print(con_batch, uncon_batch)
+
+    labeled_trainloader = DataLoader(dataset=confident_dataset, batch_size=con_batch, shuffle=True, num_workers=8, pin_memory=True, drop_last=True)
+    unlabeled_trainloader = DataLoader(dataset=unconfident_dataset, batch_size=uncon_batch, shuffle=True, num_workers=8, pin_memory=True, drop_last=True)
+
+    # Loss function
+    train_nums = np.zeros(args.num_class, dtype=int)
+    for item in noisy_targets[confident_indexs]:	
+        train_nums[item] += 1
+
+    # TODO: might have to do this for FINE model as well (the class weights thing)
+
+    # zeros are not calculated by mean
+    # avoid too large numbers that may result in out of range of loss.
+    with np.errstate(divide='ignore'):
+        cw = np.mean(train_nums[train_nums != 0]) / train_nums
+        cw[cw == np.inf] = 0
+        cw[cw > 3] = 3
+    class_weights = torch.FloatTensor(cw).cuda(device=gpu_id)
+    # print("Category", train_nums, "precent", class_weights)
+    return labeled_trainloader, unlabeled_trainloader, class_weights 
+
 def update_trainloader(model, train_data, clean_targets, noisy_targets, isFine=False):
 
     # print("Update Train Loader is called")
@@ -343,8 +374,8 @@ print("Epochs before Stopping: " + str(args.T1))
 print("Epochs for reintialising: " + str(args.T2))
 print("Epochs after Stopping: " + str(args.num_epochs - args.T1))
 
-features, labels = get_features(model, train_loader)
-quit()
+# features, labels = get_features(model, train_loader)
+# quit()
 
 for epoch in range(args.num_epochs):
 
@@ -359,7 +390,10 @@ for epoch in range(args.num_epochs):
         # arguments required for mix match that update trainloader returns
         features, labels = get_features(model, train_loader)
         
-        labeled_trainloader, unlabeled_trainloader, class_weights = update_trainloader(model, data, clean_labels, noisy_labels, isFine)
+        
+        labeled_trainloader, unlabeled_trainloader, class_weights = update_train_loader_shiv(features, labels, helperFunctionForFINE(features, labels))
+
+        # labeled_trainloader, unlabeled_trainloader, class_weights = update_trainloader(model, data, clean_labels, noisy_labels, isFine)
 
         # mixmatch to learn from the clean models and make the noisy models correct 
         MixMatch_train(epoch, model, optimizer, labeled_trainloader, unlabeled_trainloader, class_weights)

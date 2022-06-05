@@ -72,24 +72,8 @@ def get_features(model, dataloader):
                 features = feature.detach().cpu()
             else:
                 features = np.concatenate((features, feature.detach().cpu()), axis=0)
-
-        print(features.shape, labels.shape)
             
-        return [], []
-
-        for batch_idx, (data, label, _, _) in enumerate(progress):
-            data, label = data.cuda(), label.long()
-            feature = model.forward(data, lout=4)
-            feature = F.avg_pool2d(feature, 4)
-            feature = feature.view(feature.size(0), -1)
-            
-            labels = np.concatenate((labels, label.cpu()))
-            if batch_idx == 0:
-                features = feature.detach().cpu()
-            else:
-                features = np.concatenate((features, feature.detach().cpu()), axis=0)
-    
-    return features, labels
+    return features, labels 
 
 def get_score(singular_vector_dict, features, labels, normalization=True):
     
