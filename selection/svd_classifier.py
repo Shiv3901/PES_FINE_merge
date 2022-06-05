@@ -90,8 +90,8 @@ def get_score(singular_vector_dict, features, labels, normalization=True):
             # print(b.shape)
             
             tempAns = np.abs(np.inner(a, b))
-            print("TempANs Shape: ", tempAns.shape)
-            scores.append(tempAns)
+            # print("TempANs: ", tempAnsgit p)
+            scores.append([tempAns])
 
 
     else:
