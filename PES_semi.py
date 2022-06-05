@@ -356,7 +356,7 @@ args.T1 = 25
 args.T2 = 5
 args.num_epochs = 50
 
-isFine = True
+isFine = False
 # indexes = np.random.randint(1, 50000, 1000)
 
 # data = data[indexes] if isFine else data

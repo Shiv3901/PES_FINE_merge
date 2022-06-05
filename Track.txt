@@ -15,6 +15,12 @@ run_01_without_FINE
 
 # FINAL ONES 
 
+                        Type        p_threshold     epochs
+
 trial_first_ever_run    Kmeans
-trial_first_ever_run_1  Gmm    0.7 p_threshold
-trial_first_ever_run_2  Gmm    0.5 p_threshold
+trial_first_ever_run_1  Gmm         0.7             5
+trial_first_ever_run_2  Gmm         0.5             5
+trial_first_ever_run_3  Kmeans                      25
+trial_first_ever_run_4  without FINE                25
+
+
