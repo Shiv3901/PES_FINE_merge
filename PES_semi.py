@@ -348,29 +348,18 @@ else:
 
 best_test_acc = 0
 
-# TODO: update the code to take arguments from the command line
 # TODO: move all the code related to FINE to the selection folder 
 # TODO: tidy up the code with comments and appropriate locations
 
-# TODO: remove this after testing 
 
 '''
     # Command to run the code with flags and stuff 
 
-    python PES_semi.py --dataset cifar10 --noise_type symmetric --noise_rate 0.2  --lambda_u 15 --T1 5 --T2 5 --num_epochs 10 --modified True --classifier 
+    python PES_semi.py --dataset cifar10 --noise_type symmetric --noise_rate 0.2  --lambda_u 15 --T1 5 --T2 5 --num_epochs 10 --modified True --classifier | tee trial_first_ever_run_5
 '''
 
 isFine = args.modified 
-# indexes = np.random.randint(1, 50000, 1000)
 
-# data = data[indexes] if isFine else data
-# clean_labels = clean_labels[indexes] if isFine else clean_labels
-# noisy_labels = noisy_labels[indexes] if isFine else noisy_labels
-
-
-# _, _, _ = update_trainloader(model, data, clean_labels, noisy_labels, True)
-
-# quit()
 
 print("Running with" + ("" if isFine else "out") + " FINE")
 print("Epochs before Stopping: " + str(args.T1))
@@ -383,7 +372,7 @@ print("Epochs after Stopping: " + str(args.num_epochs - args.T1))
 for epoch in range(args.num_epochs):
 
     print("Epoch: ", epoch)
-    # training per say
+    
     if epoch < args.T1:
         train(model, train_loader, optimizer, ceriation, epoch)
     else:
