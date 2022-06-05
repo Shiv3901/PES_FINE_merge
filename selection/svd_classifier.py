@@ -67,7 +67,7 @@ def get_features(model, dataloader):
         # get the inputs; data is a list of [inputs, labels]
             data, label = data
 
-            print(label)
+            print(label.shape)
             
         return [], []
 
