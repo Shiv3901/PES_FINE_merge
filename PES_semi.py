@@ -357,11 +357,11 @@ args.T2 = 1
 args.num_epochs = 3
 
 isFine = True
-indexes = np.random.randint(1, 50000, 1000)
+# indexes = np.random.randint(1, 50000, 1000)
 
-data = data[indexes] if isFine else data
-clean_labels = clean_labels[indexes] if isFine else clean_labels
-noisy_labels = noisy_labels[indexes] if isFine else noisy_labels
+# data = data[indexes] if isFine else data
+# clean_labels = clean_labels[indexes] if isFine else clean_labels
+# noisy_labels = noisy_labels[indexes] if isFine else noisy_labels
 
 
 # _, _, _ = update_trainloader(model, data, clean_labels, noisy_labels, True)
