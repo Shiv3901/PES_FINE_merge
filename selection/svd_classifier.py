@@ -35,12 +35,12 @@ def get_singular_vector(features, labels):
             # _, s, v = np.linalg.svd(features[labels==index])
             
             # Shiv's code here
-            u, _, v = np.linalg.svd(features[labels==index], full_matrices=False)
+            u, _, v = np.linalg.svd(features[labels==index])
 
             # print("U: ", u.shape)
             # print("v: ", v.shape)
 
-            singular_vector_dict[index] = u[0]
+            singular_vector_dict[index] = v[0]
             pbar.update(1)
 
     return singular_vector_dict
@@ -89,8 +89,8 @@ def get_score(singular_vector_dict, features, labels, normalization=True):
             # print(a.shape)
             # print(b.shape)
             
-            tempAns = np.abs(np.inner(a.reshape(-1, 3072), b.reshape(-1, 3072)))
-            # print("TempANs Shape: ", tempAns.shape)
+            tempAns = np.abs(np.inner(a, b))
+            print("TempANs Shape: ", tempAns.shape)
             scores.append(tempAns[0])
 
 
