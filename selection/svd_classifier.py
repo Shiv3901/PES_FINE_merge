@@ -38,7 +38,7 @@ def get_singular_vector(features, labels):
 def get_features_custom(model, data):
 
     for i, val in enumerate(data):
-        val = tf.convert_to_tensor(val)
+        val = torch.tensor(val)
         input = model(val)
         input = input.cuda
 
