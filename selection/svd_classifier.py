@@ -49,7 +49,7 @@ def get_features(model, dataloader):
 
     for i, data in enumerate(dataloader, 0):
         # get the inputs; data is a list of [inputs, labels]
-        print(len(data))
+        print(len(data[0]))
         return
         input, label = data
         input, label = input.cuda(), label.long()
