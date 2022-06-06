@@ -420,7 +420,7 @@ for epoch in range(args.num_epochs):
             # arguments required for mix match that update trainloader returns
             features, labels = get_features(model, train_loader)
             # print("Labels shape: ", labels.shape) # 49920
-            confident_indexs, unconfident_indexs = helperFunctionForFINE(features, labels)
+            confident_indexs, unconfident_indexs = helperFunctionForFINE(features, noisy_labels)
             evaluate_accuracy(confident_indexs, unconfident_indexs, noisy_labels, clean_labels)
             # print("Confident indexes shape: ", confident_indexs.shape)
             labeled_trainloader, unlabeled_trainloader, class_weights = update_train_loader_shiv(data, noisy_labels, confident_indexs, unconfident_indexs)
