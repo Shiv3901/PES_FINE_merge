@@ -70,6 +70,8 @@ def get_features(model, dataloader):
         input, label = data
         input, label = input.cuda(), label.long()
 
+        print(input.size())
+
         feature = model.forward(input, lout=4)
         feature = F.avg_pool2d(feature, 4)
         feature = feature.view(feature.size(0), -1)
