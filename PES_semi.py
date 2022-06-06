@@ -346,7 +346,7 @@ if args.modified :
     random.shuffle(c)
 
     data, noisy_labels, clean_labels = zip(*c)
-    data, noisy_labels, clean_labels = list(data), list(noisy_labels), list(clean_labels)
+    data, noisy_labels, clean_labels = np.asarray(data), np.asarray(noisy_labels), np.asarray(clean_labels)
 
 train_dataset = Train_Dataset(data, noisy_labels, transform_train)
 train_loader = DataLoader(dataset=train_dataset, batch_size=args.batch_size, shuffle=False, num_workers=8, pin_memory=True, drop_last=True)
