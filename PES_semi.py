@@ -390,9 +390,6 @@ def evaluate_accuracy(confi_idxs, unconfi_idxs, noisy_labels, clean_labels):
 
     print("Confident: " + str(correct_confident_pred + correct_unconfident_pred) + " / " + str(noisy_labels.size))
 
-    print("Accuracy: " + str(float((correct_confident_pred + correct_unconfident_pred) / noisy_labels.size)) + " %")
-
-
     print("-" * 80)
 
     return 
