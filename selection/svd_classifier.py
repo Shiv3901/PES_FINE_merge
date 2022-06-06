@@ -104,7 +104,7 @@ def get_score(singular_vector_dict, features, labels, normalization=True):
     return np.array(scores)
 
 # function that fits the labels using GMM 
-def fit_mixture(scores, labels, p_threshold=0.30):
+def fit_mixture(scores, labels, p_threshold=0.50):
 
     clean_labels = []
     indexes = np.array(range(len(scores)))
