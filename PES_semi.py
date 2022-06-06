@@ -346,6 +346,7 @@ if args.modified :
     random.shuffle(c)
 
     data, noisy_labels, clean_labels = zip(*c)
+    data, noisy_labels, clean_labels = list(data), list(noisy_labels), list(clean_labels)
 
 train_dataset = Train_Dataset(data, noisy_labels, transform_train)
 train_loader = DataLoader(dataset=train_dataset, batch_size=args.batch_size, shuffle=False, num_workers=8, pin_memory=True, drop_last=True)
@@ -447,15 +448,6 @@ for epoch in range(args.num_epochs):
             # print("Labels shape: ", labels.shape) # 49920
             noisy_labels = np.delete(noisy_labels, slice(49920, 50000))
             confident_indexs, unconfident_indexs = helperFunctionForFINE(features, noisy_labels)
-
-            # TODO: remove this afterwards
-            counter = 0
-
-            for i in range(len(labels)):
-                if labels[i] == noisy_labels[i]:
-                    counter += 1
-
-            print("Is this right?: " + str(counter))
 
             evaluate_accuracy(confident_indexs, unconfident_indexs, noisy_labels, clean_labels)
             # print("Confident indexes shape: ", confident_indexs.shape)
