@@ -34,9 +34,9 @@ def get_singular_vector(features, labels):
             pbar.update(1)
 
     return singular_vector_dict
-    
+
 transform = transforms.Compose([
-    transforms.PILToTensor()
+    transforms.ToTensor()
 ])
 
 def get_features_custom(model, data):
