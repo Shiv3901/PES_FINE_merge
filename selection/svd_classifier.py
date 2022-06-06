@@ -12,6 +12,7 @@ from sklearn import cluster
 import numpy as np
 import warnings
 from tqdm import tqdm
+import tensorflow as tf
 
 warnings.filterwarnings("ignore")
 
@@ -36,7 +37,10 @@ def get_singular_vector(features, labels):
 
 def get_features_custom(model, data):
 
-    for i, input in enumerate(data):
+    for i, val in enumerate(data):
+        val = tf.convert_to_tensor(val)
+        input = model(val)
+        input = input.cuda
 
         feature = model.forward(input, lout=4)
         feature = F.avg_pool2d(feature, 4)
