@@ -47,7 +47,7 @@ def get_features_custom(model, data):
         # val = torch.tensor(val)
         image_from_array = torchvision.transforms.functional.to_pil_image(val)
         img_tensor = torchvision.transforms.functional.to_tensor(image_from_array)
-        print(img_tensor.size())
+        # print(img_tensor.size())
         input = model(img_tensor)
         input = input.cuda
 
@@ -80,7 +80,7 @@ def get_features(model, dataloader):
         input, label = data
         input, label = input.cuda(), label.long()
 
-        print(input.size())
+        # print(input.size())
 
         feature = model.forward(input, lout=4)
         feature = F.avg_pool2d(feature, 4)
