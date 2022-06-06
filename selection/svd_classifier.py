@@ -12,7 +12,7 @@ from sklearn import cluster
 import numpy as np
 import warnings
 from tqdm import tqdm
-import torchvision.transforms as transforms
+import torchvision
 
 from PIL import Image
 
@@ -37,16 +37,16 @@ def get_singular_vector(features, labels):
 
     return singular_vector_dict
 
-transform = transforms.Compose([
-    transforms.PILToTensor()
-])
+# transform = transforms.Compose([
+#     transforms.PILToTensor()
+# ])
 
 def get_features_custom(model, data):
 
     for i, val in enumerate(data):
         # val = torch.tensor(val)
         image_from_array = Image.fromarray(val)
-        img_tensor = transform(image_from_array)
+        img_tensor = torchvision.transforms.functional.pil_to_tensor(image_from_array)
         print(img_tensor.size())
         input = model(img_tensor)
         input = input.cuda
