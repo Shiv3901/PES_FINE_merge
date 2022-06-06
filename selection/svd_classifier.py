@@ -7,7 +7,7 @@ import torch.backends.cudnn as cudnn
 import random 
 import os
 import numpy as np
-from sklearn.mixture import GaussianMixture
+from sklearn.mixture import GaussianMixture as GMM
 from sklearn import cluster
 import numpy as np
 import warnings
@@ -25,21 +25,10 @@ torch.cuda.manual_seed_all(SEED)
 
 def get_singular_vector(features, labels):
 
-    print(features.shape)
-
-    # features = features.reshape(-1, 32*32*3)
-
     singular_vector_dict = {}
     with tqdm(total=len(np.unique(labels))) as pbar:
         for index in np.unique(labels):
-            # _, s, v = np.linalg.svd(features[labels==index])
-            
-            # Shiv's code here
-            u, _, v = np.linalg.svd(features[labels==index])
-
-            # print("U: ", u.shape)
-            # print("v: ", v.shape)
-
+            _, _, v = np.linalg.svd(features[labels==index])
             singular_vector_dict[index] = v[0]
             pbar.update(1)
 
@@ -80,26 +69,10 @@ def get_features(model, dataloader):
 def get_score(singular_vector_dict, features, labels, normalization=True):
     
     if normalization:
-        # scores = [np.abs(np.inner(singular_vector_dict[labels[indx]], feat/np.linalg.norm(feat))) for indx, feat in enumerate(tqdm(features))]
-
-        scores = []
-        for idx, feat in enumerate(tqdm(features)):
-
-            a = singular_vector_dict[labels[idx]]
-            b = feat / np.linalg.norm(feat)
-
-            # print(a.shape)
-            # print(b.shape)
-            
-            tempAns = np.abs(np.inner(a, b))
-            # print("TempANs: ", tempAnsgit p)
-            scores.append([tempAns])
-
-
+        scores = [np.abs(np.inner(singular_vector_dict[labels[indx]], feat/np.linalg.norm(feat))) for indx, feat in enumerate(tqdm(features))]
     else:
-        scores = [np.abs(np.inner(singular_vector_dict[labels[indx]], feat)) for indx, feat in enumerate(tqdm(features))]    
-    
-
+        scores = [np.abs(np.inner(singular_vector_dict[labels[indx]], feat)) for indx, feat in enumerate(tqdm(features))]
+        
     return np.array(scores)
 
 # function that fits the labels using GMM 
@@ -107,108 +80,44 @@ def fit_mixture(scores, labels, p_threshold=0.30):
 
     clean_labels = []
     indexes = np.array(range(len(scores)))
-    probs = {}
-
-    for idx, cls in enumerate(np.unique(labels)):
-        
+    for cls in np.unique(labels):
         cls_index = indexes[labels==cls]
         feats = scores[labels==cls]
+        feats_ = np.ravel(feats).astype(np.float).reshape(-1, 1)
+        gmm = GMM(n_components=2, covariance_type='full', tol=1e-6, max_iter=100)
         
-        gmm = GaussianMixture(n_components=2, covariance_type='diag', tol=1e-6, max_iter=100)
-
-        gmm.fit(feats)
-        prob = gmm.predict_proba(feats)
-        prob = prob[:, gmm.means_.argmax()]
-
-        for i in range(len(cls_index)):
-            probs[cls_index[i]] = prob[i]
-
-        clean_labels += [cls_index[clean_idx] for clean_idx in range(len(cls_index)) if prob[clean_idx] > p_threshold]
-
-    return np.array(clean_labels, dtype=np.int64), probs
-
-from sklearn.decomposition import PCA
-
-def get_score_shiv(current_features):
-
-    pca = PCA(n_components=2, svd_solver='arpack')
+        gmm.fit(feats_)
+        prob = gmm.predict_proba(feats_)
+        prob = prob[:,gmm.means_.argmax()]
+        clean_labels += [cls_index[clean_idx] for clean_idx in range(len(cls_index)) if prob[clean_idx] > p_threshold] 
     
-    return pca.fit_transform(current_features.reshape(-1, 3072))
+    return np.array(clean_labels, dtype=np.int64)
 
-def get_singular_vector_shiv(features, labels):
+def fine(current_features, current_labels, fit='kmeans', prev_features=None, prev_labels=None, p_threshold=0.5, norm=True, eigen=True):
 
-    singular_vector_dict = {}
-    with tqdm(total=len(np.unique(labels))) as pbar:
-        for index in np.unique(labels):
-
-            feats = features[labels==index]
-            
-            pca = PCA(n_components=64, svd_solver='full', random_state=68)
-
-            _ = pca.fit(feats.reshape(-1, 3072))
-
-            singular_vector_dict[index] = pca.components_
-
-            pbar.update(1)
-
-    return singular_vector_dict
-
-
-def get_score_individual(features, labels):
-
-    scores_dict = {}
-    indexes = np.array(range(len(labels)))
-
-    with tqdm(total=len(np.unique(labels))) as pbar:
-        for index in np.unique(labels):
-            cls_index = indexes[labels==index]
-            feats = features[labels==index]
-            
-            pca = PCA(n_components=2, svd_solver='full', random_state=68)
-
-            score_vals = pca.fit_transform(feats.reshape(-1, 3072))
-
-            compo = pca.components_
-
-            print(compo.shape)
-
-            for i in range(len(cls_index)):
-                scores_dict[cls_index[i]] = score_vals[i]
-            pbar.update(1)
-
-    scores = []
-    for i in range(len(labels)):
-        scores.append(scores_dict[i])
-            
-    return np.array(scores, dtype=np.double)
-
-def fine(current_features, current_labels, fit='kmeans', previous_features=None, previous_labels=None, p_threshold=0.7):
-
-    # if not previous_features and not previous_labels:
-    #     singular_vector_dict = get_singular_vector(previous_features, previous_labels)
+    if eigen is True:
+        if prev_features is not None and prev_labels is not None:
+            vector_dict = get_singular_vector(prev_features, prev_labels)
+        else:
+            vector_dict = get_singular_vector(current_features, current_labels)
     # else:
+    #     if prev_features is not None and prev_labels is not None:
+    #         vector_dict = get_mean_vector(prev_features, prev_labels)
+    #     else:
+    #         vector_dict = get_mean_vector(current_features, current_labels)
 
-    singular_vector_dict = get_singular_vector(current_features, current_labels)
-
-    scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
-    # print("Scores dimension: ", scores.shape)
-    # scores_1 = get_score_shiv(current_features)
-
-    # singular_vector_dict = get_singular_vector_shiv(current_features, current_labels)
-    # scores = get_score(singular_vector_dict, features=current_features, labels=current_labels)
-    # print(scores.shape)
-
-    # return 
-
+    scores = get_score(vector_dict, features = current_features, labels = current_labels, normalization=norm)
+    
     if 'kmeans' in fit:
         clean_labels = cleansing(scores, current_labels)
-        probs = None
     elif 'gmm' in fit:
-        clean_labels, probs = fit_mixture(scores, current_labels, 0.5)
+        clean_labels = fit_mixture(scores, current_labels, p_threshold=p_threshold)
+    # elif 'bmm' in fit:
+    #     clean_labels = fit_mixture_bmm(scores, current_labels)
     else:
         raise NotImplemented
     
-    return clean_labels, probs
+    return clean_labels
 
 from datetime import datetime
 
