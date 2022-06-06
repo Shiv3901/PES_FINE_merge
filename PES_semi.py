@@ -338,7 +338,6 @@ else:
 
 ceriation = nn.CrossEntropyLoss().cuda(device=gpu_id)
 data, _, noisy_labels, _, clean_labels, _ = dataset_split(train_set.data, np.array(train_set.targets), args.noise_rate, args.noise_type, args.data_percent, args.seed, args.num_class, noise_include)
-train_dataset = Train_Dataset(data, noisy_labels, transform_train)
 
 if args.modified : 
 
@@ -348,9 +347,8 @@ if args.modified :
 
     data, noisy_labels, clean_labels = zip(*c)
 
-else:
-
-    train_loader = DataLoader(dataset=train_dataset, batch_size=args.batch_size, shuffle=False, num_workers=8, pin_memory=True, drop_last=True)
+train_dataset = Train_Dataset(data, noisy_labels, transform_train)
+train_loader = DataLoader(dataset=train_dataset, batch_size=args.batch_size, shuffle=False, num_workers=8, pin_memory=True, drop_last=True)
 test_loader = DataLoader(dataset=test_set, batch_size=args.batch_size * 2, shuffle=False, num_workers=8, pin_memory=True)
 
 model = create_model(num_classes=args.num_class)
