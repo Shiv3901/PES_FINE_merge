@@ -24,6 +24,7 @@ trial_first_ever_run_3  Kmeans                      25
 trial_first_ever_run_4  without FINE                25
 trial_first_ever_run_5  Kmeans                      5
 trial_first_ever_run_6  without FINE                5
-trial_first_ever_run_7  Kmeans                      100
+trial_first_ever_run_7  without FINE                100
+trial_first_ever_run_8  Kmeans                      100  # not done yet, cause I deleted it by mistake, but the final test accuray was 90.78
 
 cifar_100_run_1         kmeans                      5
