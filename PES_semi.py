@@ -371,10 +371,29 @@ print("Epochs after Stopping: " + str(args.num_epochs - args.T1))
 
 def evaluate_accuracy(confi_idxs, unconfi_idxs, noisy_labels, clean_labels):
 
-    print("Size of labels: noisy -> " + str(noisy_labels.size) + " clean: " + str(clean_labels.size))
-    print("Total: confident (" + str(len(confi_idxs)) + ") + (" + str(len(unconfi_idxs)) + ") = " + str(len(confi_idxs)+len(unconfi_idxs)))
+    # print("Size of labels: noisy -> " + str(noisy_labels.size) + " clean: " + str(clean_labels.size))
+    # print("Total: confident (" + str(len(confi_idxs)) + ") + (" + str(len(unconfi_idxs)) + ") = " + str(len(confi_idxs)+len(unconfi_idxs)))
 
-    print("-" * 20)
+    print("-" * 80)
+
+    correct_confident_pred = 0
+
+    for index in confi_idxs:
+        if noisy_labels[index] == clean_labels[index]:
+            correct_confident_pred += 1
+
+    correct_unconfident_pred = 0
+
+    for index in unconfi_idxs:
+        if noisy_labels[index] != clean_labels[index]:
+            correct_unconfident_pred += 1
+
+    print("Confident: " + str(correct_confident_pred + correct_unconfident_pred) + " / " + str(noisy_labels.size()))
+
+    print("Accuracy: " + str(float((correct_confident_pred + correct_unconfident_pred) / noisy_labels.size)) + " %")
+
+
+    print("-" * 80)
 
     return 
 
@@ -397,13 +416,12 @@ for epoch in range(args.num_epochs):
             # print("Confident indexes shape: ", confident_indexs.shape)
             labeled_trainloader, unlabeled_trainloader, class_weights = update_train_loader_shiv(data, noisy_labels, confident_indexs, unconfident_indexs)
 
-            print("Length of the labeled trainloader: ", len(labeled_trainloader.dataset))
-            print("Length of the unlabeled trainloader: ", len(unlabeled_trainloader.dataset))
         else:
 
             labeled_trainloader, unlabeled_trainloader, class_weights = update_trainloader(model, data, clean_labels, noisy_labels, isFine)
-            print("Length of the labeled trainloader: ", len(labeled_trainloader.dataset))
-            print("Length of the unlabeled trainloader: ", len(unlabeled_trainloader.dataset))
+
+        # print("Length of the labeled trainloader: ", len(labeled_trainloader.dataset))
+        # print("Length of the unlabeled trainloader: ", len(unlabeled_trainloader.dataset))
 
         # mixmatch to learn from the clean models and make the noisy models correct 
         MixMatch_train(epoch, model, optimizer, labeled_trainloader, unlabeled_trainloader, class_weights)
