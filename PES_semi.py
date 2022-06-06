@@ -391,8 +391,8 @@ def evaluate_accuracy(confi_idxs, unconfi_idxs, noisy_labels, clean_labels):
             correct_unconfident_pred += 1
 
     true_labels = 0
-    for idx, label in noisy_labels.tolist():
-        if label == clean_labels[idx]:
+    for idx in range(noisy_labels.size):
+        if noisy_labels[idx] == clean_labels[idx]:
             true_labels += 1
 
     print("True label count: " + str(true_labels))
@@ -421,7 +421,7 @@ for epoch in range(args.num_epochs):
             features, labels = get_features(model, train_loader)
             # print("Labels shape: ", labels.shape) # 49920
             confident_indexs, unconfident_indexs = helperFunctionForFINE(features, labels)
-            evaluate_accuracy(confident_indexs, unconfident_indexs, labels, clean_labels)
+            evaluate_accuracy(confident_indexs, unconfident_indexs, noisy_labels, clean_labels)
             # print("Confident indexes shape: ", confident_indexs.shape)
             labeled_trainloader, unlabeled_trainloader, class_weights = update_train_loader_shiv(data, noisy_labels, confident_indexs, unconfident_indexs)
 
