@@ -1,4 +1,5 @@
 # first time reviewing the thing right now 
+from cProfile import label
 from distutils.command import clean
 import os
 import os.path
@@ -421,6 +422,16 @@ for epoch in range(args.num_epochs):
             features, labels = get_features(model, train_loader)
             # print("Labels shape: ", labels.shape) # 49920
             confident_indexs, unconfident_indexs = helperFunctionForFINE(features, noisy_labels)
+
+            # TODO: remove this afterwards
+            counter = 0
+
+            for i in range(len(labels)):
+                if labels[i] == noisy_labels[i]:
+                    counter += 1
+
+            print("Is this right?: " + str(counter))
+
             evaluate_accuracy(confident_indexs, unconfident_indexs, noisy_labels, clean_labels)
             # print("Confident indexes shape: ", confident_indexs.shape)
             labeled_trainloader, unlabeled_trainloader, class_weights = update_train_loader_shiv(data, noisy_labels, confident_indexs, unconfident_indexs)

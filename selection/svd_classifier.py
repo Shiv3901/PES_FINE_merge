@@ -34,8 +34,6 @@ def get_singular_vector(features, labels):
 
     return singular_vector_dict
 
-from pprint import pprint
-
 # TODO: pretty sure that we do not need this function for now (was taken from the FINE paper)
 def get_features(model, dataloader):
 
