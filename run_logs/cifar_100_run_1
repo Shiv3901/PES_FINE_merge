@@ -1,0 +1,84 @@
+Mon Jun  6 01:59:49 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.129.06   Driver Version: 470.129.06   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  Off  | 00000000:01:00.0 Off |                  N/A |
+| 47%   83C    P2   239W / 250W |   7271MiB / 11019MiB |     75%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA GeForce ...  Off  | 00000000:02:00.0 Off |                  N/A |
+| 30%   36C    P8     3W / 250W |      8MiB / 11019MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      1202      G   /usr/lib/xorg/Xorg                  9MiB |
+|    0   N/A  N/A      1668      G   /usr/bin/gnome-shell                6MiB |
+|    0   N/A  N/A      5236      C   BS - New Pipeline                4317MiB |
+|    0   N/A  N/A     15978      C   Bootstrapping Iterations         2933MiB |
+|    1   N/A  N/A      1202      G   /usr/lib/xorg/Xorg                  4MiB |
++-----------------------------------------------------------------------------+
+Namespace(PES_lr=0.0001, T=0.5, T1=5, T2=5, alpha=4, batch_size=128, classifier='kmeans', data_path='./data', data_percent=1, dataset='cifar100', lambda_u=15.0, lr=0.02, modified=True, noise_rate=0.2, noise_type='symmetric', num_epochs=10, optim='cos', seed=1, weight_decay=0.0005)
+Downloading https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz to ./data/cifar-100-python.tar.gz
+Extracting ./data/cifar-100-python.tar.gz to ./data
+Files already downloaded and verified
+('include_noise True, new real nosie rate:', 0.2)
+Running with FINE
+Epochs before Stopping: 5
+Epochs for reintialising: 5
+Epochs after Stopping: 5
+('Epoch: ', 0)
+Train Epoch: [0][  0/390]	Time   0.04	Data   0.00	Loss   4.10	Acc@1   9.44
+('02:00:25', 'Epoch 0 Test Acc:', 17.88)
+('Epoch: ', 1)
+Train Epoch: [1][  0/390]	Time   0.04	Data   0.00	Loss   3.66	Acc@1  18.37
+('02:00:41', 'Epoch 1 Test Acc:', 27.66)
+('Epoch: ', 2)
+Train Epoch: [2][  0/390]	Time   0.04	Data   0.00	Loss   3.36	Acc@1  25.29
+('02:00:58', 'Epoch 2 Test Acc:', 33.38)
+('Epoch: ', 3)
+Train Epoch: [3][  0/390]	Time   0.04	Data   0.00	Loss   3.13	Acc@1  31.02
+('02:01:14', 'Epoch 3 Test Acc:', 36.56)
+('Epoch: ', 4)
+Train Epoch: [4][  0/390]	Time   0.04	Data   0.00	Loss   2.93	Acc@1  36.16
+('02:01:31', 'Epoch 4 Test Acc:', 44.29)
+('Epoch: ', 5)
+re-initalize the final layer
+Train Epoch: [0][  0/390]	Time   0.02	Data   0.00	Loss   3.95	Acc@1  21.65
+('02:01:38', 'Epoch 0 Test Acc:', 41.46)
+Train Epoch: [1][  0/390]	Time   0.02	Data   0.00	Loss   3.17	Acc@1  36.32
+('02:01:46', 'Epoch 1 Test Acc:', 46.16)
+Train Epoch: [2][  0/390]	Time   0.02	Data   0.00	Loss   2.92	Acc@1  39.00
+('02:01:54', 'Epoch 2 Test Acc:', 48.17)
+Train Epoch: [3][  0/390]	Time   0.02	Data   0.00	Loss   2.82	Acc@1  40.06
+('02:02:01', 'Epoch 3 Test Acc:', 48.56)
+Train Epoch: [4][  0/390]	Time   0.02	Data   0.00	Loss   2.78	Acc@1  40.68
+('02:02:09', 'Epoch 4 Test Acc:', 48.99)
+(49920, 512)
+(<common.tools.AverageMeter object at 0x7f5b82d17750>, <common.tools.AverageMeter object at 0x7f5b08785d90>, <common.tools.AverageMeter object at 0x7f5b08785590>)
+('02:03:02', 'Epoch 5 Test Acc:', 45.83)
+('Epoch: ', 6)
+(49920, 512)
+(<common.tools.AverageMeter object at 0x7f5b8c7bf710>, <common.tools.AverageMeter object at 0x7f5b8c7cc210>, <common.tools.AverageMeter object at 0x7f5b8c7cc250>)
+('02:03:56', 'Epoch 6 Test Acc:', 52.29)
+('Epoch: ', 7)
+(49920, 512)
+(<common.tools.AverageMeter object at 0x7f5b8340d590>, <common.tools.AverageMeter object at 0x7f5b82cd1c50>, <common.tools.AverageMeter object at 0x7f5b1b025ad0>)
+('02:04:51', 'Epoch 7 Test Acc:', 52.63)
+('Epoch: ', 8)
+(49920, 512)
+(<common.tools.AverageMeter object at 0x7f5b82d17750>, <common.tools.AverageMeter object at 0x7f5b8c7bf710>, <common.tools.AverageMeter object at 0x7f5b8c7cc210>)
+('02:05:43', 'Epoch 8 Test Acc:', 55.5)
+('Epoch: ', 9)
+(49920, 512)
+(<common.tools.AverageMeter object at 0x7f5b833f07d0>, <common.tools.AverageMeter object at 0x7f5b8c7bf790>, <common.tools.AverageMeter object at 0x7f5b8c7cc390>)
+('02:06:32', 'Epoch 9 Test Acc:', 55.66)
+('02:06:32', 'Best Test Acc:', 55.664066314697266)
