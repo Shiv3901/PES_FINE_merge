@@ -12,6 +12,7 @@ from sklearn import cluster
 import numpy as np
 import warnings
 from tqdm import tqdm
+import torchvision.transforms as transforms
 
 warnings.filterwarnings("ignore")
 
@@ -33,12 +34,17 @@ def get_singular_vector(features, labels):
             pbar.update(1)
 
     return singular_vector_dict
+    
+transform = transforms.Compose([
+    transforms.PILToTensor()
+])
 
 def get_features_custom(model, data):
 
     for i, val in enumerate(data):
-        val = torch.tensor(val)
-        input = model(val)
+        # val = torch.tensor(val)
+        img_tensor = transform(val)
+        input = model(img_tensor)
         input = input.cuda
 
         feature = model.forward(input, lout=4)
@@ -69,8 +75,6 @@ def get_features(model, dataloader):
         # get the inputs; data is a list of [inputs, labels]
         input, label = data
         input, label = input.cuda(), label.long()
-
-        print(input.size())
 
         feature = model.forward(input, lout=4)
         feature = F.avg_pool2d(feature, 4)
