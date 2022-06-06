@@ -46,7 +46,7 @@ def get_features_custom(model, data):
     for i, val in enumerate(data):
         # val = torch.tensor(val)
         image_from_array = Image.fromarray(val)
-        img_tensor = torchvision.transforms.functional.pil_to_tensor(image_from_array)
+        img_tensor = torchvision.transforms.functional.to_tensor(image_from_array)
         print(img_tensor.size())
         input = model(img_tensor)
         input = input.cuda
