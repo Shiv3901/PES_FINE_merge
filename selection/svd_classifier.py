@@ -35,15 +35,14 @@ def get_singular_vector(features, labels):
 
     return singular_vector_dict
 
-transform = transforms.Compose([
-    transforms.ToTensor()
-])
+transform = transforms.ToTensor()
 
 def get_features_custom(model, data):
 
     for i, val in enumerate(data):
         # val = torch.tensor(val)
         img_tensor = transform(val)
+        print(img_tensor.size())
         input = model(img_tensor)
         input = input.cuda
 
