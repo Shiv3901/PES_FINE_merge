@@ -369,13 +369,7 @@ print("Epochs after Stopping: " + str(args.num_epochs - args.T1))
 # features, labels = get_features(model, train_loader)
 # quit()
 
-from pprint import pprint
-
 def evaluate_accuracy(confi_idxs, unconfi_idxs, noisy_labels, clean_labels):
-
-    pprint(vars(clean_labels))
-    pprint(vars(confi_idxs))
-    pprint(vars(noisy_labels))
 
     print("Size of labels: noisy -> " + str(noisy_labels.size()) + " clean: " + str(clean_labels.size()))
     print("Total: confident (" + str(confi_idxs.size()) + ") + (" + str(unconfi_idxs.size()) + ") = " + str(confi_idxs.size()+unconfi_idxs.size()))
@@ -402,6 +396,9 @@ for epoch in range(args.num_epochs):
             evaluate_accuracy(confident_indexs, unconfident_indexs, labels, clean_labels)
             # print("Confident indexes shape: ", confident_indexs.shape)
             labeled_trainloader, unlabeled_trainloader, class_weights = update_train_loader_shiv(data, noisy_labels, confident_indexs, unconfident_indexs)
+
+            print("Length of the labeled trainloader: ", len(labeled_trainloader))
+            print("Length of the unlabeled trainloader: ", len(unlabeled_trainloader))
         else:
 
             labeled_trainloader, unlabeled_trainloader, class_weights = update_trainloader(model, data, clean_labels, noisy_labels, isFine)
