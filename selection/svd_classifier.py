@@ -45,7 +45,7 @@ def get_features_custom(model, data):
 
     for i, val in enumerate(data):
         # val = torch.tensor(val)
-        image_from_array = Image.fromarray(val)
+        image_from_array = torchvision.transforms.functional.to_pil_image(val)
         img_tensor = torchvision.transforms.functional.to_tensor(image_from_array)
         print(img_tensor.size())
         input = model(img_tensor)
