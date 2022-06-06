@@ -388,7 +388,7 @@ def evaluate_accuracy(confi_idxs, unconfi_idxs, noisy_labels, clean_labels):
         if noisy_labels[index] != clean_labels[index]:
             correct_unconfident_pred += 1
 
-    print("Confident: " + str(correct_confident_pred + correct_unconfident_pred) + " / " + str(noisy_labels.size()))
+    print("Confident: " + str(correct_confident_pred + correct_unconfident_pred) + " / " + str(noisy_labels.size))
 
     print("Accuracy: " + str(float((correct_confident_pred + correct_unconfident_pred) / noisy_labels.size)) + " %")
 
