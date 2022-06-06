@@ -225,8 +225,8 @@ def update_train_loader_shiv(train_data, noisy_targets, confident_indexs, unconf
 
     # print(con_batch, uncon_batch)
 
-    labeled_trainloader = DataLoader(dataset=confident_dataset, batch_size=con_batch, shuffle=True, num_workers=8, pin_memory=True, drop_last=True)
-    unlabeled_trainloader = DataLoader(dataset=unconfident_dataset, batch_size=uncon_batch, shuffle=True, num_workers=8, pin_memory=True, drop_last=True)
+    labeled_trainloader = DataLoader(dataset=confident_dataset, batch_size=con_batch, shuffle=False, num_workers=8, pin_memory=True, drop_last=True)
+    unlabeled_trainloader = DataLoader(dataset=unconfident_dataset, batch_size=uncon_batch, shuffle=False, num_workers=8, pin_memory=True, drop_last=True)
 
     # Loss function
     train_nums = np.zeros(args.num_class, dtype=int)
