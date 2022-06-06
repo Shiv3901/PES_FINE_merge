@@ -69,9 +69,9 @@ def get_features(model, dataloader):
 def get_score(singular_vector_dict, features, labels, normalization=True):
     
     if normalization:
-        scores = [np.abs(np.inner(singular_vector_dict[labels[indx]], feat/np.linalg.norm(feat))) for indx, feat in enumerate(tqdm(features))]
+        scores = [[np.abs(np.inner(singular_vector_dict[labels[indx]], feat/np.linalg.norm(feat)))] for indx, feat in enumerate(tqdm(features))]
     else:
-        scores = [np.abs(np.inner(singular_vector_dict[labels[indx]], feat)) for indx, feat in enumerate(tqdm(features))]
+        scores = [[np.abs(np.inner(singular_vector_dict[labels[indx]], feat))] for indx, feat in enumerate(tqdm(features))]
         
     return np.array(scores)
 
