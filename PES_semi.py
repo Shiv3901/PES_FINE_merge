@@ -397,23 +397,13 @@ for epoch in range(args.num_epochs):
             # print("Confident indexes shape: ", confident_indexs.shape)
             labeled_trainloader, unlabeled_trainloader, class_weights = update_train_loader_shiv(data, noisy_labels, confident_indexs, unconfident_indexs)
 
-            c_1 = 0
-            for i, data in enumerate(labeled_trainloader, 0):
-                c_1+=1
-
-            c_2 = 0
-            for i, data in enumerate(unlabeled_trainloader, 0):
-                c_2+=1
-
-            print("Length of the data loaders: " + str(c_1) + str(c_2))
-
-            print("Length of the labeled trainloader: ", len(labeled_trainloader))
-            print("Length of the unlabeled trainloader: ", len(unlabeled_trainloader))
+            print("Length of the labeled trainloader: ", labeled_trainloader.length)
+            print("Length of the unlabeled trainloader: ", unlabeled_trainloader.length)
         else:
 
             labeled_trainloader, unlabeled_trainloader, class_weights = update_trainloader(model, data, clean_labels, noisy_labels, isFine)
-            print("Length of the labeled trainloader: ", len(labeled_trainloader))
-            print("Length of the unlabeled trainloader: ", len(unlabeled_trainloader))
+            print("Length of the labeled trainloader: ", labeled_trainloader.length)
+            print("Length of the unlabeled trainloader: ", unlabeled_trainloader.length)
 
         # mixmatch to learn from the clean models and make the noisy models correct 
         MixMatch_train(epoch, model, optimizer, labeled_trainloader, unlabeled_trainloader, class_weights)
