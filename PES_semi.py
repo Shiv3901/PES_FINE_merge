@@ -372,7 +372,7 @@ print("Epochs after Stopping: " + str(args.num_epochs - args.T1))
 for epoch in range(args.num_epochs):
 
     print("Epoch: ", epoch)
-    
+
     if epoch < args.T1:
         train(model, train_loader, optimizer, ceriation, epoch)
     else:
@@ -382,7 +382,7 @@ for epoch in range(args.num_epochs):
         if isFine:
             # arguments required for mix match that update trainloader returns
             features, labels = get_features(model, train_loader)
-            # print("Labels shape: ", labels.shape)
+            # print("Labels shape: ", labels.shape) # 49920
             confident_indexs, unconfident_indexs = helperFunctionForFINE(features, labels)
             # print("Confident indexes shape: ", confident_indexs.shape)
             labeled_trainloader, unlabeled_trainloader, class_weights = update_train_loader_shiv(data, noisy_labels, confident_indexs, unconfident_indexs)

@@ -24,4 +24,6 @@ trial_first_ever_run_3  Kmeans                      25
 trial_first_ever_run_4  without FINE                25
 trial_first_ever_run_5  Kmeans                      5
 trial_first_ever_run_6  without FINE                5
+trial_first_ever_run_7  Kmeans                      100
 
+cifar_100_run_1         kmeans                      5

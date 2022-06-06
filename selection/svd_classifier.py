@@ -55,6 +55,8 @@ def get_features(model, dataloader):
     model.eval()
     model.cuda()
 
+    # TODO: how many samples are in the dataloader 
+
     # with tqdm(dataloader) as progress:
         # pprint(vars(dataloader))
 
