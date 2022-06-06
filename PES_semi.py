@@ -374,6 +374,8 @@ def evaluate_accuracy(confi_idxs, unconfi_idxs, noisy_labels, clean_labels):
     print("Size of labels: noisy -> " + str(noisy_labels.size) + " clean: " + str(clean_labels.size))
     print("Total: confident (" + str(len(confi_idxs)) + ") + (" + str(len(unconfi_idxs)) + ") = " + str(len(confi_idxs)+len(unconfi_idxs)))
 
+    print("Set size: " + str(set(len(confi_idxs))) + ") + (" + str(set(len(unconfi_idxs))) + ") = " + str(set(len(confi_idxs+unconfi_idxs))))
+
     print("-" * 20)
 
     return 
