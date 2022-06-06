@@ -421,6 +421,7 @@ for epoch in range(args.num_epochs):
             # arguments required for mix match that update trainloader returns
             features, labels = get_features(model, train_loader)
             # print("Labels shape: ", labels.shape) # 49920
+            noisy_labels = np.delete(noisy_labels, slice(49920, 50000))
             confident_indexs, unconfident_indexs = helperFunctionForFINE(features, noisy_labels)
 
             # TODO: remove this afterwards
