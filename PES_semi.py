@@ -369,7 +369,13 @@ print("Epochs after Stopping: " + str(args.num_epochs - args.T1))
 # features, labels = get_features(model, train_loader)
 # quit()
 
-def evaluate(confi_idxs, unconfi_idxs, noisy_labels, clean_labels):
+from pprint import pprint
+
+def evaluate_accuracy(confi_idxs, unconfi_idxs, noisy_labels, clean_labels):
+
+    pprint(vars(clean_labels))
+    pprint(vars(confi_idxs))
+    pprint(vars(noisy_labels))
 
     print("Size of labels: noisy -> " + str(noisy_labels.size()) + " clean: " + str(clean_labels.size()))
     print("Total: confident (" + str(confi_idxs.size()) + ") + (" + str(unconfi_idxs.size()) + ") = " + str(confi_idxs.size()+unconfi_idxs.size()))
