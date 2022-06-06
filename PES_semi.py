@@ -372,7 +372,7 @@ print("Epochs after Stopping: " + str(args.num_epochs - args.T1))
 def evaluate_accuracy(confi_idxs, unconfi_idxs, noisy_labels, clean_labels):
 
     print("Size of labels: noisy -> " + str(noisy_labels.size) + " clean: " + str(clean_labels.size))
-    print("Total: confident (" + str(confi_idxs.size) + ") + (" + str(unconfi_idxs.size) + ") = " + str(confi_idxs.size+unconfi_idxs.size))
+    print("Total: confident (" + str(len(confi_idxs)) + ") + (" + str(len(unconfi_idxs)) + ") = " + str(len(confi_idxs)+len(unconfi_idxs)))
 
     print("-" * 20)
 
