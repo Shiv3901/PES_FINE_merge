@@ -12,7 +12,6 @@ from sklearn import cluster
 import numpy as np
 import warnings
 from tqdm import tqdm
-import tensorflow as tf
 
 warnings.filterwarnings("ignore")
 
