@@ -407,6 +407,16 @@ def evaluate_accuracy(confi_idxs, unconfi_idxs, noisy_labels, clean_labels):
 
     return 
 
+features, labels = get_features(model, train_loader)
+
+print("Features: ", features.shape)
+
+features_1 = get_features_custom(model, data)
+
+print("Features: ", features_1.shape)
+
+quit()
+
 for epoch in range(args.num_epochs):
 
     print("Epoch: ", epoch)
