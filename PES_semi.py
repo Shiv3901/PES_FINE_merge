@@ -250,6 +250,8 @@ def update_trainloader(model, train_data, clean_targets, noisy_targets, isFine=F
 
     confident_indexs, unconfident_indexs = return_confident_indexes(model, train_data, clean_targets, noisy_targets, isFine)
 
+    evaluate_accuracy(confident_indexs, unconfident_indexs, noisy_targets, clean_targets)
+
     confident_dataset = Semi_Labeled_Dataset(train_data[confident_indexs], noisy_targets[confident_indexs], transform_train)
     unconfident_dataset = Semi_Unlabeled_Dataset(train_data[unconfident_indexs], transform_train)
 
@@ -371,8 +373,8 @@ print("Epochs after Stopping: " + str(args.num_epochs - args.T1))
 
 def evaluate_accuracy(confi_idxs, unconfi_idxs, noisy_labels, clean_labels):
 
-    # print("Size of labels: noisy -> " + str(noisy_labels.size) + " clean: " + str(clean_labels.size))
-    # print("Total: confident (" + str(len(confi_idxs)) + ") + (" + str(len(unconfi_idxs)) + ") = " + str(len(confi_idxs)+len(unconfi_idxs)))
+    print("Size of labels: noisy -> " + str(noisy_labels.size) + " clean: " + str(clean_labels.size))
+    print("Total: confident (" + str(len(confi_idxs)) + ") + (" + str(len(unconfi_idxs)) + ") = " + str(len(confi_idxs)+len(unconfi_idxs)))
 
     print("-" * 80)
 
