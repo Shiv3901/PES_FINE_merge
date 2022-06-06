@@ -391,7 +391,7 @@ def evaluate_accuracy(confi_idxs, unconfi_idxs, noisy_labels, clean_labels):
             correct_unconfident_pred += 1
 
     true_labels = 0
-    for idx, label in noisy_labels:
+    for idx, label in noisy_labels.tolist():
         if label == clean_labels[idx]:
             true_labels += 1
 
