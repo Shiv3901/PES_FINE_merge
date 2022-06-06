@@ -339,7 +339,18 @@ else:
 ceriation = nn.CrossEntropyLoss().cuda(device=gpu_id)
 data, _, noisy_labels, _, clean_labels, _ = dataset_split(train_set.data, np.array(train_set.targets), args.noise_rate, args.noise_type, args.data_percent, args.seed, args.num_class, noise_include)
 train_dataset = Train_Dataset(data, noisy_labels, transform_train)
-train_loader = DataLoader(dataset=train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=8, pin_memory=True, drop_last=True)
+
+if args.modified : 
+
+    c = list(zip(data, noisy_labels, clean_labels))
+
+    random.shuffle(c)
+
+    data, noisy_labels, clean_labels = zip(*c)
+
+else:
+
+    train_loader = DataLoader(dataset=train_dataset, batch_size=args.batch_size, shuffle=False, num_workers=8, pin_memory=True, drop_last=True)
 test_loader = DataLoader(dataset=test_set, batch_size=args.batch_size * 2, shuffle=False, num_workers=8, pin_memory=True)
 
 model = create_model(num_classes=args.num_class)
@@ -407,15 +418,15 @@ def evaluate_accuracy(confi_idxs, unconfi_idxs, noisy_labels, clean_labels):
 
     return 
 
-features, labels = get_features(model, train_loader)
+# features, labels = get_features(model, train_loader)
 
-print("Features: ", features.shape)
+# print("Features: ", features.shape)
 
-features_1 = get_features_custom(model, data)
+# features_1 = get_features_custom(model, data)
 
-print("Features: ", features_1.shape)
+# print("Features: ", features_1.shape)
 
-quit()
+# quit()
 
 for epoch in range(args.num_epochs):
 
