@@ -34,6 +34,23 @@ def get_singular_vector(features, labels):
 
     return singular_vector_dict
 
+def get_features_custom(model, data):
+
+    for i, val in enumerate(data):
+        input = model(val)
+        input = input.cuda
+
+        feature = model.forward(input, lout=4)
+        feature = F.avg_pool2d(feature, 4)
+        feature = feature.view(feature.size(0), -1)
+
+        if i == 0:
+            features = feature.detach().cpu()
+        else:
+            features = np.concatenate((features, feature.detach().cpu()), axis=0)
+
+    return features
+
 # TODO: pretty sure that we do not need this function for now (was taken from the FINE paper)
 def get_features(model, dataloader):
 
@@ -49,8 +66,6 @@ def get_features(model, dataloader):
 
     for i, data in enumerate(dataloader, 0):
         # get the inputs; data is a list of [inputs, labels]
-        print(data[0].size())
-        return
         input, label = data
         input, label = input.cuda(), label.long()
 
