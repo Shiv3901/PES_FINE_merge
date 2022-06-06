@@ -374,8 +374,6 @@ def evaluate_accuracy(confi_idxs, unconfi_idxs, noisy_labels, clean_labels):
     print("Size of labels: noisy -> " + str(noisy_labels.size) + " clean: " + str(clean_labels.size))
     print("Total: confident (" + str(len(confi_idxs)) + ") + (" + str(len(unconfi_idxs)) + ") = " + str(len(confi_idxs)+len(unconfi_idxs)))
 
-    print("Set size: " + str(len(set(confi_idxs))) + ") + (" + str(len(set(unconfi_idxs))) + ") = " + str(len(set(confi_idxs+unconfi_idxs))))
-
     print("-" * 20)
 
     return 
@@ -399,11 +397,23 @@ for epoch in range(args.num_epochs):
             # print("Confident indexes shape: ", confident_indexs.shape)
             labeled_trainloader, unlabeled_trainloader, class_weights = update_train_loader_shiv(data, noisy_labels, confident_indexs, unconfident_indexs)
 
+            c_1 = 0
+            for i, data in enumerate(labeled_trainloader, 0):
+                c_1+=1
+
+            c_2 = 0
+            for i, data in enumerate(unlabeled_trainloader, 0):
+                c_2+=1
+
+            print("Length of the data loaders: " + str(c_1) + str(c_2))
+
             print("Length of the labeled trainloader: ", len(labeled_trainloader))
             print("Length of the unlabeled trainloader: ", len(unlabeled_trainloader))
         else:
 
             labeled_trainloader, unlabeled_trainloader, class_weights = update_trainloader(model, data, clean_labels, noisy_labels, isFine)
+            print("Length of the labeled trainloader: ", len(labeled_trainloader))
+            print("Length of the unlabeled trainloader: ", len(unlabeled_trainloader))
 
         # mixmatch to learn from the clean models and make the noisy models correct 
         MixMatch_train(epoch, model, optimizer, labeled_trainloader, unlabeled_trainloader, class_weights)
