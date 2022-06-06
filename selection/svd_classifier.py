@@ -12,6 +12,7 @@ from sklearn import cluster
 import numpy as np
 import warnings
 from tqdm import tqdm
+import tensorflow as tf
 
 warnings.filterwarnings("ignore")
 
@@ -37,6 +38,7 @@ def get_singular_vector(features, labels):
 def get_features_custom(model, data):
 
     for i, val in enumerate(data):
+        val = tf.convert_to_tensor(val)
         input = model(val)
         input = input.cuda
 
@@ -144,49 +146,13 @@ def cleansing(scores, labels):
 
     indexes = np.array(range(len(scores)))
     clean_labels = []
-
     for cls in np.unique(labels):
-        cls_index = indexes[labels == cls]
-        kmeans = cluster.KMeans(n_clusters=2)
+        cls_index = indexes[labels==cls]
+        kmeans = cluster.KMeans(n_clusters=2, random_state=0).fit(scores[cls_index].reshape(-1, 1))
+        if np.mean(scores[cls_index][kmeans.labels_==0]) < np.mean(scores[cls_index][kmeans.labels_==1]): kmeans.labels_ = 1 - kmeans.labels_
+            
+        clean_labels += cls_index[kmeans.labels_ == 0].tolist()
         
-        # # print("Doing it for: " + str(cls))
-
-        feats = scores[cls_index]
-
-        # # print(feats.shape)
+    return np.array(clean_labels, dtype=np.int64)
         
-        # FIXME: remove this once not needed 
-        # if feats.shape[0] < 50: continue
-
-        # feats_ = feats.reshape(feats.shape[0], 32*32*32*3)
-
-        # # print(# print_current_time("start: "))
-
-        labels_ = kmeans.fit(feats).labels_
-
-        # # print(# print_current_time("end: "))
-
-        if np.mean(feats[labels_ == 0]) < np.mean(feats[labels_ == 1]):
-            labels_ = 1 - labels_
-
-        # counter = 0
-
-        # for i in labels_:
-        #     if i == 0:
-        #         counter += 1
-
-        # # print(counter, labels_.shape[0] - counter)
-        # # print(np.mean(feats[labels_ == 0]))
-
-        for idx, label in enumerate(labels_):
-            if label == 0:
-                clean_labels.append(cls_index[idx])
-
-        # clean_labels += cls_index[labels_ == 0].tolist()
-
-    # print("Kmeans: ", # print_current_time("end: "))
-
-    # # print("Inside the fine function: ", len(clean_labels))
-        
-    return np.array(clean_labels, dtype=np.int64) 
 
