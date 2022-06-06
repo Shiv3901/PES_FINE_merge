@@ -28,3 +28,8 @@ trial_first_ever_run_7  without FINE                100
 trial_first_ever_run_8  Kmeans                      100  # not done yet, cause I deleted it by mistake, but the final test accuray was 90.78
 
 cifar_100_run_1         kmeans                      5
+
+
+trial_7th_june_1 -> gmm with p_threshold 0.3, but for some reason I was not feeling right about it (Acc: 82.9% with 5 runs)
+trial_7th_june_2 -> without FINE (Acc: 83.89% with 5 runs) WARNING: need to get this one similar to the paper
+trial_7th_june_3 -> gmm with p_threshold 0.5 (Acc:  with 5 runs)
