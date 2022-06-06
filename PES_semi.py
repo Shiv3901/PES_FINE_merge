@@ -390,6 +390,13 @@ def evaluate_accuracy(confi_idxs, unconfi_idxs, noisy_labels, clean_labels):
         if noisy_labels[index] != clean_labels[index]:
             correct_unconfident_pred += 1
 
+    true_labels = 0
+    for idx, label in noisy_labels:
+        if label == clean_labels[idx]:
+            true_labels += 1
+
+    print("True label count: " + str(true_labels))
+
     print("Confident: " + str(correct_confident_pred + correct_unconfident_pred) + " / " + str(noisy_labels.size))
 
     print("True detected:  " + str(correct_confident_pred))
