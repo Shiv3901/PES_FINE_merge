@@ -441,13 +441,14 @@ for epoch in range(args.num_epochs):
 
             if epoch == args.T1:
                 preds = np.copy(noisy_labels)
+                preds = np.delete(preds, slice(49920, 50000))
 
             # features_1 = get_features_custom(model, data)
 
             # print("Features: ", features_1.shape)
 
             # print("Labels shape: ", labels.shape) # 49920
-            preds = np.delete(preds, slice(49920, 50000))
+            
             confident_indexs, unconfident_indexs, preds = helperFunctionForFINE(features, preds)
 
             evaluate_accuracy(confident_indexs, unconfident_indexs, preds, clean_labels)

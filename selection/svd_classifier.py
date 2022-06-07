@@ -159,8 +159,8 @@ def print_current_time(place_holder=""):
 
 def cleansing(scores, labels):
 
-    preds = np.array([-1 for i in range(len(labels))])
-    indexes = np.copy(labels)
+    preds = np.copy(labels)
+    indexes = np.array(range(len(scores)))
     clean_labels = []
     for cls in np.unique(labels):
         cls_index = indexes[labels==cls]
