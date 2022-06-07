@@ -123,7 +123,7 @@ def fit_mixture(scores, labels, p_threshold=0.50):
         for idx in clean_labels_arr:
             preds[idx] = cls
 
-    return np.array(clean_labels, dtype=np.int64), preds
+    return np.array(clean_labels, dtype=np.int64), np.array(preds, dtype=np.int64)
 
 def fine(current_features, current_labels, fit='kmeans', prev_features=None, prev_labels=None, p_threshold=0.5, norm=True, eigen=True):
 
@@ -173,6 +173,6 @@ def cleansing(scores, labels):
         for idx in clean_label_arr:
             preds[idx] = cls
 
-    return np.array(clean_labels, dtype=np.int64), preds
+    return np.array(clean_labels, dtype=np.int64), np.array(preds, dtype=np.int64)
         
 

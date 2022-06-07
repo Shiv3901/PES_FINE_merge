@@ -382,7 +382,7 @@ print("Epochs after Stopping: " + str(args.num_epochs - args.T1))
 # features, labels = get_features(model, train_loader)
 # quit()
 
-def evaluate_accuracy(confi_idxs, unconfi_idxs, noisy_labels, clean_labels):
+def evaluate_accuracy(confi_idxs, unconfi_idxs, noisy_labels, clean_labels, train_noisy_labels=None):
 
     print("Size of labels: noisy -> " + str(noisy_labels.size) + " clean: " + str(clean_labels.size))
     print("Total: confident (" + str(len(confi_idxs)) + ") + (" + str(len(unconfi_idxs)) + ") = " + str(len(confi_idxs)+len(unconfi_idxs)))
@@ -400,13 +400,6 @@ def evaluate_accuracy(confi_idxs, unconfi_idxs, noisy_labels, clean_labels):
     for index in unconfi_idxs:
         if noisy_labels[index] != clean_labels[index]:
             correct_unconfident_pred += 1
-
-    true_labels = 0
-    for idx in range(noisy_labels.size):
-        if noisy_labels[idx] == clean_labels[idx]:
-            true_labels += 1
-
-    print("True label count: " + str(true_labels))
 
     print("Confident: " + str(correct_confident_pred + correct_unconfident_pred) + " / " + str(noisy_labels.size))
 
@@ -436,6 +429,14 @@ for epoch in range(args.num_epochs):
     else:
         if epoch == args.T1:
             model = noisy_refine(model, train_loader, 0, args.T2)
+
+        true_labels = 0
+        for idx in range(noisy_labels.size):
+            if noisy_labels[idx] == clean_labels[idx]:
+                true_labels += 1
+
+
+        print("True label count: " + str(true_labels))
 
         if isFine:
             # arguments required for mix match that update trainloader returns
