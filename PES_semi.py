@@ -440,6 +440,7 @@ for epoch in range(args.num_epochs):
             if epoch == args.T1:
                 preds = np.copy(noisy_labels)
                 preds = np.delete(preds, slice(49920, 50000))
+                noisy_labels = np.delete(noisy_labels, slice(49920, 50000))
 
             # counter = 0
 
