@@ -1,0 +1,72 @@
+Tue Jun  7 15:11:50 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.129.06   Driver Version: 470.129.06   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  Off  | 00000000:01:00.0 Off |                  N/A |
+| 35%   59C    P2   113W / 250W |   4180MiB / 11019MiB |     32%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA GeForce ...  Off  | 00000000:02:00.0 Off |                  N/A |
+| 35%   53C    P8     2W / 250W |      8MiB / 11019MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      1202      G   /usr/lib/xorg/Xorg                  9MiB |
+|    0   N/A  N/A      1668      G   /usr/bin/gnome-shell                6MiB |
+|    0   N/A  N/A     13955      C   python                           4159MiB |
+|    1   N/A  N/A      1202      G   /usr/lib/xorg/Xorg                  4MiB |
++-----------------------------------------------------------------------------+
+Namespace(PES_lr=0.0001, T=0.5, T1=1, T2=5, alpha=4, batch_size=128, classifier='kmeans', data_path='./data', data_percent=1, dataset='cifar10', lambda_u=15.0, lr=0.02, modified=True, noise_rate=0.2, noise_type='symmetric', num_epochs=3, optim='cos', seed=1, weight_decay=0.0005)
+Files already downloaded and verified
+Files already downloaded and verified
+('include_noise True, new real nosie rate:', 0.2)
+Running with FINE
+Epochs before Stopping: 1
+Epochs for reintialising: 5
+Epochs after Stopping: 2
+('Epoch: ', 0)
+Train Epoch: [0][  0/390]	Time   0.04	Data   0.00	Loss   1.88	Acc@1  35.77
+('15:12:10', 'Epoch 0 Test Acc:', 53.75)
+('Epoch: ', 1)
+re-initalize the final layer
+Train Epoch: [0][  0/390]	Time   0.02	Data   0.00	Loss   1.83	Acc@1  42.71
+('15:12:18', 'Epoch 0 Test Acc:', 57.77)
+Train Epoch: [1][  0/390]	Time   0.02	Data   0.00	Loss   1.66	Acc@1  46.81
+('15:12:26', 'Epoch 1 Test Acc:', 58.13)
+Train Epoch: [2][  0/390]	Time   0.02	Data   0.00	Loss   1.65	Acc@1  47.56
+('15:12:34', 'Epoch 2 Test Acc:', 58.61)
+Train Epoch: [3][  0/390]	Time   0.02	Data   0.00	Loss   1.65	Acc@1  47.48
+('15:12:41', 'Epoch 3 Test Acc:', 58.71)
+Train Epoch: [4][  0/390]	Time   0.02	Data   0.00	Loss   1.64	Acc@1  47.65
+('15:12:49', 'Epoch 4 Test Acc:', 58.97)
+True label count: 40056
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (30618) + (19302) = 49920
+--------------------------------------------------------------------------------
+Confident: 48408 / 49920
+True detected:  29106
+Noisy detected: 19302
+--------------------------------------------------------------------------------
+(<common.tools.AverageMeter object at 0x7f2af4f95610>, <common.tools.AverageMeter object at 0x7f2af4f95c10>, <common.tools.AverageMeter object at 0x7f2af4f95cd0>)
+('15:14:09', 'Epoch 1 Test Acc:', 65.02)
+('Epoch: ', 2)
+True label count: 39991
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (34499) + (15421) = 49920
+--------------------------------------------------------------------------------
+Confident: 48311 / 49920
+True detected:  32890
+Noisy detected: 15421
+--------------------------------------------------------------------------------
+(<common.tools.AverageMeter object at 0x7f2b6f08b150>, <common.tools.AverageMeter object at 0x7f2af4fd39d0>, <common.tools.AverageMeter object at 0x7f2af4fd37d0>)
+('15:15:28', 'Epoch 2 Test Acc:', 72.09)
+('15:15:28', 'Best Test Acc:', 72.08984375)

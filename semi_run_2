@@ -1,0 +1,422 @@
+Tue Jun  7 15:32:24 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.129.06   Driver Version: 470.129.06   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  Off  | 00000000:01:00.0 Off |                  N/A |
+| 36%   61C    P2    62W / 250W |   4180MiB / 11019MiB |     32%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA GeForce ...  Off  | 00000000:02:00.0 Off |                  N/A |
+| 37%   54C    P8     2W / 250W |      8MiB / 11019MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      1202      G   /usr/lib/xorg/Xorg                  9MiB |
+|    0   N/A  N/A      1668      G   /usr/bin/gnome-shell                6MiB |
+|    0   N/A  N/A     13955      C   python                           4159MiB |
+|    1   N/A  N/A      1202      G   /usr/lib/xorg/Xorg                  4MiB |
++-----------------------------------------------------------------------------+
+Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='kmeans', data_path='./data', data_percent=1, dataset='cifar10', lambda_u=15.0, lr=0.02, modified=True, noise_rate=0.2, noise_type='symmetric', num_epochs=50, optim='cos', seed=1, weight_decay=0.0005)
+Files already downloaded and verified
+Files already downloaded and verified
+('include_noise True, new real nosie rate:', 0.2)
+Running with FINE
+Epochs before Stopping: 25
+Epochs for reintialising: 5
+Epochs after Stopping: 25
+('Epoch: ', 0)
+Train Epoch: [0][  0/390]	Time   0.04	Data   0.00	Loss   1.87	Acc@1  35.81
+('15:32:44', 'Epoch 0 Test Acc:', 55.19)
+('Epoch: ', 1)
+Train Epoch: [1][  0/390]	Time   0.04	Data   0.00	Loss   1.63	Acc@1  49.00
+('15:33:01', 'Epoch 1 Test Acc:', 63.05)
+('Epoch: ', 2)
+Train Epoch: [2][  0/390]	Time   0.04	Data   0.00	Loss   1.49	Acc@1  56.02
+('15:33:17', 'Epoch 2 Test Acc:', 65.68)
+('Epoch: ', 3)
+Train Epoch: [3][  0/390]	Time   0.04	Data   0.00	Loss   1.40	Acc@1  60.32
+('15:33:34', 'Epoch 3 Test Acc:', 68.64)
+('Epoch: ', 4)
+Train Epoch: [4][  0/390]	Time   0.04	Data   0.00	Loss   1.34	Acc@1  62.73
+('15:33:50', 'Epoch 4 Test Acc:', 75.63)
+('Epoch: ', 5)
+Train Epoch: [5][  0/390]	Time   0.04	Data   0.00	Loss   1.30	Acc@1  64.49
+('15:34:07', 'Epoch 5 Test Acc:', 73.75)
+('Epoch: ', 6)
+Train Epoch: [6][  0/390]	Time   0.04	Data   0.00	Loss   1.26	Acc@1  65.95
+('15:34:24', 'Epoch 6 Test Acc:', 77.08)
+('Epoch: ', 7)
+Train Epoch: [7][  0/390]	Time   0.04	Data   0.00	Loss   1.24	Acc@1  67.11
+('15:34:40', 'Epoch 7 Test Acc:', 75.76)
+('Epoch: ', 8)
+Train Epoch: [8][  0/390]	Time   0.04	Data   0.00	Loss   1.21	Acc@1  68.31
+('15:34:57', 'Epoch 8 Test Acc:', 79.28)
+('Epoch: ', 9)
+Train Epoch: [9][  0/390]	Time   0.04	Data   0.00	Loss   1.19	Acc@1  68.92
+('15:35:14', 'Epoch 9 Test Acc:', 82.85)
+('Epoch: ', 10)
+Train Epoch: [10][  0/390]	Time   0.04	Data   0.00	Loss   1.17	Acc@1  69.81
+('15:35:31', 'Epoch 10 Test Acc:', 82.68)
+('Epoch: ', 11)
+Train Epoch: [11][  0/390]	Time   0.04	Data   0.00	Loss   1.14	Acc@1  70.56
+('15:35:48', 'Epoch 11 Test Acc:', 81.01)
+('Epoch: ', 12)
+Train Epoch: [12][  0/390]	Time   0.04	Data   0.00	Loss   1.13	Acc@1  70.97
+('15:36:05', 'Epoch 12 Test Acc:', 82.2)
+('Epoch: ', 13)
+Train Epoch: [13][  0/390]	Time   0.04	Data   0.00	Loss   1.11	Acc@1  71.53
+('15:36:21', 'Epoch 13 Test Acc:', 79.68)
+('Epoch: ', 14)
+Train Epoch: [14][  0/390]	Time   0.04	Data   0.00	Loss   1.10	Acc@1  72.10
+('15:36:38', 'Epoch 14 Test Acc:', 81.57)
+('Epoch: ', 15)
+Train Epoch: [15][  0/390]	Time   0.04	Data   0.00	Loss   1.08	Acc@1  72.61
+('15:36:55', 'Epoch 15 Test Acc:', 83.94)
+('Epoch: ', 16)
+Train Epoch: [16][  0/390]	Time   0.04	Data   0.00	Loss   1.06	Acc@1  73.14
+('15:37:12', 'Epoch 16 Test Acc:', 81.87)
+('Epoch: ', 17)
+Train Epoch: [17][  0/390]	Time   0.04	Data   0.00	Loss   1.05	Acc@1  73.43
+('15:37:29', 'Epoch 17 Test Acc:', 82.41)
+('Epoch: ', 18)
+Train Epoch: [18][  0/390]	Time   0.04	Data   0.00	Loss   1.03	Acc@1  73.90
+('15:37:46', 'Epoch 18 Test Acc:', 83.25)
+('Epoch: ', 19)
+Train Epoch: [19][  0/390]	Time   0.04	Data   0.00	Loss   1.01	Acc@1  74.39
+('15:38:02', 'Epoch 19 Test Acc:', 80.06)
+('Epoch: ', 20)
+Train Epoch: [20][  0/390]	Time   0.04	Data   0.00	Loss   1.00	Acc@1  74.78
+('15:38:19', 'Epoch 20 Test Acc:', 83.12)
+('Epoch: ', 21)
+Train Epoch: [21][  0/390]	Time   0.04	Data   0.00	Loss   0.98	Acc@1  75.28
+('15:38:36', 'Epoch 21 Test Acc:', 82.43)
+('Epoch: ', 22)
+Train Epoch: [22][  0/390]	Time   0.04	Data   0.00	Loss   0.97	Acc@1  75.62
+('15:38:53', 'Epoch 22 Test Acc:', 83.16)
+('Epoch: ', 23)
+Train Epoch: [23][  0/390]	Time   0.04	Data   0.00	Loss   0.95	Acc@1  75.90
+('15:39:10', 'Epoch 23 Test Acc:', 81.47)
+('Epoch: ', 24)
+Train Epoch: [24][  0/390]	Time   0.04	Data   0.00	Loss   0.92	Acc@1  76.52
+('15:39:26', 'Epoch 24 Test Acc:', 80.82)
+('Epoch: ', 25)
+re-initalize the final layer
+Train Epoch: [0][  0/390]	Time   0.02	Data   0.00	Loss   1.58	Acc@1  69.48
+('15:39:34', 'Epoch 0 Test Acc:', 83.69)
+Train Epoch: [1][  0/390]	Time   0.02	Data   0.00	Loss   1.04	Acc@1  75.21
+('15:39:42', 'Epoch 1 Test Acc:', 84.06)
+Train Epoch: [2][  0/390]	Time   0.02	Data   0.00	Loss   0.96	Acc@1  75.32
+('15:39:49', 'Epoch 2 Test Acc:', 84.21)
+Train Epoch: [3][  0/390]	Time   0.02	Data   0.00	Loss   0.95	Acc@1  75.31
+('15:39:57', 'Epoch 3 Test Acc:', 84.28)
+Train Epoch: [4][  0/390]	Time   0.02	Data   0.00	Loss   0.95	Acc@1  75.57
+('15:40:05', 'Epoch 4 Test Acc:', 84.28)
+Length of the clean indexes here: 37805
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (37805) + (12115) = 49920
+--------------------------------------------------------------------------------
+Confident: 46056 / 49920
+True detected:  36966
+Noisy detected: 9090
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f86de6bc950>, <common.tools.AverageMeter object at 0x7f86de6bca50>, <common.tools.AverageMeter object at 0x7f86de6bcd50>)
+('15:41:24', 'Epoch 25 Test Acc:', 87.53)
+('Epoch: ', 26)
+Length of the clean indexes here: 39029
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (39029) + (10891) = 49920
+--------------------------------------------------------------------------------
+Confident: 47564 / 49920
+True detected:  38332
+Noisy detected: 9232
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f87587ae150>, <common.tools.AverageMeter object at 0x7f8769a6e550>, <common.tools.AverageMeter object at 0x7f8769a6e6d0>)
+('15:42:44', 'Epoch 26 Test Acc:', 89.58)
+('Epoch: ', 27)
+Length of the clean indexes here: 39323
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (39323) + (10597) = 49920
+--------------------------------------------------------------------------------
+Confident: 47936 / 49920
+True detected:  38665
+Noisy detected: 9271
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f870ca483d0>, <common.tools.AverageMeter object at 0x7f870ca482d0>, <common.tools.AverageMeter object at 0x7f86de6b4350>)
+('15:44:03', 'Epoch 27 Test Acc:', 88.91)
+('Epoch: ', 28)
+Length of the clean indexes here: 39373
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (39373) + (10547) = 49920
+--------------------------------------------------------------------------------
+Confident: 47996 / 49920
+True detected:  38720
+Noisy detected: 9276
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f87587ae150>, <common.tools.AverageMeter object at 0x7f8769a33850>, <common.tools.AverageMeter object at 0x7f8769a335d0>)
+('15:45:21', 'Epoch 28 Test Acc:', 88.91)
+('Epoch: ', 29)
+Length of the clean indexes here: 39284
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (39284) + (10636) = 49920
+--------------------------------------------------------------------------------
+Confident: 47963 / 49920
+True detected:  38659
+Noisy detected: 9304
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f86de6b44d0>, <common.tools.AverageMeter object at 0x7f86de6b4a10>, <common.tools.AverageMeter object at 0x7f86de6b4390>)
+('15:46:39', 'Epoch 29 Test Acc:', 89.58)
+('Epoch: ', 30)
+Length of the clean indexes here: 39434
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (39434) + (10486) = 49920
+--------------------------------------------------------------------------------
+Confident: 48053 / 49920
+True detected:  38779
+Noisy detected: 9274
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f87587ae150>, <common.tools.AverageMeter object at 0x7f86de6bcd50>, <common.tools.AverageMeter object at 0x7f86de6bcb50>)
+('15:47:58', 'Epoch 30 Test Acc:', 90.07)
+('Epoch: ', 31)
+Length of the clean indexes here: 39656
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (39656) + (10264) = 49920
+--------------------------------------------------------------------------------
+Confident: 48239 / 49920
+True detected:  38983
+Noisy detected: 9256
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f870ca482d0>, <common.tools.AverageMeter object at 0x7f870ca483d0>, <common.tools.AverageMeter object at 0x7f8769a33050>)
+('15:49:16', 'Epoch 31 Test Acc:', 90.56)
+('Epoch: ', 32)
+Length of the clean indexes here: 39844
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (39844) + (10076) = 49920
+--------------------------------------------------------------------------------
+Confident: 48287 / 49920
+True detected:  39101
+Noisy detected: 9186
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f870ca48650>, <common.tools.AverageMeter object at 0x7f8758ea6f90>, <common.tools.AverageMeter object at 0x7f87587ae150>)
+('15:50:35', 'Epoch 32 Test Acc:', 90.52)
+('Epoch: ', 33)
+Length of the clean indexes here: 39677
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (39677) + (10243) = 49920
+--------------------------------------------------------------------------------
+Confident: 48334 / 49920
+True detected:  39041
+Noisy detected: 9293
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f86de6b4bd0>, <common.tools.AverageMeter object at 0x7f86de6b4b50>, <common.tools.AverageMeter object at 0x7f86de6b49d0>)
+('15:51:54', 'Epoch 33 Test Acc:', 91.04)
+('Epoch: ', 34)
+Length of the clean indexes here: 39805
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (39805) + (10115) = 49920
+--------------------------------------------------------------------------------
+Confident: 48370 / 49920
+True detected:  39123
+Noisy detected: 9247
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f8758ea6f90>, <common.tools.AverageMeter object at 0x7f87587ae150>, <common.tools.AverageMeter object at 0x7f8769a60f50>)
+('15:53:11', 'Epoch 34 Test Acc:', 90.9)
+('Epoch: ', 35)
+Length of the clean indexes here: 39954
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (39954) + (9966) = 49920
+--------------------------------------------------------------------------------
+Confident: 48449 / 49920
+True detected:  39237
+Noisy detected: 9212
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f870ca48650>, <common.tools.AverageMeter object at 0x7f8769a33650>, <common.tools.AverageMeter object at 0x7f8769a33a90>)
+('15:54:30', 'Epoch 35 Test Acc:', 91.3)
+('Epoch: ', 36)
+Length of the clean indexes here: 40061
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (40061) + (9859) = 49920
+--------------------------------------------------------------------------------
+Confident: 48444 / 49920
+True detected:  39288
+Noisy detected: 9156
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f87587ae150>, <common.tools.AverageMeter object at 0x7f870ca482d0>, <common.tools.AverageMeter object at 0x7f86de6f1f10>)
+('15:55:47', 'Epoch 36 Test Acc:', 91.13)
+('Epoch: ', 37)
+Length of the clean indexes here: 40049
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (40049) + (9871) = 49920
+--------------------------------------------------------------------------------
+Confident: 48542 / 49920
+True detected:  39331
+Noisy detected: 9211
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f870ca48650>, <common.tools.AverageMeter object at 0x7f8769a3b1d0>, <common.tools.AverageMeter object at 0x7f8769a3bf90>)
+('15:57:06', 'Epoch 37 Test Acc:', 90.48)
+('Epoch: ', 38)
+Length of the clean indexes here: 40107
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (40107) + (9813) = 49920
+--------------------------------------------------------------------------------
+Confident: 48534 / 49920
+True detected:  39356
+Noisy detected: 9178
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f870ca482d0>, <common.tools.AverageMeter object at 0x7f86de47a050>, <common.tools.AverageMeter object at 0x7f86de47a510>)
+('15:58:24', 'Epoch 38 Test Acc:', 91.59)
+('Epoch: ', 39)
+Length of the clean indexes here: 40080
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (40080) + (9840) = 49920
+--------------------------------------------------------------------------------
+Confident: 48531 / 49920
+True detected:  39341
+Noisy detected: 9190
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f870ca48650>, <common.tools.AverageMeter object at 0x7f86de475610>, <common.tools.AverageMeter object at 0x7f86de475690>)
+('15:59:44', 'Epoch 39 Test Acc:', 91.59)
+('Epoch: ', 40)
+Length of the clean indexes here: 40170
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (40170) + (9750) = 49920
+--------------------------------------------------------------------------------
+Confident: 48531 / 49920
+True detected:  39386
+Noisy detected: 9145
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f8758ea6f90>, <common.tools.AverageMeter object at 0x7f870ca482d0>, <common.tools.AverageMeter object at 0x7f8769a56250>)
+('16:01:03', 'Epoch 40 Test Acc:', 91.46)
+('Epoch: ', 41)
+Length of the clean indexes here: 40171
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (40171) + (9749) = 49920
+--------------------------------------------------------------------------------
+Confident: 48604 / 49920
+True detected:  39423
+Noisy detected: 9181
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f870ca48650>, <common.tools.AverageMeter object at 0x7f86de457d10>, <common.tools.AverageMeter object at 0x7f86de4578d0>)
+('16:02:20', 'Epoch 41 Test Acc:', 87.8)
+('Epoch: ', 42)
+Length of the clean indexes here: 39172
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (39172) + (10748) = 49920
+--------------------------------------------------------------------------------
+Confident: 47703 / 49920
+True detected:  38473
+Noisy detected: 9230
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f870ca482d0>, <common.tools.AverageMeter object at 0x7f8769a33e50>, <common.tools.AverageMeter object at 0x7f8769a33590>)
+('16:03:39', 'Epoch 42 Test Acc:', 86.38)
+('Epoch: ', 43)
+Length of the clean indexes here: 38499
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (38499) + (11421) = 49920
+--------------------------------------------------------------------------------
+Confident: 47142 / 49920
+True detected:  37856
+Noisy detected: 9286
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f8758ea6f90>, <common.tools.AverageMeter object at 0x7f87587ae110>, <common.tools.AverageMeter object at 0x7f86de44a390>)
+('16:04:57', 'Epoch 43 Test Acc:', 87.89)
+('Epoch: ', 44)
+Length of the clean indexes here: 38732
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (38732) + (11188) = 49920
+--------------------------------------------------------------------------------
+Confident: 47023 / 49920
+True detected:  37913
+Noisy detected: 9110
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f870ca48650>, <common.tools.AverageMeter object at 0x7f870ca482d0>, <common.tools.AverageMeter object at 0x7f8769a60f90>)
+('16:06:16', 'Epoch 44 Test Acc:', 89.34)
+('Epoch: ', 45)
+Length of the clean indexes here: 39350
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (39350) + (10570) = 49920
+--------------------------------------------------------------------------------
+Confident: 47989 / 49920
+True detected:  38705
+Noisy detected: 9284
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f87587ae110>, <common.tools.AverageMeter object at 0x7f8769a6e290>, <common.tools.AverageMeter object at 0x7f8769a6e710>)
+('16:07:34', 'Epoch 45 Test Acc:', 89.0)
+('Epoch: ', 46)
+Length of the clean indexes here: 39201
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (39201) + (10719) = 49920
+--------------------------------------------------------------------------------
+Confident: 47926 / 49920
+True detected:  38599
+Noisy detected: 9327
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f8769a56050>, <common.tools.AverageMeter object at 0x7f8769a56710>, <common.tools.AverageMeter object at 0x7f8769a566d0>)
+('16:08:52', 'Epoch 46 Test Acc:', 89.46)
+('Epoch: ', 47)
+Length of the clean indexes here: 39516
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (39516) + (10404) = 49920
+--------------------------------------------------------------------------------
+Confident: 48021 / 49920
+True detected:  38804
+Noisy detected: 9217
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f87587ae150>, <common.tools.AverageMeter object at 0x7f8758ea6f90>, <common.tools.AverageMeter object at 0x7f86de475510>)
+('16:10:11', 'Epoch 47 Test Acc:', 89.47)
+('Epoch: ', 48)
+Length of the clean indexes here: 39535
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (39535) + (10385) = 49920
+--------------------------------------------------------------------------------
+Confident: 48102 / 49920
+True detected:  38854
+Noisy detected: 9248
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f87587ae110>, <common.tools.AverageMeter object at 0x7f8769a33950>, <common.tools.AverageMeter object at 0x7f8769a33f10>)
+('16:11:30', 'Epoch 48 Test Acc:', 89.76)
+('Epoch: ', 49)
+Length of the clean indexes here: 39415
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (39415) + (10505) = 49920
+--------------------------------------------------------------------------------
+Confident: 48128 / 49920
+True detected:  38807
+Noisy detected: 9321
+--------------------------------------------------------------------------------
+True label count: 40056
+(<common.tools.AverageMeter object at 0x7f8758ea6f90>, <common.tools.AverageMeter object at 0x7f86de475310>, <common.tools.AverageMeter object at 0x7f86de475150>)
+('16:12:47', 'Epoch 49 Test Acc:', 90.1)
+('16:12:47', 'Best Test Acc:', 91.59180450439453)
