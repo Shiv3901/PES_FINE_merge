@@ -87,6 +87,8 @@ def MixMatch_train(epoch, net, optimizer, labeled_trainloader, unlabeled_trainlo
     losses_lx = AverageMeter('Loss_Lx', ':6.2f')
     losses_lu = AverageMeter('Loss_Lu', ':6.5f')
 
+    print("Mix match is being called here :)")
+
     labeled_train_iter = iter(labeled_trainloader)
     unlabeled_train_iter = iter(unlabeled_trainloader)
     num_iter = int(50000/args.batch_size)
@@ -97,11 +99,15 @@ def MixMatch_train(epoch, net, optimizer, labeled_trainloader, unlabeled_trainlo
             labeled_train_iter = iter(labeled_trainloader)
             inputs_x, inputs_x2, targets_x = labeled_train_iter.next()
 
+        print("Mix match is being called here :) 1")
+
         try:
             inputs_u, inputs_u2 = unlabeled_train_iter.next()
         except StopIteration:
             unlabeled_train_iter = iter(unlabeled_trainloader)
             inputs_u, inputs_u2 = unlabeled_train_iter.next()
+
+        print("Mix match is being called here :) 2")
 
         batch_size = inputs_x.size(0)
         targets_x = torch.zeros(batch_size, args.num_class).scatter_(1, targets_x.view(-1, 1), 1)
@@ -150,9 +156,10 @@ def MixMatch_train(epoch, net, optimizer, labeled_trainloader, unlabeled_trainlo
         losses_lu.update(Lu.item(), len(logits) - batch_size * 2)
         losses.update(loss.item(), len(logits))
 
-    print(losses, losses_lx, losses_lu)
+        print("Mix match is being called here :) 3")
 
-# try to locate where this function is being called and it is possible to see where we can fit FINE in 
+    print("Mix match is being called here :) 4")
+    print(losses, losses_lx, losses_lu)
 
 # gets two arrays of clean and noisy targets 
 def splite_confident(outs, clean_targets, noisy_targets):
@@ -184,7 +191,7 @@ def helperFunctionForFINE(train_data, noisy_targets):
 	
     clean_idxs, preds = fine(train_data, noisy_targets, args.classifier)
 
-    print("Length of the clean indexes here: " + str(len(clean_idxs)))
+    # print("Length of the clean indexes here: " + str(len(clean_idxs)))
     
     clean_set = set(clean_idxs)
     noisy_idxs = []
