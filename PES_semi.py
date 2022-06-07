@@ -87,8 +87,6 @@ def MixMatch_train(epoch, net, optimizer, labeled_trainloader, unlabeled_trainlo
     losses_lx = AverageMeter('Loss_Lx', ':6.2f')
     losses_lu = AverageMeter('Loss_Lu', ':6.5f')
 
-    print("Mix match is being called here :)")
-
     labeled_train_iter = iter(labeled_trainloader)
     unlabeled_train_iter = iter(unlabeled_trainloader)
     num_iter = int(50000/args.batch_size)
@@ -99,15 +97,11 @@ def MixMatch_train(epoch, net, optimizer, labeled_trainloader, unlabeled_trainlo
             labeled_train_iter = iter(labeled_trainloader)
             inputs_x, inputs_x2, targets_x = labeled_train_iter.next()
 
-        print("Mix match is being called here :) 1")
-
         try:
             inputs_u, inputs_u2 = unlabeled_train_iter.next()
         except StopIteration:
             unlabeled_train_iter = iter(unlabeled_trainloader)
             inputs_u, inputs_u2 = unlabeled_train_iter.next()
-
-        print("Mix match is being called here :) 2")
 
         batch_size = inputs_x.size(0)
         targets_x = torch.zeros(batch_size, args.num_class).scatter_(1, targets_x.view(-1, 1), 1)
@@ -156,9 +150,6 @@ def MixMatch_train(epoch, net, optimizer, labeled_trainloader, unlabeled_trainlo
         losses_lu.update(Lu.item(), len(logits) - batch_size * 2)
         losses.update(loss.item(), len(logits))
 
-        print("Mix match is being called here :) 3")
-
-    print("Mix match is being called here :) 4")
     print(losses, losses_lx, losses_lu)
 
 # gets two arrays of clean and noisy targets 
@@ -450,13 +441,13 @@ for epoch in range(args.num_epochs):
                 preds = np.copy(noisy_labels)
                 preds = np.delete(preds, slice(49920, 50000))
 
-            counter = 0
+            # counter = 0
 
-            for idx in range(len(labels)):
-                if labels[idx] == preds[idx]:
-                    counter += 1
+            # for idx in range(len(labels)):
+            #     if labels[idx] == preds[idx]:
+            #         counter += 1
 
-            print("Checking if the values could be updated: " + str(counter))
+            # print("Checking if the values could be updated: " + str(counter))
 
             # features_1 = get_features_custom(model, data)
 
@@ -464,17 +455,19 @@ for epoch in range(args.num_epochs):
 
             # print("Labels shape: ", labels.shape) # 49920
             
-            confident_indexs, unconfident_indexs, preds = helperFunctionForFINE(features, preds)
+            confident_indexs, unconfident_indexs, _ = helperFunctionForFINE(features, noisy_labels)
 
-            evaluate_accuracy(confident_indexs, unconfident_indexs, preds, clean_labels)
+            evaluate_accuracy(confident_indexs, unconfident_indexs, noisy_labels, clean_labels)
             # print("Confident indexes shape: ", confident_indexs.shape)
-            labeled_trainloader, unlabeled_trainloader, class_weights = update_train_loader_shiv(data, preds, confident_indexs, unconfident_indexs)
+            labeled_trainloader, unlabeled_trainloader, class_weights = update_train_loader_shiv(data, noisy_labels, confident_indexs, unconfident_indexs)
 
         else:
 
             labeled_trainloader, unlabeled_trainloader, class_weights = update_trainloader(model, data, clean_labels, noisy_labels, isFine)
 
         print("True label count: " + str(true_labels))
+
+        print("_" * 80)
 
         # print("Length of the labeled trainloader: ", len(labeled_trainloader.dataset))
         # print("Length of the unlabeled trainloader: ", len(unlabeled_trainloader.dataset))
