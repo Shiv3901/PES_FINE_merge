@@ -439,6 +439,15 @@ for epoch in range(args.num_epochs):
             # arguments required for mix match that update trainloader returns
             features, labels = get_features(model, train_loader)
 
+            counter = 0
+
+            for idx in range(len(labels)):
+                if labels[idx] == preds[idx]:
+                    counter += 1
+
+            print("Checking if the values could be updated: " + str(counter))
+
+
             if epoch == args.T1:
                 preds = np.copy(noisy_labels)
                 preds = np.delete(preds, slice(49920, 50000))
