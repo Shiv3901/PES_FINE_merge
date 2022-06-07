@@ -182,7 +182,7 @@ def splite_confident(outs, clean_targets, noisy_targets):
 
 def helperFunctionForFINE(train_data, noisy_targets):
 	
-    clean_idxs = fine(train_data, noisy_targets, args.classifier)
+    clean_idxs, preds = fine(train_data, noisy_targets, args.classifier)
 
     # print("Length of the clean indexes here: " + str(len(clean_idxs)))
     
@@ -193,7 +193,7 @@ def helperFunctionForFINE(train_data, noisy_targets):
         if idx not in clean_set:
             noisy_idxs.append(idx)
 
-    return clean_idxs, noisy_idxs
+    return clean_idxs, noisy_idxs, preds
 
 # FIXME: Pass enum type in future 
 # FIXME: Try to come up with something similar afterwards
@@ -447,9 +447,9 @@ for epoch in range(args.num_epochs):
 
             # print("Labels shape: ", labels.shape) # 49920
             noisy_labels = np.delete(noisy_labels, slice(49920, 50000))
-            confident_indexs, unconfident_indexs = helperFunctionForFINE(features, noisy_labels)
+            confident_indexs, unconfident_indexs, preds = helperFunctionForFINE(features, noisy_labels)
 
-            evaluate_accuracy(confident_indexs, unconfident_indexs, noisy_labels, clean_labels)
+            evaluate_accuracy(confident_indexs, unconfident_indexs, preds, clean_labels)
             # print("Confident indexes shape: ", confident_indexs.shape)
             labeled_trainloader, unlabeled_trainloader, class_weights = update_train_loader_shiv(data, noisy_labels, confident_indexs, unconfident_indexs)
 

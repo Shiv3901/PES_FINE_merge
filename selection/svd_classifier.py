@@ -106,6 +106,7 @@ def get_score(singular_vector_dict, features, labels, normalization=True):
 # function that fits the labels using GMM 
 def fit_mixture(scores, labels, p_threshold=0.50):
 
+    preds = np.array([-1 for i in range(len(labels))])
     clean_labels = []
     indexes = np.array(range(len(scores)))
     for cls in np.unique(labels):
@@ -117,9 +118,12 @@ def fit_mixture(scores, labels, p_threshold=0.50):
         gmm.fit(feats_)
         prob = gmm.predict_proba(feats_)
         prob = prob[:,gmm.means_.argmax()]
-        clean_labels += [cls_index[clean_idx] for clean_idx in range(len(cls_index)) if prob[clean_idx] > p_threshold] 
-    
-    return np.array(clean_labels, dtype=np.int64)
+        clean_labels_arr = [cls_index[clean_idx] for clean_idx in range(len(cls_index)) if prob[clean_idx] > p_threshold] 
+        clean_labels += clean_labels_arr
+        for idx in clean_labels_arr:
+            preds[idx] = cls
+
+    return np.array(clean_labels, dtype=np.int64), preds
 
 def fine(current_features, current_labels, fit='kmeans', prev_features=None, prev_labels=None, p_threshold=0.5, norm=True, eigen=True):
 
@@ -137,15 +141,15 @@ def fine(current_features, current_labels, fit='kmeans', prev_features=None, pre
     scores = get_score(vector_dict, features = current_features, labels = current_labels, normalization=norm)
     
     if 'kmeans' in fit:
-        clean_labels = cleansing(scores, current_labels)
+        clean_labels, preds = cleansing(scores, current_labels)
     elif 'gmm' in fit:
-        clean_labels = fit_mixture(scores, current_labels, p_threshold=p_threshold)
+        clean_labels, preds = fit_mixture(scores, current_labels, p_threshold=p_threshold)
     # elif 'bmm' in fit:
     #     clean_labels = fit_mixture_bmm(scores, current_labels)
     else:
         raise NotImplemented
     
-    return clean_labels
+    return clean_labels, preds
 
 from datetime import datetime
 
@@ -155,6 +159,7 @@ def print_current_time(place_holder=""):
 
 def cleansing(scores, labels):
 
+    preds = np.array([-1 for i in range(len(labels))])
     indexes = np.array(range(len(scores)))
     clean_labels = []
     for cls in np.unique(labels):
@@ -162,8 +167,12 @@ def cleansing(scores, labels):
         kmeans = cluster.KMeans(n_clusters=2, random_state=0).fit(scores[cls_index].reshape(-1, 1))
         if np.mean(scores[cls_index][kmeans.labels_==0]) < np.mean(scores[cls_index][kmeans.labels_==1]): kmeans.labels_ = 1 - kmeans.labels_
             
-        clean_labels += cls_index[kmeans.labels_ == 0].tolist()
-        
-    return np.array(clean_labels, dtype=np.int64)
+        clean_label_arr = cls_index[kmeans.labels_ == 0].tolist()
+        clean_labels += clean_label_arr
+
+        for idx in clean_label_arr:
+            preds[idx] = cls
+
+    return np.array(clean_labels, dtype=np.int64), preds
         
 
