@@ -178,9 +178,9 @@ def splite_confident(outs, clean_targets, noisy_targets):
 	
 	return confident_indexs, unconfident_indexs
 
-def helperFunctionForFINE(train_data, noisy_targets):
+def helperFunctionForFINE(train_data, noisy_targets, clean_labels):
 	
-    clean_idxs, preds = fine(train_data, noisy_targets, args.classifier)
+    clean_idxs, preds = fine(train_data, noisy_targets, args.classifier, true_labels=clean_labels)
 
     # print("Length of the clean indexes here: " + str(len(clean_idxs)))
     
@@ -198,7 +198,7 @@ def helperFunctionForFINE(train_data, noisy_targets):
 def return_confident_indexes(model, train_data, clean_targets, noisy_targets, isFine=False):
 
     if isFine:
-        return helperFunctionForFINE(train_data, noisy_targets)
+        return helperFunctionForFINE(train_data, noisy_targets, clean_targets)
 
     else:
 
@@ -456,7 +456,7 @@ for epoch in range(args.num_epochs):
 
             # print("Labels shape: ", labels.shape) # 49920
             
-            confident_indexs, unconfident_indexs, _ = helperFunctionForFINE(features, noisy_labels)
+            confident_indexs, unconfident_indexs, _ = helperFunctionForFINE(features, noisy_labels, clean_labels)
 
             evaluate_accuracy(confident_indexs, unconfident_indexs, noisy_labels, clean_labels)
             # print("Confident indexes shape: ", confident_indexs.shape)

@@ -70,11 +70,6 @@ def get_features(model, dataloader):
     model.eval()
     model.cuda()
 
-    # TODO: how many samples are in the dataloader 
-
-    # with tqdm(dataloader) as progress:
-        # pprint(vars(dataloader))
-
     for i, data in enumerate(dataloader, 0):
         # get the inputs; data is a list of [inputs, labels]
         input, label = data
@@ -103,8 +98,19 @@ def get_score(singular_vector_dict, features, labels, normalization=True):
         
     return np.array(scores)
 
+'''
+parameters = {'knn__n_neighbors':[3,5,10,20,30,50,100], 'knn__weights':['uniform','distance'], 
+        'knn__leaf_size': list(range(1, 10)), 'knn__p':[1, 2]}
+    gridcvKnn = GridSearchCV(knn_pl, parameters, cv=10, scoring='roc_auc')
+    gridcvKnn.fit(x_train, y_train)
+    print(f'Best score is {-gridcvKnn.best_score_} for best params of {gridcvKnn.best_params_}\n')
+
+'''
+
+from sklearn.model_selection import GridSearchCV
+
 # function that fits the labels using GMM 
-def fit_mixture(scores, labels, p_threshold=0.2):
+def fit_mixture(scores, labels, p_threshold=0.2, true_labels=None):
 
     preds = np.copy(labels)
     clean_labels = []
@@ -112,8 +118,16 @@ def fit_mixture(scores, labels, p_threshold=0.2):
     for cls in np.unique(labels):
         cls_index = indexes[labels==cls]
         feats = scores[labels==cls]
+        true_idx = true_labels[cls_index]
         feats_ = np.ravel(feats).astype(np.float).reshape(-1, 1)
         gmm = GMM(n_components=2, covariance_type='full', tol=1e-6, max_iter=100, random_state=0)
+
+        parameters = {'n_components': [2], 'warmstart': [False, True], 'n_init': [1, 2, 3, 4], 'tol': [1e-7, 1e-6, 1e-5, 1e-4, 1e-3], 'covariance_type': ['full','tied','diag','spherical']}
+
+        gridcvKnn = GridSearchCV(gmm, parameters, cv=10, scoring='roc_auc')
+        gridcvKnn.fit(feats_, true_idx)
+        print(f'Best score is {-gridcvKnn.best_score_} for best params of {gridcvKnn.best_params_}\n')
+
         
         gmm.fit(feats_)
         prob = gmm.predict_proba(feats_)
@@ -125,7 +139,7 @@ def fit_mixture(scores, labels, p_threshold=0.2):
 
     return np.array(clean_labels, dtype=np.int64), np.array(preds, dtype=np.int64)
 
-def fine(current_features, current_labels, fit='kmeans', prev_features=None, prev_labels=None, p_threshold=0.5, norm=True, eigen=True):
+def fine(current_features, current_labels, fit='kmeans', true_labels=None, prev_features=None, prev_labels=None, p_threshold=0.5, norm=True, eigen=True):
 
     if eigen is True:
         if prev_features is not None and prev_labels is not None:
@@ -143,7 +157,7 @@ def fine(current_features, current_labels, fit='kmeans', prev_features=None, pre
     if 'kmeans' in fit:
         clean_labels, preds = cleansing(scores, current_labels)
     elif 'gmm' in fit:
-        clean_labels, preds = fit_mixture(scores, current_labels, p_threshold=p_threshold)
+        clean_labels, preds = fit_mixture(scores, current_labels, p_threshold=p_threshold, true_labels=true_labels)
     # elif 'bmm' in fit:
     #     clean_labels = fit_mixture_bmm(scores, current_labels)
     else:
