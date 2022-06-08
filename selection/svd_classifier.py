@@ -139,7 +139,7 @@ def fit_mixture(scores, labels, p_threshold=0.2, true_labels=None):
         feats_ = np.ravel(feats).astype(np.float).reshape(-1, 1)
         gmm = None
 
-        print("GMM Model used of type: " + str(ARGS.hyper_parameter_type))
+        # print("GMM Model used of type: " + str(ARGS.hyper_parameter_type))
 
         if ARGS.hyper_parameter_type == 1:
             gmm = GMM(n_components=2, covariance_type='tied', tol=1e-7, n_init=1,  max_iter=100, random_state=0, warm_start=False)
