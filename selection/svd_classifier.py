@@ -126,8 +126,15 @@ def fit_mixture(scores, labels, p_threshold=0.2, true_labels=None):
 
         gridcvKnn = GridSearchCV(gmm, parameters, cv=10, scoring='roc_auc')
         gridcvKnn.fit(feats_, true_idx)
-        print(f'Best score is {-gridcvKnn.best_score_} for best params of {gridcvKnn.best_params_}\n')
 
+        print("_" * 80)
+
+        print("Best score: ", end=" ")
+
+        print(-gridcvKnn.best_score_)
+        print(gridcvKnn.best_params_)
+
+        print("_" * 80)
         
         gmm.fit(feats_)
         prob = gmm.predict_proba(feats_)
