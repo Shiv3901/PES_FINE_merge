@@ -121,7 +121,7 @@ def custom_scorer_function(yt,yp):
 
     return counter if counter > (len(yp)/ 2) else (len(yp) - counter)
 
-custom_scorer = make_scorer(custom_scorer_function)
+custom_scorer = make_scorer(custom_scorer_function, greater_is_better=True)
 
 
 # function that fits the labels using GMM 
@@ -135,30 +135,30 @@ def fit_mixture(scores, labels, p_threshold=0.2, true_labels=None):
         feats = scores[labels==cls]
         
         feats_ = np.ravel(feats).astype(np.float).reshape(-1, 1)
-        gmm = GMM(n_components=2, covariance_type='full', tol=1e-6, max_iter=100, random_state=0)
+        gmm = GMM(n_components=2, covariance_type='tied', tol=1e-7, n_init=1,  max_iter=100, random_state=0)
 
-        true_idxs = true_labels[cls_index]
+        # true_idxs = true_labels[cls_index]
 
-        for i in range(len(true_idxs)):
-            if true_idxs[i] == cls:
-                true_idxs[i] = 1
-            else:
-                true_idxs[i] = 0
+        # for i in range(len(true_idxs)):
+        #     if true_idxs[i] == cls:
+        #         true_idxs[i] = 1
+        #     else:
+        #         true_idxs[i] = 0
 
 
-        parameters = {'n_components': [2], 'n_init': [1, 2, 3, 4], 'tol': [1e-7, 1e-6, 1e-5, 1e-4, 1e-3], 'covariance_type': ['full','tied','diag','spherical']}
+        # parameters = {'n_components': [2], 'n_init': [1, 2, 3, 4], 'tol': [1e-7, 1e-6, 1e-5, 1e-4, 1e-3], 'covariance_type': ['full','tied','diag','spherical']}
 
-        gridcvKnn = GridSearchCV(gmm, parameters, cv=10, scoring=custom_scorer)
-        gridcvKnn.fit(feats_, true_idxs)
+        # gridcvKnn = GridSearchCV(gmm, parameters, cv=10, scoring=custom_scorer)
+        # gridcvKnn.fit(feats_, true_idxs)
 
-        print("_" * 80)
+        # print("_" * 80)
 
-        print("Best score: ")
+        # print("Best score: ")
 
-        print(gridcvKnn.best_score_)
-        print(gridcvKnn.best_params_)
+        # print(gridcvKnn.best_score_)
+        # print(gridcvKnn.best_params_)
 
-        print("_" * 80)
+        # print("_" * 80)
 
         gmm.fit(feats_)
         prob = gmm.predict_proba(feats_)
