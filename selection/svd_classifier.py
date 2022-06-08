@@ -108,6 +108,21 @@ parameters = {'knn__n_neighbors':[3,5,10,20,30,50,100], 'knn__weights':['uniform
 '''
 
 from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import fbeta_score, make_scorer
+
+
+def custom_scorer_function(yt,yp):
+
+    counter = 0
+
+    for i in range(len(yt)):
+        if yp[i] == yt[i]:
+            counter += 1
+
+    return counter if counter > (len(yp)/ 2) else (len(yp) - counter)
+
+custom_scorer = make_scorer(custom_scorer_function)
+
 
 # function that fits the labels using GMM 
 def fit_mixture(scores, labels, p_threshold=0.2, true_labels=None):
@@ -118,14 +133,23 @@ def fit_mixture(scores, labels, p_threshold=0.2, true_labels=None):
     for cls in np.unique(labels):
         cls_index = indexes[labels==cls]
         feats = scores[labels==cls]
-        true_idx = true_labels[cls_index]
+        
         feats_ = np.ravel(feats).astype(np.float).reshape(-1, 1)
         gmm = GMM(n_components=2, covariance_type='full', tol=1e-6, max_iter=100, random_state=0)
 
+        true_idxs = true_labels[cls_index]
+
+        for i in range(len(true_idxs)):
+            if true_idxs[i] == cls:
+                true_idxs[i] = 1
+            else:
+                true_idxs[i] = 0
+
+
         parameters = {'n_components': [2], 'warm_start': [False, True], 'n_init': [1, 2, 3, 4], 'tol': [1e-7, 1e-6, 1e-5, 1e-4, 1e-3], 'covariance_type': ['full','tied','diag','spherical']}
 
-        gridcvKnn = GridSearchCV(gmm, parameters, cv=10, scoring='roc_auc')
-        gridcvKnn.fit(feats_, true_idx)
+        gridcvKnn = GridSearchCV(gmm, parameters, cv=10, scoring=custom_scorer)
+        gridcvKnn.fit(feats_, true_idxs)
 
         print("_" * 80)
 
