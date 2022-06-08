@@ -377,7 +377,7 @@ best_test_acc = 0
 isFine = args.modified 
 
 if isFine: 
-    print("GMM Model used of type: " + str(ARGS.hyper_parameter_type))
+    print("GMM Model used of type: " + str(args.hyper_parameter_type))
 
 print("Running with" + ("" if isFine else "out") + " FINE")
 print("Epochs before Stopping: " + str(args.T1))
