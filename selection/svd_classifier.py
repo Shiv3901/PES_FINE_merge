@@ -129,7 +129,7 @@ def fit_mixture(scores, labels, p_threshold=0.2, true_labels=None):
 
         print("_" * 80)
 
-        print("Best score: ", end=" ")
+        print("Best score: ")
 
         print(-gridcvKnn.best_score_)
         print(gridcvKnn.best_params_)
