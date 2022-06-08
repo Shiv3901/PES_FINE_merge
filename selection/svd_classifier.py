@@ -146,7 +146,7 @@ def fit_mixture(scores, labels, p_threshold=0.2, true_labels=None):
                 true_idxs[i] = 0
 
 
-        parameters = {'n_components': [2], 'warm_start': [False, True], 'n_init': [1, 2, 3, 4], 'tol': [1e-7, 1e-6, 1e-5, 1e-4, 1e-3], 'covariance_type': ['full','tied','diag','spherical']}
+        parameters = {'n_components': [2], 'n_init': [1, 2, 3, 4], 'tol': [1e-7, 1e-6, 1e-5, 1e-4, 1e-3], 'covariance_type': ['full','tied','diag','spherical']}
 
         gridcvKnn = GridSearchCV(gmm, parameters, cv=10, scoring=custom_scorer)
         gridcvKnn.fit(feats_, true_idxs)
@@ -155,7 +155,7 @@ def fit_mixture(scores, labels, p_threshold=0.2, true_labels=None):
 
         print("Best score: ")
 
-        print(-gridcvKnn.best_score_)
+        print(gridcvKnn.best_score_)
         print(gridcvKnn.best_params_)
 
         print("_" * 80)
@@ -165,10 +165,11 @@ def fit_mixture(scores, labels, p_threshold=0.2, true_labels=None):
         prob = prob[:,gmm.means_.argmax()]
         clean_labels_arr = [cls_index[clean_idx] for clean_idx in range(len(cls_index)) if prob[clean_idx] > p_threshold] 
         clean_labels += clean_labels_arr
+        
         for idx in clean_labels_arr:
             preds[idx] = cls
 
-        return np.array(clean_labels, dtype=np.int64), np.array(preds, dtype=np.int64)
+    return np.array(clean_labels, dtype=np.int64), np.array(preds, dtype=np.int64)
 
 def fine(current_features, current_labels, fit='kmeans', true_labels=None, prev_features=None, prev_labels=None, p_threshold=0.5, norm=True, eigen=True):
 
