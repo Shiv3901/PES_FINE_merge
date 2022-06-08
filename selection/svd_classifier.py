@@ -21,6 +21,8 @@ warnings.filterwarnings("ignore")
 SEED = 110
 GPU_ID = 1
 
+ARGS = None
+
 torch.cuda.set_device(GPU_ID)
 random.seed(SEED)
 torch.manual_seed(SEED)
@@ -135,8 +137,34 @@ def fit_mixture(scores, labels, p_threshold=0.2, true_labels=None):
         feats = scores[labels==cls]
         
         feats_ = np.ravel(feats).astype(np.float).reshape(-1, 1)
-        gmm = GMM(n_components=2, covariance_type='tied', tol=1e-7, n_init=1,  max_iter=100, random_state=0)
+        gmm = None
 
+        print("GMM Model used of type: " + str(ARGS.hyper_parameter_type))
+
+        if ARGS.hyper_parameter_type == 1:
+            gmm = GMM(n_components=2, covariance_type='tied', tol=1e-7, n_init=1,  max_iter=100, random_state=0, warm_start=False)
+
+        elif ARGS.hyper_parameter_type == 2:
+            gmm = GMM(n_components=2, covariance_type='diag', tol=1e-7, n_init=1,  max_iter=100, random_state=0, warm_start=False)
+
+        elif ARGS.hyper_parameter_type == 3:
+            gmm = GMM(n_components=2, covariance_type='full', tol=1e-7, n_init=1,  max_iter=100, random_state=0, warm_start=False)
+
+        elif ARGS.hyper_parameter_type == 4:
+            gmm = GMM(n_components=2, covariance_type='tied', tol=1e-7, n_init=1,  max_iter=100, random_state=0, warm_start=True)
+
+        elif ARGS.hyper_parameter_type == 5:
+            gmm = GMM(n_components=2, covariance_type='tied', tol=1e-5, n_init=1,  max_iter=100, random_state=0, warm_start=False)
+
+        elif ARGS.hyper_parameter_type == 6:
+            gmm = GMM(n_components=2, covariance_type='tied', tol=1e-7, n_init=1,  max_iter=200, random_state=0, warm_start=False)
+
+        elif ARGS.hyper_parameter_type == 7:
+            gmm = GMM(n_components=2, covariance_type='tied', tol=1e-7, n_init=1,  max_iter=300, random_state=0, warm_start=False)
+
+        elif ARGS.hyper_parameter_type == 8:
+            gmm = GMM(n_components=2, covariance_type='tied', tol=1e-6, n_init=1,  max_iter=100, random_state=0, warm_start=False)
+            
         # true_idxs = true_labels[cls_index]
 
         # for i in range(len(true_idxs)):
@@ -171,7 +199,9 @@ def fit_mixture(scores, labels, p_threshold=0.2, true_labels=None):
 
     return np.array(clean_labels, dtype=np.int64), np.array(preds, dtype=np.int64)
 
-def fine(current_features, current_labels, fit='kmeans', true_labels=None, prev_features=None, prev_labels=None, p_threshold=0.5, norm=True, eigen=True):
+def fine(current_features, current_labels, fit='kmeans', true_labels=None, prev_features=None, prev_labels=None, p_threshold=0.5, norm=True, eigen=True, args=None):
+
+    ARGS = args
 
     if eigen is True:
         if prev_features is not None and prev_labels is not None:

@@ -18,6 +18,7 @@ from torch.optim.lr_scheduler import MultiStepLR, CosineAnnealingLR
 from torchvision.datasets import CIFAR10, CIFAR100
 
 from tqdm import tqdm
+from yaml import parse
 
 from networks.ResNet import PreActResNet18
 from common.tools import AverageMeter, getTime, evaluate, predict_softmax, train
@@ -43,8 +44,12 @@ parser.add_argument('--lambda_u', default=150, type=float, help='weight for unsu
 parser.add_argument('--PES_lr', default=1e-4, type=float, help='initial learning rate')
 parser.add_argument('--T1', default=0, type=int, help='if 0, set in below')
 parser.add_argument('--T2', default=5, type=int, help='default 5')
+
+parser.add_argument('--hyper_parameter_type', default=1, type=int, help='default to 1')
 parser.add_argument('--modified', default=False, type=bool, help='default false')
 parser.add_argument('--classifier', default='kmeans', type=str, help='default is kmeans')
+
+
 args = parser.parse_args()
 print(args)
 os.system('nvidia-smi')
@@ -180,7 +185,7 @@ def splite_confident(outs, clean_targets, noisy_targets):
 
 def helperFunctionForFINE(train_data, noisy_targets, clean_labels):
 	
-    clean_idxs, preds = fine(train_data, noisy_targets, args.classifier, true_labels=clean_labels)
+    clean_idxs, preds = fine(train_data, noisy_targets, args.classifier, true_labels=clean_labels, args=args)
 
     # print("Length of the clean indexes here: " + str(len(clean_idxs)))
     
@@ -371,6 +376,8 @@ best_test_acc = 0
 
 isFine = args.modified 
 
+if isFine: 
+    print("GMM Model used of type: " + str(ARGS.hyper_parameter_type))
 
 print("Running with" + ("" if isFine else "out") + " FINE")
 print("Epochs before Stopping: " + str(args.T1))
