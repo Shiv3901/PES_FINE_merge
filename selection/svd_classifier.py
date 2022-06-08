@@ -135,7 +135,7 @@ def fit_mixture(scores, labels, p_threshold=0.2, true_labels=None):
         print(gridcvKnn.best_params_)
 
         print("_" * 80)
-        
+
         gmm.fit(feats_)
         prob = gmm.predict_proba(feats_)
         prob = prob[:,gmm.means_.argmax()]
@@ -144,7 +144,7 @@ def fit_mixture(scores, labels, p_threshold=0.2, true_labels=None):
         for idx in clean_labels_arr:
             preds[idx] = cls
 
-    return np.array(clean_labels, dtype=np.int64), np.array(preds, dtype=np.int64)
+        return np.array(clean_labels, dtype=np.int64), np.array(preds, dtype=np.int64)
 
 def fine(current_features, current_labels, fit='kmeans', true_labels=None, prev_features=None, prev_labels=None, p_threshold=0.5, norm=True, eigen=True):
 
