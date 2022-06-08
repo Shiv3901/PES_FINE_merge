@@ -122,7 +122,7 @@ def fit_mixture(scores, labels, p_threshold=0.2, true_labels=None):
         feats_ = np.ravel(feats).astype(np.float).reshape(-1, 1)
         gmm = GMM(n_components=2, covariance_type='full', tol=1e-6, max_iter=100, random_state=0)
 
-        parameters = {'n_components': [2], 'warmstart': [False, True], 'n_init': [1, 2, 3, 4], 'tol': [1e-7, 1e-6, 1e-5, 1e-4, 1e-3], 'covariance_type': ['full','tied','diag','spherical']}
+        parameters = {'n_components': [2], 'warm_start': [False, True], 'n_init': [1, 2, 3, 4], 'tol': [1e-7, 1e-6, 1e-5, 1e-4, 1e-3], 'covariance_type': ['full','tied','diag','spherical']}
 
         gridcvKnn = GridSearchCV(gmm, parameters, cv=10, scoring='roc_auc')
         gridcvKnn.fit(feats_, true_idx)
