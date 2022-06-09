@@ -21,8 +21,6 @@ warnings.filterwarnings("ignore")
 SEED = 110
 GPU_ID = 1
 
-ARGS = None
-
 torch.cuda.set_device(GPU_ID)
 random.seed(SEED)
 torch.manual_seed(SEED)
@@ -127,9 +125,7 @@ custom_scorer = make_scorer(custom_scorer_function, greater_is_better=True)
 
 
 # function that fits the labels using GMM 
-def fit_mixture(scores, labels, p_threshold=0.2, true_labels=None):
-
-    print(ARGS, "SHIVAM")
+def fit_mixture(scores, labels, p_threshold=0.2, true_labels=None, args=None):
 
     preds = np.copy(labels)
     clean_labels = []
@@ -143,28 +139,28 @@ def fit_mixture(scores, labels, p_threshold=0.2, true_labels=None):
 
         # print("GMM Model used of type: " + str(ARGS.hyper_parameter_type))
 
-        if ARGS.hyper_parameter_type == 1:
+        if args.hyper_parameter_type == 1:
             gmm = GMM(n_components=2, covariance_type='tied', tol=1e-7, n_init=1,  max_iter=100, random_state=0, warm_start=False)
 
-        elif ARGS.hyper_parameter_type == 2:
+        elif args.hyper_parameter_type == 2:
             gmm = GMM(n_components=2, covariance_type='diag', tol=1e-7, n_init=1,  max_iter=100, random_state=0, warm_start=False)
 
-        elif ARGS.hyper_parameter_type == 3:
+        elif args.hyper_parameter_type == 3:
             gmm = GMM(n_components=2, covariance_type='full', tol=1e-7, n_init=1,  max_iter=100, random_state=0, warm_start=False)
 
-        elif ARGS.hyper_parameter_type == 4:
+        elif args.hyper_parameter_type == 4:
             gmm = GMM(n_components=2, covariance_type='tied', tol=1e-7, n_init=1,  max_iter=100, random_state=0, warm_start=True)
 
-        elif ARGS.hyper_parameter_type == 5:
+        elif args.hyper_parameter_type == 5:
             gmm = GMM(n_components=2, covariance_type='tied', tol=1e-5, n_init=1,  max_iter=100, random_state=0, warm_start=False)
 
-        elif ARGS.hyper_parameter_type == 6:
+        elif args.hyper_parameter_type == 6:
             gmm = GMM(n_components=2, covariance_type='tied', tol=1e-7, n_init=1,  max_iter=200, random_state=0, warm_start=False)
 
-        elif ARGS.hyper_parameter_type == 7:
+        elif args.hyper_parameter_type == 7:
             gmm = GMM(n_components=2, covariance_type='tied', tol=1e-7, n_init=1,  max_iter=300, random_state=0, warm_start=False)
 
-        elif ARGS.hyper_parameter_type == 8:
+        elif args.hyper_parameter_type == 8:
             gmm = GMM(n_components=2, covariance_type='tied', tol=1e-6, n_init=1,  max_iter=100, random_state=0, warm_start=False)
             
         # true_idxs = true_labels[cls_index]
@@ -203,8 +199,6 @@ def fit_mixture(scores, labels, p_threshold=0.2, true_labels=None):
 
 def fine(current_features, current_labels, fit='kmeans', true_labels=None, prev_features=None, prev_labels=None, p_threshold=0.5, norm=True, eigen=True, args=None):
 
-    ARGS = args
-
     if eigen is True:
         if prev_features is not None and prev_labels is not None:
             vector_dict = get_singular_vector(prev_features, prev_labels)
@@ -221,7 +215,7 @@ def fine(current_features, current_labels, fit='kmeans', true_labels=None, prev_
     if 'kmeans' in fit:
         clean_labels, preds = cleansing(scores, current_labels)
     elif 'gmm' in fit:
-        clean_labels, preds = fit_mixture(scores, current_labels, p_threshold=p_threshold, true_labels=true_labels)
+        clean_labels, preds = fit_mixture(scores, current_labels, p_threshold=p_threshold, true_labels=true_labels, args=args)
     # elif 'bmm' in fit:
     #     clean_labels = fit_mixture_bmm(scores, current_labels)
     else:

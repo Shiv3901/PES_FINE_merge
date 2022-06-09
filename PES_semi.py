@@ -187,6 +187,8 @@ def helperFunctionForFINE(train_data, noisy_targets, clean_labels):
 	
     clean_idxs, preds = fine(train_data, noisy_targets, args.classifier, true_labels=clean_labels, args=args)
 
+    print("PES", args)
+
     # print("Length of the clean indexes here: " + str(len(clean_idxs)))
     
     clean_set = set(clean_idxs)
