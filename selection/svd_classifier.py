@@ -129,6 +129,8 @@ custom_scorer = make_scorer(custom_scorer_function, greater_is_better=True)
 # function that fits the labels using GMM 
 def fit_mixture(scores, labels, p_threshold=0.2, true_labels=None):
 
+    print(ARGS)
+
     preds = np.copy(labels)
     clean_labels = []
     indexes = np.array(range(len(scores)))
