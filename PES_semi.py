@@ -464,23 +464,29 @@ for epoch in range(args.num_epochs):
             # print("Features: ", features_1.shape)
 
             # print("Labels shape: ", labels.shape) # 49920
+
+        ## MODIFIED VERSION STARTS HERE
             
-            confident_indexs_FINE, unconfident_indexs_FINE, _ = helperFunctionForFINE(features, noisy_labels, clean_labels)
+            # confident_indexs_FINE, unconfident_indexs_FINE, _ = helperFunctionForFINE(features, noisy_labels, clean_labels)
 
-            confident_indexs_PES, unconfident_indexs_PES = return_confident_indexes(model, data[unconfident_indexs_FINE], clean_labels[unconfident_indexs_FINE], noisy_labels[unconfident_indexs_FINE], False)
+            # confident_indexs_PES, unconfident_indexs_PES = return_confident_indexes(model, data[unconfident_indexs_FINE], clean_labels[unconfident_indexs_FINE], noisy_labels[unconfident_indexs_FINE], False)
 
-            confident_trial = []
+            # confident_trial = []
 
-            for idx in confident_indexs_PES:
-                confident_trial.append(unconfident_indexs_FINE[idx])
+            # print("Unconfident Indexes from FINE: " + str(len(unconfident_indexs_FINE)))
 
-            unconfident_trial = []
+            # for idx in confident_indexs_PES:
+            #     confident_trial.append(unconfident_indexs_FINE[idx])
 
-            for idx in unconfident_indexs_PES:
-                unconfident_trial.append(unconfident_indexs_FINE[idx])
+            # unconfident_trial = []
 
-            confident_indexs = np.concatenate((confident_indexs_FINE, np.array(confident_trial)))
-            unconfident_indexs = np.array(unconfident_trial)
+            # for idx in unconfident_indexs_PES:
+            #     unconfident_trial.append(unconfident_indexs_FINE[idx])
+
+            # confident_indexs = np.concatenate((confident_indexs_FINE, np.array(confident_trial)))
+            # unconfident_indexs = np.array(unconfident_trial)
+
+            confident_indexs, unconfident_indexs, _ = helperFunctionForFINE(features, noisy_labels, clean_labels)
 
 
             evaluate_accuracy(confident_indexs, unconfident_indexs, noisy_labels, clean_labels)
