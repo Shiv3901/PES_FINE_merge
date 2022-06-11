@@ -474,8 +474,13 @@ for epoch in range(args.num_epochs):
             for idx in confident_indexs_PES:
                 confident_trial.append(unconfident_indexs_FINE[idx])
 
+            unconfident_trial = []
+
+            for idx in unconfident_indexs_PES:
+                unconfident_trial.append(unconfident_indexs_FINE[idx])
+
             confident_indexs = np.concatenate((confident_indexs_FINE, np.array(confident_trial)))
-            unconfident_indexs = unconfident_indexs_FINE[unconfident_indexs_PES]
+            unconfident_indexs = np.array(unconfident_trial)
 
 
             evaluate_accuracy(confident_indexs, unconfident_indexs, noisy_labels, clean_labels)
