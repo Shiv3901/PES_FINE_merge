@@ -467,9 +467,10 @@ for epoch in range(args.num_epochs):
             
             confident_indexs_FINE, unconfident_indexs_FINE, _ = helperFunctionForFINE(features, noisy_labels, clean_labels)
 
-            confident_indexs_PES, unconfident_indexs = return_confident_indexes(model, data[unconfident_indexs_FINE], clean_labels[unconfident_indexs_FINE], noisy_labels[unconfident_indexs_FINE], False)
+            confident_indexs_PES, unconfident_indexs_PES = return_confident_indexes(model, data[unconfident_indexs_FINE], clean_labels[unconfident_indexs_FINE], noisy_labels[unconfident_indexs_FINE], False)
 
-            confident_indexs = np.concatenate((confident_indexs_FINE, confident_indexs_PES))
+            confident_indexs = np.concatenate((confident_indexs_FINE, unconfident_indexs_FINE[confident_indexs_PES]))
+            unconfident_indexs = unconfident_indexs_FINE[unconfident_indexs_PES]
 
 
             evaluate_accuracy(confident_indexs, unconfident_indexs, noisy_labels, clean_labels)
