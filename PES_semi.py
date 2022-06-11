@@ -469,7 +469,12 @@ for epoch in range(args.num_epochs):
 
             confident_indexs_PES, unconfident_indexs_PES = return_confident_indexes(model, data[unconfident_indexs_FINE], clean_labels[unconfident_indexs_FINE], noisy_labels[unconfident_indexs_FINE], False)
 
-            confident_indexs = np.concatenate((confident_indexs_FINE, np.array(unconfident_indexs_FINE[confident_indexs_PES])))
+            confident_trial = []
+
+            for idx in confident_indexs_PES:
+                confident_trial.append(unconfident_indexs_FINE[idx])
+
+            confident_indexs = np.concatenate((confident_indexs_FINE, np.array(confident_trial)))
             unconfident_indexs = unconfident_indexs_FINE[unconfident_indexs_PES]
 
 
