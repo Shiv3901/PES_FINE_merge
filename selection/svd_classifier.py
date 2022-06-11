@@ -125,7 +125,7 @@ custom_scorer = make_scorer(custom_scorer_function, greater_is_better=True)
 
 
 # function that fits the labels using GMM 
-def fit_mixture(scores, labels, p_threshold=0.2, true_labels=None, args=None):
+def fit_mixture(scores, labels, p_threshold=0.5, true_labels=None, args=None):
 
     preds = np.copy(labels)
     clean_labels = []
@@ -149,7 +149,7 @@ def fit_mixture(scores, labels, p_threshold=0.2, true_labels=None, args=None):
             gmm = GMM(n_components=2, covariance_type='full', tol=1e-7, n_init=1,  max_iter=100, random_state=0, warm_start=False)
 
         elif args.hyper_parameter_type == 4:
-            gmm = GMM(n_components=2, covariance_type='tied', tol=1e-7, n_init=1,  max_iter=50, random_state=0, warm_start=False)
+            gmm = GMM(n_components=2, covariance_type='tied', tol=1e-7, n_init=1,  max_iter=100, random_state=0, warm_start=False)
 
         elif args.hyper_parameter_type == 5:
             gmm = GMM(n_components=2, covariance_type='tied', tol=1e-5, n_init=1,  max_iter=100, random_state=0, warm_start=False)

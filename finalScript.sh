@@ -15,7 +15,7 @@ python PES_semi.py --dataset cifar10 --noise_type symmetric --noise_rate 0.2  --
 echo "Kinda did not work, so stopped halfway"
 
 echo "Fifth one"
-python PES_semi.py --dataset cifar10 --noise_type symmetric --noise_rate 0.2  --lambda_u 5 --T1 25 --T2 5 --num_epochs 300 --modified True --classifier gmm --hyper_parameter_type 4 | tee final_GMM_overnight_4_second
+python PES_semi.py --dataset cifar10 --noise_type symmetric --noise_rate 0.2  --lambda_u 5 --T1 25 --T2 5 --num_epochs 300 --modified True --classifier gmm --hyper_parameter_type 4 | tee final_GMM_overnight_4_modified
 
 echo "Sixth one"
 python PES_semi.py --dataset cifar10 --noise_type symmetric --noise_rate 0.2  --lambda_u 5 --T1 25 --T2 5 --num_epochs 300 --modified True --classifier gmm --hyper_parameter_type 5 | tee final_GMM_overnight_5
