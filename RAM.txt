@@ -1,0 +1,71 @@
+  *-firmware
+       description: BIOS
+       vendor: American Megatrends Inc.
+       physical id: 0
+       version: 1401
+       date: 11/26/2019
+       size: 64KiB
+       capacity: 15MiB
+       capabilities: pci apm upgrade shadowing cdboot bootselect socketedrom edd int13floppy1200 int13floppy720 int13floppy2880 int5printscreen int9keyboard int14serial int17printer acpi usb biosbootspecification uefi
+  *-memory
+       description: System Memory
+       physical id: 4b
+       slot: System board or motherboard
+       size: 32GiB
+     *-bank:0
+          description: Project-Id-Version: lshwReport-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>PO-Revision-Date: 2012-02-02 13:04+0000Last-Translator: Joel Addison <jaddi27@gmail.com>Language-Team: English (Australia) <en_AU@li.org>MIME-Version: 1.0Content-Type: text/plain; charset=UTF-8Content-Transfer-Encoding: 8bitX-Launchpad-Export-Date: 2018-07-12 13:19+0000X-Generator: Launchpad (build 18719)Project-Id-Version: lshwReport-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>PO-Revision-Date: 2012-02-02 13:04+0000Last-Translator: Joel Addison <jaddi27@gmail.com>Language-Team: English (Australia) <en_AU@li.org>MIME-Version: 1.0Content-Type: text/plain; charset=UTF-8Content-Transfer-Encoding: 8bitX-Launchpad-Export-Date: 2018-07-12 13:19+0000X-Generator: Launchpad (build 18719) [empty]
+          physical id: 0
+          slot: ChannelA-DIMM1
+     *-bank:1
+          description: DIMM DDR4 Synchronous 2133 MHz (0.5 ns)
+          product: CMW32GX4M2C3000C15
+          vendor: Corsair
+          physical id: 1
+          serial: 00000000
+          slot: ChannelA-DIMM2
+          size: 16GiB
+          width: 64 bits
+          clock: 2133MHz (0.5ns)
+     *-bank:2
+          description: Project-Id-Version: lshwReport-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>PO-Revision-Date: 2012-02-02 13:04+0000Last-Translator: Joel Addison <jaddi27@gmail.com>Language-Team: English (Australia) <en_AU@li.org>MIME-Version: 1.0Content-Type: text/plain; charset=UTF-8Content-Transfer-Encoding: 8bitX-Launchpad-Export-Date: 2018-07-12 13:19+0000X-Generator: Launchpad (build 18719)Project-Id-Version: lshwReport-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>PO-Revision-Date: 2012-02-02 13:04+0000Last-Translator: Joel Addison <jaddi27@gmail.com>Language-Team: English (Australia) <en_AU@li.org>MIME-Version: 1.0Content-Type: text/plain; charset=UTF-8Content-Transfer-Encoding: 8bitX-Launchpad-Export-Date: 2018-07-12 13:19+0000X-Generator: Launchpad (build 18719) [empty]
+          physical id: 2
+          slot: ChannelB-DIMM1
+     *-bank:3
+          description: DIMM DDR4 Synchronous 2133 MHz (0.5 ns)
+          product: CMW32GX4M2C3000C15
+          vendor: Corsair
+          physical id: 3
+          serial: 00000000
+          slot: ChannelB-DIMM2
+          size: 16GiB
+          width: 64 bits
+          clock: 2133MHz (0.5ns)
+  *-cache:0
+       description: L1 cache
+       physical id: 56
+       slot: L1 Cache
+       size: 512KiB
+       capacity: 512KiB
+       capabilities: synchronous internal write-back unified
+       configuration: level=1
+  *-cache:1
+       description: L2 cache
+       physical id: 57
+       slot: L2 Cache
+       size: 2MiB
+       capacity: 2MiB
+       capabilities: synchronous internal write-back unified
+       configuration: level=2
+  *-cache:2
+       description: L3 cache
+       physical id: 58
+       slot: L3 Cache
+       size: 12MiB
+       capacity: 12MiB
+       capabilities: synchronous internal write-back unified
+       configuration: level=3
+  *-memory UNCLAIMED
+       description: RAM memory
+       product: Cannon Lake PCH Shared SRAM
+       vendor: Intel Corporation
+       physical id: 14.2

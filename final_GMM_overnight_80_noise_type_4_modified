@@ -1,0 +1,1281 @@
+Mon Jun 13 11:57:24 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.129.06   Driver Version: 470.129.06   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  Off  | 00000000:01:00.0 Off |                  N/A |
+| 30%   43C    P8     1W / 250W |     21MiB / 11019MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA GeForce ...  Off  | 00000000:02:00.0 Off |                  N/A |
+| 46%   79C    P0    90W / 250W |      8MiB / 11019MiB |     83%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      1202      G   /usr/lib/xorg/Xorg                  9MiB |
+|    0   N/A  N/A      1668      G   /usr/bin/gnome-shell                6MiB |
+|    1   N/A  N/A      1202      G   /usr/lib/xorg/Xorg                  4MiB |
++-----------------------------------------------------------------------------+
+Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, modified=True, noise_rate=0.8, noise_type='symmetric', num_epochs=300, optim='cos', seed=1, weight_decay=0.0005)
+Files already downloaded and verified
+Files already downloaded and verified
+('include_noise True, new real nosie rate:', 0.8)
+GMM Model used of type: 4
+Running with FINE
+Epochs before Stopping: 25
+Epochs for reintialising: 5
+Epochs after Stopping: 275
+('Epoch: ', 0)
+Train Epoch: [0][  0/390]	Time   0.04	Data   0.00	Loss   2.32	Acc@1  11.00
+('11:57:45', 'Epoch 0 Test Acc:', 24.38)
+('Epoch: ', 1)
+Train Epoch: [1][  0/390]	Time   0.04	Data   0.00	Loss   2.30	Acc@1  11.49
+('11:58:02', 'Epoch 1 Test Acc:', 26.89)
+('Epoch: ', 2)
+Train Epoch: [2][  0/390]	Time   0.04	Data   0.00	Loss   2.30	Acc@1  11.84
+('11:58:19', 'Epoch 2 Test Acc:', 28.28)
+('Epoch: ', 3)
+Train Epoch: [3][  0/390]	Time   0.04	Data   0.00	Loss   2.30	Acc@1  12.12
+('11:58:35', 'Epoch 3 Test Acc:', 29.18)
+('Epoch: ', 4)
+Train Epoch: [4][  0/390]	Time   0.04	Data   0.00	Loss   2.30	Acc@1  12.44
+('11:58:52', 'Epoch 4 Test Acc:', 28.96)
+('Epoch: ', 5)
+Train Epoch: [5][  0/390]	Time   0.04	Data   0.00	Loss   2.30	Acc@1  12.49
+('11:59:09', 'Epoch 5 Test Acc:', 29.82)
+('Epoch: ', 6)
+Train Epoch: [6][  0/390]	Time   0.04	Data   0.00	Loss   2.29	Acc@1  12.97
+('11:59:26', 'Epoch 6 Test Acc:', 30.63)
+('Epoch: ', 7)
+Train Epoch: [7][  0/390]	Time   0.04	Data   0.00	Loss   2.29	Acc@1  13.07
+('11:59:43', 'Epoch 7 Test Acc:', 31.65)
+('Epoch: ', 8)
+Train Epoch: [8][  0/390]	Time   0.04	Data   0.00	Loss   2.29	Acc@1  13.25
+('12:00:00', 'Epoch 8 Test Acc:', 32.17)
+('Epoch: ', 9)
+Train Epoch: [9][  0/390]	Time   0.04	Data   0.00	Loss   2.29	Acc@1  13.25
+('12:00:17', 'Epoch 9 Test Acc:', 31.67)
+('Epoch: ', 10)
+Train Epoch: [10][  0/390]	Time   0.04	Data   0.00	Loss   2.29	Acc@1  13.43
+('12:00:34', 'Epoch 10 Test Acc:', 31.48)
+('Epoch: ', 11)
+Train Epoch: [11][  0/390]	Time   0.04	Data   0.00	Loss   2.29	Acc@1  13.37
+('12:00:51', 'Epoch 11 Test Acc:', 31.88)
+('Epoch: ', 12)
+Train Epoch: [12][  0/390]	Time   0.04	Data   0.00	Loss   2.29	Acc@1  13.83
+('12:01:08', 'Epoch 12 Test Acc:', 31.66)
+('Epoch: ', 13)
+Train Epoch: [13][  0/390]	Time   0.04	Data   0.00	Loss   2.29	Acc@1  13.82
+('12:01:25', 'Epoch 13 Test Acc:', 32.13)
+('Epoch: ', 14)
+Train Epoch: [14][  0/390]	Time   0.04	Data   0.00	Loss   2.29	Acc@1  14.08
+('12:01:42', 'Epoch 14 Test Acc:', 33.97)
+('Epoch: ', 15)
+Train Epoch: [15][  0/390]	Time   0.04	Data   0.00	Loss   2.29	Acc@1  14.15
+('12:01:59', 'Epoch 15 Test Acc:', 35.45)
+('Epoch: ', 16)
+Train Epoch: [16][  0/390]	Time   0.04	Data   0.00	Loss   2.28	Acc@1  14.13
+('12:02:16', 'Epoch 16 Test Acc:', 34.38)
+('Epoch: ', 17)
+Train Epoch: [17][  0/390]	Time   0.04	Data   0.00	Loss   2.28	Acc@1  14.43
+('12:02:33', 'Epoch 17 Test Acc:', 34.4)
+('Epoch: ', 18)
+Train Epoch: [18][  0/390]	Time   0.04	Data   0.00	Loss   2.28	Acc@1  14.52
+('12:02:50', 'Epoch 18 Test Acc:', 34.09)
+('Epoch: ', 19)
+Train Epoch: [19][  0/390]	Time   0.04	Data   0.00	Loss   2.28	Acc@1  14.58
+('12:03:06', 'Epoch 19 Test Acc:', 33.96)
+('Epoch: ', 20)
+Train Epoch: [20][  0/390]	Time   0.04	Data   0.00	Loss   2.28	Acc@1  14.61
+('12:03:23', 'Epoch 20 Test Acc:', 32.65)
+('Epoch: ', 21)
+Train Epoch: [21][  0/390]	Time   0.04	Data   0.00	Loss   2.28	Acc@1  14.75
+('12:03:40', 'Epoch 21 Test Acc:', 32.86)
+('Epoch: ', 22)
+Train Epoch: [22][  0/390]	Time   0.04	Data   0.00	Loss   2.28	Acc@1  14.93
+('12:03:57', 'Epoch 22 Test Acc:', 30.86)
+('Epoch: ', 23)
+Train Epoch: [23][  0/390]	Time   0.04	Data   0.00	Loss   2.28	Acc@1  14.99
+('12:04:14', 'Epoch 23 Test Acc:', 32.65)
+('Epoch: ', 24)
+Train Epoch: [24][  0/390]	Time   0.04	Data   0.00	Loss   2.27	Acc@1  14.98
+('12:04:31', 'Epoch 24 Test Acc:', 31.52)
+('Epoch: ', 25)
+re-initalize the final layer
+Train Epoch: [0][  0/390]	Time   0.02	Data   0.00	Loss   2.29	Acc@1  13.09
+('12:04:39', 'Epoch 0 Test Acc:', 36.24)
+Train Epoch: [1][  0/390]	Time   0.02	Data   0.00	Loss   2.28	Acc@1  14.90
+('12:04:46', 'Epoch 1 Test Acc:', 37.67)
+Train Epoch: [2][  0/390]	Time   0.02	Data   0.00	Loss   2.28	Acc@1  15.14
+('12:04:54', 'Epoch 2 Test Acc:', 38.43)
+Train Epoch: [3][  0/390]	Time   0.02	Data   0.00	Loss   2.27	Acc@1  15.28
+('12:05:02', 'Epoch 3 Test Acc:', 38.86)
+Train Epoch: [4][  0/390]	Time   0.02	Data   0.00	Loss   2.27	Acc@1  15.34
+('12:05:10', 'Epoch 4 Test Acc:', 39.01)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 25507
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (27254) + (22666) = 49920
+--------------------------------------------------------------------------------
+Confident: 27260 / 49920
+True detected:  7265
+Noisy detected: 19995
+--------------------------------------------------------------------------------
+True label count: 9954
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe7f4a5b7d0>, <common.tools.AverageMeter object at 0x7fe7f4a5b790>, <common.tools.AverageMeter object at 0x7fe7f4a5b450>)
+('12:06:26', 'Epoch 25 Test Acc:', 40.47)
+('Epoch: ', 26)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 42151
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (14128) + (35792) = 49920
+--------------------------------------------------------------------------------
+Confident: 36564 / 49920
+True detected:  5354
+Noisy detected: 31210
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe87688ad90>, <common.tools.AverageMeter object at 0x7fe87688ad50>, <common.tools.AverageMeter object at 0x7fe801bae110>)
+('12:07:48', 'Epoch 26 Test Acc:', 42.78)
+('Epoch: ', 27)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 18119
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (33752) + (16168) = 49920
+--------------------------------------------------------------------------------
+Confident: 22214 / 49920
+True detected:  7991
+Noisy detected: 14223
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe8230eba90>, <common.tools.AverageMeter object at 0x7fe8230eb110>, <common.tools.AverageMeter object at 0x7fe8230eb710>)
+('12:09:02', 'Epoch 27 Test Acc:', 42.72)
+('Epoch: ', 28)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 36258
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (19043) + (30877) = 49920
+--------------------------------------------------------------------------------
+Confident: 33061 / 49920
+True detected:  6060
+Noisy detected: 27001
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe87f91eb10>, <common.tools.AverageMeter object at 0x7fe86ee52450>, <common.tools.AverageMeter object at 0x7fe820731f90>)
+('12:10:22', 'Epoch 28 Test Acc:', 38.5)
+('Epoch: ', 29)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 23791
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (29356) + (20564) = 49920
+--------------------------------------------------------------------------------
+Confident: 25534 / 49920
+True detected:  7453
+Noisy detected: 18081
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe87f91ea10>, <common.tools.AverageMeter object at 0x7fe86f54f2d0>, <common.tools.AverageMeter object at 0x7fe8230eba90>)
+('12:11:38', 'Epoch 29 Test Acc:', 39.19)
+('Epoch: ', 30)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 30516
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (23727) + (26193) = 49920
+--------------------------------------------------------------------------------
+Confident: 29153 / 49920
+True detected:  6448
+Noisy detected: 22705
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe806647dd0>, <common.tools.AverageMeter object at 0x7fe86ee52450>, <common.tools.AverageMeter object at 0x7fe87689ded0>)
+('12:12:57', 'Epoch 30 Test Acc:', 42.12)
+('Epoch: ', 31)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 27218
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (26564) + (23356) = 49920
+--------------------------------------------------------------------------------
+Confident: 27200 / 49920
+True detected:  6890
+Noisy detected: 20310
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe87688ad90>, <common.tools.AverageMeter object at 0x7fe87f91ea10>, <common.tools.AverageMeter object at 0x7fe87689d0d0>)
+('12:14:13', 'Epoch 31 Test Acc:', 37.62)
+('Epoch: ', 32)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 24649
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (28625) + (21295) = 49920
+--------------------------------------------------------------------------------
+Confident: 25617 / 49920
+True detected:  7129
+Noisy detected: 18488
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe801bae110>, <common.tools.AverageMeter object at 0x7fe87f91eb10>, <common.tools.AverageMeter object at 0x7fe87f91eb50>)
+('12:15:29', 'Epoch 32 Test Acc:', 42.07)
+('Epoch: ', 33)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 23640
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (28594) + (21326) = 49920
+--------------------------------------------------------------------------------
+Confident: 27084 / 49920
+True detected:  7847
+Noisy detected: 19237
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe87f91ea10>, <common.tools.AverageMeter object at 0x7fe87688ad90>, <common.tools.AverageMeter object at 0x7fe801bb4e90>)
+('12:16:44', 'Epoch 33 Test Acc:', 40.07)
+('Epoch: ', 34)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 10902
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (40522) + (9398) = 49920
+--------------------------------------------------------------------------------
+Confident: 16686 / 49920
+True detected:  8612
+Noisy detected: 8074
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe820731f90>, <common.tools.AverageMeter object at 0x7fe87f91eb50>, <common.tools.AverageMeter object at 0x7fe87f91eb10>)
+('12:17:57', 'Epoch 34 Test Acc:', 45.54)
+('Epoch: ', 35)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 34065
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (21195) + (28725) = 49920
+--------------------------------------------------------------------------------
+Confident: 32115 / 49920
+True detected:  6663
+Noisy detected: 25452
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe86ee52450>, <common.tools.AverageMeter object at 0x7fe86ee52410>, <common.tools.AverageMeter object at 0x7fe801bb4e90>)
+('12:19:17', 'Epoch 35 Test Acc:', 43.93)
+('Epoch: ', 36)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 25065
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (27379) + (22541) = 49920
+--------------------------------------------------------------------------------
+Confident: 28135 / 49920
+True detected:  7765
+Noisy detected: 20370
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe8230eb710>, <common.tools.AverageMeter object at 0x7fe8230eb110>, <common.tools.AverageMeter object at 0x7fe820731f90>)
+('12:20:32', 'Epoch 36 Test Acc:', 43.77)
+('Epoch: ', 37)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 19474
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (32512) + (17408) = 49920
+--------------------------------------------------------------------------------
+Confident: 22822 / 49920
+True detected:  7675
+Noisy detected: 15147
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe86ee52410>, <common.tools.AverageMeter object at 0x7fe86ee52450>, <common.tools.AverageMeter object at 0x7fe87688ad90>)
+('12:21:47', 'Epoch 37 Test Acc:', 42.47)
+('Epoch: ', 38)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 22825
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (30433) + (19487) = 49920
+--------------------------------------------------------------------------------
+Confident: 24379 / 49920
+True detected:  7414
+Noisy detected: 16965
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe876897d10>, <common.tools.AverageMeter object at 0x7fe801bae110>, <common.tools.AverageMeter object at 0x7fe8230eb710>)
+('12:23:02', 'Epoch 38 Test Acc:', 41.02)
+('Epoch: ', 39)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 19551
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (32105) + (17815) = 49920
+--------------------------------------------------------------------------------
+Confident: 23883 / 49920
+True detected:  8002
+Noisy detected: 15881
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe87688ad90>, <common.tools.AverageMeter object at 0x7fe801bb4e90>, <common.tools.AverageMeter object at 0x7fe86ee52450>)
+('12:24:17', 'Epoch 39 Test Acc:', 42.29)
+('Epoch: ', 40)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 8206
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (42775) + (7145) = 49920
+--------------------------------------------------------------------------------
+Confident: 15021 / 49920
+True detected:  8906
+Noisy detected: 6115
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe801bae110>, <common.tools.AverageMeter object at 0x7fe8230eb710>, <common.tools.AverageMeter object at 0x7fe86f54f2d0>)
+('12:25:29', 'Epoch 40 Test Acc:', 39.99)
+('Epoch: ', 41)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 26785
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (27155) + (22765) = 49920
+--------------------------------------------------------------------------------
+Confident: 26761 / 49920
+True detected:  6966
+Noisy detected: 19795
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe86ee52410>, <common.tools.AverageMeter object at 0x7fe86ee52450>, <common.tools.AverageMeter object at 0x7fe801bb4e90>)
+('12:26:45', 'Epoch 41 Test Acc:', 37.72)
+('Epoch: ', 42)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 24075
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (28995) + (20925) = 49920
+--------------------------------------------------------------------------------
+Confident: 25277 / 49920
+True detected:  7144
+Noisy detected: 18133
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe87f91eb50>, <common.tools.AverageMeter object at 0x7fe87f91eb10>, <common.tools.AverageMeter object at 0x7fe820731f90>)
+('12:28:00', 'Epoch 42 Test Acc:', 43.93)
+('Epoch: ', 43)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 21122
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (31090) + (18830) = 49920
+--------------------------------------------------------------------------------
+Confident: 24792 / 49920
+True detected:  7949
+Noisy detected: 16843
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe801bae110>, <common.tools.AverageMeter object at 0x7fe86ee52450>, <common.tools.AverageMeter object at 0x7fe86ee52410>)
+('12:29:15', 'Epoch 43 Test Acc:', 41.96)
+('Epoch: ', 44)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 24866
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (28346) + (21574) = 49920
+--------------------------------------------------------------------------------
+Confident: 25998 / 49920
+True detected:  7180
+Noisy detected: 18818
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe820731f90>, <common.tools.AverageMeter object at 0x7fe87f91eb10>, <common.tools.AverageMeter object at 0x7fe86f54f2d0>)
+('12:30:31', 'Epoch 44 Test Acc:', 40.16)
+('Epoch: ', 45)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 22220
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (30415) + (19505) = 49920
+--------------------------------------------------------------------------------
+Confident: 24443 / 49920
+True detected:  7437
+Noisy detected: 17006
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe87f91eb50>, <common.tools.AverageMeter object at 0x7fe801bae110>, <common.tools.AverageMeter object at 0x7fe801bb4e90>)
+('12:31:46', 'Epoch 45 Test Acc:', 40.11)
+('Epoch: ', 46)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 21080
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (31143) + (18777) = 49920
+--------------------------------------------------------------------------------
+Confident: 24361 / 49920
+True detected:  7760
+Noisy detected: 16601
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe86ee52450>, <common.tools.AverageMeter object at 0x7fe86f54f2d0>, <common.tools.AverageMeter object at 0x7fe87f91eb10>)
+('12:33:00', 'Epoch 46 Test Acc:', 45.21)
+('Epoch: ', 47)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 13918
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (37044) + (12876) = 49920
+--------------------------------------------------------------------------------
+Confident: 20970 / 49920
+True detected:  9015
+Noisy detected: 11955
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe87f91eb50>, <common.tools.AverageMeter object at 0x7fe801bae110>, <common.tools.AverageMeter object at 0x7fe87689df50>)
+('12:34:14', 'Epoch 47 Test Acc:', 43.95)
+('Epoch: ', 48)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 24630
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (28121) + (21799) = 49920
+--------------------------------------------------------------------------------
+Confident: 27329 / 49920
+True detected:  7733
+Noisy detected: 19596
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe86f54f2d0>, <common.tools.AverageMeter object at 0x7fe87688ad50>, <common.tools.AverageMeter object at 0x7fe87688ae90>)
+('12:35:30', 'Epoch 48 Test Acc:', 50.67)
+('Epoch: ', 49)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 20190
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (30822) + (19098) = 49920
+--------------------------------------------------------------------------------
+Confident: 26896 / 49920
+True detected:  8867
+Noisy detected: 18029
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe801bae110>, <common.tools.AverageMeter object at 0x7fe86ee52450>, <common.tools.AverageMeter object at 0x7fe8230eb710>)
+('12:36:45', 'Epoch 49 Test Acc:', 45.6)
+('Epoch: ', 50)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 14894
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (37085) + (12835) = 49920
+--------------------------------------------------------------------------------
+Confident: 19989 / 49920
+True detected:  8545
+Noisy detected: 11444
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe86ee52410>, <common.tools.AverageMeter object at 0x7fe820731f90>, <common.tools.AverageMeter object at 0x7fe87f91eb10>)
+('12:37:58', 'Epoch 50 Test Acc:', 52.1)
+('Epoch: ', 51)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 29493
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (23696) + (26224) = 49920
+--------------------------------------------------------------------------------
+Confident: 31406 / 49920
+True detected:  7559
+Noisy detected: 23847
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe86ee52450>, <common.tools.AverageMeter object at 0x7fe801bb4e90>, <common.tools.AverageMeter object at 0x7fe8230eb710>)
+('12:39:18', 'Epoch 51 Test Acc:', 44.53)
+('Epoch: ', 52)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 31141
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (21265) + (28655) = 49920
+--------------------------------------------------------------------------------
+Confident: 33205 / 49920
+True detected:  7243
+Noisy detected: 25962
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe86ee52410>, <common.tools.AverageMeter object at 0x7fe87f91eb10>, <common.tools.AverageMeter object at 0x7fe87689d0d0>)
+('12:40:38', 'Epoch 52 Test Acc:', 53.83)
+('Epoch: ', 53)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 21166
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (31732) + (18188) = 49920
+--------------------------------------------------------------------------------
+Confident: 24178 / 49920
+True detected:  7963
+Noisy detected: 16215
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe86ee52450>, <common.tools.AverageMeter object at 0x7fe8230eb710>, <common.tools.AverageMeter object at 0x7fe8230eb110>)
+('12:41:53', 'Epoch 53 Test Acc:', 51.04)
+('Epoch: ', 54)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 10873
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (40046) + (9874) = 49920
+--------------------------------------------------------------------------------
+Confident: 18224 / 49920
+True detected:  9143
+Noisy detected: 9081
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe820731f90>, <common.tools.AverageMeter object at 0x7fe86ee52410>, <common.tools.AverageMeter object at 0x7fe7f2fef850>)
+('12:43:06', 'Epoch 54 Test Acc:', 42.66)
+('Epoch: ', 55)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 17097
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (34841) + (15079) = 49920
+--------------------------------------------------------------------------------
+Confident: 21223 / 49920
+True detected:  8040
+Noisy detected: 13183
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe87688ae90>, <common.tools.AverageMeter object at 0x7fe801bae110>, <common.tools.AverageMeter object at 0x7fe801bb4e90>)
+('12:44:20', 'Epoch 55 Test Acc:', 43.69)
+('Epoch: ', 56)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 13620
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (37513) + (12407) = 49920
+--------------------------------------------------------------------------------
+Confident: 20251 / 49920
+True detected:  8890
+Noisy detected: 11361
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe87688ad50>, <common.tools.AverageMeter object at 0x7fe87688ad90>, <common.tools.AverageMeter object at 0x7fe86ee52410>)
+('12:45:34', 'Epoch 56 Test Acc:', 44.79)
+('Epoch: ', 57)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 17208
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (34634) + (15286) = 49920
+--------------------------------------------------------------------------------
+Confident: 22250 / 49920
+True detected:  8450
+Noisy detected: 13800
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe86ee52450>, <common.tools.AverageMeter object at 0x7fe87f91eb50>, <common.tools.AverageMeter object at 0x7fe87f91eb10>)
+('12:46:48', 'Epoch 57 Test Acc:', 51.2)
+('Epoch: ', 58)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 13506
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (36971) + (12949) = 49920
+--------------------------------------------------------------------------------
+Confident: 21685 / 49920
+True detected:  9336
+Noisy detected: 12349
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe86ee52410>, <common.tools.AverageMeter object at 0x7fe820731f90>, <common.tools.AverageMeter object at 0x7fe876897d10>)
+('12:48:02', 'Epoch 58 Test Acc:', 49.01)
+('Epoch: ', 59)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 17573
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (32483) + (17437) = 49920
+--------------------------------------------------------------------------------
+Confident: 26259 / 49920
+True detected:  9379
+Noisy detected: 16880
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe806647dd0>, <common.tools.AverageMeter object at 0x7fe87f91eb10>, <common.tools.AverageMeter object at 0x7fe87f91ea10>)
+('12:49:16', 'Epoch 59 Test Acc:', 49.52)
+('Epoch: ', 60)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 14208
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (37552) + (12368) = 49920
+--------------------------------------------------------------------------------
+Confident: 19602 / 49920
+True detected:  8585
+Noisy detected: 11017
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe86ee52410>, <common.tools.AverageMeter object at 0x7fe876897d10>, <common.tools.AverageMeter object at 0x7fe7f301e490>)
+('12:50:29', 'Epoch 60 Test Acc:', 55.52)
+('Epoch: ', 61)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 19143
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (31347) + (18573) = 49920
+--------------------------------------------------------------------------------
+Confident: 27101 / 49920
+True detected:  9232
+Noisy detected: 17869
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe8230eb110>, <common.tools.AverageMeter object at 0x7fe820731f90>, <common.tools.AverageMeter object at 0x7fe806647dd0>)
+('12:51:44', 'Epoch 61 Test Acc:', 49.57)
+('Epoch: ', 62)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 19061
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (32623) + (17297) = 49920
+--------------------------------------------------------------------------------
+Confident: 24633 / 49920
+True detected:  8636
+Noisy detected: 15997
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe87688ad50>, <common.tools.AverageMeter object at 0x7fe87688ae90>, <common.tools.AverageMeter object at 0x7fe876897d10>)
+('12:52:58', 'Epoch 62 Test Acc:', 50.95)
+('Epoch: ', 63)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 16850
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (34517) + (15403) = 49920
+--------------------------------------------------------------------------------
+Confident: 22497 / 49920
+True detected:  8515
+Noisy detected: 13982
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe86ee52410>, <common.tools.AverageMeter object at 0x7fe86ee52450>, <common.tools.AverageMeter object at 0x7fe806647dd0>)
+('12:54:12', 'Epoch 63 Test Acc:', 46.67)
+('Epoch: ', 64)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 18753
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (31514) + (18406) = 49920
+--------------------------------------------------------------------------------
+Confident: 24996 / 49920
+True detected:  8263
+Noisy detected: 16733
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe876897d10>, <common.tools.AverageMeter object at 0x7fe87688ae90>, <common.tools.AverageMeter object at 0x7fe86f54f2d0>)
+('12:55:27', 'Epoch 64 Test Acc:', 46.92)
+('Epoch: ', 65)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 17844
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (34645) + (15275) = 49920
+--------------------------------------------------------------------------------
+Confident: 21137 / 49920
+True detected:  7899
+Noisy detected: 13238
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe86ee52450>, <common.tools.AverageMeter object at 0x7fe86ee52410>, <common.tools.AverageMeter object at 0x7fe801bb4e90>)
+('12:56:41', 'Epoch 65 Test Acc:', 50.41)
+('Epoch: ', 66)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 11574
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (39410) + (10510) = 49920
+--------------------------------------------------------------------------------
+Confident: 19028 / 49920
+True detected:  9227
+Noisy detected: 9801
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe8230eb710>, <common.tools.AverageMeter object at 0x7fe8230eba90>, <common.tools.AverageMeter object at 0x7fe86f54f2d0>)
+('12:57:54', 'Epoch 66 Test Acc:', 49.19)
+('Epoch: ', 67)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 9659
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (41125) + (8795) = 49920
+--------------------------------------------------------------------------------
+Confident: 17701 / 49920
+True detected:  9421
+Noisy detected: 8280
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe801bb4e90>, <common.tools.AverageMeter object at 0x7fe806647dd0>, <common.tools.AverageMeter object at 0x7fe87f91ea10>)
+('12:59:07', 'Epoch 67 Test Acc:', 42.95)
+('Epoch: ', 68)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 13241
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (38167) + (11753) = 49920
+--------------------------------------------------------------------------------
+Confident: 19397 / 49920
+True detected:  8790
+Noisy detected: 10607
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe87689de90>, <common.tools.AverageMeter object at 0x7fe87689d110>, <common.tools.AverageMeter object at 0x7fe87689dd90>)
+('13:00:20', 'Epoch 68 Test Acc:', 46.54)
+('Epoch: ', 69)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 14122
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (37122) + (12798) = 49920
+--------------------------------------------------------------------------------
+Confident: 20804 / 49920
+True detected:  8971
+Noisy detected: 11833
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe806647dd0>, <common.tools.AverageMeter object at 0x7fe87689df90>, <common.tools.AverageMeter object at 0x7fe87689d090>)
+('13:01:34', 'Epoch 69 Test Acc:', 51.39)
+('Epoch: ', 70)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 4270
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (45925) + (3995) = 49920
+--------------------------------------------------------------------------------
+Confident: 13769 / 49920
+True detected:  9855
+Noisy detected: 3914
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe87f91eb10>, <common.tools.AverageMeter object at 0x7fe8230eba90>, <common.tools.AverageMeter object at 0x7fe87689ddd0>)
+('13:02:46', 'Epoch 70 Test Acc:', 46.98)
+('Epoch: ', 71)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 18320
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (32979) + (16941) = 49920
+--------------------------------------------------------------------------------
+Confident: 24073 / 49920
+True detected:  8534
+Noisy detected: 15539
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe86f54f2d0>, <common.tools.AverageMeter object at 0x7fe87689d090>, <common.tools.AverageMeter object at 0x7fe87689df90>)
+('13:04:00', 'Epoch 71 Test Acc:', 47.38)
+('Epoch: ', 72)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 24601
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (29046) + (20874) = 49920
+--------------------------------------------------------------------------------
+Confident: 26412 / 49920
+True detected:  7737
+Noisy detected: 18675
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe8230eba90>, <common.tools.AverageMeter object at 0x7fe876897d10>, <common.tools.AverageMeter object at 0x7fe87689d050>)
+('13:05:16', 'Epoch 72 Test Acc:', 51.62)
+('Epoch: ', 73)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 13130
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (37411) + (12509) = 49920
+--------------------------------------------------------------------------------
+Confident: 21099 / 49920
+True detected:  9263
+Noisy detected: 11836
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe801bb4e90>, <common.tools.AverageMeter object at 0x7fe806647dd0>, <common.tools.AverageMeter object at 0x7fe86f54f2d0>)
+('13:06:29', 'Epoch 73 Test Acc:', 41.61)
+('Epoch: ', 74)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 11157
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (40153) + (9767) = 49920
+--------------------------------------------------------------------------------
+Confident: 17755 / 49920
+True detected:  8962
+Noisy detected: 8793
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe86ee52410>, <common.tools.AverageMeter object at 0x7fe87688ae90>, <common.tools.AverageMeter object at 0x7fe876897d10>)
+('13:07:43', 'Epoch 74 Test Acc:', 46.21)
+('Epoch: ', 75)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 9190
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (41715) + (8205) = 49920
+--------------------------------------------------------------------------------
+Confident: 17045 / 49920
+True detected:  9388
+Noisy detected: 7657
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe806647dd0>, <common.tools.AverageMeter object at 0x7fe86f54f2d0>, <common.tools.AverageMeter object at 0x7fe820731f90>)
+('13:08:55', 'Epoch 75 Test Acc:', 46.14)
+('Epoch: ', 76)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 13813
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (37343) + (12577) = 49920
+--------------------------------------------------------------------------------
+Confident: 20593 / 49920
+True detected:  8976
+Noisy detected: 11617
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe87688ae90>, <common.tools.AverageMeter object at 0x7fe87688ad90>, <common.tools.AverageMeter object at 0x7fe876897d10>)
+('13:10:09', 'Epoch 76 Test Acc:', 45.36)
+('Epoch: ', 77)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 12137
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (39170) + (10750) = 49920
+--------------------------------------------------------------------------------
+Confident: 18826 / 49920
+True detected:  9006
+Noisy detected: 9820
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe801bae110>, <common.tools.AverageMeter object at 0x7fe87f91ea10>, <common.tools.AverageMeter object at 0x7fe86ee52450>)
+('13:11:22', 'Epoch 77 Test Acc:', 44.91)
+('Epoch: ', 78)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 12744
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (38037) + (11883) = 49920
+--------------------------------------------------------------------------------
+Confident: 20155 / 49920
+True detected:  9104
+Noisy detected: 11051
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe801bb4e90>, <common.tools.AverageMeter object at 0x7fe86ee52410>, <common.tools.AverageMeter object at 0x7fe87688ae90>)
+('13:12:36', 'Epoch 78 Test Acc:', 42.79)
+('Epoch: ', 79)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 13506
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (37777) + (12143) = 49920
+--------------------------------------------------------------------------------
+Confident: 19875 / 49920
+True detected:  8834
+Noisy detected: 11041
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe806647dd0>, <common.tools.AverageMeter object at 0x7fe86ee52450>, <common.tools.AverageMeter object at 0x7fe801bae110>)
+('13:13:49', 'Epoch 79 Test Acc:', 45.95)
+('Epoch: ', 80)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 10282
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (40128) + (9792) = 49920
+--------------------------------------------------------------------------------
+Confident: 18732 / 49920
+True detected:  9438
+Noisy detected: 9294
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe87688ad90>, <common.tools.AverageMeter object at 0x7fe87688ae90>, <common.tools.AverageMeter object at 0x7fe820731f90>)
+('13:15:02', 'Epoch 80 Test Acc:', 46.06)
+('Epoch: ', 81)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 15676
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (36650) + (13270) = 49920
+--------------------------------------------------------------------------------
+Confident: 20964 / 49920
+True detected:  8815
+Noisy detected: 12149
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe86ee52450>, <common.tools.AverageMeter object at 0x7fe801bae110>, <common.tools.AverageMeter object at 0x7fe806647dd0>)
+('13:16:15', 'Epoch 81 Test Acc:', 48.01)
+('Epoch: ', 82)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 12124
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (39410) + (10510) = 49920
+--------------------------------------------------------------------------------
+Confident: 18822 / 49920
+True detected:  9124
+Noisy detected: 9698
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe820731f90>, <common.tools.AverageMeter object at 0x7fe86f54f2d0>, <common.tools.AverageMeter object at 0x7fe86ee52410>)
+('13:17:29', 'Epoch 82 Test Acc:', 49.45)
+('Epoch: ', 83)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 9782
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (41151) + (8769) = 49920
+--------------------------------------------------------------------------------
+Confident: 17311 / 49920
+True detected:  9239
+Noisy detected: 8072
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe806647dd0>, <common.tools.AverageMeter object at 0x7fe801bae110>, <common.tools.AverageMeter object at 0x7fe876897d10>)
+('13:18:42', 'Epoch 83 Test Acc:', 51.16)
+('Epoch: ', 84)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 16099
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (35115) + (14805) = 49920
+--------------------------------------------------------------------------------
+Confident: 23275 / 49920
+True detected:  9203
+Noisy detected: 14072
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe86ee52410>, <common.tools.AverageMeter object at 0x7fe86f54f2d0>, <common.tools.AverageMeter object at 0x7fe820731f90>)
+('13:19:56', 'Epoch 84 Test Acc:', 51.93)
+('Epoch: ', 85)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 16091
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (35326) + (14594) = 49920
+--------------------------------------------------------------------------------
+Confident: 23216 / 49920
+True detected:  9279
+Noisy detected: 13937
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe876897d10>, <common.tools.AverageMeter object at 0x7fe801bae110>, <common.tools.AverageMeter object at 0x7fe87f91ea10>)
+('13:21:10', 'Epoch 85 Test Acc:', 52.35)
+('Epoch: ', 86)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 14872
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (35881) + (14039) = 49920
+--------------------------------------------------------------------------------
+Confident: 22983 / 49920
+True detected:  9440
+Noisy detected: 13543
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe87688ae90>, <common.tools.AverageMeter object at 0x7fe87688ad90>, <common.tools.AverageMeter object at 0x7fe820731f90>)
+('13:22:23', 'Epoch 86 Test Acc:', 49.36)
+('Epoch: ', 87)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 20404
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (32741) + (17179) = 49920
+--------------------------------------------------------------------------------
+Confident: 23827 / 49920
+True detected:  8292
+Noisy detected: 15535
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe801bae110>, <common.tools.AverageMeter object at 0x7fe87688ad50>, <common.tools.AverageMeter object at 0x7fe876897d10>)
+('13:23:38', 'Epoch 87 Test Acc:', 51.73)
+('Epoch: ', 88)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 16126
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (34635) + (15285) = 49920
+--------------------------------------------------------------------------------
+Confident: 23751 / 49920
+True detected:  9201
+Noisy detected: 14550
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe820731f90>, <common.tools.AverageMeter object at 0x7fe8230eb710>, <common.tools.AverageMeter object at 0x7fe801bb4e90>)
+('13:24:52', 'Epoch 88 Test Acc:', 51.59)
+('Epoch: ', 89)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 15826
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (34160) + (15760) = 49920
+--------------------------------------------------------------------------------
+Confident: 24812 / 49920
+True detected:  9494
+Noisy detected: 15318
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe8230eb110>, <common.tools.AverageMeter object at 0x7fe801bae110>, <common.tools.AverageMeter object at 0x7fe87f91ea10>)
+('13:26:06', 'Epoch 89 Test Acc:', 47.72)
+('Epoch: ', 90)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 22458
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (29786) + (20134) = 49920
+--------------------------------------------------------------------------------
+Confident: 26476 / 49920
+True detected:  8139
+Noisy detected: 18337
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe87688ad90>, <common.tools.AverageMeter object at 0x7fe87688ad50>, <common.tools.AverageMeter object at 0x7fe820731f90>)
+('13:27:21', 'Epoch 90 Test Acc:', 47.84)
+('Epoch: ', 91)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 11964
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (39272) + (10648) = 49920
+--------------------------------------------------------------------------------
+Confident: 19592 / 49920
+True detected:  9440
+Noisy detected: 10152
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe87f91ea10>, <common.tools.AverageMeter object at 0x7fe801bae110>, <common.tools.AverageMeter object at 0x7fe876897d10>)
+('13:28:34', 'Epoch 91 Test Acc:', 53.18)
+('Epoch: ', 92)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 17173
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (35468) + (14452) = 49920
+--------------------------------------------------------------------------------
+Confident: 22252 / 49920
+True detected:  8868
+Noisy detected: 13384
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe820731f90>, <common.tools.AverageMeter object at 0x7fe8230eb710>, <common.tools.AverageMeter object at 0x7fe87688ad90>)
+('13:29:48', 'Epoch 92 Test Acc:', 52.38)
+('Epoch: ', 93)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 12243
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (38939) + (10981) = 49920
+--------------------------------------------------------------------------------
+Confident: 19905 / 49920
+True detected:  9430
+Noisy detected: 10475
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe8230eba90>, <common.tools.AverageMeter object at 0x7fe876897d10>, <common.tools.AverageMeter object at 0x7fe87f91ea10>)
+('13:31:02', 'Epoch 93 Test Acc:', 45.14)
+('Epoch: ', 94)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 15285
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (36020) + (13900) = 49920
+--------------------------------------------------------------------------------
+Confident: 21832 / 49920
+True detected:  8934
+Noisy detected: 12898
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe820731f90>, <common.tools.AverageMeter object at 0x7fe86ee52410>, <common.tools.AverageMeter object at 0x7fe87688ad50>)
+('13:32:16', 'Epoch 94 Test Acc:', 50.54)
+('Epoch: ', 95)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 16235
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (35710) + (14210) = 49920
+--------------------------------------------------------------------------------
+Confident: 22698 / 49920
+True detected:  9212
+Noisy detected: 13486
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe87f91ea10>, <common.tools.AverageMeter object at 0x7fe801bae110>, <common.tools.AverageMeter object at 0x7fe86ee52450>)
+('13:33:29', 'Epoch 95 Test Acc:', 54.01)
+('Epoch: ', 96)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 15658
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (35751) + (14169) = 49920
+--------------------------------------------------------------------------------
+Confident: 22977 / 49920
+True detected:  9372
+Noisy detected: 13605
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe86ee52410>, <common.tools.AverageMeter object at 0x7fe87688ad50>, <common.tools.AverageMeter object at 0x7fe87688ae90>)
+('13:34:43', 'Epoch 96 Test Acc:', 49.61)
+('Epoch: ', 97)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 16583
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (35254) + (14666) = 49920
+--------------------------------------------------------------------------------
+Confident: 22364 / 49920
+True detected:  8817
+Noisy detected: 13547
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe86ee52450>, <common.tools.AverageMeter object at 0x7fe801bb4e90>, <common.tools.AverageMeter object at 0x7fe820731f90>)
+('13:35:57', 'Epoch 97 Test Acc:', 49.7)
+('Epoch: ', 98)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 15310
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (35455) + (14465) = 49920
+--------------------------------------------------------------------------------
+Confident: 23013 / 49920
+True detected:  9242
+Noisy detected: 13771
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe86ee52410>, <common.tools.AverageMeter object at 0x7fe8230eba90>, <common.tools.AverageMeter object at 0x7fe8230eb110>)
+('13:37:11', 'Epoch 98 Test Acc:', 52.0)
+('Epoch: ', 99)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 16300
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (35567) + (14353) = 49920
+--------------------------------------------------------------------------------
+Confident: 22453 / 49920
+True detected:  9018
+Noisy detected: 13435
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe820731f90>, <common.tools.AverageMeter object at 0x7fe801bae110>, <common.tools.AverageMeter object at 0x7fe87688ad50>)
+('13:38:25', 'Epoch 99 Test Acc:', 52.5)
+('Epoch: ', 100)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 14861
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (35555) + (14365) = 49920
+--------------------------------------------------------------------------------
+Confident: 23501 / 49920
+True detected:  9536
+Noisy detected: 13965
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe8230eba90>, <common.tools.AverageMeter object at 0x7fe8230eb110>, <common.tools.AverageMeter object at 0x7fe8230eb710>)
+('13:39:38', 'Epoch 100 Test Acc:', 52.64)
+('Epoch: ', 101)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 14075
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (35913) + (14007) = 49920
+--------------------------------------------------------------------------------
+Confident: 23239 / 49920
+True detected:  9584
+Noisy detected: 13655
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe87688ad50>, <common.tools.AverageMeter object at 0x7fe801bae110>, <common.tools.AverageMeter object at 0x7fe876897d10>)
+('13:40:52', 'Epoch 101 Test Acc:', 56.8)
+('Epoch: ', 102)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 19490
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (32508) + (17412) = 49920
+--------------------------------------------------------------------------------
+Confident: 25078 / 49920
+True detected:  8801
+Noisy detected: 16277
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe86ee52410>, <common.tools.AverageMeter object at 0x7fe87689df50>, <common.tools.AverageMeter object at 0x7fe87689d210>)
+('13:42:06', 'Epoch 102 Test Acc:', 53.49)
+('Epoch: ', 103)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 15551
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (34506) + (15414) = 49920
+--------------------------------------------------------------------------------
+Confident: 24530 / 49920
+True detected:  9526
+Noisy detected: 15004
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe8230eba90>, <common.tools.AverageMeter object at 0x7fe8230eb110>, <common.tools.AverageMeter object at 0x7fe876897d10>)
+('13:43:20', 'Epoch 103 Test Acc:', 49.02)
+('Epoch: ', 104)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 12044
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (39338) + (10582) = 49920
+--------------------------------------------------------------------------------
+Confident: 18472 / 49920
+True detected:  8913
+Noisy detected: 9559
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe806647dd0>, <common.tools.AverageMeter object at 0x7fe87f91eb10>, <common.tools.AverageMeter object at 0x7fe86ee52410>)
+('13:44:33', 'Epoch 104 Test Acc:', 59.1)
+('Epoch: ', 105)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 11102
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (39539) + (10381) = 49920
+--------------------------------------------------------------------------------
+Confident: 19837 / 49920
+True detected:  9696
+Noisy detected: 10141
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe876897d10>, <common.tools.AverageMeter object at 0x7fe87688ad90>, <common.tools.AverageMeter object at 0x7fe801bae110>)
+('13:45:46', 'Epoch 105 Test Acc:', 55.96)
+('Epoch: ', 106)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 9383
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (41979) + (7941) = 49920
+--------------------------------------------------------------------------------
+Confident: 16961 / 49920
+True detected:  9478
+Noisy detected: 7483
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fe8230eb710>, <common.tools.AverageMeter object at 0x7fe87f91eb10>, <common.tools.AverageMeter object at 0x7fe806647dd0>)
+('13:46:59', 'Epoch 106 Test Acc:', 54.1)
+('Epoch: ', 107)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=4, lambda_u=25.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.8, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Unconfident Indexes from FINE: 12860
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (37990) + (11930) = 49920
+--------------------------------------------------------------------------------
+Confident: 20780 / 49920
+True detected:  9393
+Noisy detected: 11387
+--------------------------------------------------------------------------------
+True label count: 9936
+________________________________________________________________________________

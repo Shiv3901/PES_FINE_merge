@@ -1,0 +1,55 @@
+Thu Jun  9 12:31:01 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.129.06   Driver Version: 470.129.06   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  Off  | 00000000:01:00.0 Off |                  N/A |
+| 27%   31C    P8     1W / 250W |     21MiB / 11019MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA GeForce ...  Off  | 00000000:02:00.0 Off |                  N/A |
+| 27%   29C    P8     3W / 250W |      8MiB / 11019MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      1202      G   /usr/lib/xorg/Xorg                  9MiB |
+|    0   N/A  N/A      1668      G   /usr/bin/gnome-shell                6MiB |
+|    1   N/A  N/A      1202      G   /usr/lib/xorg/Xorg                  4MiB |
++-----------------------------------------------------------------------------+
+Namespace(PES_lr=0.0001, T=0.5, T1=1, T2=1, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=2, lambda_u=5.0, lr=0.02, modified=True, noise_rate=0.2, noise_type='symmetric', num_epochs=5, optim='cos', seed=1, weight_decay=0.0005)
+Files already downloaded and verified
+Files already downloaded and verified
+('include_noise True, new real nosie rate:', 0.2)
+GMM Model used of type: 2
+Running with FINE
+Epochs before Stopping: 1
+Epochs for reintialising: 1
+Epochs after Stopping: 4
+('Epoch: ', 0)
+Train Epoch: [0][  0/390]	Time   0.04	Data   0.00	Loss   1.87	Acc@1  35.85
+('12:31:20', 'Epoch 0 Test Acc:', 51.86)
+('Epoch: ', 1)
+re-initalize the final layer
+Train Epoch: [0][  0/390]	Time   0.02	Data   0.00	Loss   1.83	Acc@1  41.79
+('12:31:28', 'Epoch 0 Test Acc:', 56.84)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=1, T2=1, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=2, lambda_u=5.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.2, noise_type='symmetric', num_class=10, num_epochs=5, optim='cos', seed=1, weight_decay=0.0005))
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (23655) + (26265) = 49920
+--------------------------------------------------------------------------------
+Confident: 31728 / 49920
+True detected:  22727
+Noisy detected: 9001
+--------------------------------------------------------------------------------
+True label count: 40056
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7f835142c3d0>, <common.tools.AverageMeter object at 0x7f835142c5d0>, <common.tools.AverageMeter object at 0x7f835142c490>)
+('12:32:42', 'Epoch 1 Test Acc:', 60.51)
+('Epoch: ', 2)

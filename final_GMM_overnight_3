@@ -1,0 +1,251 @@
+Fri Jun 10 01:38:56 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.129.06   Driver Version: 470.129.06   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  Off  | 00000000:01:00.0 Off |                  N/A |
+| 37%   65C    P2    99W / 250W |   4428MiB / 11019MiB |     18%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA GeForce ...  Off  | 00000000:02:00.0 Off |                  N/A |
+| 45%   83C    P2   227W / 250W |   3145MiB / 11019MiB |     96%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      1202      G   /usr/lib/xorg/Xorg                  9MiB |
+|    0   N/A  N/A      1668      G   /usr/bin/gnome-shell                6MiB |
+|    0   N/A  N/A     13988      C   python                           4407MiB |
+|    1   N/A  N/A      1202      G   /usr/lib/xorg/Xorg                  4MiB |
+|    1   N/A  N/A     32599      C   python3                          3137MiB |
++-----------------------------------------------------------------------------+
+Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=3, lambda_u=5.0, lr=0.02, modified=True, noise_rate=0.2, noise_type='symmetric', num_epochs=300, optim='cos', seed=1, weight_decay=0.0005)
+Files already downloaded and verified
+Files already downloaded and verified
+('include_noise True, new real nosie rate:', 0.2)
+GMM Model used of type: 3
+Running with FINE
+Epochs before Stopping: 25
+Epochs for reintialising: 5
+Epochs after Stopping: 275
+('Epoch: ', 0)
+Train Epoch: [0][  0/390]	Time   0.09	Data   0.00	Loss   1.88	Acc@1  35.77
+('01:39:37', 'Epoch 0 Test Acc:', 54.81)
+('Epoch: ', 1)
+Train Epoch: [1][  0/390]	Time   0.08	Data   0.00	Loss   1.63	Acc@1  48.71
+('01:40:09', 'Epoch 1 Test Acc:', 63.3)
+('Epoch: ', 2)
+Train Epoch: [2][  0/390]	Time   0.06	Data   0.00	Loss   1.49	Acc@1  55.74
+('01:40:33', 'Epoch 2 Test Acc:', 67.12)
+('Epoch: ', 3)
+Train Epoch: [3][  0/390]	Time   0.05	Data   0.00	Loss   1.40	Acc@1  60.10
+('01:40:52', 'Epoch 3 Test Acc:', 70.92)
+('Epoch: ', 4)
+Train Epoch: [4][  0/390]	Time   0.05	Data   0.00	Loss   1.34	Acc@1  62.70
+('01:41:12', 'Epoch 4 Test Acc:', 76.48)
+('Epoch: ', 5)
+Train Epoch: [5][  0/390]	Time   0.09	Data   0.00	Loss   1.30	Acc@1  64.77
+('01:41:48', 'Epoch 5 Test Acc:', 76.02)
+('Epoch: ', 6)
+Train Epoch: [6][  0/390]	Time   0.08	Data   0.00	Loss   1.26	Acc@1  66.11
+('01:42:23', 'Epoch 6 Test Acc:', 77.49)
+('Epoch: ', 7)
+Train Epoch: [7][  0/390]	Time   0.08	Data   0.00	Loss   1.24	Acc@1  67.16
+('01:42:55', 'Epoch 7 Test Acc:', 75.93)
+('Epoch: ', 8)
+Train Epoch: [8][  0/390]	Time   0.04	Data   0.00	Loss   1.21	Acc@1  68.07
+('01:43:12', 'Epoch 8 Test Acc:', 78.35)
+('Epoch: ', 9)
+Train Epoch: [9][  0/390]	Time   0.08	Data   0.00	Loss   1.19	Acc@1  68.84
+('01:43:46', 'Epoch 9 Test Acc:', 78.83)
+('Epoch: ', 10)
+Train Epoch: [10][  0/390]	Time   0.08	Data   0.00	Loss   1.17	Acc@1  69.41
+('01:44:21', 'Epoch 10 Test Acc:', 82.36)
+('Epoch: ', 11)
+Train Epoch: [11][  0/390]	Time   0.08	Data   0.00	Loss   1.15	Acc@1  70.13
+('01:44:56', 'Epoch 11 Test Acc:', 80.14)
+('Epoch: ', 12)
+Train Epoch: [12][  0/390]	Time   0.07	Data   0.00	Loss   1.14	Acc@1  70.69
+('01:45:26', 'Epoch 12 Test Acc:', 82.51)
+('Epoch: ', 13)
+Train Epoch: [13][  0/390]	Time   0.06	Data   0.00	Loss   1.12	Acc@1  71.03
+('01:45:49', 'Epoch 13 Test Acc:', 79.56)
+('Epoch: ', 14)
+Train Epoch: [14][  0/390]	Time   0.04	Data   0.00	Loss   1.11	Acc@1  71.55
+('01:46:07', 'Epoch 14 Test Acc:', 82.04)
+('Epoch: ', 15)
+Train Epoch: [15][  0/390]	Time   0.06	Data   0.00	Loss   1.09	Acc@1  72.10
+('01:46:32', 'Epoch 15 Test Acc:', 82.01)
+('Epoch: ', 16)
+Train Epoch: [16][  0/390]	Time   0.08	Data   0.00	Loss   1.08	Acc@1  72.52
+('01:47:07', 'Epoch 16 Test Acc:', 82.36)
+('Epoch: ', 17)
+Train Epoch: [17][  0/390]	Time   0.08	Data   0.00	Loss   1.07	Acc@1  72.88
+('01:47:42', 'Epoch 17 Test Acc:', 83.16)
+('Epoch: ', 18)
+Train Epoch: [18][  0/390]	Time   0.08	Data   0.00	Loss   1.06	Acc@1  73.19
+('01:48:13', 'Epoch 18 Test Acc:', 80.75)
+('Epoch: ', 19)
+Train Epoch: [19][  0/390]	Time   0.04	Data   0.00	Loss   1.04	Acc@1  73.39
+('01:48:30', 'Epoch 19 Test Acc:', 82.33)
+('Epoch: ', 20)
+Train Epoch: [20][  0/390]	Time   0.08	Data   0.00	Loss   1.03	Acc@1  73.78
+('01:49:05', 'Epoch 20 Test Acc:', 80.97)
+('Epoch: ', 21)
+Train Epoch: [21][  0/390]	Time   0.08	Data   0.00	Loss   1.02	Acc@1  74.05
+('01:49:41', 'Epoch 21 Test Acc:', 83.05)
+('Epoch: ', 22)
+Train Epoch: [22][  0/390]	Time   0.08	Data   0.00	Loss   1.01	Acc@1  74.43
+('01:50:16', 'Epoch 22 Test Acc:', 81.18)
+('Epoch: ', 23)
+Train Epoch: [23][  0/390]	Time   0.07	Data   0.00	Loss   1.00	Acc@1  74.54
+('01:50:45', 'Epoch 23 Test Acc:', 80.83)
+('Epoch: ', 24)
+Train Epoch: [24][  0/390]	Time   0.06	Data   0.00	Loss   0.99	Acc@1  74.77
+('01:51:08', 'Epoch 24 Test Acc:', 82.28)
+('Epoch: ', 25)
+re-initalize the final layer
+Train Epoch: [0][  0/390]	Time   0.02	Data   0.00	Loss   1.65	Acc@1  67.56
+('01:51:16', 'Epoch 0 Test Acc:', 83.96)
+Train Epoch: [1][  0/390]	Time   0.02	Data   0.00	Loss   1.10	Acc@1  73.68
+('01:51:24', 'Epoch 1 Test Acc:', 84.2)
+Train Epoch: [2][  0/390]	Time   0.02	Data   0.00	Loss   1.02	Acc@1  74.09
+('01:51:32', 'Epoch 2 Test Acc:', 84.32)
+Train Epoch: [3][  0/390]	Time   0.03	Data   0.00	Loss   1.00	Acc@1  74.02
+('01:51:44', 'Epoch 3 Test Acc:', 84.39)
+Train Epoch: [4][  0/390]	Time   0.03	Data   0.00	Loss   1.00	Acc@1  74.14
+('01:52:00', 'Epoch 4 Test Acc:', 84.43)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=3, lambda_u=5.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.2, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (30486) + (19434) = 49920
+--------------------------------------------------------------------------------
+Confident: 39945 / 49920
+True detected:  30251
+Noisy detected: 9694
+--------------------------------------------------------------------------------
+True label count: 40056
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fb05614bb10>, <common.tools.AverageMeter object at 0x7fb05614b6d0>, <common.tools.AverageMeter object at 0x7fb05614b5d0>)
+('01:53:51', 'Epoch 25 Test Acc:', 86.23)
+('Epoch: ', 26)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=3, lambda_u=5.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.2, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (33031) + (16889) = 49920
+--------------------------------------------------------------------------------
+Confident: 42434 / 49920
+True detected:  32768
+Noisy detected: 9666
+--------------------------------------------------------------------------------
+True label count: 39991
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fb0d5fa3310>, <common.tools.AverageMeter object at 0x7fb068d00f90>, <common.tools.AverageMeter object at 0x7fb0691c4fd0>)
+('01:55:35', 'Epoch 26 Test Acc:', 86.72)
+('Epoch: ', 27)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=3, lambda_u=5.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.2, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (30401) + (19519) = 49920
+--------------------------------------------------------------------------------
+Confident: 39524 / 49920
+True detected:  29998
+Noisy detected: 9526
+--------------------------------------------------------------------------------
+True label count: 39991
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fb06d799c90>, <common.tools.AverageMeter object at 0x7fb0e686e8d0>, <common.tools.AverageMeter object at 0x7fb0e686e9d0>)
+('01:57:19', 'Epoch 27 Test Acc:', 86.76)
+('Epoch: ', 28)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=3, lambda_u=5.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.2, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (22804) + (27116) = 49920
+--------------------------------------------------------------------------------
+Confident: 32187 / 49920
+True detected:  22531
+Noisy detected: 9656
+--------------------------------------------------------------------------------
+True label count: 39991
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fb0691c4fd0>, <common.tools.AverageMeter object at 0x7fb056179250>, <common.tools.AverageMeter object at 0x7fb056179c50>)
+('01:59:15', 'Epoch 28 Test Acc:', 85.58)
+('Epoch: ', 29)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=3, lambda_u=5.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.2, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (29322) + (20598) = 49920
+--------------------------------------------------------------------------------
+Confident: 38657 / 49920
+True detected:  29025
+Noisy detected: 9632
+--------------------------------------------------------------------------------
+True label count: 39991
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fb0e686e9d0>, <common.tools.AverageMeter object at 0x7fb0e686e8d0>, <common.tools.AverageMeter object at 0x7fb0d66a1190>)
+('02:01:14', 'Epoch 29 Test Acc:', 86.22)
+('Epoch: ', 30)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=3, lambda_u=5.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.2, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (21650) + (28270) = 49920
+--------------------------------------------------------------------------------
+Confident: 30937 / 49920
+True detected:  21329
+Noisy detected: 9608
+--------------------------------------------------------------------------------
+True label count: 39991
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fb0691c4fd0>, <common.tools.AverageMeter object at 0x7fb08a23d5d0>, <common.tools.AverageMeter object at 0x7fb068d00f90>)
+('02:03:19', 'Epoch 30 Test Acc:', 86.32)
+('Epoch: ', 31)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=3, lambda_u=5.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.2, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (22552) + (27368) = 49920
+--------------------------------------------------------------------------------
+Confident: 32085 / 49920
+True detected:  22354
+Noisy detected: 9731
+--------------------------------------------------------------------------------
+True label count: 39991
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fb08a23d6d0>, <common.tools.AverageMeter object at 0x7fb0d66a1190>, <common.tools.AverageMeter object at 0x7fb0e686e8d0>)
+('02:05:23', 'Epoch 31 Test Acc:', 87.06)
+('Epoch: ', 32)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=3, lambda_u=5.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.2, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (24856) + (25064) = 49920
+--------------------------------------------------------------------------------
+Confident: 34429 / 49920
+True detected:  24678
+Noisy detected: 9751
+--------------------------------------------------------------------------------
+True label count: 39991
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fb068d05d50>, <common.tools.AverageMeter object at 0x7fb0691c4fd0>, <common.tools.AverageMeter object at 0x7fb0d5f65810>)
+('02:07:35', 'Epoch 32 Test Acc:', 86.69)
+('Epoch: ', 33)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=3, lambda_u=5.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.2, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (28485) + (21435) = 49920
+--------------------------------------------------------------------------------
+Confident: 37778 / 49920
+True detected:  28167
+Noisy detected: 9611
+--------------------------------------------------------------------------------
+True label count: 39991
+________________________________________________________________________________
+(<common.tools.AverageMeter object at 0x7fb0e686e9d0>, <common.tools.AverageMeter object at 0x7fb0e686e8d0>, <common.tools.AverageMeter object at 0x7fb08a23d6d0>)
+('02:09:15', 'Epoch 33 Test Acc:', 87.48)
+('Epoch: ', 34)
+('PES', Namespace(PES_lr=0.0001, T=0.5, T1=25, T2=5, alpha=4, batch_size=128, classifier='gmm', data_path='./data', data_percent=1, dataset='cifar10', hyper_parameter_type=3, lambda_u=5.0, lr=0.02, model_dir='model/', modified=True, noise_rate=0.2, noise_type='symmetric', num_class=10, num_epochs=300, optim='cos', seed=1, weight_decay=0.0005))
+Size of labels: noisy -> 49920 clean: 50000
+Total: confident (28259) + (21661) = 49920
+--------------------------------------------------------------------------------
+Confident: 37424 / 49920
+True detected:  27877
+Noisy detected: 9547
+--------------------------------------------------------------------------------
+True label count: 39991
+________________________________________________________________________________
